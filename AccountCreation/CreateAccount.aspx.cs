@@ -16,24 +16,18 @@ namespace AccountCreation
 			// RETRIEVE CAC CARD INFO
 			/////////////////////////////////////////////////////
 			HttpClientCertificate cac = Request.ClientCertificate;
-			if (cac.IsPresent)
+			if (cac.IsPresent && !IsPostBack)
 			{
 				string[] subjectArray = cac.Subject.Split(',');
-
 				string subjectLine = cac.Subject.ToString();
-
 				int subjectLineLength = subjectLine.Length;
-
 				const int edipiLength = 10;
-
 				int cacIdentifierPosition = subjectLineLength - edipiLength;
-
 				string cacIdentifier = subjectLine.Substring(cacIdentifierPosition, edipiLength);
-
 				string[] arr = subjectArray[5].Split(' ');
 				string[] user = arr[1].Split('=');
-				StringBuilder sb = new StringBuilder();
 				
+				StringBuilder sb = new StringBuilder();
 				foreach (string field in user)
 				{
 					sb.Append(field);
@@ -47,6 +41,7 @@ namespace AccountCreation
 				string middleInitial = fullName[2].ToString();
 				string edipi = cacIdentifier;
 
+				// Add cac info into textbox fields
 				if (uiAccountRequestForm.CurrentMode == FormViewMode.Insert)
 				{
 					var uiEdipi = (TextBox)(uiAccountRequestForm).FindControl("uiEdipi");
@@ -59,8 +54,10 @@ namespace AccountCreation
 					uiFname.Text = firstName;
 					dateCreated.Text = DateTime.Now.ToShortDateString();
 				}
+
 			}
 
-		}
+
+		}// end Page_Load event
 	}
 }

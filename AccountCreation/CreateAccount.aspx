@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CreateAccount.aspx.cs" Inherits="AccountCreation.CreateAccount" %>
 
 <!DOCTYPE html>
-
 <html lang="en">
 <head id="Head1" runat="server">
 	<title>Fort Carson | Account Creation Request Form</title>
@@ -27,13 +26,9 @@
 		</section>
 		<asp:FormView ID="uiAccountRequestForm" runat="server" DataKeyNames="Edipi" 
 		DataSourceID="uiAccountRequestEDS" DefaultMode="Insert" RenderOuterTable="False">
+			
 			<InsertItemTemplate>
 				<section class="row">
-					<div class="form-group col-sm-2">
-						<label for="uiDateCreated">Date:</label>
-						<asp:TextBox ID="uiDateCreated" CssClass="form-control" runat="server" Text='<%# Bind("Created") %>' ReadOnly="false" />
-					</div>
-					
 					<div class="form-group col-sm-2">
 						<label for="uiEdipi">EDIPI:</label>
 						<asp:TextBox ID="uiEdipi" CssClass="form-control" runat="server" Text='<%# Bind("Edipi") %>'  />
@@ -118,10 +113,18 @@
 						</asp:DropDownList>
 					</div>
 				</section>
-				<asp:Button ID="submitBtn" runat="server" Text="Submit" CommandName="Insert" CssClass="btn btn-default" />				
-				&nbsp;
-				<asp:Button ID="cancelBtn" runat="server" CommandName="Cancel" Text="Reset form" CausesValidation="False" CssClass="btn btn-default" />
+				<div class="row clearfix">
+					<div class="form-group col-sm-2">
+						<label for="uiDateCreated">Date:</label>
+							<asp:TextBox ID="uiDateCreated" CssClass="form-control" runat="server" Text='<%# Bind("Created") %>' ReadOnly="false" />
+					</div>
+				</div>
+				<div>
+					<asp:Button ID="submitBtn" runat="server" Text="Submit" CommandName="Insert" CssClass="btn btn-default" />
+					<asp:Button ID="cancelBtn" runat="server" CommandName="Cancel" Text="Reset form" CausesValidation="False" CssClass="btn btn-default" />
+				</div>
 			</InsertItemTemplate>
+
 		</asp:FormView>
 								
 	</article>
