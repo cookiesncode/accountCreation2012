@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CarsonAccountModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="CarsonAccountModelStoreContainer">
+          <EntitySet Name="tblAcctCreate_Auto" EntityType="CarsonAccountModel.Store.tblAcctCreate_Auto" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="tblAcctCreate_Auto">
+          <Key>
+            <PropertyRef Name="EDIPI" />
+          </Key>
+          <Property Name="EDIPI" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="SamAccountName" Type="varchar" MaxLength="256" />
+          <Property Name="LName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="FName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="MI" Type="nvarchar" MaxLength="1" />
+          <Property Name="Bldg" Type="nvarchar" MaxLength="256" />
+          <Property Name="Room" Type="nvarchar" MaxLength="50" />
+          <Property Name="Office" Type="nvarchar" MaxLength="256" />
+          <Property Name="Persona" Type="nvarchar" MaxLength="256" />
+          <Property Name="Phone" Type="char" MaxLength="12" />
+          <Property Name="Rank" Type="char" Nullable="false" MaxLength="4" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="Department" Type="varchar" Nullable="false" MaxLength="128" />
+          <Property Name="Org" Type="nvarchar" MaxLength="256" />
+          <Property Name="Branch" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="Installation" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="NIPR_REG" Type="tinyint" />
+          <Property Name="NIPR_SA" Type="tinyint" />
+          <Property Name="NIPR_EP" Type="tinyint" />
+          <Property Name="VPN" Type="tinyint" />
+          <Property Name="SIPR" Type="tinyint" />
+          <Property Name="HomeFolder" Type="nvarchar" MaxLength="256" />
+          <Property Name="SupSigned" Type="tinyint" />
+          <Property Name="SecSigned" Type="tinyint" />
+          <Property Name="AcctStatus" Type="smalldatetime" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CarsonAccountModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="CarsonAccountEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccountRequests" EntityType="CarsonAccountModel.AccountRequest" />
+        </EntityContainer>
+        <EntityType Name="AccountRequest">
+          <Key>
+            <PropertyRef Name="Edipi" />
+          </Key>
+          <Property Name="Edipi" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="LName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Mi" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="Rank" Type="String" Nullable="false" MaxLength="4" Unicode="false" FixedLength="true" />
+          <Property Name="Org" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="Department" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+          <Property Name="Installation" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="Branch" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="Bldg" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="Room" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Office" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="12" Unicode="false" FixedLength="true" />
+          <Property Name="Persona" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="SamAccountName" Type="String" MaxLength="256" Unicode="false" FixedLength="false" />
+          <Property Name="HomeFolder" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="NiprReg" Type="Byte" />
+          <Property Name="NiprSa" Type="Byte" />
+          <Property Name="NiprEp" Type="Byte" />
+          <Property Name="Vpn" Type="Byte" />
+          <Property Name="Sipr" Type="Byte" />
+          <Property Name="SupSigned" Type="Byte" />
+          <Property Name="SecSigned" Type="Byte" />
+          <Property Name="AcctStatus" Type="DateTime" Precision="0" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CarsonAccountModelStoreContainer" CdmEntityContainer="CarsonAccountEntities">
+          <EntitySetMapping Name="AccountRequests">
+            <EntityTypeMapping TypeName="CarsonAccountModel.AccountRequest">
+              <MappingFragment StoreEntitySet="tblAcctCreate_Auto">
+                <ScalarProperty Name="Edipi" ColumnName="EDIPI" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="SamAccountName" ColumnName="SamAccountName" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="Mi" ColumnName="MI" />
+                <ScalarProperty Name="Bldg" ColumnName="Bldg" />
+                <ScalarProperty Name="Room" ColumnName="Room" />
+                <ScalarProperty Name="Office" ColumnName="Office" />
+                <ScalarProperty Name="Persona" ColumnName="Persona" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Rank" ColumnName="Rank" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Org" ColumnName="Org" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+                <ScalarProperty Name="Installation" ColumnName="Installation" />
+                <ScalarProperty Name="NiprReg" ColumnName="NIPR_REG" />
+                <ScalarProperty Name="NiprSa" ColumnName="NIPR_SA" />
+                <ScalarProperty Name="NiprEp" ColumnName="NIPR_EP" />
+                <ScalarProperty Name="Vpn" ColumnName="VPN" />
+                <ScalarProperty Name="Sipr" ColumnName="SIPR" />
+                <ScalarProperty Name="HomeFolder" ColumnName="HomeFolder" />
+                <ScalarProperty Name="SupSigned" ColumnName="SupSigned" />
+                <ScalarProperty Name="SecSigned" ColumnName="SecSigned" />
+                <ScalarProperty Name="AcctStatus" ColumnName="AcctStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
