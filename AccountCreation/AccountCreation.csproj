@@ -38,7 +38,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -57,18 +63,86 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CreateAccount.aspx" />
     <Content Include="Web.config" />
+    <Content Include="_assets\css\app.css" />
+    <Content Include="_assets\css\bootstrap-theme.css" />
+    <Content Include="_assets\css\bootstrap-theme.min.css" />
+    <Content Include="_assets\css\bootstrap.css" />
+    <Content Include="_assets\css\bootstrap.min.css" />
+    <Content Include="_assets\css\ie.css" />
+    <Content Include="_assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="_assets\img\logo.png" />
+    <Content Include="_assets\js\app.js" />
+    <Content Include="_assets\js\bootstrap.js" />
+    <Content Include="_assets\js\bootstrap.min.js" />
+    <Content Include="_assets\js\jquery.maskedinput.js" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountRequest.cs">
+      <DependentUpon>CarsonAccountModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CarsonAccountModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CarsonAccountModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CarsonAccountModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CarsonAccountModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CarsonAccountModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CarsonAccountModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="CreateAccount.aspx.cs">
+      <DependentUpon>CreateAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateAccount.aspx.designer.cs">
+      <DependentUpon>CreateAccount.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="CarsonAccountModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CarsonAccountModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="CarsonAccountModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CarsonAccountModel.edmx</DependentUpon>
+      <LastGenOutput>CarsonAccountModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="CarsonAccountModel.edmx.diagram">
+      <DependentUpon>CarsonAccountModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="CarsonAccountModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CarsonAccountModel.edmx</DependentUpon>
+      <LastGenOutput>CarsonAccountModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="_assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="_assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="_assets\fonts\glyphicons-halflings-regular.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="_assets\css\_notes\" />
+    <Folder Include="_assets\fonts\_notes\" />
+    <Folder Include="_assets\img\_notes\" />
+    <Folder Include="_assets\js\_notes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
