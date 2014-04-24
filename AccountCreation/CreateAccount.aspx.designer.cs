@@ -31,12 +31,21 @@ namespace AccountCreation {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// userEntryForm control.
+        /// uiAccountRequestForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView userEntryForm;
+        protected global::System.Web.UI.WebControls.FormView uiAccountRequestForm;
+        
+        /// <summary>
+        /// uiAccountRequestEDS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.EntityDataSource uiAccountRequestEDS;
     }
 }

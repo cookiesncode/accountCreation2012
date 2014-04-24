@@ -25,33 +25,38 @@
 				<h1>User Account Creation Form</h1>
 			</header>
 		</section>
-		<asp:FormView ID="userEntryForm" runat="server" DataKeyNames="EDIPI" 
-		DataSourceID="acctCreateAuto" DefaultMode="Insert" RenderOuterTable="False">
+		<asp:FormView ID="uiAccountRequestForm" runat="server" DataKeyNames="Edipi" 
+		DataSourceID="uiAccountRequestEDS" DefaultMode="Insert" RenderOuterTable="False">
 			<InsertItemTemplate>
 				<section class="row">
 					<div class="form-group col-sm-2">
-						<label for="edipi_txtbox">EDIPI:</label>
-						<asp:TextBox ID="edipi_txtbox" CssClass="form-control" runat="server" Text='<%# Bind("EDIPI") %>' />
+						<label for="uiDateCreated">Date:</label>
+						<asp:TextBox ID="uiDateCreated" CssClass="form-control" runat="server" Text='<%# Bind("Created") %>' ReadOnly="false" />
+					</div>
+					
+					<div class="form-group col-sm-2">
+						<label for="uiEdipi">EDIPI:</label>
+						<asp:TextBox ID="uiEdipi" CssClass="form-control" runat="server" Text='<%# Bind("Edipi") %>'  />
 					</div>
 
 					<div class="form-group col-sm-3">
-						<label for="lName_txtbox">Last Name:</label>
-						<asp:TextBox ID="lName_txtbox" CssClass="form-control" runat="server" Text='<%# Bind("LName") %>' />
+						<label for="uiLname">Last Name:</label>
+						<asp:TextBox ID="uiLname" CssClass="form-control" runat="server" Text='<%# Bind("LName") %>' />
 					</div>
 
 					<div class="form-group col-sm-3">
-						<label for="fName_txtbox">First Name:</label>
-						<asp:TextBox ID="fName_txtbox" CssClass="form-control" runat="server" Text='<%# Bind("FName") %>' />
+						<label for="uiFname">First Name:</label>
+						<asp:TextBox ID="uiFname" CssClass="form-control" runat="server" Text='<%# Bind("FName") %>' />
 					</div>
 				
 					<div class="form-group col-sm-1">
-						<label for="mInitial_txtbox">MI:</label>
-						<asp:TextBox ID="mInitial_txtbox" CssClass="form-control" runat="server" Text='<%# Bind("MI") %>' />
+						<label for="uiMiddleInitial">MI:</label>
+						<asp:TextBox ID="uiMiddleInitial" CssClass="form-control" runat="server" Text='<%# Bind("Mi") %>' />
 					</div>
 
 					<div class="form-group col-sm-3">
-						<label for="rank_dropDown">Rank:</label>
-						<asp:DropDownList ID="rank_dropDown" CssClass="form-control" runat="server" Text='<%# Bind("Rank") %>'>
+						<label for="uiRank">Rank:</label>
+						<asp:DropDownList ID="uiRank" CssClass="form-control" runat="server" Text='<%# Bind("Rank") %>'>
 							<asp:ListItem>SGT</asp:ListItem>
 						</asp:DropDownList>
 					</div>
@@ -59,56 +64,56 @@
 
 				<section class="row">			
 					<div class="form-group col-sm-2">
-						<label for="bldgNum_txtbox">Bldg. Number:</label>
-						<asp:TextBox ID="bldgNum_txtbox" CssClass="form-control" runat="server" Text='<%# Bind("Bldg") %>' />
+						<label for="uiBldgNum">Bldg. Number:</label>
+						<asp:TextBox ID="uiBldgNum" CssClass="form-control" runat="server" Text='<%# Bind("Bldg") %>' />
 					</div>
 				
 					<div class="form-group col-sm-2">
-						<label for="roomNum_txtbox">Room Number:</label>
-						<asp:TextBox ID="roomNumber_txtbox" CssClass="form-control" runat="server" Text='<%# Bind("Room") %>' />
+						<label for="uiRoomNum">Room Number:</label>
+						<asp:TextBox ID="uiRoomNum" CssClass="form-control" runat="server" Text='<%# Bind("Room") %>' />
 					</div>
 				
 					<div class="form-group col-sm-2">
-						<label for="office_txtbox">Office:</label>
-						<asp:TextBox ID="office_txtbox" CssClass="form-control" runat="server" Text='<%# Bind("Office") %>' />
+						<label for="uiOffice">Office:</label>
+						<asp:TextBox ID="uiOffice" CssClass="form-control" runat="server" Text='<%# Bind("Office") %>' />
 					</div>
 
 					<div class="form-group col-sm-3">
-						<label for="_email_txtbox">AKO Email:</label>
-						<asp:TextBox ID="_email_txtbox" CssClass="form-control" runat="server" Text='<%# Bind("Email") %>' />
+						<label for="uiEmail">AKO Email:</label>
+						<asp:TextBox ID="uiEmail" CssClass="form-control" runat="server" Text='<%# Bind("Email") %>' />
 					</div>
 
 					<div class="form-group col-sm-3">
-						<label for="phone_txtbox">Phone Number:</label>
-						<asp:TextBox ID="phone_txtbox" CssClass="form-control" runat="server" Text='<%# Bind("Phone") %>' />
+						<label for="uiPhone">Phone Number:</label>
+						<asp:TextBox ID="uiPhone" CssClass="form-control" runat="server" Text='<%# Bind("Phone") %>' />
 					</div>
 				</section>
 
 				<section class="row">
 					<div class="form-group col-sm-3">
-						<label for="department_dropDown">Department:</label>
-						<asp:DropDownList ID="department_dropDown" CssClass="form-control" runat="server" Text='<%# Bind("Department") %>'>
+						<label for="uiDepartment">Department:</label>
+						<asp:DropDownList ID="uiDepartment" CssClass="form-control" runat="server" Text='<%# Bind("Department") %>'>
 							<asp:ListItem>default</asp:ListItem>
 						</asp:DropDownList>
 					</div>
 					
 					<div class="form-group col-sm-3">
-						<label for="org_dropDown">Organization:</label>
-						<asp:DropDownList ID="org_dropDown" CssClass="form-control" runat="server" Text='<%# Bind("Org") %>'>
+						<label for="uiOrg">Organization:</label>
+						<asp:DropDownList ID="uiOrg" CssClass="form-control" runat="server" Text='<%# Bind("Org") %>'>
 							<asp:ListItem>default</asp:ListItem>
 						</asp:DropDownList>
 					</div>
 
 					<div class="form-group col-sm-3">
-						<label for="branch_dropDown">Branch:</label>
-						<asp:DropDownList ID="branch_dropDown" CssClass="form-control" runat="server" Text='<%# Bind("Branch") %>'>
+						<label for="uiBranch">Branch:</label>
+						<asp:DropDownList ID="uiBranch" CssClass="form-control" runat="server" Text='<%# Bind("Branch") %>'>
 							<asp:ListItem>default</asp:ListItem>
 						</asp:DropDownList>
 					</div>
 					
 					<div class="form-group col-sm-3">
-						<label for="installation_dropDown">Installation:</label>
-						<asp:DropDownList ID="installation_dropDown" CssClass="form-control" runat="server" Text='<%# Bind("Installation") %>'>
+						<label for="uiInstallation">Installation:</label>
+						<asp:DropDownList ID="uiInstallation" CssClass="form-control" runat="server" Text='<%# Bind("Installation") %>'>
 							<asp:ListItem>default</asp:ListItem>
 						</asp:DropDownList>
 					</div>
@@ -120,7 +125,7 @@
 		</asp:FormView>
 								
 	</article>
-
+	<asp:EntityDataSource ID="uiAccountRequestEDS" runat="server" ConnectionString="name=CarsonAccountEntities" DefaultContainerName="CarsonAccountEntities" EnableFlattening="False" EnableInsert="True" EnableUpdate="True" EntitySetName="AccountRequests"></asp:EntityDataSource>
 	</form>				
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
