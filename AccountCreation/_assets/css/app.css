@@ -1,0 +1,38 @@
+﻿/*Custom css */
+body {
+	background-color: white;
+	color: #B4B4B4;
+}
+
+h1 {
+	margin-bottom: 1em;
+}
+
+h2 {
+	margin: 2em 0 1em;
+	font-size: 26px;
+}
+
+h3 {
+	font-size: 20px;
+}
+
+h1, h2, h3 {
+	color: #749AAA;
+}
+
+p {
+	margin: 0 0 1em 0;
+}
+
+.form-control {
+	color: #000;
+}
+
+.form-group, .radio {
+	margin-bottom: 25px;
+}
+
+.input-group-addon {
+	background-color: black;
+}
