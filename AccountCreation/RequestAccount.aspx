@@ -1,38 +1,34 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="RequestAccount.aspx.cs" Inherits="AccountCreation.RequestAccount" %>
-
-<asp:Content ID="childTitle" ContentPlaceHolderID="masterTitle" runat="server">
-</asp:Content>
+﻿<%@ Page Title="Request Form" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="RequestAccount.aspx.cs" Inherits="AccountCreation.RequestAccount" %>
 
 <asp:Content ID="childHead" ContentPlaceHolderID="masterHead" runat="server">
 </asp:Content>
 
 <asp:Content ID="childMainContent" ContentPlaceHolderID="masterMainContent" runat="server">
+	<h2>Request Form</h2>
+	<p class="lead">What type of account are you requesting?</p>
 	
+	<section class="row clearfix">				
+		<div class="form-group col-sm-1">
+			<label for="uiNiprAcct">NIPR</label>
+			<asp:CheckBox ID="uiNiprAcct" runat="server" AutoPostBack="true" OnCheckedChanged="uiNiprAcct_CheckedChanged" />
+		</div>
+		<div class="form-group col-sm-1">
+			<label for="uiSaAcct">SIPR</label>
+			<asp:CheckBox ID="uiSaAcct" runat="server" AutoPostBack="true" OnCheckedChanged="uiSaAcct_CheckedChanged" />
+		</div>
+		<div class="form-group col-sm-1">
+			<label for="uiEpAcct">EP</label>
+			<asp:CheckBox ID="uiEpAcct" runat="server" AutoPostBack="true" OnCheckedChanged="uiEpAcct_CheckedChanged" />
+		</div>
+		<div class="form-group col-sm-1">
+			<label for="uiVpnAcct">VPN</label>
+			<asp:CheckBox ID="uiVpnAcct" runat="server" AutoPostBack="true" OnCheckedChanged="uiVpnAcct_CheckedChanged" />
+		</div>
+	</section>
+
 	<asp:FormView ID="uiAccountRequestForm" runat="server" DataKeyNames="Edipi" 
 	DataSourceID="uiAccountRequestEDS" DefaultMode="Insert" RenderOuterTable="False">		
 		<InsertItemTemplate>
-			<h2>Request Form</h2>
-			<p class="lead">What type of account are you requesting?</p>
-
-			<section class="row clearfix">				
-				<div class="form-group col-sm-1">
-					<label for="uiNiprAcct">NIPR</label>
-					<asp:CheckBox ID="uiNiprAcct" runat="server" Text='<%# Bind("NiprReg") %>' />
-				</div>
-				<div class="form-group col-sm-1">
-					<label for="uiSaAcct">SIPR</label>
-					<asp:CheckBox ID="uiSaAcct" runat="server" Text='<%# Bind("SiprReg") %>' />
-				</div>
-				<div class="form-group col-sm-1">
-					<label for="uiEpAcct">EP</label>
-					<asp:CheckBox ID="uiEpAcct" runat="server" Text='<%# Bind("NiprEp") %>' />
-				</div>
-				<div class="form-group col-sm-1">
-					<label for="uiVpnAcct">VPN</label>
-					<asp:CheckBox ID="uiVpnAcct" runat="server" Text='<%# Bind("Vpn") %>' />
-				</div>
-			</section>
-
 			<section class="row">
 				<div class="form-group col-sm-2">
 					<label for="uiEdipi">EDIPI:</label>

@@ -13,6 +13,42 @@ namespace AccountCreation {
     public partial class RequestAccount {
         
         /// <summary>
+        /// uiNiprAcct control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox uiNiprAcct;
+        
+        /// <summary>
+        /// uiSaAcct control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox uiSaAcct;
+        
+        /// <summary>
+        /// uiEpAcct control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox uiEpAcct;
+        
+        /// <summary>
+        /// uiVpnAcct control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox uiVpnAcct;
+        
+        /// <summary>
         /// uiAccountRequestForm control.
         /// </summary>
         /// <remarks>

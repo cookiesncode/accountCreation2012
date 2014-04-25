@@ -47,15 +47,35 @@ namespace AccountCreation
 					var uiEdipi = (TextBox)(uiAccountRequestForm).FindControl("uiEdipi");
 					var uiLname = (TextBox)(uiAccountRequestForm).FindControl("uiLname");
 					var uiFname = (TextBox)(uiAccountRequestForm).FindControl("uiFname");
-					var dateCreated = (TextBox)(uiAccountRequestForm).FindControl("uiDateCreated");
+					//var dateCreated = (TextBox)(uiAccountRequestForm).FindControl("uiDateCreated");
 
 					uiEdipi.Text = edipi;
 					uiLname.Text = lastName;
 					uiFname.Text = firstName;
-					dateCreated.Text = DateTime.Now.ToShortDateString();
+					//dateCreated.Text = DateTime.Now.ToShortDateString();
 				}
 
 			}
+
+		}
+
+		protected void uiNiprAcct_CheckedChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		protected void uiSaAcct_CheckedChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		protected void uiEpAcct_CheckedChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		protected void uiVpnAcct_CheckedChanged(object sender, EventArgs e)
+		{
 
 		}
 	}
