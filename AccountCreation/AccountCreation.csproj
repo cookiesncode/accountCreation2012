@@ -63,7 +63,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CreateAccount.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="RequestAccount.aspx" />
     <Content Include="Web.config" />
@@ -98,13 +97,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CarsonAccountModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="CreateAccount.aspx.cs">
-      <DependentUpon>CreateAccount.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CreateAccount.aspx.designer.cs">
-      <DependentUpon>CreateAccount.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
