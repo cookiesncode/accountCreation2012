@@ -13,15 +13,6 @@ namespace AccountCreation {
     public partial class MainLayout {
         
         /// <summary>
-        /// masterTitle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder masterTitle;
-        
-        /// <summary>
         /// masterHead control.
         /// </summary>
         /// <remarks>

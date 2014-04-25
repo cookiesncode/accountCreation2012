@@ -1,8 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="AccountCreation.Default" %>
-
-<asp:Content ID="childTitle" ContentPlaceHolderID="masterTitle" runat="server">
-	Fort Carson NEC | Account Creation
-</asp:Content>
+﻿<%@ Page Title="Fort Carson NEC | User Account Center" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="AccountCreation.Default" %>
 
 <asp:Content ID="childHead" ContentPlaceHolderID="masterHead" runat="server">
 </asp:Content>

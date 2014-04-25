@@ -4,7 +4,6 @@
 <html lang="en">
 <head runat="server">
 	<title>
-		<asp:ContentPlaceHolder ID="masterTitle" runat="server"></asp:ContentPlaceHolder>
 	</title>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
