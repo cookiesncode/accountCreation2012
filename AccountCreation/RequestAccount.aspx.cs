@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Text;
+using System.DirectoryServices;
+using System.DirectoryServices.AccountManagement;
 
 namespace AccountCreation
 {
