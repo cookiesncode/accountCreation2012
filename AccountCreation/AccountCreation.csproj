@@ -71,9 +71,7 @@
     <Content Include="_assets\css\bootstrap-theme.min.css" />
     <Content Include="_assets\css\bootstrap.css" />
     <Content Include="_assets\css\bootstrap.min.css" />
-    <Content Include="_assets\css\ie.css" />
     <Content Include="_assets\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="_assets\img\logo.png" />
     <Content Include="_assets\js\app.js" />
     <Content Include="_assets\js\bootstrap.js" />
     <Content Include="_assets\js\bootstrap.min.js" />
@@ -153,10 +151,7 @@
     <Content Include="_assets\fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="_assets\css\_notes\" />
-    <Folder Include="_assets\fonts\_notes\" />
-    <Folder Include="_assets\img\_notes\" />
-    <Folder Include="_assets\js\_notes\" />
+    <Folder Include="_assets\img\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
