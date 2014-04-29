@@ -79,13 +79,13 @@ namespace AccountCreation
 					{
 						if (user != null)
 						{
-							uiTestLabel.Text += user.ToString() + "&nbsp;";
-							uiTestLabel.Text += domain.ToString() + "&nbsp;&nbsp;&nbsp;&nbsp;";
+							//uiTestLabel.Text += user.ToString() + "&nbsp;";
+							//uiTestLabel.Text += domain.ToString() + "&nbsp;&nbsp;&nbsp;&nbsp;";
 						}
 						else
 						{
-							uiTestLabel.Text += "User not found" + "&nbsp;";
-							uiTestLabel.Text += domain.ToString() + "&nbsp;&nbsp;&nbsp;&nbsp;";
+							//uiTestLabel.Text += "User not found" + "&nbsp;";
+							//uiTestLabel.Text += domain.ToString() + "&nbsp;&nbsp;&nbsp;&nbsp;";
 						}
 					}
 				}
