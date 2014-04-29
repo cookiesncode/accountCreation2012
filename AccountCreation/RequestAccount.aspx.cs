@@ -73,19 +73,25 @@ namespace AccountCreation
 			foreach (Domain domain in domains)
 			{
 				domainContext = new PrincipalContext(ContextType.Domain, null, domain.ToString());
-				if (domainContext != null)
+				try
 				{
-					user = UserPrincipal.FindByIdentity(domainContext, edipi);
+					using (user = UserPrincipal.FindByIdentity(domainContext, edipi))
+					{
+						if (user != null)
+						{
+							uiTestLabel.Text += user.ToString() + "&nbsp;";
+							uiTestLabel.Text += domain.ToString() + "&nbsp;&nbsp;&nbsp;&nbsp;";
+						}
+						else
+						{
+							uiTestLabel.Text += "User not found" + "&nbsp;";
+							uiTestLabel.Text += domain.ToString() + "&nbsp;&nbsp;&nbsp;&nbsp;";
+						}
+					}
 				}
+				catch
+				{
 
-				if (user != null)
-				{
-					
-					uiTestLabel.Text = user.ToString();
-				}
-				else
-				{
-					uiTestLabel.Text = "User not found";	
 				}
 			}
 		}
