@@ -6,7 +6,7 @@
 <asp:Content ID="childMainContent" ContentPlaceHolderID="masterMainContent" runat="server">
 	<h2>Request Form</h2>
 	<p class="lead">What type of account are you requesting?</p>
-	
+	<asp:Label ID="uiTestLabel" runat="server" Text="Label"></asp:Label>
 	<section class="row clearfix">				
 		<div class="form-group col-sm-1">
 			<label for="uiNiprAcct">NIPR</label>

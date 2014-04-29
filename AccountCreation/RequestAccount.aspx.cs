@@ -8,6 +8,7 @@ using System.Configuration;
 using System.Text;
 using System.DirectoryServices;
 using System.DirectoryServices.AccountManagement;
+using System.DirectoryServices.ActiveDirectory;
 
 namespace AccountCreation
 {
@@ -56,14 +57,43 @@ namespace AccountCreation
 					uiFname.Text = firstName;
 					//dateCreated.Text = DateTime.Now.ToShortDateString();
 				}
-
+				checkActiveDirectory(edipi + "@mil");
 			}
+			
 
 		}
 
+		public void checkActiveDirectory(string edipi)
+		{
+			var forest = Forest.GetForest(new DirectoryContext(DirectoryContextType.Forest, "ds.army.mil"));
+			var domains = forest.Domains;
+			PrincipalContext domainContext = null;
+			UserPrincipal user = null;
+
+			foreach (Domain domain in domains)
+			{
+				domainContext = new PrincipalContext(ContextType.Domain, null, domain.ToString());
+				if (domainContext != null)
+				{
+					user = UserPrincipal.FindByIdentity(domainContext, edipi);
+				}
+
+				if (user != null)
+				{
+					
+					uiTestLabel.Text = user.ToString();
+				}
+				else
+				{
+					uiTestLabel.Text = "User not found";	
+				}
+			}
+		}
+
+
 		protected void uiNiprAcct_CheckedChanged(object sender, EventArgs e)
 		{
-
+			checkActiveDirectory(/*"1265020972@mil"*/"1292634826@mil");
 		}
 
 		protected void uiSaAcct_CheckedChanged(object sender, EventArgs e)
