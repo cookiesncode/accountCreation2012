@@ -67,8 +67,8 @@ namespace AccountCreation
 		{
 			var forest = Forest.GetForest(new DirectoryContext(DirectoryContextType.Forest, "ds.army.mil"));
 			var domains = forest.Domains;
-			PrincipalContext domainContext = null;
-			UserPrincipal user = null;
+			PrincipalContext domainContext;
+			UserPrincipal user;
 
 			foreach (Domain domain in domains)
 			{
