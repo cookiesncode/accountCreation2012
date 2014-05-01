@@ -44,6 +44,8 @@ namespace AccountCreation
 				string middleInitial = fullName[2].ToString();
 				string edipi = cacIdentifier;
 
+
+
 				// Add cac info into textbox fields
 				if (uiAccountRequestForm.CurrentMode == FormViewMode.Insert)
 				{
@@ -57,14 +59,13 @@ namespace AccountCreation
 					uiFname.Text = firstName;
 					//dateCreated.Text = DateTime.Now.ToShortDateString();
 				}
-				checkActiveDirectory(edipi + "@mil");
-			}
-			
 
+			}	
 		}
 
 		public void checkActiveDirectory(string edipi)
 		{
+			edipi = edipi + "@mil";
 			var forest = Forest.GetForest(new DirectoryContext(DirectoryContextType.Forest, "ds.army.mil"));
 			var domains = forest.Domains;
 			PrincipalContext domainContext;
@@ -79,13 +80,13 @@ namespace AccountCreation
 					{
 						if (user != null)
 						{
-							//uiTestLabel.Text += user.ToString() + "&nbsp;";
-							//uiTestLabel.Text += domain.ToString() + "&nbsp;&nbsp;&nbsp;&nbsp;";
+							uiAdResultsOutput.Text = user.ToString() + "&nbsp;";
+							uiAdResultsOutput.Text += domain.ToString() + "&nbsp;&nbsp;&nbsp;&nbsp;";
+							uiAdCheckContainer.Visible = false;
+							uiAdResultsContainer.Visible = true;
 						}
 						else
 						{
-							//uiTestLabel.Text += "User not found" + "&nbsp;";
-							//uiTestLabel.Text += domain.ToString() + "&nbsp;&nbsp;&nbsp;&nbsp;";
 						}
 					}
 				}
@@ -96,25 +97,14 @@ namespace AccountCreation
 			}
 		}
 
-
-		protected void uiNiprAcct_CheckedChanged(object sender, EventArgs e)
+		protected void uiAcctCheckBtn_Click(object sender, EventArgs e)
 		{
-			checkActiveDirectory(/*"1265020972@mil"*/"1292634826@mil");
+			if (uiNiprAcct.Checked)
+			{
+				checkActiveDirectory("1014867542");
+			}
 		}
 
-		protected void uiSaAcct_CheckedChanged(object sender, EventArgs e)
-		{
 
-		}
-
-		protected void uiEpAcct_CheckedChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		protected void uiVpnAcct_CheckedChanged(object sender, EventArgs e)
-		{
-
-		}
 	}
 }

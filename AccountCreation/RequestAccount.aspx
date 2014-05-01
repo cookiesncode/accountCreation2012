@@ -5,26 +5,37 @@
 
 <asp:Content ID="childMainContent" ContentPlaceHolderID="masterMainContent" runat="server">
 	<h2>Request Form</h2>
-	<p class="lead">What type of account are you requesting?</p>
-<%--	<asp:Label ID="uiTestLabel" runat="server"></asp:Label>--%>
-	<section class="row clearfix">				
-		<div class="form-group col-sm-1">
-			<label for="uiNiprAcct">NIPR</label>
-			<asp:CheckBox ID="uiNiprAcct" runat="server" AutoPostBack="true" OnCheckedChanged="uiNiprAcct_CheckedChanged" />
-		</div>
-		<div class="form-group col-sm-1">
-			<label for="uiSaAcct">SIPR</label>
-			<asp:CheckBox ID="uiSaAcct" runat="server" AutoPostBack="true" OnCheckedChanged="uiSaAcct_CheckedChanged" />
-		</div>
-		<div class="form-group col-sm-1">
-			<label for="uiEpAcct">EP</label>
-			<asp:CheckBox ID="uiEpAcct" runat="server" AutoPostBack="true" OnCheckedChanged="uiEpAcct_CheckedChanged" />
-		</div>
-		<div class="form-group col-sm-1">
-			<label for="uiVpnAcct">VPN</label>
-			<asp:CheckBox ID="uiVpnAcct" runat="server" AutoPostBack="true" OnCheckedChanged="uiVpnAcct_CheckedChanged" />
-		</div>
-	</section>
+	<asp:Panel ID="uiAdCheckContainer" runat="server">
+		<p class="lead">What type of account are you requesting?</p>
+		<section class="row">		
+			<div class="form-group col-sm-1">
+				<asp:CheckBox ID="uiNiprAcct" runat="server" />
+				<label for="uiNiprAcct">NIPR</label>
+			</div>
+			<div class="form-group col-sm-1">
+				<asp:CheckBox ID="uiSaAcct" runat="server" />
+				<label for="uiSaAcct">SIPR</label>
+			</div>
+			<div class="form-group col-sm-1">
+				<asp:CheckBox ID="uiEpAcct" runat="server" />
+				<label for="uiEpAcct">EP</label>
+			</div>
+			<div class="form-group col-sm-1">
+				<asp:CheckBox ID="uiVpnAcct" runat="server" />
+				<label for="uiVpnAcct">VPN</label>
+			</div>
+		</section>
+		<asp:Button ID="uiAcctCheckBtn" runat="server" Text="Submit" CssClass="btn btn-default" OnClick="uiAcctCheckBtn_Click" />		
+	</asp:Panel>
+	
+
+	<asp:Panel ID="uiAdResultsContainer" runat="server" Visible="false">
+		<section class="row">
+			<div class="col-sm-12">
+				<asp:Label ID="uiAdResultsOutput" runat="server" Text="Please wait while we check for any existing account types."></asp:Label>
+			</div>
+		</section>
+	</asp:Panel>
 
 	<asp:FormView ID="uiAccountRequestForm" runat="server" DataKeyNames="Edipi" 
 	DataSourceID="uiAccountRequestEDS" DefaultMode="Insert" RenderOuterTable="False" Visible="false">		
@@ -123,8 +134,8 @@
 			</div>
 				--%>
 			<div>
-				<asp:Button ID="submitBtn" runat="server" Text="Submit" CommandName="Insert" CssClass="btn btn-default" />
-				<asp:Button ID="cancelBtn" runat="server" CommandName="Cancel" Text="Reset form" CausesValidation="False" CssClass="btn btn-default" />
+				<asp:Button ID="uiSubmitBtn" runat="server" Text="Submit" CommandName="Insert" CssClass="btn btn-default" />
+				<asp:Button ID="uiCancelBtn" runat="server" CommandName="Cancel" Text="Reset form" CausesValidation="False" CssClass="btn btn-default" />
 			</div>
 		</InsertItemTemplate>
 	</asp:FormView>

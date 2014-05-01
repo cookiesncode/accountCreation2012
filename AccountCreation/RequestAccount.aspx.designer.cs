@@ -13,6 +13,15 @@ namespace AccountCreation {
     public partial class RequestAccount {
         
         /// <summary>
+        /// uiAdCheckContainer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel uiAdCheckContainer;
+        
+        /// <summary>
         /// uiNiprAcct control.
         /// </summary>
         /// <remarks>
@@ -47,6 +56,33 @@ namespace AccountCreation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox uiVpnAcct;
+        
+        /// <summary>
+        /// uiAcctCheckBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button uiAcctCheckBtn;
+        
+        /// <summary>
+        /// uiAdResultsContainer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel uiAdResultsContainer;
+        
+        /// <summary>
+        /// uiAdResultsOutput control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label uiAdResultsOutput;
         
         /// <summary>
         /// uiAccountRequestForm control.
