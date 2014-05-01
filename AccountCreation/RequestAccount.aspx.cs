@@ -21,77 +21,17 @@ namespace AccountCreation
 			HttpClientCertificate cac = Request.ClientCertificate;
 			if (cac.IsPresent && !IsPostBack)
 			{
-				string[] subjectArray = cac.Subject.Split(',');
-				string subjectLine = cac.Subject.ToString();
-				int subjectLineLength = subjectLine.Length;
-				const int edipiLength = 10;
-				int cacIdentifierPosition = subjectLineLength - edipiLength;
-				string cacIdentifier = subjectLine.Substring(cacIdentifierPosition, edipiLength);
-				string[] arr = subjectArray[5].Split(' ');
-				string[] user = arr[1].Split('=');
-
-				StringBuilder sb = new StringBuilder();
-				foreach (string field in user)
-				{
-					sb.Append(field);
-				}
-				sb.Remove(0, 2);
-
-				string str1 = sb.ToString();
-				string[] fullName = str1.Split('.');
-				string lastName = fullName[0].ToString();
-				string firstName = fullName[1].ToString();
-				string middleInitial = fullName[2].ToString();
-				string edipi = cacIdentifier;
-
-
-
-				// Add cac info into textbox fields
+				var user = new CurrentUser(cac);
+				Session["edipi"] = user.Edipi;
 				if (uiAccountRequestForm.CurrentMode == FormViewMode.Insert)
 				{
 					var uiEdipi = (TextBox)(uiAccountRequestForm).FindControl("uiEdipi");
 					var uiLname = (TextBox)(uiAccountRequestForm).FindControl("uiLname");
 					var uiFname = (TextBox)(uiAccountRequestForm).FindControl("uiFname");
-					//var dateCreated = (TextBox)(uiAccountRequestForm).FindControl("uiDateCreated");
 
-					uiEdipi.Text = edipi;
-					uiLname.Text = lastName;
-					uiFname.Text = firstName;
-					//dateCreated.Text = DateTime.Now.ToShortDateString();
-				}
-
-			}	
-		}
-
-		public void checkActiveDirectory(string edipi)
-		{
-			edipi = edipi + "@mil";
-			var forest = Forest.GetForest(new DirectoryContext(DirectoryContextType.Forest, "ds.army.mil"));
-			var domains = forest.Domains;
-			PrincipalContext domainContext;
-			UserPrincipal user;
-
-			foreach (Domain domain in domains)
-			{
-				domainContext = new PrincipalContext(ContextType.Domain, null, domain.ToString());
-				try
-				{
-					using (user = UserPrincipal.FindByIdentity(domainContext, edipi))
-					{
-						if (user != null)
-						{
-							uiAdResultsOutput.Text = user.ToString() + "&nbsp;";
-							uiAdResultsOutput.Text += domain.ToString() + "&nbsp;&nbsp;&nbsp;&nbsp;";
-							uiAdCheckContainer.Visible = false;
-							uiAdResultsContainer.Visible = true;
-						}
-						else
-						{
-						}
-					}
-				}
-				catch
-				{
+					uiEdipi.Text = user.Edipi;
+					uiLname.Text = user.LastName;
+					uiFname.Text = user.FirstName;
 
 				}
 			}
@@ -101,10 +41,16 @@ namespace AccountCreation
 		{
 			if (uiNiprAcct.Checked)
 			{
-				checkActiveDirectory("1014867542");
+				var user = new CurrentUser(Request.ClientCertificate);
+				bool hasNipr = user.AccountInfo.queryForNipr();
+				if (hasNipr)
+				{
+					uiAdResultsOutput.Text = user.AccountInfo.LogonName;
+					uiAdCheckContainer.Visible = false;
+					uiAdResultsContainer.Visible = true;
+				}
 			}
 		}
-
 
 	}
 }

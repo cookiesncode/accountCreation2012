@@ -106,6 +106,7 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DomainClasses\ADAccount.cs" />
     <Compile Include="MainLayout.Master.cs">
       <DependentUpon>MainLayout.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -121,6 +122,7 @@
     <Compile Include="RequestAccount.aspx.designer.cs">
       <DependentUpon>RequestAccount.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DomainClasses\CurrentUser.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="CarsonAccountModel.edmx">

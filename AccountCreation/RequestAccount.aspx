@@ -38,7 +38,7 @@
 	</asp:Panel>
 
 	<asp:FormView ID="uiAccountRequestForm" runat="server" DataKeyNames="Edipi" 
-	DataSourceID="uiAccountRequestEDS" DefaultMode="Insert" RenderOuterTable="False" Visible="false">		
+	DataSourceID="uiAccountRequestEDS" DefaultMode="Insert" RenderOuterTable="False" Visible="true">		
 		<InsertItemTemplate>
 			<section class="row">
 				<div class="form-group col-sm-2">
