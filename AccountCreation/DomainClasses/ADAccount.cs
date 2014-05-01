@@ -46,6 +46,7 @@ namespace AccountCreation
 
 		public ADAccount(string edipi)
 		{
+			// TODO check for ending zeros on edipi. It does not show up in AD
 			LogonName = edipi + "@mil";
 		}
 	}
