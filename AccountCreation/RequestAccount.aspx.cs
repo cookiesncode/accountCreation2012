@@ -41,7 +41,8 @@ namespace AccountCreation
 		{
 			if (uiNiprAcct.Checked)
 			{
-				var user = new CurrentUser(Request.ClientCertificate);
+				//var user = new CurrentUser(Request.ClientCertificate);
+				var user = new CurrentUser((string)Session["edipi"]);
 				bool hasNipr = user.AccountInfo.queryForNipr();
 				if (hasNipr)
 				{

@@ -42,5 +42,10 @@ namespace AccountCreation
 			Edipi = cacIdentifier;
 			AccountInfo = new ADAccount(cacIdentifier);
 		}
+
+		public CurrentUser(string edipi)
+		{
+			AccountInfo = new ADAccount(edipi);
+		}
 	}
 }
