@@ -42,7 +42,7 @@ namespace AccountCreation
 			if (uiNiprAcct.Checked)
 			{
 				//var user = new CurrentUser(Request.ClientCertificate);
-				var user = new CurrentUser((string)Session["edipi"]);
+				var user = new CurrentUser(/*(string)Session["edipi"]*/"1265020972");
 				bool hasNipr = user.AccountInfo.queryForNipr();
 				if (hasNipr)
 				{
@@ -50,6 +50,11 @@ namespace AccountCreation
 					uiAdCheckContainer.Visible = false;
 					uiAdResultsContainer.Visible = true;
 				}
+			}
+			if (uiVpnAcct.Checked)
+			{
+				var user = new CurrentUser("1250782574");
+				user.AccountInfo.queryForVpn();
 			}
 		}
 

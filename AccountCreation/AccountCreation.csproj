@@ -107,6 +107,7 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="DomainClasses\ADAccount.cs" />
+    <Compile Include="DomainClasses\VpnAccount.cs" />
     <Compile Include="MainLayout.Master.cs">
       <DependentUpon>MainLayout.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
