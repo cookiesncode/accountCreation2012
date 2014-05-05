@@ -10,6 +10,7 @@ namespace AccountCreation
 {
 	public class CurrentUser : Page
 	{
+		// might not need these fields. could just get directly from caller?
 		public string LastName { get; set; }
 		public string FirstName { get; set; }
 		public string MiddleInitial { get; set; }

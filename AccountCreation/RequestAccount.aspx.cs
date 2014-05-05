@@ -16,8 +16,7 @@ namespace AccountCreation
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			HttpClientCertificate cac = Request.ClientCertificate;
-			if (cac.IsPresent && !IsPostBack)
+			if (Request.ClientCertificate.IsPresent && !IsPostBack)
 			{
 				var user = new CurrentUser();
 				Session["edipi"] = user.Edipi;
