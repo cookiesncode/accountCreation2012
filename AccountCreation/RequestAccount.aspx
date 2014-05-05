@@ -28,7 +28,6 @@
 		<asp:Button ID="uiAcctCheckBtn" runat="server" Text="Submit" CssClass="btn btn-default" OnClick="uiAcctCheckBtn_Click" />		
 	</asp:Panel>
 	
-
 	<asp:Panel ID="uiAdResultsContainer" runat="server" Visible="false">
 		<section class="row">
 			<div class="col-sm-12">
@@ -38,7 +37,7 @@
 	</asp:Panel>
 
 	<asp:FormView ID="uiAccountRequestForm" runat="server" DataKeyNames="Edipi" 
-	DataSourceID="uiAccountRequestEDS" DefaultMode="Insert" RenderOuterTable="False" Visible="true">		
+	DataSourceID="uiAccountRequestEDS" DefaultMode="Insert" RenderOuterTable="False" Visible="false">		
 		<InsertItemTemplate>
 			<section class="row">
 				<div class="form-group col-sm-2">

@@ -123,9 +123,7 @@
     <Compile Include="RequestAccount.aspx.designer.cs">
       <DependentUpon>RequestAccount.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DomainClasses\CurrentUser.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
+    <Compile Include="DomainClasses\CurrentUser.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="CarsonAccountModel.edmx">

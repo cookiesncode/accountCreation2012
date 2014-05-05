@@ -18,8 +18,10 @@ namespace AccountCreation
 		{
 			if (Request.ClientCertificate.IsPresent && !IsPostBack)
 			{
-				var user = new CurrentUser();
+				var cac = Request.ClientCertificate;
+				var user = new CurrentUser(cac);
 				Session["edipi"] = user.Edipi;
+
 				if (uiAccountRequestForm.CurrentMode == FormViewMode.Insert)
 				{
 					var uiEdipi = (TextBox)(uiAccountRequestForm).FindControl("uiEdipi");
@@ -37,21 +39,23 @@ namespace AccountCreation
 		{
 			if (uiNiprAcct.Checked)
 			{
-				var user = new CurrentUser();
+				var user = new CurrentUser((string)Session["edipi"]);
 				bool hasNipr = user.AccountInfo.queryForNipr();
 				if (hasNipr)
 				{
 					uiAdResultsOutput.Text = user.AccountInfo.LogonName;
-					uiAdCheckContainer.Visible = false;
-					uiAdResultsContainer.Visible = true;
 				}
 			}
 
 			if (uiVpnAcct.Checked)
 			{
-				var user = new CurrentUser("1042491973");
+				var user = new CurrentUser((string)Session["edipi"]);
 				bool hasVpn = user.AccountInfo.queryForVpn();
 			}
+
+			uiAdCheckContainer.Visible = false;
+			uiAdResultsContainer.Visible = true;
+			uiAccountRequestForm.Visible = true;
 		}
 
 	}

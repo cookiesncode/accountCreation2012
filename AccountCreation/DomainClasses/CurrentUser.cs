@@ -4,11 +4,10 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Web;
-using System.Web.UI;
 
 namespace AccountCreation
 {
-	public class CurrentUser : Page
+	public class CurrentUser
 	{
 		// might not need these fields. could just get directly from caller?
 		public string LastName { get; set; }
@@ -22,11 +21,10 @@ namespace AccountCreation
 			AccountInfo = new ADAccount(edipi);
 		}
 
-		public CurrentUser()
+		public CurrentUser(HttpClientCertificate cacCard)
 		{
-			HttpClientCertificate cacCardInfo = Request.ClientCertificate;
-			string[] subjectArray = cacCardInfo.Subject.Split(',');
-			string subjectLine = cacCardInfo.Subject.ToString();
+			string[] subjectArray = cacCard.Subject.Split(',');
+			string subjectLine = cacCard.Subject.ToString();
 			int subjectLineLength = subjectLine.Length;
 			const int edipiLength = 10;
 			int cacIdentifierPosition = subjectLineLength - edipiLength;
