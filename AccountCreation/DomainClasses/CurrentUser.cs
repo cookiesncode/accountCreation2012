@@ -16,6 +16,11 @@ namespace AccountCreation
 		public string Edipi { get; set; }
 		public ADAccount AccountInfo { get; set; }
 
+		public CurrentUser(string edipi)
+		{
+			AccountInfo = new ADAccount(edipi);
+		}
+
 		public CurrentUser()
 		{
 			HttpClientCertificate cacCardInfo = Request.ClientCertificate;
@@ -44,11 +49,6 @@ namespace AccountCreation
 			MiddleInitial = fullName[2].ToString();
 			Edipi = cacIdentifier;
 			AccountInfo = new ADAccount(cacIdentifier);
-		}
-
-		public CurrentUser(string edipi)
-		{
-			AccountInfo = new ADAccount(edipi);
 		}
 	}
 }

@@ -14,6 +14,11 @@ namespace AccountCreation
 		public string NiprAccountName { get; set; }
 		public string VpnGroupName { get; set; }
 
+		public ADAccount(string edipi)
+		{
+			LogonName = edipi + "@mil";
+		}
+
 		public bool queryForNipr()
 		{
 			var forest = Forest.GetForest(new DirectoryContext(DirectoryContextType.Forest, "ds.army.mil"));
@@ -72,11 +77,6 @@ namespace AccountCreation
 			}
 			// check if im returning in the right spot
 			return false;
-		}
-
-		public ADAccount(string edipi)
-		{
-			LogonName = edipi + "@mil";
 		}
 	}
 }
