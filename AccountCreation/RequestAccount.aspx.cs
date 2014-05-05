@@ -16,12 +16,10 @@ namespace AccountCreation
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			// RETRIEVE CAC CARD INFO
-			/////////////////////////////////////////////////////
 			HttpClientCertificate cac = Request.ClientCertificate;
 			if (cac.IsPresent && !IsPostBack)
 			{
-				var user = new CurrentUser(cac);
+				var user = new CurrentUser();
 				Session["edipi"] = user.Edipi;
 				if (uiAccountRequestForm.CurrentMode == FormViewMode.Insert)
 				{
@@ -32,7 +30,6 @@ namespace AccountCreation
 					uiEdipi.Text = user.Edipi;
 					uiLname.Text = user.LastName;
 					uiFname.Text = user.FirstName;
-
 				}
 			}
 		}
@@ -41,8 +38,7 @@ namespace AccountCreation
 		{
 			if (uiNiprAcct.Checked)
 			{
-				//var user = new CurrentUser(Request.ClientCertificate);
-				var user = new CurrentUser(/*(string)Session["edipi"]*/"1265020972");
+				var user = new CurrentUser();
 				bool hasNipr = user.AccountInfo.queryForNipr();
 				if (hasNipr)
 				{
@@ -51,10 +47,11 @@ namespace AccountCreation
 					uiAdResultsContainer.Visible = true;
 				}
 			}
+
 			if (uiVpnAcct.Checked)
 			{
-				var user = new CurrentUser("1250782574");
-				user.AccountInfo.queryForVpn();
+				var user = new CurrentUser("1042491973");
+				bool hasVpn = user.AccountInfo.queryForVpn();
 			}
 		}
 

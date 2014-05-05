@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
-using System.Web;
 using System.Text;
+using System.Web;
+using System.Web.UI;
 
 namespace AccountCreation
 {
-	public class CurrentUser
+	public class CurrentUser : Page
 	{
 		public string LastName { get; set; }
 		public string FirstName { get; set; }
@@ -14,10 +16,11 @@ namespace AccountCreation
 		public string Edipi { get; set; }
 		public ADAccount AccountInfo { get; set; }
 
-		public CurrentUser(HttpClientCertificate cac)
+		public CurrentUser()
 		{
-			string[] subjectArray = cac.Subject.Split(',');
-			string subjectLine = cac.Subject.ToString();
+			HttpClientCertificate cacCardInfo = Request.ClientCertificate;
+			string[] subjectArray = cacCardInfo.Subject.Split(',');
+			string subjectLine = cacCardInfo.Subject.ToString();
 			int subjectLineLength = subjectLine.Length;
 			const int edipiLength = 10;
 			int cacIdentifierPosition = subjectLineLength - edipiLength;

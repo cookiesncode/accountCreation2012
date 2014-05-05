@@ -11,10 +11,8 @@ namespace AccountCreation
 	public class ADAccount
 	{
 		public string LogonName { get; set; }
-		public Guid AccountGuid { get; set; }
 		public string NiprAccountName { get; set; }
-		//public bool VpnAccount { get; set; }
-		//public bool EpAccount { get; set; }
+		public string VpnGroupName { get; set; }
 
 		public bool queryForNipr()
 		{
@@ -32,8 +30,7 @@ namespace AccountCreation
 					{
 						if (user != null)
 						{
-							NiprAccountName = user.EmployeeId;
-							AccountGuid = (Guid)user.Guid;
+							NiprAccountName = user.DisplayName;
 							return true;
 						}
 					}
@@ -46,43 +43,39 @@ namespace AccountCreation
 			return false;
 		}
 
-		//public void queryForVpn()
-		//{
-		//	var domainContext = new PrincipalContext(ContextType.Domain, null, "DC=nanw,DC=ds,DC=army,DC=mil"/* TODO: narrow down further*/);
-		//	foreach (string group in VpnAccount.AccountGroups)
-		//	{
-		//		PrincipalCollection members = GroupPrincipal.FindByIdentity(domainContext, IdentityType.Guid, group).Members;
-		//		foreach (Principal member in members)
-		//		{
-		//			if (member.Guid == AccountGuid)
-		//			{
-
-		//			}
-		//		}
-		//	}
-
 		public bool queryForVpn()
 		{
-			var domainContext = new PrincipalContext(ContextType.Domain, null, "DC=nanw,DC=ds,DC=army,DC=mil"/* TODO: narrow down further*/);
-			foreach (string group in VpnAccount.AccountGroups)
+			var domainContext = new PrincipalContext(ContextType.Domain, null, "OU=Special Groups,OU=NETCOM,OU=Fort Carson,OU=Carson,OU=Installations,DC=nanw,DC=ds,DC=army,DC=mil");
+			GroupPrincipal vpnGroup;
+			PrincipalCollection members;
+
+			foreach (string group in Vpn.GroupCollection)
 			{
-				PrincipalCollection members = GroupPrincipal.FindByIdentity(domainContext, group).Members;
-				foreach (Principal member in members)
+				try
 				{
-					// TODO: Check with Ken if its normal for SA accounts to be part of VPN groups
-					// If so then this needs to be extended
-					if (member.UserPrincipalName == LogonName)
+					using (vpnGroup = GroupPrincipal.FindByIdentity(domainContext, group))
 					{
-						continue;
+						members = vpnGroup.Members;
+						foreach (Principal member in members)
+						{
+							if (member.UserPrincipalName == LogonName)
+							{
+								VpnGroupName = vpnGroup.Name;
+								return true;
+							}
+						}
 					}
 				}
+				catch
+				{
+				}
 			}
+			// check if im returning in the right spot
 			return false;
 		}
 
 		public ADAccount(string edipi)
 		{
-			// TODO check for ending zeros on edipi. It does not show up in AD
 			LogonName = edipi + "@mil";
 		}
 	}

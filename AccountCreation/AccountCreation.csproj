@@ -107,7 +107,7 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="DomainClasses\ADAccount.cs" />
-    <Compile Include="DomainClasses\VpnAccount.cs" />
+    <Compile Include="DomainClasses\Vpn.cs" />
     <Compile Include="MainLayout.Master.cs">
       <DependentUpon>MainLayout.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -123,7 +123,9 @@
     <Compile Include="RequestAccount.aspx.designer.cs">
       <DependentUpon>RequestAccount.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DomainClasses\CurrentUser.cs" />
+    <Compile Include="DomainClasses\CurrentUser.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="CarsonAccountModel.edmx">
