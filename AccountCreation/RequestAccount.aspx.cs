@@ -22,41 +22,17 @@ namespace AccountCreation
 				var user = new CurrentUser(cac);
 				Session["edipi"] = user.Edipi;
 
-				if (uiAccountRequestForm.CurrentMode == FormViewMode.Insert)
+				if (_requestForm.CurrentMode == FormViewMode.Insert)
 				{
-					var uiEdipi = (TextBox)(uiAccountRequestForm).FindControl("uiEdipi");
-					var uiLname = (TextBox)(uiAccountRequestForm).FindControl("uiLname");
-					var uiFname = (TextBox)(uiAccountRequestForm).FindControl("uiFname");
+					var edipi = (TextBox)(_requestForm).FindControl("_edipi");
+					var lName = (TextBox)(_requestForm).FindControl("_lName");
+					var fName = (TextBox)(_requestForm).FindControl("_fName");
 
-					uiEdipi.Text = user.Edipi;
-					uiLname.Text = user.LastName;
-					uiFname.Text = user.FirstName;
+					edipi.Text = user.Edipi;
+					lName.Text = user.LastName;
+					fName.Text = user.FirstName;
 				}
 			}
 		}
-
-		protected void uiAcctCheckBtn_Click(object sender, EventArgs e)
-		{
-			if (uiNiprAcct.Checked)
-			{
-				var user = new CurrentUser((string)Session["edipi"]);
-				bool hasNipr = user.AccountInfo.queryForNipr();
-				if (hasNipr)
-				{
-					uiAdResultsOutput.Text = user.AccountInfo.LogonName;
-				}
-			}
-
-			if (uiVpnAcct.Checked)
-			{
-				var user = new CurrentUser((string)Session["edipi"]);
-				bool hasVpn = user.AccountInfo.queryForVpn();
-			}
-
-			uiAdCheckContainer.Visible = false;
-			uiAdResultsContainer.Visible = true;
-			uiAccountRequestForm.Visible = true;
-		}
-
 	}
 }
