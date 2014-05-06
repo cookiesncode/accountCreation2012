@@ -4,11 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Configuration;
-using System.Text;
-using System.DirectoryServices;
-using System.DirectoryServices.AccountManagement;
-using System.DirectoryServices.ActiveDirectory;
 
 namespace AccountCreation
 {
@@ -16,11 +11,43 @@ namespace AccountCreation
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			if (Request.ClientCertificate.IsPresent && !IsPostBack)
+			CurrentUser user;
+			var cac = Request.ClientCertificate;
+			if (Request.ClientCertificate.IsPresent)
 			{
-				var cac = Request.ClientCertificate;
-				var user = new CurrentUser(cac);
-				Session["edipi"] = user.Edipi;
+				user = new CurrentUser(cac);
+			}
+			else
+			{
+				//testing purposes only; Note!: this method does not output any info from the CAC card.
+				user = new CurrentUser("1265020972");
+			}
+			if (PreviousPage != null)
+			{
+				var niprRequest = PreviousPage.NiprRequest;
+				var siprRequest = PreviousPage.SiprRequest;
+				var vpnRequest = PreviousPage.VpnRequest;
+				var epRequest = PreviousPage.EpRequest;
+				
+				if (niprRequest)
+				{
+					if (user.AccountInfo.queryForNipr())
+					{
+						_niprName.Text = user.AccountInfo.NiprAccountName;
+						_niprResults.Visible = true;
+						_requestForm.Visible = false;
+					}
+				}
+
+				if (vpnRequest)
+				{
+					if (user.AccountInfo.queryForVpn())
+					{
+						_vpnGroup.Text = user.AccountInfo.VpnGroupName;
+						_vpnResults.Visible = true;
+						_requestForm.Visible = false;
+					}
+				}
 
 				if (_requestForm.CurrentMode == FormViewMode.Insert)
 				{

@@ -31,13 +31,13 @@ namespace AccountCreation {
         protected global::System.Web.UI.WebControls.CheckBox _niprAcct;
         
         /// <summary>
-        /// _saAcct control.
+        /// _siprAcct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox _saAcct;
+        protected global::System.Web.UI.WebControls.CheckBox _siprAcct;
         
         /// <summary>
         /// _epAcct control.

@@ -13,22 +13,40 @@ namespace AccountCreation {
     public partial class RequestAccount {
         
         /// <summary>
-        /// _adResultsContainer control.
+        /// _niprResults control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel _adResultsContainer;
+        protected global::System.Web.UI.WebControls.Panel _niprResults;
         
         /// <summary>
-        /// _adResultsOutput control.
+        /// _niprName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label _adResultsOutput;
+        protected global::System.Web.UI.WebControls.Label _niprName;
+        
+        /// <summary>
+        /// _vpnResults control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel _vpnResults;
+        
+        /// <summary>
+        /// _vpnGroup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label _vpnGroup;
         
         /// <summary>
         /// _requestForm control.
@@ -47,5 +65,17 @@ namespace AccountCreation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.EntityDataSource _accountRequestEDS;
+        
+        /// <summary>
+        /// PreviousPage property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new AccountCreation.RequestType PreviousPage {
+            get {
+                return ((AccountCreation.RequestType)(base.PreviousPage));
+            }
+        }
     }
 }

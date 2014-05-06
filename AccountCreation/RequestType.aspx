@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="RequestType.aspx.cs" Inherits="AccountCreation.RequestType" %>
+﻿<%@ Page Title="Request Form" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="RequestType.aspx.cs" Inherits="AccountCreation.RequestType" %>
 
 <asp:Content ID="_childHead" ContentPlaceHolderID="_masterHead" runat="server">
 </asp:Content>
@@ -13,8 +13,8 @@
 				<label for="_niprAcct">NIPR</label>
 			</div>
 			<div class="form-group col-sm-1">
-				<asp:CheckBox ID="_saAcct" runat="server" />
-				<label for="_saAcct">SIPR</label>
+				<asp:CheckBox ID="_siprAcct" runat="server" />
+				<label for="_siprAcct">SIPR</label>
 			</div>
 			<div class="form-group col-sm-1">
 				<asp:CheckBox ID="_epAcct" runat="server" />
@@ -25,7 +25,7 @@
 				<label for="_vpnAcct">VPN</label>
 			</div>
 		</section>
-		<asp:Button ID="_submitBtn" runat="server" Text="Submit" CssClass="btn btn-default" OnClick="_submitBtn_Click" />		
+		<asp:Button ID="_submitBtn" runat="server" Text="Submit" CssClass="btn btn-default" PostBackUrl="~/RequestAccount.aspx" />		
 	</asp:Panel>
 
 </asp:Content>

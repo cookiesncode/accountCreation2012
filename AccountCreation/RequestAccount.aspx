@@ -1,21 +1,23 @@
-﻿<%@ Page Title="Request Form" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="RequestAccount.aspx.cs" Inherits="AccountCreation.RequestAccount" %>
+﻿<%@ Page Title="Request Form" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="RequestAccount.aspx.cs" Inherits="AccountCreation.RequestAccount"  %>
+<%@ PreviousPageType VirtualPath="~/RequestType.aspx" %>
 
 <asp:Content ID="_childHead" ContentPlaceHolderID="_masterHead" runat="server">
 </asp:Content>
 
 <asp:Content ID="_childMainContent" ContentPlaceHolderID="_masterMainContent" runat="server">
 	<h2>Request Form</h2>	
-	<asp:Panel ID="_adResultsContainer" runat="server" Visible="false">
-		<section class="row">
-			<div class="col-sm-12">
-				<asp:Label ID="_adResultsOutput" runat="server" Text="Please wait while we check for any existing account types."></asp:Label>
-			</div>
-		</section>
+	<asp:Panel ID="_niprResults" runat="server" Visible="false">
+		<p>We're sorry, but our records indicate that you already have a NIPR account. The account name is <asp:Label ID="_niprName" runat="server"></asp:Label></p>
+	</asp:Panel>
+
+	<asp:Panel ID="_vpnResults" runat="server" Visible="false">
+		<p>We're sorry, but our records indicate that you already have a VPN account. The name of the VPN group you reside in is <asp:Label ID="_vpnGroup" runat="server"></asp:Label></p>
 	</asp:Panel>
 
 	<asp:FormView ID="_requestForm" runat="server" DataKeyNames="Edipi" 
-	DataSourceID="_accountRequestEDS" DefaultMode="Insert" RenderOuterTable="False" Visible="false">		
+	DataSourceID="_accountRequestEDS" DefaultMode="Insert" RenderOuterTable="False" Visible="true">		
 		<InsertItemTemplate>
+			<p>Please fill out this information.</p>
 			<section class="row">
 				<div class="form-group col-sm-2">
 					<label for="_edipi">EDIPI:</label>

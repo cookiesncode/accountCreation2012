@@ -11,30 +11,32 @@ namespace AccountCreation
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			if (Request.ClientCertificate.IsPresent && !IsPostBack)
-			{
-				var cac = Request.ClientCertificate;
-				var user = new CurrentUser(cac);
-				Session["edipi"] = user.Edipi;
-			}
+			//if (Request.ClientCertificate.IsPresent && !IsPostBack)
+			//{
+			//	var cac = Request.ClientCertificate;
+			//	var user = new CurrentUser(cac);
+			//}
 		}
 
-		protected void _submitBtn_Click(object sender, EventArgs e)
+		public bool NiprRequest
 		{
-			if (_niprAcct.Checked)
-			{
-				var user = new CurrentUser((string)Session["edipi"]);
-				bool hasNipr = user.AccountInfo.queryForNipr();
-				if (hasNipr)
-				{
-				}
-			}
-
-			if (_vpnAcct.Checked)
-			{
-				var user = new CurrentUser((string)Session["edipi"]);
-				bool hasVpn = user.AccountInfo.queryForVpn();
-			}
+			get	{ return _niprAcct.Checked;	}
 		}
+
+		public bool VpnRequest
+		{
+			get	{ return _vpnAcct.Checked; }
+		}
+
+		public bool SiprRequest
+		{
+			get	{ return _siprAcct.Checked; }
+		}
+
+		public bool EpRequest
+		{
+			get	{ return _epAcct.Checked; }
+		}
+
 	}
 }
