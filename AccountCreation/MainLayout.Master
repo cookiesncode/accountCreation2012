@@ -15,9 +15,10 @@
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.js"></script>
 <![endif]-->
-    <asp:ContentPlaceHolder ID="masterHead" runat="server">
+    <asp:ContentPlaceHolder ID="_masterHead" runat="server">
     </asp:ContentPlaceHolder>
 </head>
+
 <body>
     <form id="masterForm" runat="server">
 		<article class="container">
@@ -31,13 +32,13 @@
 				<li><a href="#">Profile</a></li>
 				<li><a href="#">Messages</a></li>
 			</ul>--%>
-			<asp:ContentPlaceHolder ID="masterMainContent" runat="server">
+			<asp:ContentPlaceHolder ID="_masterMainContent" runat="server">
 				
 			</asp:ContentPlaceHolder>
 		</article>
     </form>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="_assets/js/bootstrap.min.js"></script>
-	<asp:ContentPlaceHolder ID="masterBtmScripts" runat="server"></asp:ContentPlaceHolder>
+	<asp:ContentPlaceHolder ID="_masterBtmScripts" runat="server"></asp:ContentPlaceHolder>
 </body>
 </html>

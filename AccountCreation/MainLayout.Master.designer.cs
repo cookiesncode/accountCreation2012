@@ -13,13 +13,13 @@ namespace AccountCreation {
     public partial class MainLayout {
         
         /// <summary>
-        /// masterHead control.
+        /// _masterHead control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder masterHead;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder _masterHead;
         
         /// <summary>
         /// masterForm control.
@@ -31,21 +31,21 @@ namespace AccountCreation {
         protected global::System.Web.UI.HtmlControls.HtmlForm masterForm;
         
         /// <summary>
-        /// masterMainContent control.
+        /// _masterMainContent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder masterMainContent;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder _masterMainContent;
         
         /// <summary>
-        /// masterBtmScripts control.
+        /// _masterBtmScripts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder masterBtmScripts;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder _masterBtmScripts;
     }
 }
