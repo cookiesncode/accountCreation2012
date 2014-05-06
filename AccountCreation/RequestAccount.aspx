@@ -7,11 +7,11 @@
 <asp:Content ID="_childMainContent" ContentPlaceHolderID="_masterMainContent" runat="server">
 	<h2>Request Form</h2>	
 	<asp:Panel ID="_niprResults" runat="server" Visible="false">
-		<p>We're sorry, but our records indicate that you already have a NIPR account. The account name is <asp:Label ID="_niprName" runat="server"></asp:Label></p>
+		<p>We're sorry, but our records indicate that you already have a NIPR account. The account name is <strong><asp:Label ID="_niprName" runat="server" CssClass="text-warning"></asp:Label></strong></p>
 	</asp:Panel>
 
 	<asp:Panel ID="_vpnResults" runat="server" Visible="false">
-		<p>We're sorry, but our records indicate that you already have a VPN account. The name of the VPN group you reside in is <asp:Label ID="_vpnGroup" runat="server"></asp:Label></p>
+		<p>We're sorry, but our records indicate that you already have a VPN account. The name of the VPN group you reside in is <strong><asp:Label ID="_vpnGroup" runat="server" CssClass="text-warning"></asp:Label></strong></p>
 	</asp:Panel>
 
 	<asp:FormView ID="_requestForm" runat="server" DataKeyNames="Edipi" 
