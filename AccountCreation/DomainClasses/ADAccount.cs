@@ -33,7 +33,18 @@ namespace AccountCreation
 				{
 					using (user = UserPrincipal.FindByIdentity(domainContext, LogonName))
 					{
-						if (user != null)
+						// This "if" block checks if the user is in the _DodVisitor OU and if it is then continue to the next iteration.
+						if (user != null && domain.Name == "nanw.ds.army.mil")
+						{
+							var visitorContext = new PrincipalContext(ContextType.Domain, null, "OU=_DoDVisitor,OU=Installations,DC=nanw,DC=ds,DC=army,DC=mil");
+							var deUser = user.GetUnderlyingObject() as DirectoryEntry;
+							var deUserContainer = deUser.Parent.Name;
+							if (deUserContainer == "OU=Carson")
+							{
+								continue;
+							}
+						}
+						else if (user != null)
 						{
 							NiprAccountName = user.DisplayName;
 							return true;

@@ -20,7 +20,7 @@ namespace AccountCreation
 			else
 			{
 				//testing purposes only; Note!: this method does not output any info from the CAC card.
-				user = new CurrentUser("1250782574");
+				user = new CurrentUser("1463036744");
 			}
 			if (PreviousPage != null)
 			{
@@ -28,25 +28,21 @@ namespace AccountCreation
 				var siprRequest = PreviousPage.SiprRequest;
 				var vpnRequest = PreviousPage.VpnRequest;
 				var epRequest = PreviousPage.EpRequest;
-				
-				if (niprRequest)
+
+				if (niprRequest && user.AccountInfo.queryForNipr())
 				{
-					if (user.AccountInfo.queryForNipr())
-					{
-						_niprName.Text = user.AccountInfo.NiprAccountName;
-						_niprResults.Visible = true;
-						_requestForm.Visible = false;
-					}
+					_niprName.Text = user.AccountInfo.NiprAccountName;
+					_niprResults.Visible = true;
+					_redirectMessage.Visible = true;
+					_requestForm.Visible = false;
 				}
 
-				if (vpnRequest)
+				if (vpnRequest && user.AccountInfo.queryForVpn())
 				{
-					if (user.AccountInfo.queryForVpn())
-					{
-						_vpnGroup.Text = user.AccountInfo.VpnGroupName;
-						_vpnResults.Visible = true;
-						_requestForm.Visible = false;
-					}
+					_vpnGroup.Text = user.AccountInfo.VpnGroupName;
+					_vpnResults.Visible = true;
+					_redirectMessage.Visible = true;
+					_requestForm.Visible = false;
 				}
 
 				if (_requestForm.CurrentMode == FormViewMode.Insert)
@@ -59,6 +55,10 @@ namespace AccountCreation
 					lName.Text = user.LastName;
 					fName.Text = user.FirstName;
 				}
+			}
+			else
+			{
+				Response.Redirect("~/RequestType.aspx", true);
 			}
 		}
 	}
