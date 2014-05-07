@@ -7,31 +7,35 @@
 <asp:Content ID="_childMainContent" ContentPlaceHolderID="_masterMainContent" runat="server">
 	<h2>Request Form</h2>	
 	<asp:Panel ID="_niprResults" runat="server" Visible="false">
-		<p>We're sorry, but our records indicate that you already have a NIPR account. The account name is <strong><asp:Label ID="_niprName" runat="server" CssClass="text-warning"></asp:Label></strong></p>
+		<p>Our records indicate that you already have a NIPR account. The account display name is <strong><asp:Label ID="_niprName" runat="server" CssClass="text-warning"></asp:Label></strong>.</p>
 	</asp:Panel>
 
 	<asp:Panel ID="_vpnResults" runat="server" Visible="false">
-		<p>We're sorry, but our records indicate that you already have a VPN account. The name of the VPN group you reside in is <strong><asp:Label ID="_vpnGroup" runat="server" CssClass="text-warning"></asp:Label></strong></p>
+		<p>Our records indicate that you already have a VPN account. The name of the VPN group you reside in is <strong><asp:Label ID="_vpnGroup" runat="server" CssClass="text-warning"></asp:Label></strong></p>
+	</asp:Panel>
+
+	<asp:Panel ID="_redirectMessage" runat="server" Visible="false">
+		<p>If you feel this is incorrect then please... or go to the <a href="RequestType.aspx" type="button" class="btn btn-primary btn-xs">Request Type</a> page and try again.</p>
 	</asp:Panel>
 
 	<asp:FormView ID="_requestForm" runat="server" DataKeyNames="Edipi" 
 	DataSourceID="_accountRequestEDS" DefaultMode="Insert" RenderOuterTable="False" Visible="true">		
 		<InsertItemTemplate>
-			<p>Please fill out this information.</p>
+			<p>Please fill out your information.</p>
 			<section class="row">
 				<div class="form-group col-sm-2">
 					<label for="_edipi">EDIPI:</label>
-					<asp:TextBox ID="_edipi" CssClass="form-control" runat="server" Text='<%# Bind("Edipi") %>'  />
+					<asp:TextBox ID="_edipi" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("Edipi") %>'  />
 				</div>
 
 				<div class="form-group col-sm-3">
 					<label for="_lName">Last Name:</label>
-					<asp:TextBox ID="_lName" CssClass="form-control" runat="server" Text='<%# Bind("LName") %>' />
+					<asp:TextBox ID="_lName" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("LName") %>' />
 				</div>
 
 				<div class="form-group col-sm-3">
 					<label for="_fName">First Name:</label>
-					<asp:TextBox ID="_fName" CssClass="form-control" runat="server" Text='<%# Bind("FName") %>' />
+					<asp:TextBox ID="_fName" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("FName") %>' />
 				</div>
 				
 				<div class="form-group col-sm-1">
