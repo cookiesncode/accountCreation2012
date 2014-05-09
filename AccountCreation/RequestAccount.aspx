@@ -46,7 +46,7 @@
 				<div class="form-group col-sm-3">
 					<label for="_rank">Rank:</label>
 					<asp:DropDownList ID="_rank" CssClass="form-control" runat="server" Text='<%# Bind("Rank") %>'>
-						<asp:ListItem>SGT</asp:ListItem>
+						
 					</asp:DropDownList>
 				</div>
 			</section>

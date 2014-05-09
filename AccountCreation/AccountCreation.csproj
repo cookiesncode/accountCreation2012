@@ -75,6 +75,8 @@
     <Content Include="_assets\css\bootstrap-theme.min.css" />
     <Content Include="_assets\css\bootstrap.css" />
     <Content Include="_assets\css\bootstrap.min.css" />
+    <Content Include="_assets\docs\RankList.txt" />
+    <Content Include="_assets\docs\UnitList.txt" />
     <Content Include="_assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="_assets\js\app.js" />
     <Content Include="_assets\js\bootstrap.js" />

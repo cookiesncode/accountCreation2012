@@ -50,10 +50,20 @@ namespace AccountCreation
 					var edipi = (TextBox)(_requestForm).FindControl("_edipi");
 					var lName = (TextBox)(_requestForm).FindControl("_lName");
 					var fName = (TextBox)(_requestForm).FindControl("_fName");
+					var rankList = (DropDownList)(_requestForm).FindControl("_rank");
 
 					edipi.Text = user.Edipi;
 					lName.Text = user.LastName;
 					fName.Text = user.FirstName;
+					rankList.DataSource = Vpn.Rank;
+					rankList.DataBind();
+					//foreach (string item in Vpn.Rank)
+					//{
+					//	rankList.DataValueField = item;
+					//	rankList.DataTextField = item;
+					//	rankList.DataBind();
+					//}
+					
 				}
 			}
 			else

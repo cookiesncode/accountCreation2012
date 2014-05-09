@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.DirectoryServices;
 using System.DirectoryServices.AccountManagement;
 using System.DirectoryServices.ActiveDirectory;
+using System.Linq;
+using System.Web;
 
 namespace AccountCreation
 {
@@ -28,7 +28,7 @@ namespace AccountCreation
 
 			foreach (Domain domain in domains)
 			{
-				domainContext = new PrincipalContext(ContextType.Domain, null, domain.ToString());
+				domainContext = new PrincipalContext(ContextType.Domain, null, domain.Name);
 				try
 				{
 					using (user = UserPrincipal.FindByIdentity(domainContext, LogonName))
@@ -53,7 +53,6 @@ namespace AccountCreation
 				}
 				catch
 				{
-
 				}
 			}
 			return false;
