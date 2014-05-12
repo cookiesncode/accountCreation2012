@@ -9,9 +9,11 @@ namespace AccountCreation
 {
 	public partial class RequestAccount : System.Web.UI.Page
 	{
+		private CurrentUser user;
+
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			CurrentUser user;
+			//CurrentUser user;
 			var cac = Request.ClientCertificate;
 			if (Request.ClientCertificate.IsPresent)
 			{
@@ -45,17 +47,16 @@ namespace AccountCreation
 					_requestForm.Visible = false;
 				}
 
-				if (_requestForm.CurrentMode == FormViewMode.Insert)
-				{
-					var edipi = (TextBox)(_requestForm).FindControl("_edipi");
-					var lName = (TextBox)(_requestForm).FindControl("_lName");
-					var fName = (TextBox)(_requestForm).FindControl("_fName");
-					var rankList = (DropDownList)(_requestForm).FindControl("_rank");
+				//if (_requestForm.CurrentMode == FormViewMode.Insert)
+				//{
+				//	var edipi = (TextBox)(_requestForm).FindControl("_edipi");
+				//	var lName = (TextBox)(_requestForm).FindControl("_lName");
+				//	var fName = (TextBox)(_requestForm).FindControl("_fName");
 
-					edipi.Text = user.Edipi;
-					lName.Text = user.LastName;
-					fName.Text = user.FirstName;
-				}
+				//	edipi.Text = user.Edipi;
+				//	lName.Text = user.LastName;
+				//	fName.Text = user.FirstName;
+				//}
 			}
 			else
 			{
@@ -76,7 +77,12 @@ namespace AccountCreation
 						rankList.Items.Add(new ListItem(item, item));
 					}
 				}
-				
+				var edipiControl = (TextBox)(_requestForm).FindControl("_edipi");
+				var lNameControl = (TextBox)(_requestForm).FindControl("_lName");
+				var fNameControl = (TextBox)(_requestForm).FindControl("_fName");
+				edipiControl.Text = user.Edipi;
+				lNameControl.Text = user.LastName;
+				fNameControl.Text = user.FirstName;
 			}
 		}
 	}
