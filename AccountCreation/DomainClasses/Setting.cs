@@ -28,7 +28,7 @@ namespace AccountCreation
 		{
 			get
 			{
-				var rankArray = new string[] 
+				return new string[] 
 				{
 					"CIV",
 					"CTR",
@@ -168,7 +168,6 @@ namespace AccountCreation
 					"Mar-Gen",
 					"Cadet"
 				};
-				return rankArray;
 			}
 		}
 	}
