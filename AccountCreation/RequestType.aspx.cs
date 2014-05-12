@@ -16,7 +16,7 @@ namespace AccountCreation
 			//	var cac = Request.ClientCertificate;
 			//	var user = new CurrentUser(cac);
 			//}
-			var rank = Vpn.Rank;
+			var rank = Setting.Rank;
 		}
 
 		public bool NiprRequest

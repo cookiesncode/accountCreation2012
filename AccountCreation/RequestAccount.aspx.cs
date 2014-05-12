@@ -20,7 +20,7 @@ namespace AccountCreation
 			else
 			{
 				//testing purposes only; Note!: this method does not output any info from the CAC card.
-				user = new CurrentUser("1463036744");
+				user = new CurrentUser("1250782574");
 			}
 			if (PreviousPage != null)
 			{
@@ -71,7 +71,7 @@ namespace AccountCreation
 				var rankList = (DropDownList)(_requestForm).FindControl("_rank");
 				if (rankList != null)
 				{
-					foreach (string item in Vpn.Rank)
+					foreach (string item in Setting.Rank)
 					{
 						rankList.Items.Add(new ListItem(item, item));
 					}

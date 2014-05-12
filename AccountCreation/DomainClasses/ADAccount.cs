@@ -64,7 +64,7 @@ namespace AccountCreation
 			GroupPrincipal vpnGroup;
 			PrincipalCollection members;
 
-			foreach (string group in Vpn.GroupCollection)
+			foreach (var group in Setting.VpnGroups.Values)
 			{
 				try
 				{
@@ -85,7 +85,6 @@ namespace AccountCreation
 				{
 				}
 			}
-			// check if im returning in the right spot
 			return false;
 		}
 	}
