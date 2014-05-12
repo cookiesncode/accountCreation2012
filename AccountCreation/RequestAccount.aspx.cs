@@ -55,20 +55,28 @@ namespace AccountCreation
 					edipi.Text = user.Edipi;
 					lName.Text = user.LastName;
 					fName.Text = user.FirstName;
-					rankList.DataSource = Vpn.Rank;
-					rankList.DataBind();
-					//foreach (string item in Vpn.Rank)
-					//{
-					//	rankList.DataValueField = item;
-					//	rankList.DataTextField = item;
-					//	rankList.DataBind();
-					//}
-					
 				}
 			}
 			else
 			{
 				Response.Redirect("~/RequestType.aspx", true);
+			}
+		}
+		
+
+		protected void _requestForm_DataBound(object sender, EventArgs e)
+		{
+			if (_requestForm.CurrentMode == FormViewMode.Insert)
+			{
+				var rankList = (DropDownList)(_requestForm).FindControl("_rank");
+				if (rankList != null)
+				{
+					foreach (string item in Vpn.Rank)
+					{
+						rankList.Items.Add(new ListItem(item, item));
+					}
+				}
+				
 			}
 		}
 	}

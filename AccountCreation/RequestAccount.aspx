@@ -19,7 +19,7 @@
 	</asp:Panel>
 
 	<asp:FormView ID="_requestForm" runat="server" DataKeyNames="Edipi" 
-	DataSourceID="_accountRequestEDS" DefaultMode="Insert" RenderOuterTable="False" Visible="true">		
+	DataSourceID="_accountRequestEDS" DefaultMode="Insert" RenderOuterTable="False" Visible="true" OnDataBound="_requestForm_DataBound" >		
 		<InsertItemTemplate>
 			<p>Please fill out your information.</p>
 			<section class="row">
@@ -45,8 +45,8 @@
 
 				<div class="form-group col-sm-3">
 					<label for="_rank">Rank:</label>
-					<asp:DropDownList ID="_rank" CssClass="form-control" runat="server" Text='<%# Bind("Rank") %>'>
-						
+					<asp:DropDownList ID="_rank" CssClass="form-control" runat="server" Text='<%# Bind("Rank") %>' AppendDataBoundItems="true">
+						<asp:ListItem Text="-- Select Rank --" Value="" />
 					</asp:DropDownList>
 				</div>
 			</section>
