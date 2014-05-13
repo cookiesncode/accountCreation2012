@@ -13,7 +13,6 @@ namespace AccountCreation
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			//CurrentUser user;
 			var cac = Request.ClientCertificate;
 			if (Request.ClientCertificate.IsPresent)
 			{
@@ -46,25 +45,13 @@ namespace AccountCreation
 					_redirectMessage.Visible = true;
 					_requestForm.Visible = false;
 				}
-
-				//if (_requestForm.CurrentMode == FormViewMode.Insert)
-				//{
-				//	var edipi = (TextBox)(_requestForm).FindControl("_edipi");
-				//	var lName = (TextBox)(_requestForm).FindControl("_lName");
-				//	var fName = (TextBox)(_requestForm).FindControl("_fName");
-
-				//	edipi.Text = user.Edipi;
-				//	lName.Text = user.LastName;
-				//	fName.Text = user.FirstName;
-				//}
 			}
-			else
+			else if (!IsPostBack)
 			{
 				Response.Redirect("~/RequestType.aspx", true);
 			}
 		}
 		
-
 		protected void _requestForm_DataBound(object sender, EventArgs e)
 		{
 			if (_requestForm.CurrentMode == FormViewMode.Insert)
