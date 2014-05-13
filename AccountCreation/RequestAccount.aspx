@@ -25,17 +25,17 @@
 			<section class="row">
 				<div class="form-group col-sm-2">
 					<label for="_edipi">EDIPI:</label>
-					<asp:TextBox ID="_edipi" CssClass="form-control" runat="server" Text='<%# Bind("Edipi") %>'  />
+					<asp:TextBox ID="_edipi" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("Edipi") %>'  />
 				</div>
 
 				<div class="form-group col-sm-3">
 					<label for="_lName">Last Name:</label>
-					<asp:TextBox ID="_lName" CssClass="form-control" runat="server" Text='<%# Bind("LName") %>' />
+					<asp:TextBox ID="_lName" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("LName") %>' />
 				</div>
 
 				<div class="form-group col-sm-3">
 					<label for="_fName">First Name:</label>
-					<asp:TextBox ID="_fName" CssClass="form-control" runat="server" Text='<%# Bind("FName") %>' />
+					<asp:TextBox ID="_fName" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("FName") %>' />
 				</div>
 				
 				<div class="form-group col-sm-1">
