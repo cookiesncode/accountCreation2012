@@ -29,7 +29,7 @@ namespace AccountCreation
         public string Office { get; set; }
         public string Phone { get; set; }
         public string Persona { get; set; }
-        public System.DateTime Created { get; set; }
+        public Nullable<System.DateTime> Created { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public string SamAccountName { get; set; }
         public string HomeFolder { get; set; }
