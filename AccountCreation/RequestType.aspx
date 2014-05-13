@@ -9,20 +9,19 @@
 		<p class="lead">What type of account are you requesting?</p>
 		<section class="row">		
 			<div class="form-group col-sm-1">
-				<asp:CheckBox ID="_niprAcct" runat="server" />
-				<label for="_niprAcct">NIPR</label>
+				<asp:CheckBox ID="_niprAcct" runat="server" Text="&nbsp;NIPR" />
 			</div>
+
 			<div class="form-group col-sm-1">
-				<asp:CheckBox ID="_siprAcct" runat="server" />
-				<label for="_siprAcct">SIPR</label>
+				<asp:CheckBox ID="_siprAcct" runat="server" Text="&nbsp;SIPR" />
 			</div>
+			
 			<div class="form-group col-sm-1">
-				<asp:CheckBox ID="_epAcct" runat="server" />
-				<label for="_epAcct">EP</label>
+				<asp:CheckBox ID="_epAcct" runat="server" Text="&nbsp;EP" />
 			</div>
+			
 			<div class="form-group col-sm-1">
-				<asp:CheckBox ID="_vpnAcct" runat="server" />
-				<label for="_vpnAcct">VPN</label>
+				<asp:CheckBox ID="_vpnAcct" runat="server" Text="&nbsp;VPN" />
 			</div>
 		</section>
 		<asp:Button ID="_submitBtn" runat="server" Text="Submit" CssClass="btn btn-default" PostBackUrl="~/RequestAccount.aspx" />		
