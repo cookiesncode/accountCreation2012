@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="_childMainContent" ContentPlaceHolderID="_masterMainContent" runat="server">
-	<h2>Request Form</h2>	
+	<h2 class="page-header">Request Form</h2>	
 	<asp:Panel ID="_niprResults" runat="server" Visible="false">
 		<p>Our records indicate that you already have a NIPR account. The account display name is <strong><asp:Label ID="_niprName" runat="server" CssClass="text-warning"></asp:Label></strong>.</p>
 	</asp:Panel>
@@ -22,94 +22,119 @@
 	DataSourceID="_accountRequestEDS" DefaultMode="Insert" RenderOuterTable="False" Visible="true" OnDataBound="_requestForm_DataBound" >		
 		<InsertItemTemplate>
 			<p>Please fill out your information.</p>
-			<section class="row">
-				<div class="form-group col-sm-2">
-					<label for="_edipi">EDIPI:</label>
-					<asp:TextBox ID="_edipi" CssClass="form-control" runat="server" Text='<%# Bind("Edipi") %>'  />
-				</div>
+			<div class="form-group">
+				<label for="_edipi" class="col-sm-2 control-label">EDIPI:</label>
+				<div class="col-sm-3">
+					<asp:TextBox ID="_edipi" CssClass="form-control" runat="server" Text='<%# Bind("Edipi") %>'  /></div>
+			</div>
 
-				<div class="form-group col-sm-3">
-					<label for="_lName">Last Name:</label>
+			<div class="form-group">
+				<label for="_lName" class="col-sm-2 control-label">Last Name:</label>
+				<div class="col-sm-3">
 					<asp:TextBox ID="_lName" CssClass="form-control" runat="server" Text='<%# Bind("LName") %>' />
-				</div>
 
-				<div class="form-group col-sm-3">
-					<label for="_fName">First Name:</label>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="_fName" class="col-sm-2 control-label">First Name:</label>
+				<div class="col-sm-3">
 					<asp:TextBox ID="_fName" CssClass="form-control" runat="server" Text='<%# Bind("FName") %>' />
 				</div>
+			</div>
 				
-				<div class="form-group col-sm-1">
-					<label for="_middleInitial">MI:</label>
+			<div class="form-group">
+				<label for="_middleInitial" class="col-sm-2 control-label">MI:</label>
+				<div class="col-sm-1">
 					<asp:TextBox ID="_middleInitial" CssClass="form-control" runat="server" Text='<%# Bind("Mi") %>' />
 				</div>
+			</div>
 
-				<div class="form-group col-sm-3">
-					<label for="_rank">Rank:</label>
+			<div class="form-group">
+				<label for="_rank" class="col-sm-2 control-label">Rank:</label>
+				<div class="col-sm-3">
 					<asp:DropDownList ID="_rank" CssClass="form-control" runat="server" Text='<%# Bind("Rank") %>' AppendDataBoundItems="true">
 						<asp:ListItem Text="-- Select Rank --" Value="" />
 					</asp:DropDownList>
 				</div>
-			</section>
+			</div>
 
-			<section class="row">			
-				<div class="form-group col-sm-2">
-					<label for="_bldgNum">Bldg. Number:</label>
+			<div class="form-group">
+				<label for="_bldgNum" class="col-sm-2 control-label">Bldg. Number:</label>
+				<div class="col-sm-3">
 					<asp:TextBox ID="_bldgNum" CssClass="form-control" runat="server" Text='<%# Bind("Bldg") %>' />
 				</div>
+			</div>
 				
-				<div class="form-group col-sm-2">
-					<label for="_roomNum">Room Number:</label>
+			<div class="form-group">
+				<label for="_roomNum" class="col-sm-2 control-label">Room Number:</label>
+				<div class="col-sm-3">
 					<asp:TextBox ID="_roomNum" CssClass="form-control" runat="server" Text='<%# Bind("Room") %>' />
 				</div>
+			</div>
 				
-				<div class="form-group col-sm-2">
-					<label for="_office">Office:</label>
+			<div class="form-group">
+				<label for="_office" class="col-sm-2 control-label">Office:</label>
+				<div class="col-sm-3">
 					<asp:TextBox ID="_office" CssClass="form-control" runat="server" Text='<%# Bind("Office") %>' />
 				</div>
+			</div>
 
-				<div class="form-group col-sm-3">
-					<label for="_email">AKO Email:</label>
+			<div class="form-group">
+				<label for="_email" class="col-sm-2 control-label">AKO Email:</label>
+				<div class="col-sm-3">
 					<asp:TextBox ID="_email" CssClass="form-control" runat="server" Text='<%# Bind("Email") %>' />
 				</div>
+			</div>
 
-				<div class="form-group col-sm-3">
-					<label for="_phone">Phone Number:</label>
+			<div class="form-group">
+				<label for="_phone" class="col-sm-2 control-label">Phone Number:</label>
+				<div class="col-sm-3">
 					<asp:TextBox ID="_phone" CssClass="form-control" runat="server" Text='<%# Bind("Phone") %>' />
 				</div>
-			</section>
+			</div>
 
-			<section class="row">
-				<div class="form-group col-sm-3">
-					<label for="_department">Department:</label>
+			<div class="form-group">
+				<label for="_department" class="col-sm-2 control-label">Department:</label>
+				<div class="col-sm-3">
 					<asp:DropDownList ID="_department" CssClass="form-control" runat="server" Text='<%# Bind("Department") %>'>
 						<asp:ListItem>default</asp:ListItem>
 					</asp:DropDownList>
 				</div>
+			</div>
 					
-				<div class="form-group col-sm-3">
-					<label for="_org">Organization:</label>
+			<div class="form-group">
+				<label for="_org" class="col-sm-2 control-label">Organization:</label>
+				<div class="col-sm-3">
 					<asp:DropDownList ID="_org" CssClass="form-control" runat="server" Text='<%# Bind("Org") %>'>
 						<asp:ListItem>default</asp:ListItem>
 					</asp:DropDownList>
 				</div>
+			</div>
 
-				<div class="form-group col-sm-3">
-					<label for="_branch">Branch:</label>
+			<div class="form-group">
+				<label for="_branch" class="col-sm-2 control-label">Branch:</label>
+				<div class="col-sm-3">
 					<asp:DropDownList ID="_branch" CssClass="form-control" runat="server" Text='<%# Bind("Branch") %>'>
 						<asp:ListItem>default</asp:ListItem>
 					</asp:DropDownList>
 				</div>
+			</div>
 					
-				<div class="form-group col-sm-3">
-					<label for="_installation">Installation:</label>
+			<div class="form-group">
+				<label for="_installation" class="col-sm-2 control-label">Installation:</label>
+				<div class="col-sm-3">
 					<asp:DropDownList ID="_installation" CssClass="form-control" runat="server" Text='<%# Bind("Installation") %>'>
 						<asp:ListItem>default</asp:ListItem>
 					</asp:DropDownList>
 				</div>
-			</section>
-			<div>
-				<asp:Button ID="_submitBtn" runat="server" Text="Submit" CommandName="Insert" CssClass="btn btn-default" />
-				<asp:Button ID="_cancelBtn" runat="server" CommandName="Cancel" Text="Reset form" CausesValidation="False" CssClass="btn btn-default" />
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<asp:Button ID="_submitBtn" runat="server" Text="Submit" CommandName="Insert" CssClass="btn btn-default" />
+					<asp:Button ID="_cancelBtn" runat="server" CommandName="Cancel" Text="Reset form" CausesValidation="False" CssClass="btn btn-default" />
+				</div>
 			</div>
 		</InsertItemTemplate>
 	</asp:FormView>

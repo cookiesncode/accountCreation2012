@@ -20,23 +20,25 @@
 </head>
 
 <body>
-    <form id="masterForm" runat="server">
-		<article class="container">
-			<section class="row">
-				<header class="col-lg-12">
-					<h1>Fort Carson User Accounts</h1>
-				</header>
-			</section>
-<%--			<ul class="nav nav-pills">
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#">Profile</a></li>
-				<li><a href="#">Messages</a></li>
-			</ul>--%>
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav-collapse">
+				<span>Menu</span>
+			</button>
+			<a class="navbar-brand" href="Default.aspx">Fort Carson Accounts</a>
+		</div>
+		<div class="collapse navbar-collapse" id="main-nav-collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="RequestType.aspx">New request</a></li>
+			</ul>
+		</div>
+	</nav>
+	<article class="container">
+		<form id="masterForm" role="form" class="form-horizontal" runat="server">
 			<asp:ContentPlaceHolder ID="_masterMainContent" runat="server">
-				
 			</asp:ContentPlaceHolder>
-		</article>
-    </form>
+		</form>
+	</article>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="_assets/js/bootstrap.min.js"></script>
 	<asp:ContentPlaceHolder ID="_masterBtmScripts" runat="server"></asp:ContentPlaceHolder>

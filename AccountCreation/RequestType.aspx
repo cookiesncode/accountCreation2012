@@ -4,26 +4,40 @@
 </asp:Content>
 
 <asp:Content ID="_childMainContent" ContentPlaceHolderID="_masterMainContent" runat="server">
-	<h2>Request Form</h2>
+	<h2 class="page-header">Request Form</h2>
 	<asp:Panel ID="_adCheckContainer" runat="server">
 		<p class="lead">What type of account are you requesting?</p>
-		<section class="row">		
-			<div class="form-group col-sm-1">
-				<asp:CheckBox ID="_niprAcct" runat="server" Text="&nbsp;NIPR" />
+		<div class="form-group">
+			<div class="col-sm-1">
+				<div class="checkbox">
+					<asp:CheckBox ID="_niprAcct" runat="server" Text="&nbsp;NIPR" />
+				</div>
 			</div>
+		</div>
 
-			<div class="form-group col-sm-1">
-				<asp:CheckBox ID="_siprAcct" runat="server" Text="&nbsp;SIPR" />
+		<div class="form-group">
+			<div class="col-sm-1">
+				<div class="checkbox">
+					<asp:CheckBox ID="_siprAcct" runat="server" Text="&nbsp;SIPR" />
+				</div>
 			</div>
+		</div>
 			
-			<div class="form-group col-sm-1">
-				<asp:CheckBox ID="_epAcct" runat="server" Text="&nbsp;EP" />
+		<div class="form-group">
+			<div class="col-sm-1">
+				<div class="checkbox">
+					<asp:CheckBox ID="_epAcct" runat="server" Text="&nbsp;EP" />
+				</div>
 			</div>
+		</div>
 			
-			<div class="form-group col-sm-1">
-				<asp:CheckBox ID="_vpnAcct" runat="server" Text="&nbsp;VPN" />
+		<div class="form-group">
+			<div class="col-sm-1">
+				<div class="checkbox">
+					<asp:CheckBox ID="_vpnAcct" runat="server" Text="&nbsp;VPN" />
+				</div>
 			</div>
-		</section>
+		</div>
 		<asp:Button ID="_submitBtn" runat="server" Text="Submit" CssClass="btn btn-default" PostBackUrl="~/RequestAccount.aspx" />		
 	</asp:Panel>
 
