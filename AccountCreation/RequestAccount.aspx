@@ -94,20 +94,20 @@
 				</div>
 			</div>
 
-			<div class="form-group">
+<%--			<div class="form-group">
 				<label for="_department" class="col-sm-2 control-label">Department:</label>
 				<div class="col-sm-3">
 					<asp:DropDownList ID="_department" CssClass="form-control" runat="server" Text='<%# Bind("Department") %>'>
 						<asp:ListItem>default</asp:ListItem>
 					</asp:DropDownList>
 				</div>
-			</div>
+			</div>--%>
 					
 			<div class="form-group">
 				<label for="_org" class="col-sm-2 control-label">Organization:</label>
 				<div class="col-sm-3">
-					<asp:DropDownList ID="_org" CssClass="form-control" runat="server" Text='<%# Bind("Org") %>'>
-						<asp:ListItem>default</asp:ListItem>
+					<asp:DropDownList ID="_org" CssClass="form-control" AppendDataBoundItems="true" runat="server" Text='<%# Bind("Org") %>'>
+						<asp:ListItem Text="-- Select Organization --" Value="" />
 					</asp:DropDownList>
 				</div>
 			</div>
@@ -116,19 +116,19 @@
 				<label for="_branch" class="col-sm-2 control-label">Branch:</label>
 				<div class="col-sm-3">
 					<asp:DropDownList ID="_branch" CssClass="form-control" runat="server" Text='<%# Bind("Branch") %>'>
-						<asp:ListItem>default</asp:ListItem>
+						<asp:ListItem Text="-- Select Branch --" Value="" />
 					</asp:DropDownList>
 				</div>
 			</div>
 					
-			<div class="form-group">
+<%--			<div class="form-group">
 				<label for="_installation" class="col-sm-2 control-label">Installation:</label>
 				<div class="col-sm-3">
 					<asp:DropDownList ID="_installation" CssClass="form-control" runat="server" Text='<%# Bind("Installation") %>'>
 						<asp:ListItem>default</asp:ListItem>
 					</asp:DropDownList>
 				</div>
-			</div>
+			</div>--%>
 
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">

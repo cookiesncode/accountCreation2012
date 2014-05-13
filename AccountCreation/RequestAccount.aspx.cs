@@ -51,20 +51,30 @@ namespace AccountCreation
 		{
 			if (_requestForm.CurrentMode == FormViewMode.Insert)
 			{
-				var rankList = (DropDownList)(_requestForm).FindControl("_rank");
-				if (rankList != null)
+				var rankControl = (DropDownList)(_requestForm).FindControl("_rank");
+				var orgControl = (DropDownList)(_requestForm).FindControl("_org");
+				var branchControl = (DropDownList)(_requestForm).FindControl("_branch");
+
+				foreach (string item in Setting.Rank)
 				{
-					foreach (string item in Setting.Rank)
-					{
-						rankList.Items.Add(new ListItem(item, item));
-					}
+					rankControl.Items.Add(new ListItem(item, item));
 				}
+				foreach (string item in Setting.Organization)
+				{
+					orgControl.Items.Add(new ListItem(item, item));
+				}
+				foreach (string item in Setting.Branch)
+				{
+					branchControl.Items.Add(new ListItem(item, item));
+				}
+
 				var edipiControl = (TextBox)(_requestForm).FindControl("_edipi");
 				var lNameControl = (TextBox)(_requestForm).FindControl("_lName");
 				var fNameControl = (TextBox)(_requestForm).FindControl("_fName");
 				edipiControl.Text = user.Edipi;
 				lNameControl.Text = user.LastName;
 				fNameControl.Text = user.FirstName;
+
 				if (user.FirstName != null)
 				{
 					edipiControl.Enabled = false;
