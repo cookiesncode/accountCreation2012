@@ -25,12 +25,7 @@ namespace AccountCreation
 			}
 			if (PreviousPage != null)
 			{
-				var niprRequest = PreviousPage.NiprRequest;
-				var siprRequest = PreviousPage.SiprRequest;
-				var vpnRequest = PreviousPage.VpnRequest;
-				var epRequest = PreviousPage.EpRequest;
-
-				if (niprRequest && user.AccountInfo.queryForNipr())
+				if (PreviousPage.NiprRequest && user.AccountInfo.queryForNipr())
 				{
 					_niprName.Text = user.AccountInfo.NiprAccountName;
 					_niprResults.Visible = true;
@@ -38,7 +33,7 @@ namespace AccountCreation
 					_requestForm.Visible = false;
 				}
 
-				if (vpnRequest && user.AccountInfo.queryForVpn())
+				if (PreviousPage.VpnRequest && user.AccountInfo.queryForVpn())
 				{
 					_vpnGroup.Text = user.AccountInfo.VpnGroupName;
 					_vpnResults.Visible = true;
@@ -70,6 +65,12 @@ namespace AccountCreation
 				edipiControl.Text = user.Edipi;
 				lNameControl.Text = user.LastName;
 				fNameControl.Text = user.FirstName;
+				if (user.FirstName != null)
+				{
+					edipiControl.Enabled = false;
+					lNameControl.Enabled = false;
+					fNameControl.Enabled = false;
+				}
 			}
 		}
 	}
