@@ -21,7 +21,7 @@ namespace AccountCreation
 			else
 			{
 				//testing purposes only; Note!: this method does not output any info from the CAC card.
-				user = new CurrentUser("1250782574");
+				user = new CurrentUser("1265020972");
 			}
 			if (PreviousPage != null)
 			{
