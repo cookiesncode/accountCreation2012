@@ -5,8 +5,11 @@
 
 <asp:Content ID="childMainContent" ContentPlaceHolderID="_masterMainContent" runat="server">
 	<section class="row">
-		<h2>Please select an option below</h2>
-		<asp:HyperLink ID="uiRequestLink" runat="server" NavigateUrl="~/RequestAccount.aspx">Request a new account</asp:HyperLink>
+		<h2 class="page-header">What would you like to do?</h2>
+		<ul class="nav nav-pills">
+			<li><a href="RequestType.aspx">Request a new account</a></li>
+			<li><a href="RequestType.aspx">Verify an existing request</a></li>
+		</ul>
 	</section>
 </asp:Content>
 
