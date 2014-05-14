@@ -1,9 +1,10 @@
-﻿<%@ Page Title="Request Form" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="RequestType.aspx.cs" Inherits="AccountCreation.RequestType" %>
+﻿<%@ Page Title="Request Form" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="RequestType.aspx.cs" Inherits="AccountCreation.RequestType" ClientIDMode="Static" %>
 
 <asp:Content ID="_childHead" ContentPlaceHolderID="_masterHead" runat="server">
 </asp:Content>
 
 <asp:Content ID="_childMainContent" ContentPlaceHolderID="_masterMainContent" runat="server">
+
 	<h2 class="page-header">Request Form</h2>
 	<asp:Panel ID="_adCheckContainer" runat="server">
 		<p class="lead">What type of account are you requesting?</p>
@@ -38,7 +39,8 @@
 				</div>
 			</div>
 		</div>
-		<asp:Button ID="_submitBtn" runat="server" Text="Submit" CssClass="btn btn-default" PostBackUrl="~/RequestAccount.aspx" />		
+
+		<asp:Button role="button" ID="_submitBtn" data-loading-text="Please wait while we verfiy any existing accounts..." runat="server" Text="Submit" CssClass="btn btn-primary" PostBackUrl="~/RequestAccount.aspx" />		
 	</asp:Panel>
 
 </asp:Content>

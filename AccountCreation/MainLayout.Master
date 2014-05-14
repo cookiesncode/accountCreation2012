@@ -29,7 +29,8 @@
 		</div>
 		<div class="collapse navbar-collapse" id="main-nav-collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="RequestType.aspx">New request</a></li>
+				<li><a href="RequestType.aspx">New Request</a></li>
+				<li><a href="RequestType.aspx">Request Verification</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -41,6 +42,7 @@
 	</article>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="_assets/js/bootstrap.min.js"></script>
+	<script src="_assets/js/app.js"></script>
 	<asp:ContentPlaceHolder ID="_masterBtmScripts" runat="server"></asp:ContentPlaceHolder>
 </body>
 </html>
