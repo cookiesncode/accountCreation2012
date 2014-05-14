@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="cee7b4daa2e64e4b965f544f7407911a" Name="Diagram1" ZoomLevel="117">
-        <EntityTypeShape EntityType="CarsonAccountModel.AccountRequest" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarsonAccountModel.AccountRequest" Width="1.5" PointX="4.875" PointY="0.875" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

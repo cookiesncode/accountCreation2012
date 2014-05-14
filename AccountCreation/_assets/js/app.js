@@ -1,7 +1,7 @@
 ﻿(function ($) {
     $('[data-loading-text]').click(function () {
         $(this).button('loading');
-    })
+    });
 }(jQuery));
 
 

@@ -39,7 +39,7 @@ namespace AccountCreation
 			}
 		}
 
-		public static string[] Organization
+		public static string[] Department
 		{
 			get
 			{

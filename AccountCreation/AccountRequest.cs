@@ -40,6 +40,8 @@ namespace AccountCreation
         public Nullable<byte> Sipr { get; set; }
         public Nullable<byte> SupSigned { get; set; }
         public Nullable<byte> SecSigned { get; set; }
-        public Nullable<System.DateTime> AcctStatus { get; set; }
+        public Nullable<byte> AcctStatus { get; set; }
+        public string SupName { get; set; }
+        public string SecName { get; set; }
     }
 }

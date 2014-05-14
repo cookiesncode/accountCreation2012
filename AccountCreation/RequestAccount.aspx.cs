@@ -51,17 +51,19 @@ namespace AccountCreation
 		{
 			if (_requestForm.CurrentMode == FormViewMode.Insert)
 			{
-				var rankControl = (DropDownList)(_requestForm).FindControl("_rank");
-				var orgControl = (DropDownList)(_requestForm).FindControl("_org");
 				var branchControl = (DropDownList)(_requestForm).FindControl("_branch");
+				var departmentControl = (DropDownList)(_requestForm).FindControl("_department");
+				//var installationControl = (DropDownList)(_requestForm).FindControl("_installation");
+				//var orgControl = (DropDownList)(_requestForm).FindControl("_org");
+				var rankControl = (DropDownList)(_requestForm).FindControl("_rank");
 
 				foreach (string item in Setting.Rank)
 				{
 					rankControl.Items.Add(new ListItem(item, item));
 				}
-				foreach (string item in Setting.Organization)
+				foreach (string item in Setting.Department)
 				{
-					orgControl.Items.Add(new ListItem(item, item));
+					departmentControl.Items.Add(new ListItem(item, item));
 				}
 				foreach (string item in Setting.Branch)
 				{

@@ -29,7 +29,7 @@
           <Property Name="Department" Type="varchar" Nullable="false" MaxLength="128" />
           <Property Name="Org" Type="nvarchar" MaxLength="256" />
           <Property Name="Branch" Type="nvarchar" Nullable="false" MaxLength="256" />
-          <Property Name="Installation" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="Installation" Type="nvarchar" MaxLength="256" />
           <Property Name="NIPR_REG" Type="tinyint" />
           <Property Name="NIPR_SA" Type="tinyint" />
           <Property Name="NIPR_EP" Type="tinyint" />
@@ -37,8 +37,10 @@
           <Property Name="SIPR" Type="tinyint" />
           <Property Name="HomeFolder" Type="nvarchar" MaxLength="256" />
           <Property Name="SupSigned" Type="tinyint" />
+          <Property Name="SupName" Type="varchar" MaxLength="256" />
           <Property Name="SecSigned" Type="tinyint" />
-          <Property Name="AcctStatus" Type="smalldatetime" />
+          <Property Name="SecName" Type="varchar" MaxLength="256" />
+          <Property Name="AcctStatus" Type="tinyint" />
         </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -59,7 +61,7 @@
           <Property Name="Rank" Type="String" Nullable="false" MaxLength="4" Unicode="false" FixedLength="true" />
           <Property Name="Org" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
           <Property Name="Department" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
-          <Property Name="Installation" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="Installation" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
           <Property Name="Branch" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
           <Property Name="Bldg" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
           <Property Name="Room" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
@@ -77,7 +79,9 @@
           <Property Name="Sipr" Type="Byte" />
           <Property Name="SupSigned" Type="Byte" />
           <Property Name="SecSigned" Type="Byte" />
-          <Property Name="AcctStatus" Type="DateTime" Precision="0" />
+          <Property Name="AcctStatus" Type="Byte" />
+          <Property Type="String" Name="SupName" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SecName" MaxLength="256" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -88,6 +92,8 @@
           <EntitySetMapping Name="AccountRequests">
             <EntityTypeMapping TypeName="CarsonAccountModel.AccountRequest">
               <MappingFragment StoreEntitySet="tblAcctCreate_Auto">
+                <ScalarProperty Name="SecName" ColumnName="SecName" />
+                <ScalarProperty Name="SupName" ColumnName="SupName" />
                 <ScalarProperty Name="Edipi" ColumnName="EDIPI" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="SamAccountName" ColumnName="SamAccountName" />
