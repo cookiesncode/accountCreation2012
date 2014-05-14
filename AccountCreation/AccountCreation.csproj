@@ -69,6 +69,7 @@
     <Content Include="Default.aspx" />
     <Content Include="RequestAccount.aspx" />
     <Content Include="RequestType.aspx" />
+    <Content Include="Verification.aspx" />
     <Content Include="Web.config" />
     <Content Include="_assets\css\app.css" />
     <Content Include="_assets\css\bootstrap-theme.css" />
@@ -133,6 +134,13 @@
     </Compile>
     <Compile Include="RequestType.aspx.designer.cs">
       <DependentUpon>RequestType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Verification.aspx.cs">
+      <DependentUpon>Verification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Verification.aspx.designer.cs">
+      <DependentUpon>Verification.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
