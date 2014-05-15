@@ -11,9 +11,10 @@ namespace AccountCreation
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			if (!IsPostBack)
+			var edipiQueryString = Request.QueryString["edipi"];
+			if (!IsPostBack && edipiQueryString != null)
 			{
-				_verifyForm.Visible = false;
+				_verifyForm.Visible = true;
 			}
 		}
 

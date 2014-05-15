@@ -19,7 +19,8 @@
 			</div>
 		</div>
 	</asp:Panel>
-	<asp:FormView ID="_verifyForm" runat="server" 
+	<asp:FormView ID="_verifyForm" runat="server"
+		Visible="false" 
 		RenderOuterTable="False" 
 		DataKeyNames="Edipi" 
 		DataSourceID="_verifyEDS" 
@@ -294,18 +295,16 @@
 		EnableUpdate="True" 
 		EntitySetName="AccountRequests">
 	</asp:EntityDataSource>
-
-<%--	<asp:QueryExtender ID="_queryStringExtender" runat="server"
-		TargetControlID="_verifyEDS">
-		<asp:SearchExpression SearchType="Contains" DataFields="Edipi">
-		</asp:SearchExpression>
-	</asp:QueryExtender>--%>
 	
 	<asp:QueryExtender ID="_edipiQueryExtender" runat="server"
 		TargetControlID="_verifyEDS">
 		<asp:PropertyExpression>
 			<asp:ControlParameter ControlID="_searchEdipi" Name="Edipi" ConvertEmptyStringToNull="true" />
 		</asp:PropertyExpression>
+
+		<asp:SearchExpression SearchType="Contains" DataFields="Edipi">
+			<asp:QueryStringParameter QueryStringField="edipi" Name="Edipi" />
+		</asp:SearchExpression>
 	</asp:QueryExtender>
 </asp:Content>
 
