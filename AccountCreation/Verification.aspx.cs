@@ -13,5 +13,19 @@ namespace AccountCreation
 		{
 
 		}
+
+		protected void _rank_DataBound(object sender, EventArgs e)
+		{
+			if (_verifyForm.CurrentMode == FormViewMode.Edit)
+			{
+				var rankControl = (DropDownList)(_verifyForm).FindControl("_rank");
+
+				foreach (string item in Setting.Rank)
+				{
+					rankControl.Items.Add(new ListItem(item, item));
+				}
+			}
+		}
+
 	}
 }

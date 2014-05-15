@@ -30,7 +30,7 @@
 		<div class="collapse navbar-collapse" id="main-nav-collapse">
 			<ul class="nav navbar-nav">
 				<li><a href="RequestType.aspx">New Request</a></li>
-				<li><a href="RequestType.aspx">Request Verification</a></li>
+				<li><a href="Verification.aspx">Request Verification</a></li>
 			</ul>
 		</div>
 	</nav>
