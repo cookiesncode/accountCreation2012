@@ -11,7 +11,10 @@ namespace AccountCreation
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-
+			if (!IsPostBack)
+			{
+				_verifyForm.Visible = false;
+			}
 		}
 
 		protected void _rank_DataBound(object sender, EventArgs e)
@@ -47,6 +50,11 @@ namespace AccountCreation
 					branchControl.Items.Add(new ListItem(item, item));
 				}
 			}
+		}
+
+		protected void _searchButton_Click(object sender, EventArgs e)
+		{
+			_verifyForm.Visible = true;
 		}
 
 	}

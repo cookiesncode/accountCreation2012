@@ -6,8 +6,24 @@
 <asp:Content ID="_childMainContent" ContentPlaceHolderID="_masterMainContent" runat="server">
 	<h2 class="page-header">Request Verification</h2>
 	<p>Please verify this information is correct.</p>
-	
-	<asp:FormView ID="_verifyForm" runat="server" RenderOuterTable="False" DataKeyNames="Edipi" DataSourceID="_verifyEDS" OnDataBound="_rank_DataBound">
+	<asp:Panel ID="_searchPanel" DefaultButton="_searchButton" runat="server">
+		<div class="form-group">
+			<label for="_searchEdipi" class="col-sm-2 control-label">Search by EDIPI:</label>
+			<div class="col-sm-3">
+				<asp:TextBox CssClass="form-control" ID="_searchEdipi" runat="server"></asp:TextBox>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<asp:Button ID="_searchButton" CausesValidation="false" CssClass="btn btn-primary" runat="server" Text="Search" OnClick="_searchButton_Click" />
+			</div>
+		</div>
+	</asp:Panel>
+	<asp:FormView ID="_verifyForm" runat="server" 
+		RenderOuterTable="False" 
+		DataKeyNames="Edipi" 
+		DataSourceID="_verifyEDS" 
+		OnDataBound="_rank_DataBound">
 		<EditItemTemplate>
 			<div class="form-group">
 				<label for="_edipi" class="col-sm-2 control-label">EDIPI:</label>
@@ -127,7 +143,7 @@
 		<EmptyDataTemplate>
 			<p>No records have been found.</p>
 		</EmptyDataTemplate>
-		<ItemTemplate>
+		<ItemTemplate>			
 			<div class="form-group">
 				<label for="_edipi" class="col-sm-2 control-label">EDIPI:</label>
 				<div class="col-sm-3">
@@ -270,7 +286,27 @@
 		</ItemTemplate>
 	</asp:FormView>
 
-	<asp:EntityDataSource ID="_verifyEDS" runat="server" ConnectionString="name=CarsonAccountEntities" DefaultContainerName="CarsonAccountEntities" EnableDelete="True" EnableFlattening="False" EnableInsert="True" EnableUpdate="True" EntitySetName="AccountRequests"></asp:EntityDataSource>
+	<asp:EntityDataSource ID="_verifyEDS" runat="server" 
+		ConnectionString="name=CarsonAccountEntities" 
+		DefaultContainerName="CarsonAccountEntities" 
+		EnableDelete="True" 
+		EnableFlattening="False" 
+		EnableUpdate="True" 
+		EntitySetName="AccountRequests">
+	</asp:EntityDataSource>
+
+<%--	<asp:QueryExtender ID="_queryStringExtender" runat="server"
+		TargetControlID="_verifyEDS">
+		<asp:SearchExpression SearchType="Contains" DataFields="Edipi">
+		</asp:SearchExpression>
+	</asp:QueryExtender>--%>
+	
+	<asp:QueryExtender ID="_edipiQueryExtender" runat="server"
+		TargetControlID="_verifyEDS">
+		<asp:PropertyExpression>
+			<asp:ControlParameter ControlID="_searchEdipi" Name="Edipi" ConvertEmptyStringToNull="true" />
+		</asp:PropertyExpression>
+	</asp:QueryExtender>
 </asp:Content>
 
 <asp:Content ID="_childBtmScripts" ContentPlaceHolderID="_masterBtmScripts" runat="server">

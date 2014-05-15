@@ -13,6 +13,33 @@ namespace AccountCreation {
     public partial class Verification {
         
         /// <summary>
+        /// _searchPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel _searchPanel;
+        
+        /// <summary>
+        /// _searchEdipi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox _searchEdipi;
+        
+        /// <summary>
+        /// _searchButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button _searchButton;
+        
+        /// <summary>
         /// _verifyForm control.
         /// </summary>
         /// <remarks>
@@ -29,5 +56,14 @@ namespace AccountCreation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.EntityDataSource _verifyEDS;
+        
+        /// <summary>
+        /// _edipiQueryExtender control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.QueryExtender _edipiQueryExtender;
     }
 }
