@@ -23,7 +23,7 @@
           <Property Name="Office" Type="nvarchar" MaxLength="256" />
           <Property Name="Persona" Type="nvarchar" MaxLength="256" />
           <Property Name="Phone" Type="char" MaxLength="12" />
-          <Property Name="Rank" Type="char" Nullable="false" MaxLength="4" />
+          <Property Name="Rank" Type="char" Nullable="false" MaxLength="256" />
           <Property Name="Created" Type="datetime" />
           <Property Name="ModifiedDate" Type="datetime" />
           <Property Name="Department" Type="varchar" Nullable="false" MaxLength="128" />
@@ -58,7 +58,7 @@
           <Property Name="LName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="FName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Mi" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
-          <Property Name="Rank" Type="String" Nullable="false" MaxLength="4" Unicode="false" FixedLength="true" />
+          <Property Name="Rank" Type="String" Nullable="false" MaxLength="256" Unicode="false" FixedLength="true" />
           <Property Name="Org" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
           <Property Name="Department" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
           <Property Name="Installation" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
