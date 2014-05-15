@@ -6,19 +6,19 @@
 <asp:Content ID="_childMainContent" ContentPlaceHolderID="_masterMainContent" runat="server">
 	<h2 class="page-header">Request Verification</h2>
 	<p>Please verify this information is correct.</p>
+	
 	<asp:Panel ID="_searchPanel" DefaultButton="_searchButton" runat="server">
 		<div class="form-group">
 			<label for="_searchEdipi" class="col-sm-2 control-label">Search by EDIPI:</label>
-			<div class="col-sm-3">
+			<div class="col-sm-3 col-xs-4 col-md-3 col-lg-2">
 				<asp:TextBox CssClass="form-control" ID="_searchEdipi" runat="server"></asp:TextBox>
 			</div>
-		</div>
-		<div class="form-group">
-			<div class="col-sm-offset-2 col-sm-10">
+			<div class="col-sm-2 col-xs-4">
 				<asp:Button ID="_searchButton" CausesValidation="false" CssClass="btn btn-primary" runat="server" Text="Search" OnClick="_searchButton_Click" />
 			</div>
 		</div>
 	</asp:Panel>
+	
 	<asp:FormView ID="_verifyForm" runat="server"
 		Visible="false" 
 		RenderOuterTable="False" 
@@ -298,6 +298,7 @@
 	
 	<asp:QueryExtender ID="_edipiQueryExtender" runat="server"
 		TargetControlID="_verifyEDS">
+		
 		<asp:PropertyExpression>
 			<asp:ControlParameter ControlID="_searchEdipi" Name="Edipi" ConvertEmptyStringToNull="true" />
 		</asp:PropertyExpression>
@@ -305,6 +306,7 @@
 		<asp:SearchExpression SearchType="Contains" DataFields="Edipi">
 			<asp:QueryStringParameter QueryStringField="edipi" Name="Edipi" />
 		</asp:SearchExpression>
+	
 	</asp:QueryExtender>
 </asp:Content>
 
