@@ -18,8 +18,10 @@ namespace AccountCreation
 		{
 			if (_verifyForm.CurrentMode == FormViewMode.Edit)
 			{
+				var branchControl = (DropDownList)(_verifyForm).FindControl("_branch");
+				var departmentControl = (DropDownList)(_verifyForm).FindControl("_department");
 				var rankControl = (DropDownList)(_verifyForm).FindControl("_rank");
-
+				
 				foreach (string item in Setting.Rank)
 				{
 					if (rankControl.SelectedValue == item)
@@ -27,6 +29,22 @@ namespace AccountCreation
 						continue;
 					}
 					rankControl.Items.Add(new ListItem(item, item));
+				}
+				foreach (string item in Setting.Department)
+				{
+					if (departmentControl.SelectedValue == item)
+					{
+						continue;
+					}
+					departmentControl.Items.Add(new ListItem(item, item));
+				}
+				foreach (string item in Setting.Branch)
+				{
+					if (branchControl.SelectedValue == item)
+					{
+						continue;
+					}
+					branchControl.Items.Add(new ListItem(item, item));
 				}
 			}
 		}
