@@ -9,279 +9,252 @@
 	
 	<asp:FormView ID="_verifyForm" runat="server" RenderOuterTable="False" DataKeyNames="Edipi" DataSourceID="_verifyEDS" OnDataBound="_rank_DataBound">
 		<EditItemTemplate>
-			Edipi:
-			<asp:Label ID="EdipiLabel1" runat="server" Text='<%# Eval("Edipi") %>' />
-			<br />
-			Email:
-			<asp:TextBox ID="EmailTextBox" runat="server" Text='<%# Bind("Email") %>' />
-			<br />
-			LName:
-			<asp:TextBox ID="LNameTextBox" runat="server" Text='<%# Bind("LName") %>' />
-			<br />
-			FName:
-			<asp:TextBox ID="FNameTextBox" runat="server" Text='<%# Bind("FName") %>' />
-			<br />
-			Mi:
-			<asp:TextBox ID="MiTextBox" runat="server" Text='<%# Bind("Mi") %>' />
-			<br />
-			Rank:
-			
-			<asp:DropDownList ID="_Rank" runat="server" SelectedValue='<%# Bind("Rank") %>' DataSourceID="_verifyEDS" DataTextField="Rank" DataValueField="Rank"></asp:DropDownList>
-			<br />
-			Org:
-			<asp:TextBox ID="OrgTextBox" runat="server" Text='<%# Bind("Org") %>' />
-			<br />
-			Department:
-			<asp:TextBox ID="DepartmentTextBox" runat="server" Text='<%# Bind("Department") %>' />
-			<br />
-			Installation:
-			<asp:TextBox ID="InstallationTextBox" runat="server" Text='<%# Bind("Installation") %>' />
-			<br />
-			Branch:
-			<asp:TextBox ID="BranchTextBox" runat="server" Text='<%# Bind("Branch") %>' />
-			<br />
-			Bldg:
-			<asp:TextBox ID="BldgTextBox" runat="server" Text='<%# Bind("Bldg") %>' />
-			<br />
-			Room:
-			<asp:TextBox ID="RoomTextBox" runat="server" Text='<%# Bind("Room") %>' />
-			<br />
-			Office:
-			<asp:TextBox ID="OfficeTextBox" runat="server" Text='<%# Bind("Office") %>' />
-			<br />
-			Phone:
-			<asp:TextBox ID="PhoneTextBox" runat="server" Text='<%# Bind("Phone") %>' />
-			<br />
-			Persona:
-			<asp:TextBox ID="PersonaTextBox" runat="server" Text='<%# Bind("Persona") %>' />
-			<br />
-			Created:
-			<asp:TextBox ID="CreatedTextBox" runat="server" Text='<%# Bind("Created") %>' />
-			<br />
-			ModifiedDate:
-			<asp:TextBox ID="ModifiedDateTextBox" runat="server" Text='<%# Bind("ModifiedDate") %>' />
-			<br />
-			SamAccountName:
-			<asp:TextBox ID="SamAccountNameTextBox" runat="server" Text='<%# Bind("SamAccountName") %>' />
-			<br />
-			HomeFolder:
-			<asp:TextBox ID="HomeFolderTextBox" runat="server" Text='<%# Bind("HomeFolder") %>' />
-			<br />
-			NiprReg:
-			<asp:TextBox ID="NiprRegTextBox" runat="server" Text='<%# Bind("NiprReg") %>' />
-			<br />
-			NiprSa:
-			<asp:TextBox ID="NiprSaTextBox" runat="server" Text='<%# Bind("NiprSa") %>' />
-			<br />
-			NiprEp:
-			<asp:TextBox ID="NiprEpTextBox" runat="server" Text='<%# Bind("NiprEp") %>' />
-			<br />
-			Vpn:
-			<asp:TextBox ID="VpnTextBox" runat="server" Text='<%# Bind("Vpn") %>' />
-			<br />
-			Sipr:
-			<asp:TextBox ID="SiprTextBox" runat="server" Text='<%# Bind("Sipr") %>' />
-			<br />
-			SupSigned:
-			<asp:TextBox ID="SupSignedTextBox" runat="server" Text='<%# Bind("SupSigned") %>' />
-			<br />
-			SecSigned:
-			<asp:TextBox ID="SecSignedTextBox" runat="server" Text='<%# Bind("SecSigned") %>' />
-			<br />
-			AcctStatus:
-			<asp:TextBox ID="AcctStatusTextBox" runat="server" Text='<%# Bind("AcctStatus") %>' />
-			<br />
-			SupName:
-			<asp:TextBox ID="SupNameTextBox" runat="server" Text='<%# Bind("SupName") %>' />
-			<br />
-			SecName:
-			<asp:TextBox ID="SecNameTextBox" runat="server" Text='<%# Bind("SecName") %>' />
-			<br />
+			<div class="form-group">
+				<label for="_edipi" class="col-sm-2 control-label">EDIPI:</label>
+				<div class="col-sm-3">
+					<asp:TextBox ID="_edipi" CssClass="form-control" runat="server" Text='<%# Bind("Edipi") %>'  /></div>
+			</div>
+
+			<div class="form-group">
+				<label for="_lName" class="col-sm-2 control-label">Last Name:</label>
+				<div class="col-sm-3">
+					<asp:TextBox ID="_lName" CssClass="form-control" runat="server" Text='<%# Bind("LName") %>' />
+
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="_fName" class="col-sm-2 control-label">First Name:</label>
+				<div class="col-sm-3">
+					<asp:TextBox ID="_fName" CssClass="form-control" runat="server" Text='<%# Bind("FName") %>' />
+				</div>
+			</div>
+				
+			<div class="form-group">
+				<label for="_middleInitial" class="col-sm-2 control-label">MI:</label>
+				<div class="col-sm-1">
+					<asp:TextBox ID="_middleInitial" CssClass="form-control" runat="server" Text='<%# Bind("Mi") %>' />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="_rank" class="col-sm-2 control-label">Rank:</label>
+				<div class="col-sm-3">
+					<asp:DropDownList ID="_Rank" runat="server" SelectedValue='<%# Bind("Rank") %>' DataSourceID="_verifyEDS" DataTextField="Rank" DataValueField="Rank">
+						<asp:ListItem Text="-- Select Rank --" Value="" />
+					</asp:DropDownList>
+				</div>
+			</div>
+		
+			<div class="form-group">
+				<label for="_bldgNum" class="col-sm-2 control-label">Bldg. Number:</label>
+				<div class="col-sm-3">
+					<asp:TextBox ID="_bldgNum" CssClass="form-control" runat="server" Text='<%# Bind("Bldg") %>' />
+				</div>
+			</div>
+				
+			<div class="form-group">
+				<label for="_roomNum" class="col-sm-2 control-label">Room Number:</label>
+				<div class="col-sm-3">
+					<asp:TextBox ID="_roomNum" CssClass="form-control" runat="server" Text='<%# Bind("Room") %>' />
+				</div>
+			</div>
+				
+			<div class="form-group">
+				<label for="_office" class="col-sm-2 control-label">Office:</label>
+				<div class="col-sm-3">
+					<asp:TextBox ID="_office" CssClass="form-control" runat="server" Text='<%# Bind("Office") %>' />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="_email" class="col-sm-2 control-label">AKO Email:</label>
+				<div class="col-sm-3">
+					<asp:TextBox ID="_email" CssClass="form-control" runat="server" Text='<%# Bind("Email") %>' />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="_phone" class="col-sm-2 control-label">Phone Number:</label>
+				<div class="col-sm-3">
+					<asp:TextBox ID="_phone" CssClass="form-control" runat="server" Text='<%# Bind("Phone") %>' />
+				</div>
+			</div>
+
+<%--			<div class="form-group">
+				<label for="_department" class="col-sm-2 control-label">Department:</label>
+				<div class="col-sm-3">
+					<asp:DropDownList ID="_department" CssClass="form-control" runat="server" Text='<%# Bind("Department") %>'>
+						<asp:ListItem Text="-- Select Department --" Value="" />
+					</asp:DropDownList>
+				</div>
+			</div>--%>
+					
+<%--			<div class="form-group">
+				<label for="_org" class="col-sm-2 control-label">Organization:</label>
+				<div class="col-sm-3">
+					<asp:DropDownList ID="_org" CssClass="form-control" AppendDataBoundItems="true" runat="server" Text='<%# Bind("Org") %>'>
+						<asp:ListItem Text="-- Select Organization --" Value="" />
+					</asp:DropDownList>
+				</div>
+			</div>--%>
+
+<%--			<div class="form-group">
+				<label for="_branch" class="col-sm-2 control-label">Branch:</label>
+				<div class="col-sm-3">
+					<asp:DropDownList ID="_branch" CssClass="form-control" runat="server" Text='<%# Bind("Branch") %>'>
+						<asp:ListItem Text="-- Select Branch --" Value="" />
+					</asp:DropDownList>
+				</div>
+			</div>--%>
+					
+<%--			<div class="form-group">
+				<label for="_installation" class="col-sm-2 control-label">Installation:</label>
+				<div class="col-sm-3">
+					<asp:DropDownList ID="_installation" CssClass="form-control" runat="server" Text='<%# Bind("Installation") %>'>
+						<asp:ListItem Text="-- Select Installation --" Value="" />
+					</asp:DropDownList>
+				</div>
+			</div>--%>
 			<asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Update" />
 			&nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
 		</EditItemTemplate>
-		<InsertItemTemplate>
-			Edipi:
-			<asp:TextBox ID="EdipiTextBox" runat="server" Text='<%# Bind("Edipi") %>' />
-			<br />
-			Email:
-			<asp:TextBox ID="EmailTextBox" runat="server" Text='<%# Bind("Email") %>' />
-			<br />
-			LName:
-			<asp:TextBox ID="LNameTextBox" runat="server" Text='<%# Bind("LName") %>' />
-			<br />
-			FName:
-			<asp:TextBox ID="FNameTextBox" runat="server" Text='<%# Bind("FName") %>' />
-			<br />
-			Mi:
-			<asp:TextBox ID="MiTextBox" runat="server" Text='<%# Bind("Mi") %>' />
-			<br />
-			Rank:
-			<asp:TextBox ID="RankTextBox" runat="server" Text='<%# Bind("Rank") %>' />
-			<br />
-			Org:
-			<asp:TextBox ID="OrgTextBox" runat="server" Text='<%# Bind("Org") %>' />
-			<br />
-			Department:
-			<asp:TextBox ID="DepartmentTextBox" runat="server" Text='<%# Bind("Department") %>' />
-			<br />
-			Installation:
-			<asp:TextBox ID="InstallationTextBox" runat="server" Text='<%# Bind("Installation") %>' />
-			<br />
-			Branch:
-			<asp:TextBox ID="BranchTextBox" runat="server" Text='<%# Bind("Branch") %>' />
-			<br />
-			Bldg:
-			<asp:TextBox ID="BldgTextBox" runat="server" Text='<%# Bind("Bldg") %>' />
-			<br />
-			Room:
-			<asp:TextBox ID="RoomTextBox" runat="server" Text='<%# Bind("Room") %>' />
-			<br />
-			Office:
-			<asp:TextBox ID="OfficeTextBox" runat="server" Text='<%# Bind("Office") %>' />
-			<br />
-			Phone:
-			<asp:TextBox ID="PhoneTextBox" runat="server" Text='<%# Bind("Phone") %>' />
-			<br />
-			Persona:
-			<asp:TextBox ID="PersonaTextBox" runat="server" Text='<%# Bind("Persona") %>' />
-			<br />
-			Created:
-			<asp:TextBox ID="CreatedTextBox" runat="server" Text='<%# Bind("Created") %>' />
-			<br />
-			ModifiedDate:
-			<asp:TextBox ID="ModifiedDateTextBox" runat="server" Text='<%# Bind("ModifiedDate") %>' />
-			<br />
-			SamAccountName:
-			<asp:TextBox ID="SamAccountNameTextBox" runat="server" Text='<%# Bind("SamAccountName") %>' />
-			<br />
-			HomeFolder:
-			<asp:TextBox ID="HomeFolderTextBox" runat="server" Text='<%# Bind("HomeFolder") %>' />
-			<br />
-			NiprReg:
-			<asp:TextBox ID="NiprRegTextBox" runat="server" Text='<%# Bind("NiprReg") %>' />
-			<br />
-			NiprSa:
-			<asp:TextBox ID="NiprSaTextBox" runat="server" Text='<%# Bind("NiprSa") %>' />
-			<br />
-			NiprEp:
-			<asp:TextBox ID="NiprEpTextBox" runat="server" Text='<%# Bind("NiprEp") %>' />
-			<br />
-			Vpn:
-			<asp:TextBox ID="VpnTextBox" runat="server" Text='<%# Bind("Vpn") %>' />
-			<br />
-			Sipr:
-			<asp:TextBox ID="SiprTextBox" runat="server" Text='<%# Bind("Sipr") %>' />
-			<br />
-			SupSigned:
-			<asp:TextBox ID="SupSignedTextBox" runat="server" Text='<%# Bind("SupSigned") %>' />
-			<br />
-			SecSigned:
-			<asp:TextBox ID="SecSignedTextBox" runat="server" Text='<%# Bind("SecSigned") %>' />
-			<br />
-			AcctStatus:
-			<asp:TextBox ID="AcctStatusTextBox" runat="server" Text='<%# Bind("AcctStatus") %>' />
-			<br />
-			SupName:
-			<asp:TextBox ID="SupNameTextBox" runat="server" Text='<%# Bind("SupName") %>' />
-			<br />
-			SecName:
-			<asp:TextBox ID="SecNameTextBox" runat="server" Text='<%# Bind("SecName") %>' />
-			<br />
-			<asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
-			&nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
-		</InsertItemTemplate>
+		<EmptyDataTemplate>
+			<p>No Data available</p>
+		</EmptyDataTemplate>
 		<ItemTemplate>
-			Edipi:
-			<asp:Label ID="EdipiLabel" runat="server" Text='<%# Eval("Edipi") %>' />
-			<br />
-			Email:
-			<asp:Label ID="EmailLabel" runat="server" Text='<%# Bind("Email") %>' />
-			<br />
-			LName:
-			<asp:Label ID="LNameLabel" runat="server" Text='<%# Bind("LName") %>' />
-			<br />
-			FName:
-			<asp:Label ID="FNameLabel" runat="server" Text='<%# Bind("FName") %>' />
-			<br />
-			Mi:
-			<asp:Label ID="MiLabel" runat="server" Text='<%# Bind("Mi") %>' />
-			<br />
-			Rank:
-			<asp:Label ID="RankLabel" runat="server" Text='<%# Bind("Rank") %>' />
-			<br />
-			Org:
-			<asp:Label ID="OrgLabel" runat="server" Text='<%# Bind("Org") %>' />
-			<br />
-			Department:
-			<asp:Label ID="DepartmentLabel" runat="server" Text='<%# Bind("Department") %>' />
-			<br />
-			Installation:
-			<asp:Label ID="InstallationLabel" runat="server" Text='<%# Bind("Installation") %>' />
-			<br />
-			Branch:
-			<asp:Label ID="BranchLabel" runat="server" Text='<%# Bind("Branch") %>' />
-			<br />
-			Bldg:
-			<asp:Label ID="BldgLabel" runat="server" Text='<%# Bind("Bldg") %>' />
-			<br />
-			Room:
-			<asp:Label ID="RoomLabel" runat="server" Text='<%# Bind("Room") %>' />
-			<br />
-			Office:
-			<asp:Label ID="OfficeLabel" runat="server" Text='<%# Bind("Office") %>' />
-			<br />
-			Phone:
-			<asp:Label ID="PhoneLabel" runat="server" Text='<%# Bind("Phone") %>' />
-			<br />
-			Persona:
-			<asp:Label ID="PersonaLabel" runat="server" Text='<%# Bind("Persona") %>' />
-			<br />
-			Created:
-			<asp:Label ID="CreatedLabel" runat="server" Text='<%# Bind("Created") %>' />
-			<br />
-			ModifiedDate:
-			<asp:Label ID="ModifiedDateLabel" runat="server" Text='<%# Bind("ModifiedDate") %>' />
-			<br />
-			SamAccountName:
-			<asp:Label ID="SamAccountNameLabel" runat="server" Text='<%# Bind("SamAccountName") %>' />
-			<br />
-			HomeFolder:
-			<asp:Label ID="HomeFolderLabel" runat="server" Text='<%# Bind("HomeFolder") %>' />
-			<br />
-			NiprReg:
-			<asp:Label ID="NiprRegLabel" runat="server" Text='<%# Bind("NiprReg") %>' />
-			<br />
-			NiprSa:
-			<asp:Label ID="NiprSaLabel" runat="server" Text='<%# Bind("NiprSa") %>' />
-			<br />
-			NiprEp:
-			<asp:Label ID="NiprEpLabel" runat="server" Text='<%# Bind("NiprEp") %>' />
-			<br />
-			Vpn:
-			<asp:Label ID="VpnLabel" runat="server" Text='<%# Bind("Vpn") %>' />
-			<br />
-			Sipr:
-			<asp:Label ID="SiprLabel" runat="server" Text='<%# Bind("Sipr") %>' />
-			<br />
-			SupSigned:
-			<asp:Label ID="SupSignedLabel" runat="server" Text='<%# Bind("SupSigned") %>' />
-			<br />
-			SecSigned:
-			<asp:Label ID="SecSignedLabel" runat="server" Text='<%# Bind("SecSigned") %>' />
-			<br />
-			AcctStatus:
-			<asp:Label ID="AcctStatusLabel" runat="server" Text='<%# Bind("AcctStatus") %>' />
-			<br />
+			<div class="form-group">
+				<label for="_edipi" class="col-sm-2 control-label">EDIPI:</label>
+				<div class="col-sm-3">
+					<p class="form-control-static">
+						<asp:Literal ID="_edipi" runat="server" Text='<%# Bind("Edipi") %>'  />
+					</p>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="_lName" class="col-sm-2 control-label">Last Name:</label>
+				<div class="col-sm-3">
+					<p class="form-control-static">
+						<asp:Literal ID="_lName" runat="server" Text='<%# Bind("LName") %>' />
+					</p>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="_fName" class="col-sm-2 control-label">First Name:</label>
+				<div class="col-sm-3">
+					<p class="form-control-static">
+						<asp:Literal ID="_fName" runat="server" Text='<%# Bind("FName") %>' />
+					</p>
+				</div>
+			</div>
+				
+			<div class="form-group">
+				<label for="_middleInitial" class="col-sm-2 control-label">MI:</label>
+				<div class="col-sm-1">
+					<p class="form-control-static">
+						<asp:Literal ID="_middleInitial" runat="server" Text='<%# Bind("Mi") %>' />
+					</p>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="_rank" class="col-sm-2 control-label">Rank:</label>
+				<div class="col-sm-3">
+					<p class="form-control-static">
+						<asp:Literal ID="_rank" runat="server" Text='<%# Bind("Rank") %>' />
+					</p>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="_org" class="col-sm-2 control-label">Organization:</label>
+				<div class="col-sm-3">
+					<p class="form-control-static">
+						<asp:Literal ID="_org" runat="server" Text='<%# Bind("Org") %>' />
+					</p>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="_department" class="col-sm-2 control-label">Department:</label>
+				<div class="col-sm-3">
+					<p class="form-control-static">
+						<asp:Literal ID="_department" runat="server" Text='<%# Bind("Department") %>' />
+					</p>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="_installation" class="col-sm-2 control-label">Installation:</label>
+				<div class="col-sm-3">
+					<p class="form-control-static">
+						<asp:Literal ID="_installation" runat="server" Text='<%# Bind("Installation") %>' />
+					</p>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="_branch" class="col-sm-2 control-label">Branch:</label>
+				<div class="col-sm-3">
+					<p class="form-control-static">
+						<asp:Literal ID="_branch" runat="server" Text='<%# Bind("Branch") %>' />
+					</p>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="_bldgNum" class="col-sm-2 control-label">Bldg:</label>
+				<div class="col-sm-3">
+					<p class="form-control-static">
+						<asp:Literal ID="_bldgNum" runat="server" Text='<%# Bind("Bldg") %>' />
+					</p>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="_roomNum" class="col-sm-2 control-label">Room:</label>
+				<div class="col-sm-3">
+					<p class="form-control-static">
+						<asp:Literal ID="_roomNum" runat="server" Text='<%# Bind("Room") %>' />
+					</p>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="_office" class="col-sm-2 control-label">Office:</label>
+				<div class="col-sm-3">
+					<p class="form-control-static">
+						<asp:Literal ID="_office" runat="server" Text='<%# Bind("Office") %>' />
+					</p>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="_phone" class="col-sm-2 control-label">Phone:</label>
+				<div class="col-sm-3">
+					<p class="form-control-static">
+						<asp:Literal ID="_phone" runat="server" Text='<%# Bind("Phone") %>' />
+					</p>
+				</div>
+			</div>
+
 			SupName:
 			<asp:Label ID="SupNameLabel" runat="server" Text='<%# Bind("SupName") %>' />
 			<br />
 			SecName:
 			<asp:Label ID="SecNameLabel" runat="server" Text='<%# Bind("SecName") %>' />
 			<br />
-			<asp:LinkButton ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit" />
-			&nbsp;<asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" />
-			&nbsp;<asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="New" />
+
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<asp:LinkButton ID="_editButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit" CssClass="btn btn-default" />
+					<asp:LinkButton ID="_deleteButton" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" CssClass="btn btn-danger" />
+				</div>
+			</div>
+
+			
 		</ItemTemplate>
 	</asp:FormView>
 

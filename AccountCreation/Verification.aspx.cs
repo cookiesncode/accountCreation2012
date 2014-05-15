@@ -22,6 +22,10 @@ namespace AccountCreation
 
 				foreach (string item in Setting.Rank)
 				{
+					if (rankControl.SelectedValue == item)
+					{
+						continue;
+					}
 					rankControl.Items.Add(new ListItem(item, item));
 				}
 			}
