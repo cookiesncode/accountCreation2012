@@ -69,6 +69,7 @@
     <Content Include="Default.aspx" />
     <Content Include="RequestAccount.aspx" />
     <Content Include="RequestType.aspx" />
+    <Content Include="Success.aspx" />
     <Content Include="Verification.aspx" />
     <Content Include="Web.config" />
     <Content Include="_assets\css\app.css" />
@@ -134,6 +135,13 @@
     </Compile>
     <Compile Include="RequestType.aspx.designer.cs">
       <DependentUpon>RequestType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Success.aspx.cs">
+      <DependentUpon>Success.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Success.aspx.designer.cs">
+      <DependentUpon>Success.aspx</DependentUpon>
     </Compile>
     <Compile Include="Verification.aspx.cs">
       <DependentUpon>Verification.aspx</DependentUpon>
