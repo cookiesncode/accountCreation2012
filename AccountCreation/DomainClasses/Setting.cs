@@ -195,7 +195,7 @@ namespace AccountCreation
 					"AF-GAF",
 					"CG-SR",
 					"CG-SA",
-					"CG-FA ",
+					"CG-FA",
 					"CG-AA",
 					"CG-SN",
 					"CG-FN",
