@@ -15,6 +15,7 @@ namespace AccountCreation
 			if (!IsPostBack && edipiQueryString != null)
 			{
 				_verifyForm.Visible = true;
+				_searchBox.Text = edipiQueryString;
 			}
 		}
 

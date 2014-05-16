@@ -22,13 +22,13 @@ namespace AccountCreation {
         protected global::System.Web.UI.WebControls.Panel _searchPanel;
         
         /// <summary>
-        /// _searchEdipi control.
+        /// _searchBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox _searchEdipi;
+        protected global::System.Web.UI.WebControls.TextBox _searchBox;
         
         /// <summary>
         /// _searchButton control.

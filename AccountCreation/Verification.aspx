@@ -11,7 +11,7 @@
 		<div class="form-group">
 			<label for="_searchEdipi" class="col-sm-2 control-label">Search by EDIPI:</label>
 			<div class="col-sm-3 col-xs-4 col-md-3 col-lg-2">
-				<asp:TextBox CssClass="form-control" ID="_searchEdipi" runat="server"></asp:TextBox>
+				<asp:TextBox CssClass="form-control" ID="_searchBox" runat="server"></asp:TextBox>
 			</div>
 			<div class="col-sm-2 col-xs-4">
 				<asp:Button ID="_searchButton" CausesValidation="false" CssClass="btn btn-primary" runat="server" Text="Search" OnClick="_searchButton_Click" />
@@ -297,16 +297,10 @@
 	</asp:EntityDataSource>
 	
 	<asp:QueryExtender ID="_edipiQueryExtender" runat="server"
-		TargetControlID="_verifyEDS">
-		
+		TargetControlID="_verifyEDS">		
 		<asp:PropertyExpression>
-			<asp:ControlParameter ControlID="_searchEdipi" Name="Edipi" ConvertEmptyStringToNull="true" />
-		</asp:PropertyExpression>
-
-		<asp:SearchExpression SearchType="Contains" DataFields="Edipi">
-			<asp:QueryStringParameter QueryStringField="edipi" Name="Edipi" />
-		</asp:SearchExpression>
-	
+			<asp:ControlParameter ControlID="_searchBox" Name="Edipi"/>
+		</asp:PropertyExpression>	
 	</asp:QueryExtender>
 </asp:Content>
 
