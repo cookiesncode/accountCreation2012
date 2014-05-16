@@ -9,9 +9,22 @@ namespace AccountCreation
 {
 	public partial class Verification : System.Web.UI.Page
 	{
+		CurrentUser user;
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			var cert = Request.ClientCertificate;
 			var edipiQueryString = Request.QueryString["edipi"];
+
+			if (cert.IsPresent)
+			{
+				user = new CurrentUser(cert);
+			}
+			else
+			{
+				// Local testing only!!
+				user = new CurrentUser("1265020972");
+			}
+
 			if (!IsPostBack && edipiQueryString != null)
 			{
 				_verifyForm.Visible = true;
@@ -59,5 +72,25 @@ namespace AccountCreation
 			_verifyForm.Visible = true;
 		}
 
+		protected void _CheckBox_CheckedChanged(object sender, EventArgs e)
+		{
+			if (_verifyForm.CurrentMode == FormViewMode.Edit)
+			{
+				var securityCheckBox = (CheckBox)(_verifyForm).FindControl("_securityCheckBox");
+				var supervisorCheckBox = (CheckBox)(_verifyForm).FindControl("_supervisorCheckBox");
+				var securitySignature = (TextBox)(_verifyForm).FindControl("_securitySignature");
+				var supervisorSignature = (TextBox)(_verifyForm).FindControl("_supervisorSignature");
+
+				if (securityCheckBox.Checked)
+				{
+					securitySignature.Text = user.Edipi;
+				}
+
+				if (supervisorCheckBox.Checked)
+				{
+					supervisorSignature.Text = user.Edipi;
+				}
+			}
+		}
 	}
 }

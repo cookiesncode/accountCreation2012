@@ -7,7 +7,7 @@
 	
 	<h2 class="page-header">Request Verification</h2>
 	<asp:Panel ID="_searchPanel" DefaultButton="_searchButton" runat="server">
-		<p>Search by EDIPI, last name, or first name. <small>EDIPI is more efficient</small></p>
+		<p>Please search by the EDIPI number, last name, or first name. <small>EDIPI is more efficient</small></p>
 		<div class="form-group">
 			<div class="col-sm-3 col-xs-4 col-md-3 col-lg-2">
 				<asp:TextBox CssClass="form-control" ID="_searchBox" runat="server"></asp:TextBox>
@@ -270,12 +270,26 @@
 				</div>
 			</div>
 
-			SupName:
-			<asp:Label ID="SupNameLabel" runat="server" Text='<%# Bind("SupName") %>' />
-			<br />
-			SecName:
-			<asp:Label ID="SecNameLabel" runat="server" Text='<%# Bind("SecName") %>' />
-			<br />
+			<div class="form-group">
+				<label for="_supervisorCheckBox" class="col-sm-2 control-label">Supervisor:</label>
+				<div class="col-sm-4">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<asp:CheckBox ID="_supervisorCheckBox" runat="server" OnCheckedChanged="_CheckBox_CheckedChanged" />
+						</span>
+						<asp:TextBox ID="_supervisorSignature" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("SupName") %>'  />
+					</div>
+				</div>
+				<label for="_securityCheckBox" class="col-sm-2 control-label">Security Manager:</label>
+				<div class="col-sm-4">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<asp:CheckBox ID="_securityCheckBox" OnCheckedChanged="_CheckBox_CheckedChanged"  runat="server" />
+						</span>
+						<asp:TextBox ID="_securitySignature" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("SecName") %>'  />
+					</div>
+				</div>
+			</div>
 
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
