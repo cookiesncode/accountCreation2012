@@ -4,12 +4,11 @@
 </asp:Content>
 
 <asp:Content ID="_childMainContent" ContentPlaceHolderID="_masterMainContent" runat="server">
-	<h2 class="page-header">Request Verification</h2>
-	<p>Please verify this information is correct.</p>
 	
+	<h2 class="page-header">Request Verification</h2>
 	<asp:Panel ID="_searchPanel" DefaultButton="_searchButton" runat="server">
+		<p>Search by EDIPI, last name, or first name. <small>EDIPI is more efficient</small></p>
 		<div class="form-group">
-			<label for="_searchEdipi" class="col-sm-2 control-label">Search by EDIPI:</label>
 			<div class="col-sm-3 col-xs-4 col-md-3 col-lg-2">
 				<asp:TextBox CssClass="form-control" ID="_searchBox" runat="server"></asp:TextBox>
 			</div>
@@ -18,7 +17,7 @@
 			</div>
 		</div>
 	</asp:Panel>
-	
+
 	<asp:FormView ID="_verifyForm" runat="server"
 		Visible="false" 
 		RenderOuterTable="False" 
@@ -298,9 +297,12 @@
 	
 	<asp:QueryExtender ID="_edipiQueryExtender" runat="server"
 		TargetControlID="_verifyEDS">		
-		<asp:PropertyExpression>
-			<asp:ControlParameter ControlID="_searchBox" Name="Edipi"/>
-		</asp:PropertyExpression>	
+<%--			<asp:PropertyExpression>
+		<asp:ControlParameter ControlID="_searchBox" Name="Edipi" />
+		</asp:PropertyExpression>	--%>
+		<asp:SearchExpression DataFields="Edipi, LName, FName">
+			<asp:ControlParameter ControlID="_searchBox" Name="Edipi" />
+		</asp:SearchExpression>
 	</asp:QueryExtender>
 </asp:Content>
 
