@@ -17,14 +17,34 @@
 			</div>
 		</div>
 	</asp:Panel>
-
-	<asp:FormView ID="_verifyForm" runat="server"
-		Visible="false" 
-		RenderOuterTable="False" 
-		DataKeyNames="Id" 
-		DataSourceID="_verifyEDS" 
-		OnDataBound="_verifyForm_DataBound"
-		DefaultMode="Edit">
+	<asp:GridView ID="_gridview" runat="server" DataKeyNames="Id" DataSourceID="_gridEntitySource" AllowPaging="True" AutoGenerateColumns="False" AllowSorting="True" OnSelectedIndexChanged="_gridview_SelectedIndexChanged">
+		<Columns>
+			<asp:CommandField ShowSelectButton="True"></asp:CommandField>
+			<asp:BoundField DataField="Edipi" HeaderText="Edipi" SortExpression="Edipi" />
+			<asp:BoundField DataField="LName" HeaderText="LName" SortExpression="LName" />
+			<asp:BoundField DataField="FName" HeaderText="FName" SortExpression="FName" />
+			<asp:BoundField DataField="Mi" HeaderText="Mi" SortExpression="Mi" />
+			<asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
+			<asp:BoundField DataField="Rank" HeaderText="Rank" SortExpression="Rank" />
+			<asp:BoundField DataField="Org" HeaderText="Org" SortExpression="Org" />
+			<asp:BoundField DataField="Department" HeaderText="Department" SortExpression="Department" />
+			<asp:BoundField DataField="Installation" HeaderText="Installation" SortExpression="Installation" />
+			<asp:BoundField DataField="Branch" HeaderText="Branch" SortExpression="Branch" />
+			<asp:BoundField DataField="Bldg" HeaderText="Bldg" SortExpression="Bldg" />
+			<asp:BoundField DataField="Room" HeaderText="Room" SortExpression="Room" />
+			<asp:BoundField DataField="Office" HeaderText="Office" SortExpression="Office" />
+			<asp:BoundField DataField="Phone" HeaderText="Phone" SortExpression="Phone" />
+			<asp:BoundField DataField="SupEdipi" HeaderText="Supervisor's Signature" SortExpression="SupEdipi" />
+			<asp:BoundField DataField="SecEdipi" HeaderText="Security Manager's" SortExpression="SecEdipi" />
+		</Columns>
+	</asp:GridView>
+	<asp:FormView ID="_formview" runat="server"
+		RenderOuterTable="False"
+		DataKeyNames="Id"
+		DataSourceID="_formviewEntitySource"
+		OnDataBound="_formview_DataBound"
+		DefaultMode="Edit"
+		Visible="false">
 		<EditItemTemplate>
 			<div class="form-group">
 				<label for="_edipi" class="col-sm-2 control-label">EDIPI:</label>
@@ -64,7 +84,7 @@
 			<div class="form-group">
 				<label for="_rank" class="col-sm-2 control-label">Rank:</label>
 				<div class="col-sm-3">
-					<asp:DropDownList ID="_Rank" CssClass="form-control" runat="server" SelectedValue='<%# Bind("Rank") %>' DataSourceID="_verifyEDS" DataTextField="Rank" DataValueField="Rank">
+					<asp:DropDownList ID="_Rank" CssClass="form-control" runat="server" SelectedValue='<%# Bind("Rank") %>' DataSourceID="_formviewEntitySource" DataTextField="Rank" DataValueField="Rank">
 						<asp:ListItem Text="-- Select Rank --" Value="" />
 					</asp:DropDownList>
 				</div>
@@ -73,7 +93,7 @@
 			<div class="form-group">
 				<label for="_branch" class="col-sm-2 control-label">Branch:</label>
 				<div class="col-sm-3">
-					<asp:DropDownList ID="_branch" CssClass="form-control" runat="server" SelectedValue='<%# Bind("Branch") %>' DataSourceID="_verifyEDS" DataTextField="Branch" DataValueField="Branch">
+					<asp:DropDownList ID="_branch" CssClass="form-control" runat="server" SelectedValue='<%# Bind("Branch") %>' DataSourceID="_formviewEntitySource" DataTextField="Branch" DataValueField="Branch">
 						<asp:ListItem Text="-- Select Branch --" Value="" />
 					</asp:DropDownList>
 				</div>
@@ -82,7 +102,7 @@
 			<div class="form-group">
 				<label for="_org" class="col-sm-2 control-label">Organization:</label>
 				<div class="col-sm-3">
-					<asp:DropDownList ID="_org" CssClass="form-control" runat="server" SelectedValue='<%# Bind("Org") %>' DataSourceID="_verifyEDS" DataTextField="Org" DataValueField="Org">
+					<asp:DropDownList ID="_org" CssClass="form-control" runat="server" SelectedValue='<%# Bind("Org") %>' DataSourceID="_formviewEntitySource" DataTextField="Org" DataValueField="Org">
 						<asp:ListItem Text="-- Select Organization --" Value="" />
 					</asp:DropDownList>
 				</div>
@@ -91,7 +111,7 @@
 			<div class="form-group">
 				<label for="_department" class="col-sm-2 control-label">Department:</label>
 				<div class="col-sm-3">
-					<asp:DropDownList ID="_department" CssClass="form-control" runat="server" SelectedValue='<%# Bind("Department") %>' DataSourceID="_verifyEDS" DataTextField="Department" DataValueField="Department">
+					<asp:DropDownList ID="_department" CssClass="form-control" runat="server" SelectedValue='<%# Bind("Department") %>' DataSourceID="_formviewEntitySource" DataTextField="Department" DataValueField="Department">
 						<asp:ListItem Text="-- Select Department --" Value="" />
 					</asp:DropDownList>
 				</div>
@@ -100,7 +120,7 @@
 			<div class="form-group">
 				<label for="_installation" class="col-sm-2 control-label">Installation:</label>
 				<div class="col-sm-3">
-					<asp:DropDownList ID="_installation" CssClass="form-control" runat="server" SelectedValue='<%# Bind("Installation") %>' DataSourceID="_verifyEDS" DataTextField="Installation" DataValueField="Installation">
+					<asp:DropDownList ID="_installation" CssClass="form-control" runat="server" SelectedValue='<%# Bind("Installation") %>' DataSourceID="_formviewEntitySource" DataTextField="Installation" DataValueField="Installation">
 						<asp:ListItem Text="-- Select Installation --" Value="" />
 					</asp:DropDownList>
 				</div>
@@ -165,161 +185,9 @@
 		<EmptyDataTemplate>
 			<p>No records have been found.</p>
 		</EmptyDataTemplate>
-<%--		<ItemTemplate>			
-			<div class="form-group">
-				<label for="_edipi" class="col-sm-2 control-label">EDIPI:</label>
-				<div class="col-sm-3">
-					<p class="form-control-static">
-						<asp:Literal ID="_edipi" runat="server" Text='<%# Eval("Edipi") %>'  />
-					</p>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="_lName" class="col-sm-2 control-label">Last Name:</label>
-				<div class="col-sm-3">
-					<p class="form-control-static">
-						<asp:Literal ID="_lName" runat="server" Text='<%# Eval("LName") %>' />
-					</p>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="_fName" class="col-sm-2 control-label">First Name:</label>
-				<div class="col-sm-3">
-					<p class="form-control-static">
-						<asp:Literal ID="_fName" runat="server" Text='<%# Eval("FName") %>' />
-					</p>
-				</div>
-			</div>
-				
-			<div class="form-group">
-				<label for="_middleInitial" class="col-sm-2 control-label">MI:</label>
-				<div class="col-sm-1">
-					<p class="form-control-static">
-						<asp:Literal ID="_middleInitial" runat="server" Text='<%# Eval("Mi") %>' />
-					</p>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="_email" class="col-sm-2 control-label">AKO Email:</label>
-				<div class="col-sm-3">
-					<p class="form-control-static">
-						<asp:Literal ID="_email" runat="server" Text='<%# Eval("Email") %>' />
-					</p>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="_rank" class="col-sm-2 control-label">Rank:</label>
-				<div class="col-sm-3">
-					<p class="form-control-static">
-						<asp:Literal ID="_rank" runat="server" Text='<%# Eval("Rank") %>' />
-					</p>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="_branch" class="col-sm-2 control-label">Branch:</label>
-				<div class="col-sm-3">
-					<p class="form-control-static">
-						<asp:Literal ID="_branch" runat="server" Text='<%# Eval("Branch") %>' />
-					</p>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="_org" class="col-sm-2 control-label">Organization:</label>
-				<div class="col-sm-3">
-					<p class="form-control-static">
-						<asp:Literal ID="_org" runat="server" Text='<%# Eval("Org") %>' />
-					</p>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="_department" class="col-sm-2 control-label">Department:</label>
-				<div class="col-sm-3">
-					<p class="form-control-static">
-						<asp:Literal ID="_department" runat="server" Text='<%# Eval("Department") %>' />
-					</p>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="_installation" class="col-sm-2 control-label">Installation:</label>
-				<div class="col-sm-3">
-					<p class="form-control-static">
-						<asp:Literal ID="_installation" runat="server" Text='<%# Eval("Installation") %>' />
-					</p>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="_bldgNum" class="col-sm-2 control-label">Bldg Number:</label>
-				<div class="col-sm-3">
-					<p class="form-control-static">
-						<asp:Literal ID="_bldgNum" runat="server" Text='<%# Eval("Bldg") %>' />
-					</p>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="_roomNum" class="col-sm-2 control-label">Room Number:</label>
-				<div class="col-sm-3">
-					<p class="form-control-static">
-						<asp:Literal ID="_roomNum" runat="server" Text='<%# Eval("Room") %>' />
-					</p>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="_office" class="col-sm-2 control-label">Office:</label>
-				<div class="col-sm-3">
-					<p class="form-control-static">
-						<asp:Literal ID="_office" runat="server" Text='<%# Eval("Office") %>' />
-					</p>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="_phone" class="col-sm-2 control-label">Phone Number:</label>
-				<div class="col-sm-3">
-					<p class="form-control-static">
-						<asp:Literal ID="_phone" runat="server" Text='<%# Eval("Phone") %>' />
-					</p>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="_supSignature" class="col-sm-2 control-label">Supervisor's Edipi:</label>
-				<div class="col-sm-3">
-					<p class="form-control-static">
-						<asp:Literal ID="_supSignature" runat="server" Text='<%# Eval("SupEdipi") %>' />
-					</p>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="_secSignature" class="col-sm-2 control-label">Security Manager's Edipi:</label>
-				<div class="col-sm-3">
-					<p class="form-control-static">
-						<asp:Literal ID="_secSignature" runat="server" Text='<%# Eval("SecEdipi") %>' />
-					</p>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-10">
-					<asp:Button ID="_editButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Update and sign" CssClass="btn btn-default" />
-					<asp:Button ID="_deleteButton" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" CssClass="btn btn-danger" />
-				</div>
-			</div>
-		</ItemTemplate>--%>
 	</asp:FormView>
 
-	<asp:EntityDataSource ID="_verifyEDS" runat="server" 
+	<asp:EntityDataSource ID="_gridEntitySource" runat="server" 
 		ConnectionString="name=CarsonAccountEntities" 
 		DefaultContainerName="CarsonAccountEntities" 
 		EnableDelete="True" 
@@ -329,14 +197,26 @@
 	</asp:EntityDataSource>
 	
 	<asp:QueryExtender ID="_searchQueryExtender" runat="server"
-		TargetControlID="_verifyEDS">		
+		TargetControlID="_gridEntitySource">		
 		<asp:SearchExpression DataFields="LName, FName, Edipi" SearchType="Contains">
 			<asp:ControlParameter ControlID="_searchBox" />
 		</asp:SearchExpression>
-<%--		<asp:PropertyExpression>
-			<asp:ControlParameter ControlID="_searchBox" Name="Id" />
-		</asp:PropertyExpression>--%>
-
+	</asp:QueryExtender>
+	
+	<asp:EntityDataSource ID="_formviewEntitySource" runat="server" 
+		ConnectionString="name=CarsonAccountEntities" 
+		DefaultContainerName="CarsonAccountEntities" 
+		EnableDelete="True" 
+		EnableFlattening="False" 
+		EnableUpdate="True" 
+		EntitySetName="AccountRequests">
+	</asp:EntityDataSource>
+	
+	<asp:QueryExtender ID="_filterQueryExtender" runat="server"
+		TargetControlID="_formviewEntitySource">
+		<asp:PropertyExpression>
+			<asp:ControlParameter ControlID="_gridview" Name="Id" PropertyName="SelectedDataKey.Value"/>
+		</asp:PropertyExpression>	
 	</asp:QueryExtender>
 </asp:Content>
 

@@ -28,22 +28,21 @@ namespace AccountCreation
 
 			if (!IsPostBack && seachQueryString != null)
 			{
-				_verifyForm.Visible = true;
 				_searchBox.Text = seachQueryString;
 			}
 		}
 
-		protected void _verifyForm_DataBound(object sender, EventArgs e)
+		protected void _formview_DataBound(object sender, EventArgs e)
 		{
-			if (_verifyForm.CurrentMode == FormViewMode.Edit)
+			if (_formview.CurrentMode == FormViewMode.Edit)
 			{
-				var branchControl = (DropDownList)(_verifyForm).FindControl("_branch");
-				var departmentControl = (DropDownList)(_verifyForm).FindControl("_department");
-				var rankControl = (DropDownList)(_verifyForm).FindControl("_rank");
-				var securityCheckBox = (CheckBox)(_verifyForm).FindControl("_securityCheckBox");
-				var supervisorCheckBox = (CheckBox)(_verifyForm).FindControl("_supervisorCheckBox");
-				var securitySignature = (TextBox)(_verifyForm).FindControl("_securitySignature");
-				var supervisorSignature = (TextBox)(_verifyForm).FindControl("_supervisorSignature");
+				var branchControl = (DropDownList)(_formview).FindControl("_branch");
+				var departmentControl = (DropDownList)(_formview).FindControl("_department");
+				var rankControl = (DropDownList)(_formview).FindControl("_rank");
+				var securityCheckBox = (CheckBox)(_formview).FindControl("_securityCheckBox");
+				var supervisorCheckBox = (CheckBox)(_formview).FindControl("_supervisorCheckBox");
+				var securitySignature = (TextBox)(_formview).FindControl("_securitySignature");
+				var supervisorSignature = (TextBox)(_formview).FindControl("_supervisorSignature");
 				if (securitySignature.Text.Length > 0)
 				{
 					securityCheckBox.Checked = true;
@@ -82,17 +81,17 @@ namespace AccountCreation
 
 		protected void _searchButton_Click(object sender, EventArgs e)
 		{
-			_verifyForm.Visible = true;
+			_formview.Visible = true;
 		}
 
 		protected void _CheckBox_CheckedChanged(object sender, EventArgs e)
 		{
-			if (_verifyForm.CurrentMode == FormViewMode.Edit)
+			if (_formview.CurrentMode == FormViewMode.Edit)
 			{
-				var securityCheckBox = (CheckBox)(_verifyForm).FindControl("_securityCheckBox");
-				var supervisorCheckBox = (CheckBox)(_verifyForm).FindControl("_supervisorCheckBox");
-				var securitySignature = (TextBox)(_verifyForm).FindControl("_securitySignature");
-				var supervisorSignature = (TextBox)(_verifyForm).FindControl("_supervisorSignature");
+				var securityCheckBox = (CheckBox)(_formview).FindControl("_securityCheckBox");
+				var supervisorCheckBox = (CheckBox)(_formview).FindControl("_supervisorCheckBox");
+				var securitySignature = (TextBox)(_formview).FindControl("_securitySignature");
+				var supervisorSignature = (TextBox)(_formview).FindControl("_supervisorSignature");
 
 				if (securityCheckBox.Checked)
 				{
@@ -112,6 +111,18 @@ namespace AccountCreation
 				{
 					supervisorSignature.Text = "";
 				}
+			}
+		}
+
+		protected void _gridview_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (IsPostBack)
+			{
+				_formview.Visible = true;
+			}
+			else
+			{
+				_formview.Visible = false;
 			}
 		}
 	}

@@ -40,22 +40,31 @@ namespace AccountCreation {
         protected global::System.Web.UI.WebControls.Button _searchButton;
         
         /// <summary>
-        /// _verifyForm control.
+        /// _gridview control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView _verifyForm;
+        protected global::System.Web.UI.WebControls.GridView _gridview;
         
         /// <summary>
-        /// _verifyEDS control.
+        /// _formview control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.EntityDataSource _verifyEDS;
+        protected global::System.Web.UI.WebControls.FormView _formview;
+        
+        /// <summary>
+        /// _gridEntitySource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.EntityDataSource _gridEntitySource;
         
         /// <summary>
         /// _searchQueryExtender control.
@@ -65,5 +74,23 @@ namespace AccountCreation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.QueryExtender _searchQueryExtender;
+        
+        /// <summary>
+        /// _formviewEntitySource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.EntityDataSource _formviewEntitySource;
+        
+        /// <summary>
+        /// _filterQueryExtender control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.QueryExtender _filterQueryExtender;
     }
 }
