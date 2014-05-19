@@ -17,7 +17,15 @@
 			</div>
 		</div>
 	</asp:Panel>
-	<asp:GridView ID="_gridview" runat="server" DataKeyNames="Id" DataSourceID="_gridEntitySource" AllowPaging="True" AutoGenerateColumns="False" AllowSorting="True" OnSelectedIndexChanged="_gridview_SelectedIndexChanged">
+	<asp:GridView ID="_gridview" runat="server" 
+		DataKeyNames="Id" 
+		DataSourceID="_gridEntitySource" 
+		AllowPaging="True" 
+		AutoGenerateColumns="False" 
+		AllowSorting="True" 
+		OnSelectedIndexChanged="_gridview_SelectedIndexChanged"
+		Visible="false" 
+		EmptyDataText="No results found">
 		<Columns>
 			<asp:CommandField ShowSelectButton="True"></asp:CommandField>
 			<asp:BoundField DataField="Edipi" HeaderText="Edipi" SortExpression="Edipi" />
@@ -44,7 +52,7 @@
 		DataSourceID="_formviewEntitySource"
 		OnDataBound="_formview_DataBound"
 		DefaultMode="Edit"
-		Visible="false">
+		Visible="false" OnItemUpdated="_formview_ItemUpdated">
 		<EditItemTemplate>
 			<div class="form-group">
 				<label for="_edipi" class="col-sm-2 control-label">EDIPI:</label>
@@ -177,8 +185,8 @@
 
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<asp:Button ID="_updateButton" CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Update request" />
-					<asp:Button ID="_updateCancelButton" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
+					<asp:Button ID="_updateButton" CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Update Form" />
+					<asp:Button ID="_updateCancelButton" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" OnClick="_updateCancelButton_Click" />
 				</div>
 			</div>
 		</EditItemTemplate>

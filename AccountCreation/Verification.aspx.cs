@@ -28,6 +28,7 @@ namespace AccountCreation
 
 			if (!IsPostBack && seachQueryString != null)
 			{
+				_gridview.Visible = true;
 				_searchBox.Text = seachQueryString;
 			}
 		}
@@ -81,7 +82,7 @@ namespace AccountCreation
 
 		protected void _searchButton_Click(object sender, EventArgs e)
 		{
-			_formview.Visible = true;
+			_gridview.Visible = true;
 		}
 
 		protected void _CheckBox_CheckedChanged(object sender, EventArgs e)
@@ -101,8 +102,6 @@ namespace AccountCreation
 				{
 					securitySignature.Text = "";
 				}
-
-
 				if (supervisorCheckBox.Checked)
 				{
 					supervisorSignature.Text = user.Edipi;
@@ -124,6 +123,17 @@ namespace AccountCreation
 			{
 				_formview.Visible = false;
 			}
+		}
+
+		protected void _updateCancelButton_Click(object sender, EventArgs e)
+		{
+			_formview.Visible = false;
+		}
+
+		protected void _formview_ItemUpdated(object sender, FormViewUpdatedEventArgs e)
+		{
+			_gridview.DataBind();
+			_formview.Visible = false;
 		}
 	}
 }
