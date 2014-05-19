@@ -10,8 +10,9 @@
         </EntityContainer>
         <EntityType Name="tblAcctCreate_Auto">
           <Key>
-            <PropertyRef Name="EDIPI" />
+            <PropertyRef Name="ID_Num" />
           </Key>
+          <Property Name="ID_Num" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="EDIPI" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="256" />
           <Property Name="SamAccountName" Type="varchar" MaxLength="256" />
@@ -24,8 +25,8 @@
           <Property Name="Persona" Type="nvarchar" MaxLength="256" />
           <Property Name="Phone" Type="char" MaxLength="12" />
           <Property Name="Rank" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="RequestedDate" Type="datetime" />
           <Property Name="Created" Type="datetime" />
-          <Property Name="ModifiedDate" Type="datetime" />
           <Property Name="Department" Type="varchar" Nullable="false" MaxLength="128" />
           <Property Name="Org" Type="nvarchar" MaxLength="256" />
           <Property Name="Branch" Type="nvarchar" Nullable="false" MaxLength="256" />
@@ -37,9 +38,11 @@
           <Property Name="SIPR" Type="tinyint" />
           <Property Name="HomeFolder" Type="nvarchar" MaxLength="256" />
           <Property Name="SupSigned" Type="tinyint" />
-          <Property Name="SupName" Type="varchar" MaxLength="256" />
+          <Property Name="SupEDIPI" Type="nvarchar" MaxLength="50" />
+          <Property Name="SupDateSigned" Type="datetime" />
           <Property Name="SecSigned" Type="tinyint" />
-          <Property Name="SecName" Type="varchar" MaxLength="256" />
+          <Property Name="SecEDIPI" Type="nvarchar" MaxLength="50" />
+          <Property Name="SecDateSigned" Type="datetime" />
           <Property Name="AcctStatus" Type="tinyint" />
         </EntityType>
       </Schema></edmx:StorageModels>
@@ -51,13 +54,14 @@
         </EntityContainer>
         <EntityType Name="AccountRequest">
           <Key>
-            <PropertyRef Name="Edipi" />
+            <PropertyRef Name="Id" />
           </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" />
           <Property Name="Edipi" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
           <Property Name="LName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="FName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Mi" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
           <Property Name="Rank" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
           <Property Name="Org" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
           <Property Name="Department" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
@@ -67,9 +71,9 @@
           <Property Name="Room" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Office" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
           <Property Name="Phone" Type="String" MaxLength="12" Unicode="false" FixedLength="true" />
+          <Property Type="DateTime" Name="RequestedDate" Precision="3" />
           <Property Name="Persona" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
           <Property Name="Created" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
           <Property Name="SamAccountName" Type="String" MaxLength="256" Unicode="false" FixedLength="false" />
           <Property Name="HomeFolder" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
           <Property Name="NiprReg" Type="Byte" />
@@ -79,9 +83,11 @@
           <Property Name="Sipr" Type="Byte" />
           <Property Name="SupSigned" Type="Byte" />
           <Property Name="SecSigned" Type="Byte" />
+          <Property Type="String" Name="SupEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="SupDateSigned" Precision="3" />
+          <Property Type="String" Name="SecEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="SecDateSigned" Precision="3" />
           <Property Name="AcctStatus" Type="Byte" />
-          <Property Type="String" Name="SupName" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="SecName" MaxLength="256" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -92,8 +98,12 @@
           <EntitySetMapping Name="AccountRequests">
             <EntityTypeMapping TypeName="CarsonAccountModel.AccountRequest">
               <MappingFragment StoreEntitySet="tblAcctCreate_Auto">
-                <ScalarProperty Name="SecName" ColumnName="SecName" />
-                <ScalarProperty Name="SupName" ColumnName="SupName" />
+                <ScalarProperty Name="SecDateSigned" ColumnName="SecDateSigned" />
+                <ScalarProperty Name="SecEdipi" ColumnName="SecEDIPI" />
+                <ScalarProperty Name="SupDateSigned" ColumnName="SupDateSigned" />
+                <ScalarProperty Name="SupEdipi" ColumnName="SupEDIPI" />
+                <ScalarProperty Name="RequestedDate" ColumnName="RequestedDate" />
+                <ScalarProperty Name="Id" ColumnName="ID_Num" />
                 <ScalarProperty Name="Edipi" ColumnName="EDIPI" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="SamAccountName" ColumnName="SamAccountName" />
@@ -107,7 +117,6 @@
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Rank" ColumnName="Rank" />
                 <ScalarProperty Name="Created" ColumnName="Created" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="Department" ColumnName="Department" />
                 <ScalarProperty Name="Org" ColumnName="Org" />
                 <ScalarProperty Name="Branch" ColumnName="Branch" />

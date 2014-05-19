@@ -21,7 +21,7 @@
 	<asp:FormView ID="_verifyForm" runat="server"
 		Visible="false" 
 		RenderOuterTable="False" 
-		DataKeyNames="Edipi" 
+		DataKeyNames="Id" 
 		DataSourceID="_verifyEDS" 
 		OnDataBound="_rank_DataBound">
 		<EditItemTemplate>
@@ -277,7 +277,7 @@
 						<span class="input-group-addon">
 							<asp:CheckBox ID="_supervisorCheckBox" runat="server" OnCheckedChanged="_CheckBox_CheckedChanged" />
 						</span>
-						<asp:TextBox ID="_supervisorSignature" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("SupName") %>'  />
+						<asp:TextBox ID="_supervisorSignature" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("SupEdipi") %>'  />
 					</div>
 				</div>
 				<label for="_securityCheckBox" class="col-sm-2 control-label">Security Manager:</label>
@@ -286,7 +286,7 @@
 						<span class="input-group-addon">
 							<asp:CheckBox ID="_securityCheckBox" OnCheckedChanged="_CheckBox_CheckedChanged"  runat="server" />
 						</span>
-						<asp:TextBox ID="_securitySignature" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("SecName") %>'  />
+						<asp:TextBox ID="_securitySignature" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("SecEdipi") %>'  />
 					</div>
 				</div>
 			</div>
@@ -314,8 +314,8 @@
 <%--			<asp:PropertyExpression>
 		<asp:ControlParameter ControlID="_searchBox" Name="Edipi" />
 		</asp:PropertyExpression>	--%>
-		<asp:SearchExpression DataFields="Edipi, LName, FName">
-			<asp:ControlParameter ControlID="_searchBox" Name="Edipi" />
+		<asp:SearchExpression DataFields="LName, FName, Edipi">
+			<asp:ControlParameter ControlID="_searchBox" />
 		</asp:SearchExpression>
 	</asp:QueryExtender>
 </asp:Content>

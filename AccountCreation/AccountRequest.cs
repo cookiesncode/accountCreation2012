@@ -14,11 +14,12 @@ namespace AccountCreation
     
     public partial class AccountRequest
     {
+        public int Id { get; set; }
         public string Edipi { get; set; }
-        public string Email { get; set; }
         public string LName { get; set; }
         public string FName { get; set; }
         public string Mi { get; set; }
+        public string Email { get; set; }
         public string Rank { get; set; }
         public string Org { get; set; }
         public string Department { get; set; }
@@ -28,9 +29,9 @@ namespace AccountCreation
         public string Room { get; set; }
         public string Office { get; set; }
         public string Phone { get; set; }
+        public Nullable<System.DateTime> RequestedDate { get; set; }
         public string Persona { get; set; }
         public Nullable<System.DateTime> Created { get; set; }
-        public Nullable<System.DateTime> ModifiedDate { get; set; }
         public string SamAccountName { get; set; }
         public string HomeFolder { get; set; }
         public Nullable<byte> NiprReg { get; set; }
@@ -40,8 +41,10 @@ namespace AccountCreation
         public Nullable<byte> Sipr { get; set; }
         public Nullable<byte> SupSigned { get; set; }
         public Nullable<byte> SecSigned { get; set; }
+        public string SupEdipi { get; set; }
+        public Nullable<System.DateTime> SupDateSigned { get; set; }
+        public string SecEdipi { get; set; }
+        public Nullable<System.DateTime> SecDateSigned { get; set; }
         public Nullable<byte> AcctStatus { get; set; }
-        public string SupName { get; set; }
-        public string SecName { get; set; }
     }
 }
