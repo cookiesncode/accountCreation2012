@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Request Verification" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="Verification.aspx.cs" Inherits="AccountCreation.Verification" %>
+﻿<%@ Page Title="Request Verification" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="Verification.aspx.cs" Inherits="AccountCreation.Verification" MaintainScrollPositionOnPostback="true" %>
 
 <asp:Content ID="_childHead" ContentPlaceHolderID="_masterHead" runat="server">
 </asp:Content>
@@ -23,7 +23,8 @@
 		RenderOuterTable="False" 
 		DataKeyNames="Id" 
 		DataSourceID="_verifyEDS" 
-		OnDataBound="_rank_DataBound">
+		OnDataBound="_verifyForm_DataBound"
+		DefaultMode="Edit">
 		<EditItemTemplate>
 			<div class="form-group">
 				<label for="_edipi" class="col-sm-2 control-label">EDIPI:</label>
@@ -132,10 +133,31 @@
 					<asp:TextBox ID="_phone" CssClass="form-control" runat="server" Text='<%# Bind("Phone") %>' />
 				</div>
 			</div>
-			
+
+			<div class="form-group">
+				<label for="_supervisorCheckBox" class="col-sm-2 control-label">Supervisor:</label>
+				<div class="col-sm-4">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<asp:CheckBox ID="_supervisorCheckBox" runat="server" OnCheckedChanged="_CheckBox_CheckedChanged" AutoPostBack="True" />
+						</span>
+						<asp:TextBox ID="_supervisorSignature" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("SupEdipi") %>' />
+					</div>
+				</div>
+				<label for="_securityCheckBox" class="col-sm-2 control-label">Security Manager:</label>
+				<div class="col-sm-4">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<asp:CheckBox ID="_securityCheckBox" OnCheckedChanged="_CheckBox_CheckedChanged"  runat="server" AutoPostBack="True" />
+						</span>
+						<asp:TextBox ID="_securitySignature" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("SecEdipi") %>' />
+					</div>
+				</div>
+			</div>
+
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<asp:Button ID="_updateButton" CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Update" />
+					<asp:Button ID="_updateButton" CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Update request" />
 					<asp:Button ID="_updateCancelButton" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
 				</div>
 			</div>
@@ -143,12 +165,12 @@
 		<EmptyDataTemplate>
 			<p>No records have been found.</p>
 		</EmptyDataTemplate>
-		<ItemTemplate>			
+<%--		<ItemTemplate>			
 			<div class="form-group">
 				<label for="_edipi" class="col-sm-2 control-label">EDIPI:</label>
 				<div class="col-sm-3">
 					<p class="form-control-static">
-						<asp:Literal ID="_edipi" runat="server" Text='<%# Bind("Edipi") %>'  />
+						<asp:Literal ID="_edipi" runat="server" Text='<%# Eval("Edipi") %>'  />
 					</p>
 				</div>
 			</div>
@@ -157,7 +179,7 @@
 				<label for="_lName" class="col-sm-2 control-label">Last Name:</label>
 				<div class="col-sm-3">
 					<p class="form-control-static">
-						<asp:Literal ID="_lName" runat="server" Text='<%# Bind("LName") %>' />
+						<asp:Literal ID="_lName" runat="server" Text='<%# Eval("LName") %>' />
 					</p>
 				</div>
 			</div>
@@ -166,7 +188,7 @@
 				<label for="_fName" class="col-sm-2 control-label">First Name:</label>
 				<div class="col-sm-3">
 					<p class="form-control-static">
-						<asp:Literal ID="_fName" runat="server" Text='<%# Bind("FName") %>' />
+						<asp:Literal ID="_fName" runat="server" Text='<%# Eval("FName") %>' />
 					</p>
 				</div>
 			</div>
@@ -175,7 +197,7 @@
 				<label for="_middleInitial" class="col-sm-2 control-label">MI:</label>
 				<div class="col-sm-1">
 					<p class="form-control-static">
-						<asp:Literal ID="_middleInitial" runat="server" Text='<%# Bind("Mi") %>' />
+						<asp:Literal ID="_middleInitial" runat="server" Text='<%# Eval("Mi") %>' />
 					</p>
 				</div>
 			</div>
@@ -184,7 +206,7 @@
 				<label for="_email" class="col-sm-2 control-label">AKO Email:</label>
 				<div class="col-sm-3">
 					<p class="form-control-static">
-						<asp:Literal ID="_email" runat="server" Text='<%# Bind("Email") %>' />
+						<asp:Literal ID="_email" runat="server" Text='<%# Eval("Email") %>' />
 					</p>
 				</div>
 			</div>
@@ -193,7 +215,7 @@
 				<label for="_rank" class="col-sm-2 control-label">Rank:</label>
 				<div class="col-sm-3">
 					<p class="form-control-static">
-						<asp:Literal ID="_rank" runat="server" Text='<%# Bind("Rank") %>' />
+						<asp:Literal ID="_rank" runat="server" Text='<%# Eval("Rank") %>' />
 					</p>
 				</div>
 			</div>
@@ -202,7 +224,7 @@
 				<label for="_branch" class="col-sm-2 control-label">Branch:</label>
 				<div class="col-sm-3">
 					<p class="form-control-static">
-						<asp:Literal ID="_branch" runat="server" Text='<%# Bind("Branch") %>' />
+						<asp:Literal ID="_branch" runat="server" Text='<%# Eval("Branch") %>' />
 					</p>
 				</div>
 			</div>
@@ -211,7 +233,7 @@
 				<label for="_org" class="col-sm-2 control-label">Organization:</label>
 				<div class="col-sm-3">
 					<p class="form-control-static">
-						<asp:Literal ID="_org" runat="server" Text='<%# Bind("Org") %>' />
+						<asp:Literal ID="_org" runat="server" Text='<%# Eval("Org") %>' />
 					</p>
 				</div>
 			</div>
@@ -220,7 +242,7 @@
 				<label for="_department" class="col-sm-2 control-label">Department:</label>
 				<div class="col-sm-3">
 					<p class="form-control-static">
-						<asp:Literal ID="_department" runat="server" Text='<%# Bind("Department") %>' />
+						<asp:Literal ID="_department" runat="server" Text='<%# Eval("Department") %>' />
 					</p>
 				</div>
 			</div>
@@ -229,7 +251,7 @@
 				<label for="_installation" class="col-sm-2 control-label">Installation:</label>
 				<div class="col-sm-3">
 					<p class="form-control-static">
-						<asp:Literal ID="_installation" runat="server" Text='<%# Bind("Installation") %>' />
+						<asp:Literal ID="_installation" runat="server" Text='<%# Eval("Installation") %>' />
 					</p>
 				</div>
 			</div>
@@ -238,7 +260,7 @@
 				<label for="_bldgNum" class="col-sm-2 control-label">Bldg Number:</label>
 				<div class="col-sm-3">
 					<p class="form-control-static">
-						<asp:Literal ID="_bldgNum" runat="server" Text='<%# Bind("Bldg") %>' />
+						<asp:Literal ID="_bldgNum" runat="server" Text='<%# Eval("Bldg") %>' />
 					</p>
 				</div>
 			</div>
@@ -247,7 +269,7 @@
 				<label for="_roomNum" class="col-sm-2 control-label">Room Number:</label>
 				<div class="col-sm-3">
 					<p class="form-control-static">
-						<asp:Literal ID="_roomNum" runat="server" Text='<%# Bind("Room") %>' />
+						<asp:Literal ID="_roomNum" runat="server" Text='<%# Eval("Room") %>' />
 					</p>
 				</div>
 			</div>
@@ -256,7 +278,7 @@
 				<label for="_office" class="col-sm-2 control-label">Office:</label>
 				<div class="col-sm-3">
 					<p class="form-control-static">
-						<asp:Literal ID="_office" runat="server" Text='<%# Bind("Office") %>' />
+						<asp:Literal ID="_office" runat="server" Text='<%# Eval("Office") %>' />
 					</p>
 				</div>
 			</div>
@@ -265,39 +287,36 @@
 				<label for="_phone" class="col-sm-2 control-label">Phone Number:</label>
 				<div class="col-sm-3">
 					<p class="form-control-static">
-						<asp:Literal ID="_phone" runat="server" Text='<%# Bind("Phone") %>' />
+						<asp:Literal ID="_phone" runat="server" Text='<%# Eval("Phone") %>' />
 					</p>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label for="_supervisorCheckBox" class="col-sm-2 control-label">Supervisor:</label>
-				<div class="col-sm-4">
-					<div class="input-group">
-						<span class="input-group-addon">
-							<asp:CheckBox ID="_supervisorCheckBox" runat="server" OnCheckedChanged="_CheckBox_CheckedChanged" />
-						</span>
-						<asp:TextBox ID="_supervisorSignature" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("SupEdipi") %>'  />
-					</div>
+				<label for="_supSignature" class="col-sm-2 control-label">Supervisor's Edipi:</label>
+				<div class="col-sm-3">
+					<p class="form-control-static">
+						<asp:Literal ID="_supSignature" runat="server" Text='<%# Eval("SupEdipi") %>' />
+					</p>
 				</div>
-				<label for="_securityCheckBox" class="col-sm-2 control-label">Security Manager:</label>
-				<div class="col-sm-4">
-					<div class="input-group">
-						<span class="input-group-addon">
-							<asp:CheckBox ID="_securityCheckBox" OnCheckedChanged="_CheckBox_CheckedChanged"  runat="server" />
-						</span>
-						<asp:TextBox ID="_securitySignature" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("SecEdipi") %>'  />
-					</div>
+			</div>
+
+			<div class="form-group">
+				<label for="_secSignature" class="col-sm-2 control-label">Security Manager's Edipi:</label>
+				<div class="col-sm-3">
+					<p class="form-control-static">
+						<asp:Literal ID="_secSignature" runat="server" Text='<%# Eval("SecEdipi") %>' />
+					</p>
 				</div>
 			</div>
 
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<asp:Button ID="_editButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit" CssClass="btn btn-default" />
+					<asp:Button ID="_editButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Update and sign" CssClass="btn btn-default" />
 					<asp:Button ID="_deleteButton" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" CssClass="btn btn-danger" />
 				</div>
 			</div>
-		</ItemTemplate>
+		</ItemTemplate>--%>
 	</asp:FormView>
 
 	<asp:EntityDataSource ID="_verifyEDS" runat="server" 
@@ -309,14 +328,15 @@
 		EntitySetName="AccountRequests">
 	</asp:EntityDataSource>
 	
-	<asp:QueryExtender ID="_edipiQueryExtender" runat="server"
+	<asp:QueryExtender ID="_searchQueryExtender" runat="server"
 		TargetControlID="_verifyEDS">		
-<%--			<asp:PropertyExpression>
-		<asp:ControlParameter ControlID="_searchBox" Name="Edipi" />
-		</asp:PropertyExpression>	--%>
-		<asp:SearchExpression DataFields="LName, FName, Edipi">
+		<asp:SearchExpression DataFields="LName, FName, Edipi" SearchType="Contains">
 			<asp:ControlParameter ControlID="_searchBox" />
 		</asp:SearchExpression>
+<%--		<asp:PropertyExpression>
+			<asp:ControlParameter ControlID="_searchBox" Name="Id" />
+		</asp:PropertyExpression>--%>
+
 	</asp:QueryExtender>
 </asp:Content>
 
