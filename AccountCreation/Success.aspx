@@ -5,7 +5,11 @@
 
 <asp:Content ID="_childMainContent" ContentPlaceHolderID="_masterMainContent" runat="server">
 	<h2 class="page-header">Form Submitted</h2>
-	<p>Please send the link below to your supervisor and security manager, so that they can verify your request and add their appropriate signatures.</p>
+	<p class="lead">Please follow these next steps to complete the process.</p>
+	<ol>
+		<li>Send your supervisor and security manager the link below, so that they may review and verify your request.</li>
+		<li>Wait until your supervisor notifies you that your account has been created. Until then, do not login into the Fort Carson network.</li>
+	</ol>
 	<p><asp:HyperLink ID="_verifyUrl" runat="server">HyperLink</asp:HyperLink></p>
 </asp:Content>
 

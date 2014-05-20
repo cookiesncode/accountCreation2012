@@ -18,10 +18,16 @@
 		<p>If you feel this is incorrect then please... or go to the <a href="RequestType.aspx" class="btn btn-primary btn-xs">Request Type</a> page and try again.</p>
 	</asp:Panel>
 
-	<asp:FormView ID="_requestForm" runat="server" DataKeyNames="Id"
-		DataSourceID="_accountRequestEDS" DefaultMode="Insert" RenderOuterTable="False" OnDataBound="_requestForm_DataBound">		
+	<asp:FormView ID="_requestForm" 
+		runat="server" 
+		DataKeyNames="Id"
+		DataSourceID="_accountRequestEDS" 
+		DefaultMode="Insert" 
+		RenderOuterTable="False" 
+		OnDataBound="_requestForm_DataBound">		
 		<InsertItemTemplate>
-			<p>Please fill out your information.</p>
+			<p class="lead">Please fill out your information.</p>
+			<p class="buffer"><strong class="text-info">Note:</strong> The EDIPI, last name, and first name fields are pre-populated from your CAC card. These are not editable.</p>
 			<div class="form-group">
 				<label for="_edipi" class="col-sm-2 control-label">EDIPI:</label>
 				<div class="col-sm-3">

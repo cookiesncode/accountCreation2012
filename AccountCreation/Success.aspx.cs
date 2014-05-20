@@ -11,11 +11,11 @@ namespace AccountCreation
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			string edipi;
-			if (Request.QueryString["edipi"] != null)
+			string searchValue;
+			if (Request.QueryString["search"] != null)
 			{
-				edipi = Request.QueryString["edipi"];
-				string verifyPageUrl = "Verification.aspx?edipi=" + edipi;
+				searchValue = Request.QueryString["search"];
+				string verifyPageUrl = "https://nec.carson.army.mil/test-account-creation/Verification.aspx?search=" + searchValue;
 				_verifyUrl.Text = verifyPageUrl;
 				_verifyUrl.NavigateUrl = verifyPageUrl;
 			}
