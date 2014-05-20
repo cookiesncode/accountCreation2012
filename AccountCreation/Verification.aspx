@@ -23,29 +23,32 @@
 		</div>
 	</asp:Panel>
 	
-	<div class="table-responsive buffer">
-		<asp:GridView ID="_gridview" runat="server" 
-			CssClass="table table-condensed table-hover"
-			DataKeyNames="Id" 
-			DataSourceID="_gridEntitySource" 
-			GridLines="None"
-			AllowPaging="True" 
-			AutoGenerateColumns="False" 
-			AllowSorting="True" 
-			OnSelectedIndexChanged="_gridview_SelectedIndexChanged"
-			Visible="false" 
-			EmptyDataText="No results found">
-			<Columns>
-				<asp:CommandField ShowSelectButton="True"></asp:CommandField>
-				<asp:BoundField DataField="Edipi" HeaderText="EDIPI" SortExpression="Edipi" />
-				<asp:BoundField DataField="LName" HeaderText="Last Name" SortExpression="LName" />
-				<asp:BoundField DataField="FName" HeaderText="First Name" SortExpression="FName" />
-				<asp:BoundField DataField="Mi" HeaderText="Mi" SortExpression="Mi" />
-				<asp:BoundField DataField="Rank" HeaderText="Rank" SortExpression="Rank" />
-				<asp:BoundField DataField="SupEdipi" HeaderText="Supervisor EDIPI" SortExpression="SupEdipi" />
-				<asp:BoundField DataField="SecEdipi" HeaderText="Security EDIPI" SortExpression="SecEdipi" />
-			</Columns>
-		</asp:GridView>
+	<div class="panel panel-default buffer">
+		<div class="panel-heading">Search Results</div>
+		<div class="table-responsive">
+			<asp:GridView ID="_gridview" runat="server" 
+				CssClass="table table-condensed table-hover"
+				DataKeyNames="Id" 
+				DataSourceID="_gridEntitySource" 
+				GridLines="None"
+				AllowPaging="True" 
+				AutoGenerateColumns="False" 
+				AllowSorting="True" 
+				OnSelectedIndexChanged="_gridview_SelectedIndexChanged"
+				Visible="false" 
+				EmptyDataText="No results found">
+				<Columns>
+					<asp:CommandField ShowSelectButton="True"></asp:CommandField>
+					<asp:BoundField DataField="Edipi" HeaderText="EDIPI" SortExpression="Edipi" />
+					<asp:BoundField DataField="LName" HeaderText="Last Name" SortExpression="LName" />
+					<asp:BoundField DataField="FName" HeaderText="First Name" SortExpression="FName" />
+					<asp:BoundField DataField="Mi" HeaderText="Mi" SortExpression="Mi" />
+					<asp:BoundField DataField="Rank" HeaderText="Rank" SortExpression="Rank" />
+					<asp:BoundField DataField="SupEdipi" HeaderText="Supervisor EDIPI" SortExpression="SupEdipi" />
+					<asp:BoundField DataField="SecEdipi" HeaderText="Security EDIPI" SortExpression="SecEdipi" />
+				</Columns>
+			</asp:GridView>
+		</div>
 	</div>
 	
 	<asp:FormView ID="_formview" runat="server"
@@ -60,7 +63,7 @@
 			<div class="form-group">
 				<label for="_edipi" class="col-sm-2 control-label">EDIPI:</label>
 				<div class="col-sm-3">
-					<asp:TextBox ID="_edipi"  Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("Edipi") %>'  />
+					<asp:TextBox ID="_edipi"  Enabled="false" CssClass="form-control" runat="server" Text='<%# Eval("Edipi") %>'  />
 
 				</div>
 			</div>
@@ -68,7 +71,7 @@
 			<div class="form-group">
 				<label for="_lName" class="col-sm-2 control-label">Last Name:</label>
 				<div class="col-sm-3">
-					<asp:TextBox ID="_lName" CssClass="form-control" Enabled="false" runat="server" Text='<%# Bind("LName") %>' />
+					<asp:TextBox ID="_lName" CssClass="form-control" Enabled="false" runat="server" Text='<%# Eval("LName") %>' />
 
 				</div>
 			</div>
@@ -76,7 +79,7 @@
 			<div class="form-group">
 				<label for="_fName" class="col-sm-2 control-label">First Name:</label>
 				<div class="col-sm-3">
-					<asp:TextBox ID="_fName" CssClass="form-control" Enabled="false" runat="server" Text='<%# Bind("FName") %>' />
+					<asp:TextBox ID="_fName" CssClass="form-control" Enabled="false" runat="server" Text='<%# Eval("FName") %>' />
 				</div>
 			</div>
 				
