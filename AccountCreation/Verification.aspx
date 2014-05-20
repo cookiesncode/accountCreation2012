@@ -7,7 +7,7 @@
 	
 	<h2 class="page-header">Request Verification</h2>
 	
-	<asp:Panel ID="_searchPanel" CssClass="search-panel" DefaultButton="_searchButton" runat="server">
+	<asp:Panel ID="_searchPanel" CssClass="search-panel buffer" DefaultButton="_searchButton" runat="server">
 		<p class="lead">Please search by the <abbr class="initialism" title="Electronic Data Interchange Personal Identifier">EDIPI</abbr> number, last name, or first name.</p>
 		<p><strong class="text-info">Note:</strong> Searching by <abbr class="initialism" title="Electronic Data Interchange Personal Identifier">EDIPI</abbr> gives you more accurate results.</p>
 		
@@ -23,7 +23,7 @@
 		</div>
 	</asp:Panel>
 	
-	<div class="table-responsive">
+	<div class="table-responsive buffer">
 		<asp:GridView ID="_gridview" runat="server" 
 			CssClass="table table-condensed table-hover"
 			DataKeyNames="Id" 
@@ -54,7 +54,8 @@
 		DataSourceID="_formviewEntitySource"
 		OnDataBound="_formview_DataBound"
 		DefaultMode="Edit"
-		Visible="false" OnItemUpdated="_formview_ItemUpdated">
+		Visible="false" 
+		OnItemUpdated="_formview_ItemUpdated">
 		<EditItemTemplate>
 			<div class="form-group">
 				<label for="_edipi" class="col-sm-2 control-label">EDIPI:</label>
