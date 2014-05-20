@@ -7,25 +7,6 @@ h1, h2, h3 {
 	color: #749AAA;
 }
 
-
-/*h1 {
-	margin-bottom: 1em;
-}
-
-h2 {
-	margin: 2em 0 1em;
-	font-size: 26px;
-}
-
-h3 {
-	font-size: 20px;
-}
-
-
-p {
-	margin: 0 0 1em 0;
-}*/
-
 .form-control {
 	color: #000;
 }
@@ -34,3 +15,7 @@ p {
 	margin-bottom: 25px;
 }
 
+.table-responsive, .search-panel
+{
+    margin-bottom: 50px;
+}

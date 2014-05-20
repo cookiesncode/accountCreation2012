@@ -6,46 +6,48 @@
 <asp:Content ID="_childMainContent" ContentPlaceHolderID="_masterMainContent" runat="server">
 	
 	<h2 class="page-header">Request Verification</h2>
-	<asp:Panel ID="_searchPanel" DefaultButton="_searchButton" runat="server">
-		<p>Please search by the EDIPI number, last name, or first name. <small>EDIPI is more efficient</small></p>
+	
+	<asp:Panel ID="_searchPanel" CssClass="search-panel" DefaultButton="_searchButton" runat="server">
+		<p class="lead">Please search by the <abbr class="initialism" title="Electronic Data Interchange Personal Identifier">EDIPI</abbr> number, last name, or first name.</p>
+		<p><strong class="text-info">Note:</strong> Searching by <abbr class="initialism" title="Electronic Data Interchange Personal Identifier">EDIPI</abbr> gives you more accurate results.</p>
+		
 		<div class="form-group">
-			<div class="col-sm-3 col-xs-4 col-md-3 col-lg-2">
-				<asp:TextBox CssClass="form-control" ID="_searchBox" runat="server"></asp:TextBox>
-			</div>
-			<div class="col-sm-2 col-xs-4">
-				<asp:Button ID="_searchButton" CausesValidation="false" CssClass="btn btn-primary" runat="server" Text="Search" OnClick="_searchButton_Click" />
+			<div class="col-xs-6 col-sm-5 col-md-4 col-lg-3">
+				<div class="input-group">
+					<asp:TextBox CssClass="form-control" ID="_searchBox" runat="server"></asp:TextBox>
+					<span class="input-group-btn">
+						<asp:Button ID="_searchButton" CausesValidation="false" CssClass="btn btn-primary" runat="server" Text="Search" OnClick="_searchButton_Click" />
+					</span>
+				</div>
 			</div>
 		</div>
 	</asp:Panel>
-	<asp:GridView ID="_gridview" runat="server" 
-		DataKeyNames="Id" 
-		DataSourceID="_gridEntitySource" 
-		AllowPaging="True" 
-		AutoGenerateColumns="False" 
-		AllowSorting="True" 
-		OnSelectedIndexChanged="_gridview_SelectedIndexChanged"
-		Visible="false" 
-		EmptyDataText="No results found">
-		<Columns>
-			<asp:CommandField ShowSelectButton="True"></asp:CommandField>
-			<asp:BoundField DataField="Edipi" HeaderText="Edipi" SortExpression="Edipi" />
-			<asp:BoundField DataField="LName" HeaderText="LName" SortExpression="LName" />
-			<asp:BoundField DataField="FName" HeaderText="FName" SortExpression="FName" />
-			<asp:BoundField DataField="Mi" HeaderText="Mi" SortExpression="Mi" />
-			<asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
-			<asp:BoundField DataField="Rank" HeaderText="Rank" SortExpression="Rank" />
-			<asp:BoundField DataField="Org" HeaderText="Org" SortExpression="Org" />
-			<asp:BoundField DataField="Department" HeaderText="Department" SortExpression="Department" />
-			<asp:BoundField DataField="Installation" HeaderText="Installation" SortExpression="Installation" />
-			<asp:BoundField DataField="Branch" HeaderText="Branch" SortExpression="Branch" />
-			<asp:BoundField DataField="Bldg" HeaderText="Bldg" SortExpression="Bldg" />
-			<asp:BoundField DataField="Room" HeaderText="Room" SortExpression="Room" />
-			<asp:BoundField DataField="Office" HeaderText="Office" SortExpression="Office" />
-			<asp:BoundField DataField="Phone" HeaderText="Phone" SortExpression="Phone" />
-			<asp:BoundField DataField="SupEdipi" HeaderText="Supervisor's Signature" SortExpression="SupEdipi" />
-			<asp:BoundField DataField="SecEdipi" HeaderText="Security Manager's" SortExpression="SecEdipi" />
-		</Columns>
-	</asp:GridView>
+	
+	<div class="table-responsive">
+		<asp:GridView ID="_gridview" runat="server" 
+			CssClass="table table-condensed table-hover"
+			DataKeyNames="Id" 
+			DataSourceID="_gridEntitySource" 
+			GridLines="None"
+			AllowPaging="True" 
+			AutoGenerateColumns="False" 
+			AllowSorting="True" 
+			OnSelectedIndexChanged="_gridview_SelectedIndexChanged"
+			Visible="false" 
+			EmptyDataText="No results found">
+			<Columns>
+				<asp:CommandField ShowSelectButton="True"></asp:CommandField>
+				<asp:BoundField DataField="Edipi" HeaderText="EDIPI" SortExpression="Edipi" />
+				<asp:BoundField DataField="LName" HeaderText="Last Name" SortExpression="LName" />
+				<asp:BoundField DataField="FName" HeaderText="First Name" SortExpression="FName" />
+				<asp:BoundField DataField="Mi" HeaderText="Mi" SortExpression="Mi" />
+				<asp:BoundField DataField="Rank" HeaderText="Rank" SortExpression="Rank" />
+				<asp:BoundField DataField="SupEdipi" HeaderText="Supervisor's Edipi" SortExpression="SupEdipi" />
+				<asp:BoundField DataField="SecEdipi" HeaderText="Security Edipi" SortExpression="SecEdipi" />
+			</Columns>
+		</asp:GridView>
+	</div>
+	
 	<asp:FormView ID="_formview" runat="server"
 		RenderOuterTable="False"
 		DataKeyNames="Id"
@@ -57,7 +59,9 @@
 			<div class="form-group">
 				<label for="_edipi" class="col-sm-2 control-label">EDIPI:</label>
 				<div class="col-sm-3">
-					<asp:TextBox ID="_edipi"  Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("Edipi") %>'  /></div>
+					<asp:TextBox ID="_edipi"  Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("Edipi") %>'  />
+
+				</div>
 			</div>
 
 			<div class="form-group">
@@ -164,7 +168,7 @@
 
 			<div class="form-group">
 				<label for="_supervisorCheckBox" class="col-sm-2 control-label">Supervisor:</label>
-				<div class="col-sm-4">
+				<div class="col-sm-3">
 					<div class="input-group">
 						<span class="input-group-addon">
 							<asp:CheckBox ID="_supervisorCheckBox" runat="server" OnCheckedChanged="_CheckBox_CheckedChanged" AutoPostBack="True" />
@@ -172,8 +176,11 @@
 						<asp:TextBox ID="_supervisorSignature" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("SupEdipi") %>' />
 					</div>
 				</div>
+			</div>
+
+			<div class="form-group">
 				<label for="_securityCheckBox" class="col-sm-2 control-label">Security Manager:</label>
-				<div class="col-sm-4">
+				<div class="col-sm-3">
 					<div class="input-group">
 						<span class="input-group-addon">
 							<asp:CheckBox ID="_securityCheckBox" OnCheckedChanged="_CheckBox_CheckedChanged"  runat="server" AutoPostBack="True" />
