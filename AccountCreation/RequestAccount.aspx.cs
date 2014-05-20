@@ -51,11 +51,15 @@ namespace AccountCreation
 		{
 			if (_formview.CurrentMode == FormViewMode.Insert)
 			{
+				var edipiControl = (TextBox)(_formview).FindControl("_edipi");
+				var lNameControl = (TextBox)(_formview).FindControl("_lName");
+				var fNameControl = (TextBox)(_formview).FindControl("_fName");
 				var branchControl = (DropDownList)(_formview).FindControl("_branch");
 				var departmentControl = (DropDownList)(_formview).FindControl("_department");
 				//var installationControl = (DropDownList)(_formview).FindControl("_installation");
 				//var orgControl = (DropDownList)(_formview).FindControl("_org");
 				var rankControl = (DropDownList)(_formview).FindControl("_rank");
+				var date = (TextBox)(_formview).FindControl("_date");
 
 				foreach (string item in Setting.Rank)
 				{
@@ -69,13 +73,10 @@ namespace AccountCreation
 				{
 					branchControl.Items.Add(new ListItem(item, item));
 				}
-
-				var edipiControl = (TextBox)(_formview).FindControl("_edipi");
-				var lNameControl = (TextBox)(_formview).FindControl("_lName");
-				var fNameControl = (TextBox)(_formview).FindControl("_fName");
 				edipiControl.Text = user.Edipi;
 				lNameControl.Text = user.LastName;
 				fNameControl.Text = user.FirstName;
+				date.Text = DateTime.Now.ToString();
 
 				if (user.FirstName != null)
 				{
@@ -88,7 +89,7 @@ namespace AccountCreation
 
 		protected void _formview_ItemInserted(object sender, FormViewInsertedEventArgs e)
 		{
-			string successUrl = string.Format("Success.aspx?search={0}", user.Edipi);
+			string successUrl = "Success.aspx?search=" + user.Edipi;
 			Response.Redirect(successUrl);
 		}
 
@@ -97,6 +98,18 @@ namespace AccountCreation
 			if (Page.IsValid)
 			{
 				_formview.InsertItem(true);
+			}
+		}
+
+		protected void _middleInitialValidator_ServerValidate(object source, ServerValidateEventArgs args)
+		{
+			if (args.Value.Length > 1)
+			{
+				args.IsValid = false;
+			}
+			else
+			{
+				args.IsValid = true;
 			}
 		}
 	}
