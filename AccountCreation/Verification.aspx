@@ -42,8 +42,8 @@
 				<asp:BoundField DataField="FName" HeaderText="First Name" SortExpression="FName" />
 				<asp:BoundField DataField="Mi" HeaderText="Mi" SortExpression="Mi" />
 				<asp:BoundField DataField="Rank" HeaderText="Rank" SortExpression="Rank" />
-				<asp:BoundField DataField="SupEdipi" HeaderText="Supervisor's Edipi" SortExpression="SupEdipi" />
-				<asp:BoundField DataField="SecEdipi" HeaderText="Security Edipi" SortExpression="SecEdipi" />
+				<asp:BoundField DataField="SupEdipi" HeaderText="Supervisor EDIPI" SortExpression="SupEdipi" />
+				<asp:BoundField DataField="SecEdipi" HeaderText="Security EDIPI" SortExpression="SecEdipi" />
 			</Columns>
 		</asp:GridView>
 	</div>
