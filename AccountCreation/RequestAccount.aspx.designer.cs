@@ -58,22 +58,31 @@ namespace AccountCreation {
         protected global::System.Web.UI.WebControls.Panel _redirectMessage;
         
         /// <summary>
-        /// _requestForm control.
+        /// _formview control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView _requestForm;
+        protected global::System.Web.UI.WebControls.FormView _formview;
         
         /// <summary>
-        /// _accountRequestEDS control.
+        /// _validationSummary control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.EntityDataSource _accountRequestEDS;
+        protected global::System.Web.UI.WebControls.ValidationSummary _validationSummary;
+        
+        /// <summary>
+        /// _formviewEntitySource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.EntityDataSource _formviewEntitySource;
         
         /// <summary>
         /// PreviousPage property.

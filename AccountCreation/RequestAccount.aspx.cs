@@ -30,7 +30,7 @@ namespace AccountCreation
 					_niprName.Text = user.AccountInfo.NiprAccountName;
 					_niprResults.Visible = true;
 					_redirectMessage.Visible = true;
-					_requestForm.Visible = false;
+					_formview.Visible = false;
 				}
 
 				if (PreviousPage.VpnRequest && user.AccountInfo.queryForVpn())
@@ -38,7 +38,7 @@ namespace AccountCreation
 					_vpnGroup.Text = user.AccountInfo.VpnGroupName;
 					_vpnResults.Visible = true;
 					_redirectMessage.Visible = true;
-					_requestForm.Visible = false;
+					_formview.Visible = false;
 				}
 			}
 			else if (!IsPostBack)
@@ -49,13 +49,13 @@ namespace AccountCreation
 		
 		protected void _requestForm_DataBound(object sender, EventArgs e)
 		{
-			if (_requestForm.CurrentMode == FormViewMode.Insert)
+			if (_formview.CurrentMode == FormViewMode.Insert)
 			{
-				var branchControl = (DropDownList)(_requestForm).FindControl("_branch");
-				var departmentControl = (DropDownList)(_requestForm).FindControl("_department");
-				//var installationControl = (DropDownList)(_requestForm).FindControl("_installation");
-				//var orgControl = (DropDownList)(_requestForm).FindControl("_org");
-				var rankControl = (DropDownList)(_requestForm).FindControl("_rank");
+				var branchControl = (DropDownList)(_formview).FindControl("_branch");
+				var departmentControl = (DropDownList)(_formview).FindControl("_department");
+				//var installationControl = (DropDownList)(_formview).FindControl("_installation");
+				//var orgControl = (DropDownList)(_formview).FindControl("_org");
+				var rankControl = (DropDownList)(_formview).FindControl("_rank");
 
 				foreach (string item in Setting.Rank)
 				{
@@ -70,9 +70,9 @@ namespace AccountCreation
 					branchControl.Items.Add(new ListItem(item, item));
 				}
 
-				var edipiControl = (TextBox)(_requestForm).FindControl("_edipi");
-				var lNameControl = (TextBox)(_requestForm).FindControl("_lName");
-				var fNameControl = (TextBox)(_requestForm).FindControl("_fName");
+				var edipiControl = (TextBox)(_formview).FindControl("_edipi");
+				var lNameControl = (TextBox)(_formview).FindControl("_lName");
+				var fNameControl = (TextBox)(_formview).FindControl("_fName");
 				edipiControl.Text = user.Edipi;
 				lNameControl.Text = user.LastName;
 				fNameControl.Text = user.FirstName;
@@ -86,11 +86,18 @@ namespace AccountCreation
 			}
 		}
 
-		protected void _submitBtn_Click(object sender, EventArgs e)
+		protected void _formview_ItemInserted(object sender, FormViewInsertedEventArgs e)
 		{
-
 			string successUrl = string.Format("Success.aspx?search={0}", user.Edipi);
 			Response.Redirect(successUrl);
+		}
+
+		protected void _formview_ItemInserting(object sender, FormViewInsertEventArgs e)
+		{
+			if (Page.IsValid)
+			{
+				_formview.InsertItem(true);
+			}
 		}
 	}
 }
