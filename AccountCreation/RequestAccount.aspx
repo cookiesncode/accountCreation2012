@@ -56,7 +56,7 @@
 				<label for="_middleInitial" class="col-sm-2 control-label">MI:</label>
 				<div class="col-sm-1">
 					<asp:TextBox ID="_middleInitial" CssClass="form-control" runat="server" Text='<%# Bind("Mi") %>' />
-					<asp:CustomValidator ID="_middleInitialValidator" CssClass="label label-warning" ControlToValidate="_middleInitial" runat="server" ErrorMessage="MI: Please insert only one letter for your middle initial." Text="Requires your attention." OnServerValidate="_middleInitialValidator_ServerValidate"></asp:CustomValidator>
+					<asp:CustomValidator ID="_middleInitialValidator" CssClass="label label-warning" ControlToValidate="_middleInitial" runat="server" ErrorMessage="MI: Please insert only one letter for your middle initial." Text="Requires your attention" OnServerValidate="_middleInitialValidator_ServerValidate"></asp:CustomValidator>
 				</div>
 			</div>
 		
@@ -75,7 +75,45 @@
 					<asp:DropDownList ID="_rank" CssClass="form-control" runat="server" Text='<%# Bind("Rank") %>' AppendDataBoundItems="true">
 						<asp:ListItem Text="-- Select Rank --" Value="" />
 					</asp:DropDownList>
-					<asp:RequiredFieldValidator CssClass="label label-warning" ID="_rankRequiredValidator" runat="server" ErrorMessage="Rank: Please select your rank." ControlToValidate="_rank" Text="Requires your attention." Display="Dynamic"></asp:RequiredFieldValidator>
+					<asp:RequiredFieldValidator CssClass="label label-warning" ID="_rankRequiredValidator" runat="server" ErrorMessage="Rank: Please select your rank." ControlToValidate="_rank" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+				</div>
+			</div>
+	
+			<div class="form-group">
+				<label for="_branch" class="col-sm-2 control-label">Branch:</label>
+				<div class="col-sm-3">
+					<asp:DropDownList ID="_branch" CssClass="form-control" runat="server" Text='<%# Bind("Branch") %>'>
+						<asp:ListItem Text="-- Select Branch --" Value="" />
+					</asp:DropDownList>
+					<asp:RequiredFieldValidator CssClass="label label-warning" ID="_branchRequiredValidator" runat="server" ErrorMessage="Branch: Please select your branch." ControlToValidate="_branch" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="_org" class="col-sm-2 control-label">Organization:</label>
+				<div class="col-sm-3">
+					<asp:DropDownList ID="_org" CssClass="form-control" AppendDataBoundItems="true" runat="server" Text='<%# Bind("Org") %>'>
+						<asp:ListItem Text="-- Select Organization --" Value="" />
+					</asp:DropDownList>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="_department" class="col-sm-2 control-label">Department:</label>
+				<div class="col-sm-3">
+					<asp:DropDownList ID="_department" CssClass="form-control" runat="server" Text='<%# Bind("Department") %>'>
+						<asp:ListItem Text="-- Select Department --" Value="" />
+					</asp:DropDownList>
+					<asp:RequiredFieldValidator CssClass="label label-warning" ID="_deptRequiredValidator" runat="server" ErrorMessage="Department: Please select your department." ControlToValidate="_department" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="_installation" class="col-sm-2 control-label">Installation:</label>
+				<div class="col-sm-3">
+					<asp:DropDownList ID="_installation" CssClass="form-control" runat="server" Text='<%# Bind("Installation") %>'>
+						<asp:ListItem Text="-- Select Installation --" Value="" />
+					</asp:DropDownList>
 				</div>
 			</div>
 
@@ -110,44 +148,7 @@
 					<asp:RegularExpressionValidator ID="RegularExpressionValidator1" CssClass="label label-warning" ControlToValidate="_phone" runat="server" ErrorMessage="Phone: Please enter a valid number." Display="Dynamic" ValidationExpression="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}">Requires your attention.</asp:RegularExpressionValidator>
 				</div>
 			</div>
-
-			<div class="form-group">
-				<label for="_department" class="col-sm-2 control-label">Department:</label>
-				<div class="col-sm-3">
-					<asp:DropDownList ID="_department" CssClass="form-control" runat="server" Text='<%# Bind("Department") %>'>
-						<asp:ListItem Text="-- Select Department --" Value="" />
-					</asp:DropDownList>
-					<asp:RequiredFieldValidator CssClass="label label-warning" ID="_deptRequiredValidator" runat="server" ErrorMessage="Department: Please select your department." ControlToValidate="_department" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
-				</div>
-			</div>
 					
-<%--			<div class="form-group">
-				<label for="_org" class="col-sm-2 control-label">Organization:</label>
-				<div class="col-sm-3">
-					<asp:DropDownList ID="_org" CssClass="form-control" AppendDataBoundItems="true" runat="server" Text='<%# Bind("Org") %>'>
-						<asp:ListItem Text="-- Select Organization --" Value="" />
-					</asp:DropDownList>
-				</div>
-			</div>--%>
-
-			<div class="form-group">
-				<label for="_branch" class="col-sm-2 control-label">Branch:</label>
-				<div class="col-sm-3">
-					<asp:DropDownList ID="_branch" CssClass="form-control" runat="server" Text='<%# Bind("Branch") %>'>
-						<asp:ListItem Text="-- Select Branch --" Value="" />
-					</asp:DropDownList>
-					<asp:RequiredFieldValidator CssClass="label label-warning" ID="_branchRequiredValidator" runat="server" ErrorMessage="Branch: Please select your branch." ControlToValidate="_branch" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
-				</div>
-			</div>
-					
-<%--			<div class="form-group">
-				<label for="_installation" class="col-sm-2 control-label">Installation:</label>
-				<div class="col-sm-3">
-					<asp:DropDownList ID="_installation" CssClass="form-control" runat="server" Text='<%# Bind("Installation") %>'>
-						<asp:ListItem Text="-- Select Installation --" Value="" />
-					</asp:DropDownList>
-				</div>
-			</div>--%>
 			<asp:TextBox CssClass="hidden" ID="_date" Text='<%# Bind("RequestedDate") %>' runat="server"></asp:TextBox>
 			
 			<div class="form-group">
@@ -159,7 +160,8 @@
 		</InsertItemTemplate>
 	</asp:FormView>
 
-	<asp:ValidationSummary CssClass="alert alert-danger" ID="_validationSummary" runat="server" />							
+	<asp:ValidationSummary CssClass="alert alert-danger" ID="_validationSummary" runat="server" />
+								
 	<asp:EntityDataSource ID="_formviewEntitySource" 
 		runat="server" 
 		ConnectionString="name=CarsonAccountEntities" 
