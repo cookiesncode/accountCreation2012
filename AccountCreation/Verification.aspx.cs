@@ -135,5 +135,17 @@ namespace AccountCreation
 			_gridview.DataBind();
 			_formview.Visible = false;
 		}
+
+		protected void _middleInitialValidator_ServerValidate(object source, ServerValidateEventArgs args)
+		{
+			if (args.Value.Length > 1)
+			{
+				args.IsValid = false;
+			}
+			else
+			{
+				args.IsValid = true;
+			}
+		}
 	}
 }
