@@ -14,11 +14,12 @@
 		<div class="form-group">
 			<div class="col-xs-6 col-sm-5 col-md-4 col-lg-3">
 				<div class="input-group">
-					<asp:TextBox CssClass="form-control" ID="_searchBox" runat="server"></asp:TextBox>
+					<asp:TextBox CssClass="form-control" ID="_searchBox" runat="server" ValidationGroup="_searchValidationGroup"></asp:TextBox>
 					<span class="input-group-btn">
-						<asp:Button ID="_searchButton" data-loading-text="Searching..." CausesValidation="false" CssClass="btn btn-primary" runat="server" Text="Search" OnClick="_searchButton_Click" />
+						<asp:Button ID="_searchButton" data-loading-text="Searching..." CausesValidation="false" CssClass="btn btn-primary" ValidationGroup="_searchValidationGroup" runat="server" Text="Search" OnClick="_searchButton_Click" />
 					</span>
 				</div>
+				<asp:RequiredFieldValidator ID="_searchRequiredValidator" runat="server" ErrorMessage="Enter your search criteria" Display="Dynamic" CssClass="label label-warning" ControlToValidate="_searchBox" ValidationGroup="_searchValidationGroup"></asp:RequiredFieldValidator>
 			</div>
 		</div>
 	</asp:Panel>
@@ -44,6 +45,7 @@
 					<asp:BoundField DataField="FName" HeaderText="First Name" SortExpression="FName" />
 					<asp:BoundField DataField="Mi" HeaderText="Mi" SortExpression="Mi" />
 					<asp:BoundField DataField="Rank" HeaderText="Rank" SortExpression="Rank" />
+					<asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
 					<asp:BoundField DataField="SupEdipi" HeaderText="Supervisor EDIPI" SortExpression="SupEdipi" />
 					<asp:BoundField DataField="SecEdipi" HeaderText="Security EDIPI" SortExpression="SecEdipi" />
 				</Columns>
