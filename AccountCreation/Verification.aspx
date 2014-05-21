@@ -229,14 +229,12 @@
 								</div>
 							</div>
 						</div>
-					</div> <%-- End Signature block --%>
-	
-					<div class="form-group">
-						<div class="col-sm-12">
-							<asp:Button ID="_updateButton" CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Sign off request" />
-							<asp:Button ID="_updateCancelButton" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" OnClick="_updateCancelButton_Click" />
+						<div class="panel-footer">
+							<asp:Button ID="_updateButton" CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Verify Request" />
+							<asp:Button ID="_cancelButton" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" OnClick="_cancelButton_Click" />
 						</div>
-					</div> <%-- End Submit form block --%>
+					</div> <%-- End Signature block --%>
+					<asp:ValidationSummary CssClass="alert alert-danger" ID="_validationSummary" runat="server" />	
 				</div>
 			</div>
 		
@@ -245,8 +243,6 @@
 			<p>No records have been found.</p>
 		</EmptyDataTemplate>
 	</asp:FormView>
-
-	<asp:ValidationSummary CssClass="alert alert-danger" ID="_validationSummary" runat="server" />	
 
 	<asp:EntityDataSource ID="_gridEntitySource" runat="server" 
 		ConnectionString="name=CarsonAccountEntities" 

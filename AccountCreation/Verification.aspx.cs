@@ -40,16 +40,22 @@ namespace AccountCreation
 				var branchControl = (DropDownList)(_formview).FindControl("_branch");
 				var departmentControl = (DropDownList)(_formview).FindControl("_department");
 				var rankControl = (DropDownList)(_formview).FindControl("_rank");
-				var securityCheckBox = (CheckBox)(_formview).FindControl("_securityCheckBox");
-				var supervisorCheckBox = (CheckBox)(_formview).FindControl("_supervisorCheckBox");
 				var securitySignature = (TextBox)(_formview).FindControl("_securitySignature");
 				var supervisorSignature = (TextBox)(_formview).FindControl("_supervisorSignature");
+				var securityCheckBox = (CheckBox)(_formview).FindControl("_securityCheckBox");
+				var supervisorCheckBox = (CheckBox)(_formview).FindControl("_supervisorCheckBox");
+				//var supervisorPlaceholder = (PlaceHolder)(_formview).FindControl("_supervisorPlacholder");
+				//var securityPlaceholder = (PlaceHolder)(_formview).FindControl("_securityPlaceholder");
+
 				if (securitySignature.Text.Length > 0)
 				{
+					securityCheckBox.Enabled = false;
 					securityCheckBox.Checked = true;
 				}
+
 				if (supervisorSignature.Text.Length > 0)
 				{
+					supervisorCheckBox.Enabled = false;
 					supervisorCheckBox.Checked = true;
 				}
 
@@ -102,6 +108,7 @@ namespace AccountCreation
 				{
 					securitySignature.Text = "";
 				}
+
 				if (supervisorCheckBox.Checked)
 				{
 					supervisorSignature.Text = user.Edipi;
@@ -125,9 +132,10 @@ namespace AccountCreation
 			}
 		}
 
-		protected void _updateCancelButton_Click(object sender, EventArgs e)
+		protected void _cancelButton_Click(object sender, EventArgs e)
 		{
 			_formview.Visible = false;
+			_formview.DataBind();
 		}
 
 		protected void _formview_ItemUpdated(object sender, FormViewUpdatedEventArgs e)
