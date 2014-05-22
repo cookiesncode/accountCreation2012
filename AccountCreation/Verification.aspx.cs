@@ -42,6 +42,7 @@ namespace AccountCreation
 				var rankControl = (DropDownList)(_formview).FindControl("_rank");
 				var supervisorSignature = (TextBox)(_formview).FindControl("_supervisorSignature");
 				var supervisorCheckBox = (CheckBox)(_formview).FindControl("_supervisorCheckBox");
+				Button updateButton = null;
 				CheckBox securityCheckBox = null;
 				TextBox securitySignature = null;
 				PlaceHolder securityBoxPlaceholder = (PlaceHolder)(_formview).FindControl("_securityBoxPlaceholder");
@@ -59,6 +60,12 @@ namespace AccountCreation
 				{
 					securityCheckBox.Enabled = false;
 					securityCheckBox.Checked = true;
+				}
+
+				if (supervisorCheckBox.Checked && securityCheckBox.Checked)
+				{
+					updateButton = (Button)(_formview).FindControl("_updateButton");
+					updateButton.Visible = false;
 				}
 
 				foreach (string item in Setting.Rank)
