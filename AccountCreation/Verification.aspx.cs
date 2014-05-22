@@ -40,23 +40,25 @@ namespace AccountCreation
 				var branchControl = (DropDownList)(_formview).FindControl("_branch");
 				var departmentControl = (DropDownList)(_formview).FindControl("_department");
 				var rankControl = (DropDownList)(_formview).FindControl("_rank");
-				var securitySignature = (TextBox)(_formview).FindControl("_securitySignature");
 				var supervisorSignature = (TextBox)(_formview).FindControl("_supervisorSignature");
-				var securityCheckBox = (CheckBox)(_formview).FindControl("_securityCheckBox");
 				var supervisorCheckBox = (CheckBox)(_formview).FindControl("_supervisorCheckBox");
-				//var supervisorPlaceholder = (PlaceHolder)(_formview).FindControl("_supervisorPlacholder");
-				//var securityPlaceholder = (PlaceHolder)(_formview).FindControl("_securityPlaceholder");
+				CheckBox securityCheckBox = null;
+				TextBox securitySignature = null;
+				PlaceHolder securityBoxPlaceholder = (PlaceHolder)(_formview).FindControl("_securityBoxPlaceholder");
 
-				if (securitySignature.Text.Length > 0)
-				{
-					securityCheckBox.Enabled = false;
-					securityCheckBox.Checked = true;
-				}
-
-				if (supervisorSignature.Text.Length > 0)
+				if (supervisorSignature.Text.Length > 0  && securitySignature == null)
 				{
 					supervisorCheckBox.Enabled = false;
 					supervisorCheckBox.Checked = true;
+					securityBoxPlaceholder.Visible = true;
+					securitySignature = (TextBox)(_formview).FindControl("_securitySignature");
+					securityCheckBox = (CheckBox)(_formview).FindControl("_securityCheckBox");
+				}
+
+				if (securitySignature != null && securitySignature.Text.Length > 0)
+				{
+					securityCheckBox.Enabled = false;
+					securityCheckBox.Checked = true;
 				}
 
 				foreach (string item in Setting.Rank)
@@ -91,23 +93,12 @@ namespace AccountCreation
 			_gridview.Visible = true;
 		}
 
-		protected void _CheckBox_CheckedChanged(object sender, EventArgs e)
+		protected void _supervisor_CheckBox_CheckedChanged(object sender, EventArgs e)
 		{
 			if (_formview.CurrentMode == FormViewMode.Edit)
 			{
-				var securityCheckBox = (CheckBox)(_formview).FindControl("_securityCheckBox");
 				var supervisorCheckBox = (CheckBox)(_formview).FindControl("_supervisorCheckBox");
-				var securitySignature = (TextBox)(_formview).FindControl("_securitySignature");
 				var supervisorSignature = (TextBox)(_formview).FindControl("_supervisorSignature");
-
-				if (securityCheckBox.Checked)
-				{
-					securitySignature.Text = user.Edipi;
-				}
-				else
-				{
-					securitySignature.Text = "";
-				}
 
 				if (supervisorCheckBox.Checked)
 				{
@@ -116,6 +107,24 @@ namespace AccountCreation
 				else
 				{
 					supervisorSignature.Text = "";
+				}
+			}
+		}
+
+		protected void _security_CheckBox_CheckedChanged(object sender, EventArgs e)
+		{
+			if (_formview.CurrentMode == FormViewMode.Edit)
+			{
+				var securityCheckBox = (CheckBox)(_formview).FindControl("_securityCheckBox");
+				var securitySignature = (TextBox)(_formview).FindControl("_securitySignature");
+
+				if (securityCheckBox.Checked)
+				{
+					securitySignature.Text = user.Edipi;
+				}
+				else
+				{
+					securitySignature.Text = "";
 				}
 			}
 		}
