@@ -69,7 +69,7 @@
 				<div class="col-sm-6">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h3>Request entry</h3>
+							<h3>Request Entry</h3>
 							<p>Please verify this information is correct and then add your appropriate signature.<p>
 						</div>
 						<div class="panel-body">
@@ -203,7 +203,7 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h3>Signature Box</h3>
-							<p>Check the appropriate box to sign the form. This will populate your EDIPI number as your signature.</p>
+							<p>Check the appropriate box to apply your signature (EDIPI). The Supervisor must sign off before the Security Manager.</p>
 						</div>
 						<div class="panel-body">
 							<div class="form-group">
@@ -216,7 +216,7 @@
 										<asp:TextBox ID="_supervisorSignature" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("SupEdipi") %>' />
 									</div>
 									<asp:RequiredFieldValidator ID="_supSignRequiredValidator" runat="server" ErrorMessage="Supervisor signature: You must sign the form before applying your changes." Text="Requires your attention" Display="Dynamic" CssClass="label label-warning" ControlToValidate="_supervisorSignature"></asp:RequiredFieldValidator>
-									<asp:CompareValidator ID="_requestorSupervisorCompareValidator" ControlToCompare="_edipi" runat="server" ErrorMessage="Supervisor signature: The Request Entry EDIPI and the Supervisor signature can not be the same." CssClass="label label-warning" Display="Dynamic" Text="Requires your attention" ControlToValidate="_supervisorSignature" Operator="NotEqual"></asp:CompareValidator>
+									<asp:CompareValidator ID="_requestorSupervisorCompareValidator" ControlToCompare="_edipi" runat="server" ErrorMessage="Supervisor signature: The Request entry EDIPI and the Supervisor signature can not be the same." CssClass="label label-warning" Display="Dynamic" Text="Requires your attention" ControlToValidate="_supervisorSignature" Operator="NotEqual"></asp:CompareValidator>
 								</div>
 							</div>
 
@@ -232,7 +232,7 @@
 										</div>
 										<asp:CompareValidator ID="_signatureCompareValidator" CssClass="label label-warning" ControlToValidate="_securitySignature" ControlToCompare="_supervisorSignature" runat="server" ErrorMessage="Security Manager signature: The Supervisor and Security Manager can not be the same person." Type="String" Operator="NotEqual" Text="Requires your attention" Display="Dynamic"></asp:CompareValidator>
 										<asp:RequiredFieldValidator ID="_secSignRequiredValidator" runat="server" ErrorMessage="Security Manager signature: You must sign the form before applying your changes." Text="Requires your attention" Display="Dynamic" CssClass="label label-warning" ControlToValidate="_securitySignature"></asp:RequiredFieldValidator>
-										<asp:CompareValidator ID="_requestorSecurityCompareValidator" ControlToCompare="_edipi" runat="server" ErrorMessage="Security Manager signature: The Request Entry EDIPI and the Security Manager signature can not be the same." CssClass="label label-warning" Display="Dynamic" Text="Requires your attention" ControlToValidate="_securitySignature" Operator="NotEqual"></asp:CompareValidator>
+										<asp:CompareValidator ID="_requestorSecurityCompareValidator" ControlToCompare="_edipi" runat="server" ErrorMessage="Security Manager signature: The Request entry EDIPI and the Security Manager signature can not be the same." CssClass="label label-warning" Display="Dynamic" Text="Requires your attention" ControlToValidate="_securitySignature" Operator="NotEqual"></asp:CompareValidator>
 									</div>
 								</div>
 							</asp:PlaceHolder>
