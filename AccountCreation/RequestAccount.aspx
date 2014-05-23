@@ -25,143 +25,154 @@
 		DefaultMode="Insert" 
 		RenderOuterTable="False" 
 		OnDataBound="_requestForm_DataBound" OnItemInserted="_formview_ItemInserted">		
-		<InsertItemTemplate>
-			<p class="lead">Please fill out your information.</p>
-			<p class="buffer"><strong class="text-info">Note:</strong> The EDIPI, last name, and first name fields are pre-populated from your CAC card. These are not editable.</p>
-			<div class="form-group">
-				<label for="_edipi" class="col-sm-2 control-label">EDIPI:</label>
-				<div class="col-sm-3">
-					<asp:TextBox ID="_edipi" CssClass="form-control" runat="server" Text='<%# Bind("Edipi") %>'  />
-					<asp:RequiredFieldValidator CssClass="label label-warning" ID="_edipiRequiredValidator" runat="server" ErrorMessage="EDIPI: Please enter your EDIPI number." ControlToValidate="_edipi" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="_lName" class="col-sm-2 control-label">Last Name:</label>
-				<div class="col-sm-3">
-					<asp:TextBox ID="_lName" CssClass="form-control" runat="server" Text='<%# Bind("LName") %>' />
-					<asp:RequiredFieldValidator CssClass="label label-warning" ID="_lNameRequiredValidator" runat="server" ErrorMessage="Last name: Please enter your last name." ControlToValidate="_lName" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="_fName" class="col-sm-2 control-label">First Name:</label>
-				<div class="col-sm-3">
-					<asp:TextBox ID="_fName" CssClass="form-control" runat="server" Text='<%# Bind("FName") %>' />
-					<asp:RequiredFieldValidator CssClass="label label-warning" ID="_fNameRequiredValidator" runat="server" ErrorMessage="First name: Please enter your first name." ControlToValidate="_fName" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
-				</div>
-			</div>
-				
-			<div class="form-group">
-				<label for="_middleInitial" class="col-sm-2 control-label">MI:</label>
-				<div class="col-sm-1">
-					<asp:TextBox ID="_middleInitial" CssClass="form-control" runat="server" Text='<%# Bind("Mi") %>' />
-					<asp:CustomValidator ID="_middleInitialValidator" CssClass="label label-warning" ControlToValidate="_middleInitial" runat="server" ErrorMessage="MI: Please insert only one letter for your middle initial." Text="Requires your attention" OnServerValidate="_middleInitialValidator_ServerValidate"></asp:CustomValidator>
-				</div>
-			</div>
 		
-			<div class="form-group">
-				<label for="_email" class="col-sm-2 control-label">AKO Email:</label>
-				<div class="col-sm-3">
-					<asp:TextBox ID="_email" CssClass="form-control" runat="server" Text='<%# Bind("Email") %>' />
-					<asp:RequiredFieldValidator CssClass="label label-warning" ID="_emailRequiredValidator" runat="server" ErrorMessage="AKO Email: Please enter your AKO email address." ControlToValidate="_email" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
-					<asp:RegularExpressionValidator ID="_emailExpressionValidator" CssClass="label label-warning" runat="server" ErrorMessage="AKO Email: Please enter a valid email address." Display="Dynamic" ControlToValidate="_email" Text="Requires your attention." ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
-				</div>
-			</div>
+		<InsertItemTemplate>
+			<div class="row">
+				<div class="col-sm-7">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<p class="lead">Please fill out your information.</p>
+							<p><strong class="text-info">Note:</strong> The EDIPI, last name, and first name fields are pre-populated from your CAC card. These are not editable.</p>
+						</div>
+						<div class="panel-body">
+							<div class="form-group">
+								<label for="_edipi" class="col-sm-4 col-md-4 control-label">EDIPI:</label>
+								<div class="col-sm-7 col-md-6">
+									<asp:TextBox ID="_edipi" CssClass="form-control" runat="server" Text='<%# Bind("Edipi") %>'  />
+									<asp:RequiredFieldValidator CssClass="label label-warning" ID="_edipiRequiredValidator" runat="server" ErrorMessage="EDIPI: Please enter your EDIPI number." ControlToValidate="_edipi" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+								</div>
+							</div>
 
-			<div class="form-group">
-				<label for="_rank" class="col-sm-2 control-label">Rank:</label>
-				<div class="col-sm-3">
-					<asp:DropDownList ID="_rank" CssClass="form-control" runat="server" Text='<%# Bind("Rank") %>' AppendDataBoundItems="true">
-						<asp:ListItem Text="-- Select Rank --" Value="" />
-					</asp:DropDownList>
-					<asp:RequiredFieldValidator CssClass="label label-warning" ID="_rankRequiredValidator" runat="server" ErrorMessage="Rank: Please select your rank." ControlToValidate="_rank" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
-				</div>
-			</div>
+							<div class="form-group">
+								<label for="_lName" class="col-sm-4 col-md-4 control-label">Last Name:</label>
+								<div class="col-sm-7 col-md-6">
+									<asp:TextBox ID="_lName" CssClass="form-control" runat="server" Text='<%# Bind("LName") %>' />
+									<asp:RequiredFieldValidator CssClass="label label-warning" ID="_lNameRequiredValidator" runat="server" ErrorMessage="Last name: Please enter your last name." ControlToValidate="_lName" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="_fName" class="col-sm-4 col-md-4 control-label">First Name:</label>
+								<div class="col-sm-7 col-md-6">
+									<asp:TextBox ID="_fName" CssClass="form-control" runat="server" Text='<%# Bind("FName") %>' />
+									<asp:RequiredFieldValidator CssClass="label label-warning" ID="_fNameRequiredValidator" runat="server" ErrorMessage="First name: Please enter your first name." ControlToValidate="_fName" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+								</div>
+							</div>
+				
+							<div class="form-group">
+								<label for="_middleInitial" class="col-sm-4 col-md-4 control-label">MI:</label>
+								<div class="col-sm-3 col-md-2">
+									<asp:TextBox ID="_middleInitial" CssClass="form-control" runat="server" Text='<%# Bind("Mi") %>' />
+									<asp:CustomValidator ID="_middleInitialValidator" CssClass="label label-warning" ControlToValidate="_middleInitial" runat="server" ErrorMessage="MI: Please insert only one letter for your middle initial." Text="Requires your attention" OnServerValidate="_middleInitialValidator_ServerValidate"></asp:CustomValidator>
+								</div>
+							</div>
+		
+							<div class="form-group">
+								<label for="_email" class="col-sm-4 col-md-4 control-label">AKO Email:</label>
+								<div class="col-sm-7 col-md-6">
+									<asp:TextBox ID="_email" CssClass="form-control" runat="server" Text='<%# Bind("Email") %>' />
+									<asp:RequiredFieldValidator CssClass="label label-warning" ID="_emailRequiredValidator" runat="server" ErrorMessage="AKO Email: Please enter your AKO email address." ControlToValidate="_email" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+									<asp:RegularExpressionValidator ID="_emailExpressionValidator" CssClass="label label-warning" runat="server" ErrorMessage="AKO Email: Please enter a valid email address." Display="Dynamic" ControlToValidate="_email" Text="Requires your attention." ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="_rank" class="col-sm-4 col-md-4 control-label">Rank:</label>
+								<div class="col-sm-7 col-md-6">
+									<asp:DropDownList ID="_rank" CssClass="form-control" runat="server" Text='<%# Bind("Rank") %>' AppendDataBoundItems="true">
+										<asp:ListItem Text="-- Select Rank --" Value="" />
+									</asp:DropDownList>
+									<asp:RequiredFieldValidator CssClass="label label-warning" ID="_rankRequiredValidator" runat="server" ErrorMessage="Rank: Please select your rank." ControlToValidate="_rank" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+								</div>
+							</div>
 	
-			<div class="form-group">
-				<label for="_branch" class="col-sm-2 control-label">Branch:</label>
-				<div class="col-sm-3">
-					<asp:DropDownList ID="_branch" CssClass="form-control" runat="server" Text='<%# Bind("Branch") %>'>
-						<asp:ListItem Text="-- Select Branch --" Value="" />
-					</asp:DropDownList>
-					<asp:RequiredFieldValidator CssClass="label label-warning" ID="_branchRequiredValidator" runat="server" ErrorMessage="Branch: Please select your branch." ControlToValidate="_branch" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
-				</div>
-			</div>
+							<div class="form-group">
+								<label for="_branch" class="col-sm-4 col-md-4 control-label">Branch:</label>
+								<div class="col-sm-7 col-md-6">
+									<asp:DropDownList ID="_branch" CssClass="form-control" runat="server" Text='<%# Bind("Branch") %>'>
+										<asp:ListItem Text="-- Select Branch --" Value="" />
+									</asp:DropDownList>
+									<asp:RequiredFieldValidator CssClass="label label-warning" ID="_branchRequiredValidator" runat="server" ErrorMessage="Branch: Please select your branch." ControlToValidate="_branch" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+								</div>
+							</div>
 
-			<div class="form-group">
-				<label for="_org" class="col-sm-2 control-label">Organization:</label>
-				<div class="col-sm-3">
-					<asp:DropDownList ID="_org" CssClass="form-control" AppendDataBoundItems="true" runat="server" Text='<%# Bind("Org") %>'>
-						<asp:ListItem Text="-- Select Organization --" Value="" />
-					</asp:DropDownList>
-				</div>
-			</div>
+							<div class="form-group">
+								<label for="_org" class="col-sm-4 col-md-4 control-label">Organization:</label>
+								<div class="col-sm-7 col-md-6">
+									<asp:DropDownList ID="_org" CssClass="form-control" AppendDataBoundItems="true" runat="server" Text='<%# Bind("Org") %>'>
+										<asp:ListItem Text="-- Select Organization --" Value="" />
+									</asp:DropDownList>
+								</div>
+							</div>
 
-			<div class="form-group">
-				<label for="_department" class="col-sm-2 control-label">Department:</label>
-				<div class="col-sm-3">
-					<asp:DropDownList ID="_department" CssClass="form-control" runat="server" Text='<%# Bind("Department") %>'>
-						<asp:ListItem Text="-- Select Department --" Value="" />
-					</asp:DropDownList>
-					<asp:RequiredFieldValidator CssClass="label label-warning" ID="_deptRequiredValidator" runat="server" ErrorMessage="Department: Please select your department." ControlToValidate="_department" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
-				</div>
-			</div>
+							<div class="form-group">
+								<label for="_department" class="col-sm-4 col-md-4 control-label">Department:</label>
+								<div class="col-sm-7 col-md-6">
+									<asp:DropDownList ID="_department" CssClass="form-control" runat="server" Text='<%# Bind("Department") %>'>
+										<asp:ListItem Text="-- Select Department --" Value="" />
+									</asp:DropDownList>
+									<asp:RequiredFieldValidator CssClass="label label-warning" ID="_deptRequiredValidator" runat="server" ErrorMessage="Department: Please select your department." ControlToValidate="_department" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+								</div>
+							</div>
 
-			<div class="form-group">
-				<label for="_installation" class="col-sm-2 control-label">Installation:</label>
-				<div class="col-sm-3">
-					<asp:DropDownList ID="_installation" CssClass="form-control" runat="server" Text='<%# Bind("Installation") %>'>
-						<asp:ListItem Text="-- Select Installation --" Value="" />
-					</asp:DropDownList>
-				</div>
-			</div>
+							<div class="form-group">
+								<label for="_installation" class="col-sm-4 col-md-4 control-label">Installation:</label>
+								<div class="col-sm-7 col-md-6">
+									<asp:DropDownList ID="_installation" CssClass="form-control" runat="server" Text='<%# Bind("Installation") %>'>
+										<asp:ListItem Text="-- Select Installation --" Value="" />
+									</asp:DropDownList>
+								</div>
+							</div>
 
-			<div class="form-group">
-				<label for="_bldgNum" class="col-sm-2 control-label">Bldg. Number:</label>
-				<div class="col-sm-3">
-					<asp:TextBox ID="_bldgNum" CssClass="form-control" runat="server" Text='<%# Bind("Bldg") %>' />
-					<asp:RegularExpressionValidator ID="_bldgExpressionValidator" CssClass="label label-warning" runat="server" ErrorMessage="Bldg: Please enter numbers only." Text="Requires your attention." ControlToValidate="_bldgNum" Display="Dynamic" ValidationExpression="^[0-9]+$"></asp:RegularExpressionValidator>
-				</div>
-			</div>
+							<div class="form-group">
+								<label for="_bldgNum" class="col-sm-4 col-md-4 control-label">Bldg. Number:</label>
+								<div class="col-sm-7 col-md-6">
+									<asp:TextBox ID="_bldgNum" CssClass="form-control" runat="server" Text='<%# Bind("Bldg") %>' />
+									<asp:RegularExpressionValidator ID="_bldgExpressionValidator" CssClass="label label-warning" runat="server" ErrorMessage="Bldg: Please enter numbers only." Text="Requires your attention." ControlToValidate="_bldgNum" Display="Dynamic" ValidationExpression="^[0-9]+$"></asp:RegularExpressionValidator>
+								</div>
+							</div>
 				
-			<div class="form-group">
-				<label for="_roomNum" class="col-sm-2 control-label">Room Number:</label>
-				<div class="col-sm-3">
-					<asp:TextBox ID="_roomNum" CssClass="form-control" runat="server" Text='<%# Bind("Room") %>' />
-					<asp:RegularExpressionValidator ID="_roomExpressionValidator" CssClass="label label-warning" runat="server" ErrorMessage="Room number: Please enter numbers only." Text="Requires your attention." ControlToValidate="_roomNum" Display="Dynamic" ValidationExpression="^[0-9]+$"></asp:RegularExpressionValidator>
-				</div>
-			</div>
+							<div class="form-group">
+								<label for="_roomNum" class="col-sm-4 col-md-4 control-label">Room Number:</label>
+								<div class="col-sm-7 col-md-6">
+									<asp:TextBox ID="_roomNum" CssClass="form-control" runat="server" Text='<%# Bind("Room") %>' />
+									<asp:RegularExpressionValidator ID="_roomExpressionValidator" CssClass="label label-warning" runat="server" ErrorMessage="Room number: Please enter numbers only." Text="Requires your attention." ControlToValidate="_roomNum" Display="Dynamic" ValidationExpression="^[0-9]+$"></asp:RegularExpressionValidator>
+								</div>
+							</div>
 				
-			<div class="form-group">
-				<label for="_office" class="col-sm-2 control-label">Office Number:</label>
-				<div class="col-sm-3">
-					<asp:TextBox ID="_office" CssClass="form-control" runat="server" Text='<%# Bind("Office") %>' />
-					<asp:RegularExpressionValidator ID="_officeExpressionValidator" CssClass="label label-warning" runat="server" ErrorMessage="Office number: Please enter numbers only." Text="Requires your attention." ControlToValidate="_office" Display="Dynamic" ValidationExpression="^[0-9]+$"></asp:RegularExpressionValidator>
-				</div>
-			</div>
+							<div class="form-group">
+								<label for="_office" class="col-sm-4 col-md-4 control-label">Office:</label>
+								<div class="col-sm-7 col-md-6">
+									<asp:TextBox ID="_office" CssClass="form-control" runat="server" Text='<%# Bind("Office") %>' />
+								</div>
+							</div>
 
-			<div class="form-group">
-				<label for="_phone" class="col-sm-2 control-label">Phone Number:</label>
-				<div class="col-sm-3">
-					<asp:TextBox placeholder="000-000-0000" ID="_phone" CssClass="form-control" runat="server" Text='<%# Bind("Phone") %>' />
-					<asp:RegularExpressionValidator ID="RegularExpressionValidator1" CssClass="label label-warning" ControlToValidate="_phone" runat="server" ErrorMessage="Phone: Please enter a valid number." Display="Dynamic" ValidationExpression="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}">Requires your attention.</asp:RegularExpressionValidator>
-				</div>
-			</div>
+							<div class="form-group">
+								<label for="_phone" class="col-sm-4 col-md-4 control-label">Phone Number:</label>
+								<div class="col-sm-7 col-md-6">
+									<asp:TextBox placeholder="000-000-0000" ID="_phone" CssClass="form-control" runat="server" Text='<%# Bind("Phone") %>' />
+									<asp:RegularExpressionValidator ID="RegularExpressionValidator1" CssClass="label label-warning" ControlToValidate="_phone" runat="server" ErrorMessage="Phone: Please enter a valid number in the format of 000-000-0000." Display="Dynamic" ValidationExpression="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}">Requires your attention.</asp:RegularExpressionValidator>
+								</div>
+							</div>
 					
-			<asp:TextBox CssClass="hidden" ID="_date" Text='<%# Bind("RequestedDate") %>' runat="server"></asp:TextBox>
+							<asp:TextBox CssClass="hidden" ID="_date" Text='<%# Bind("RequestedDate") %>' runat="server"></asp:TextBox>
 			
-			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-10">
-					<asp:Button ID="_submitBtn" runat="server" Text="Submit" CommandName="Insert" CssClass="btn btn-primary" />
-					<asp:Button ID="_cancelBtn" runat="server" CommandName="Cancel" Text="Reset form" CausesValidation="False" CssClass="btn btn-default" />
+							<div class="form-group">
+								<div class="col-sm-offset-4 col-md-offset-4 col-sm-8 col-md-8">
+									<asp:Button ID="_submitBtn" runat="server" Text="Submit" CommandName="Insert" CssClass="btn btn-primary" />
+									<asp:Button ID="_cancelBtn" runat="server" CommandName="Cancel" Text="Reset form" CausesValidation="False" CssClass="btn btn-default" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div><%-- End left column --%> 
+				<div class="col-sm-5">
+					<asp:ValidationSummary CssClass="alert alert-danger" ID="_validationSummary" runat="server" />
 				</div>
 			</div>
 		</InsertItemTemplate>
 	</asp:FormView>
-
-	<asp:ValidationSummary CssClass="alert alert-danger" ID="_validationSummary" runat="server" />
-								
+							
 	<asp:EntityDataSource ID="_formviewEntitySource" 
 		runat="server" 
 		ConnectionString="name=CarsonAccountEntities" 
