@@ -179,10 +179,9 @@
 							</div>
 				
 							<div class="form-group">
-								<label for="_office" class="col-sm-4 control-label">Office Number:</label>
+								<label for="_office" class="col-sm-4 control-label">Office:</label>
 								<div class="col-sm-8">
 									<asp:TextBox ID="_office" CssClass="form-control" runat="server" Text='<%# Bind("Office") %>' />
-									<asp:RegularExpressionValidator ID="_officeExpressionValidator" CssClass="label label-warning" runat="server" ErrorMessage="Office number: Please enter numbers only." Text="Requires your attention." ControlToValidate="_office" Display="Dynamic" ValidationExpression="^[0-9]+$"></asp:RegularExpressionValidator>
 								</div>
 							</div>
 
