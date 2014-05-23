@@ -16,7 +16,7 @@
 				<div class="input-group">
 					<asp:TextBox CssClass="form-control" ID="_searchBox" runat="server" ValidationGroup="_searchValidationGroup"></asp:TextBox>
 					<span class="input-group-btn">
-						<asp:Button ID="_searchButton" data-loading-text="Searching..." CausesValidation="false" CssClass="btn btn-primary" ValidationGroup="_searchValidationGroup" runat="server" Text="Search" OnClick="_searchButton_Click" />
+						<asp:Button ID="_searchButton" CausesValidation="true" CssClass="btn btn-primary" ValidationGroup="_searchValidationGroup" runat="server" Text="Search" OnClick="_searchButton_Click" />
 					</span>
 				</div>
 				<asp:RequiredFieldValidator ID="_searchRequiredValidator" runat="server" ErrorMessage="Enter your search criteria" Display="Dynamic" CssClass="label label-warning" ControlToValidate="_searchBox" ValidationGroup="_searchValidationGroup"></asp:RequiredFieldValidator>
