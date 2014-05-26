@@ -14,6 +14,10 @@
 		<p>Our records indicate that you already have a VPN account. The name of the VPN group you reside in is <strong><asp:Label ID="_vpnGroup" runat="server" CssClass="text-warning"></asp:Label></strong></p>
 	</asp:Panel>
 
+	<asp:Panel ID="_epResults" runat="server" Visible="false">
+		<p>Our records indicate that you don't have a Fort Carson NIPR account. In order for you to create an account either than NIPR, you must have an existing NIPR account.</p>
+	</asp:Panel>
+
 	<asp:Panel ID="_redirectMessage" runat="server" Visible="false">
 		<p>If you feel this is incorrect then please... or go to the <a href="RequestType.aspx" class="btn btn-primary btn-xs">Request Type</a> page and try again.</p>
 	</asp:Panel>

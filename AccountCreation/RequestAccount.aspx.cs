@@ -21,24 +21,43 @@ namespace AccountCreation
 			else
 			{
 				//testing purposes only; Note!: this method does not output any info from the CAC card.
-				user = new CurrentUser("1265020972");
+				user = new CurrentUser("1182013850");
 			}
 			if (PreviousPage != null)
 			{
-				if (PreviousPage.NiprRequest && user.AccountInfo.queryForNipr())
-				{
-					_niprName.Text = user.AccountInfo.NiprAccountName;
-					_niprResults.Visible = true;
-					_redirectMessage.Visible = true;
-					_formview.Visible = false;
-				}
+				bool accountExist;
 
-				if (PreviousPage.VpnRequest && user.AccountInfo.queryForVpn())
+				switch (PreviousPage.RequestedAccount.SelectedValue)
 				{
-					_vpnGroup.Text = user.AccountInfo.VpnGroupName;
-					_vpnResults.Visible = true;
-					_redirectMessage.Visible = true;
-					_formview.Visible = false;
+					case "NIPR" :
+						accountExist = user.AccountInfo.queryForest();
+						if (accountExist)
+						{
+							_niprName.Text = user.AccountInfo.NiprAccountName;
+							_niprResults.Visible = true;
+							_redirectMessage.Visible = true;
+							_formview.Visible = false;
+						}
+						break;
+					case "VPN"  :
+						accountExist = user.AccountInfo.queryVpn();
+						if (accountExist)
+						{
+							_vpnGroup.Text = user.AccountInfo.VpnGroupName;
+							_vpnResults.Visible = true;
+							_redirectMessage.Visible = true;
+							_formview.Visible = false;
+						}
+						break;
+					case "SIPR" :
+					case "EP"   :
+						accountExist = user.AccountInfo.queryOurDomain();
+						if (!accountExist)
+						{
+							_epResults.Visible = true;
+							_formview.Visible = false;
+						}
+						break;
 				}
 			}
 			else if (!IsPostBack)

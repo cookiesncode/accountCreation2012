@@ -34,17 +34,18 @@ namespace AccountCreation
         public Nullable<System.DateTime> Created { get; set; }
         public string SamAccountName { get; set; }
         public string HomeFolder { get; set; }
-        public Nullable<byte> NiprReg { get; set; }
-        public Nullable<byte> NiprSa { get; set; }
-        public Nullable<byte> NiprEp { get; set; }
-        public Nullable<byte> Vpn { get; set; }
-        public Nullable<byte> Sipr { get; set; }
-        public Nullable<byte> SupSigned { get; set; }
-        public Nullable<byte> SecSigned { get; set; }
+        public Nullable<bool> NiprReg { get; set; }
+        public Nullable<bool> NiprSa { get; set; }
+        public Nullable<bool> NiprEp { get; set; }
+        public Nullable<bool> Vpn { get; set; }
+        public Nullable<bool> Sipr { get; set; }
+        public Nullable<bool> SupSigned { get; set; }
+        public Nullable<bool> SecSigned { get; set; }
         public string SupEdipi { get; set; }
         public Nullable<System.DateTime> SupDateSigned { get; set; }
         public string SecEdipi { get; set; }
         public Nullable<System.DateTime> SecDateSigned { get; set; }
-        public Nullable<byte> AcctStatus { get; set; }
+        public string RequestType { get; set; }
+        public string AcctStatus { get; set; }
     }
 }

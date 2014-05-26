@@ -11,33 +11,41 @@ namespace AccountCreation
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			//if (Request.ClientCertificate.IsPresent && !IsPostBack)
-			//{
-			//	var cac = Request.ClientCertificate;
-			//	var user = new CurrentUser(cac);
-			//}
-			var rank = Setting.Rank;
 		}
 
-		public bool NiprRequest
+		protected void _submitBtn_Click(object sender, EventArgs e)
 		{
-			get	{ return _niprAcct.Checked;	}
+
 		}
 
-		public bool VpnRequest
+		public RadioButtonList RequestedAccount
 		{
-			get	{ return _vpnAcct.Checked; }
+			get { return _requestType; }
 		}
 
-		public bool SiprRequest
-		{
-			get	{ return _siprAcct.Checked; }
-		}
+		//public bool NiprRequest
+		//{
+		//	get	{ return _niprAcct.Checked;	}
+		//}
 
-		public bool EpRequest
-		{
-			get	{ return _epAcct.Checked; }
-		}
+		//public bool VpnRequest
+		//{
+		//	get	{ return _vpnAcct.Checked; }
+		//}
 
+		//public bool SiprRequest
+		//{
+		//	get	{ return _siprAcct.Checked; }
+		//}
+
+		//public bool EpRequest
+		//{
+		//	get	{ return _epAcct.Checked; }
+		//}
+
+		//public bool SaRequest
+		//{
+		//	get { return _saAcct.Checked; }
+		//}
 	}
 }

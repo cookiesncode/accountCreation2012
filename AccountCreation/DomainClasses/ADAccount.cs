@@ -19,7 +19,7 @@ namespace AccountCreation
 			LogonName = edipi + "@mil";
 		}
 
-		public bool queryForNipr()
+		public bool queryForest()
 		{
 			var forest = Forest.GetForest(new DirectoryContext(DirectoryContextType.Forest, "ds.army.mil"));
 			var domains = forest.Domains;
@@ -66,7 +66,7 @@ namespace AccountCreation
 			return false;
 		}
 
-		public bool queryForVpn()
+		public bool queryVpn()
 		{
 			var domainContext = new PrincipalContext(ContextType.Domain, null, "OU=Special Groups,OU=NETCOM,OU=Fort Carson,OU=Carson,OU=Installations,DC=nanw,DC=ds,DC=army,DC=mil");
 			GroupPrincipal vpnGroup;
@@ -92,6 +92,38 @@ namespace AccountCreation
 				catch
 				{
 				}
+			}
+			return false;
+		}
+
+		public bool queryOurDomain()
+		{
+			var domainContext = new PrincipalContext(ContextType.Domain, null, "DC=nanw,DC=ds,DC=army,DC=mil");
+			UserPrincipal user = null;
+			try
+			{
+				using (user = UserPrincipal.FindByIdentity(domainContext, LogonName))
+				{
+					if (user != null)
+					{
+						var visitorContext = new PrincipalContext(ContextType.Domain, null, "OU=_DoDVisitor,OU=Installations,DC=nanw,DC=ds,DC=army,DC=mil");
+						var deUser = user.GetUnderlyingObject() as DirectoryEntry;
+						var deUserContainer = deUser.Parent.Name;
+						// checks if the user in the _DoDVisitor OU.
+						if (deUserContainer == "OU=Carson")
+						{
+							return false;
+						}
+						else
+						{
+							NiprAccountName = user.DisplayName;
+							return true;
+						}
+					}
+				}
+			}
+			catch
+			{
 			}
 			return false;
 		}

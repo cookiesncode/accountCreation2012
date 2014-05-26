@@ -22,40 +22,22 @@ namespace AccountCreation {
         protected global::System.Web.UI.WebControls.Panel _adCheckContainer;
         
         /// <summary>
-        /// _niprAcct control.
+        /// _requestType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox _niprAcct;
+        protected global::System.Web.UI.WebControls.RadioButtonList _requestType;
         
         /// <summary>
-        /// _siprAcct control.
+        /// _requestRequiredValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox _siprAcct;
-        
-        /// <summary>
-        /// _epAcct control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox _epAcct;
-        
-        /// <summary>
-        /// _vpnAcct control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox _vpnAcct;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator _requestRequiredValidator;
         
         /// <summary>
         /// _submitBtn control.
