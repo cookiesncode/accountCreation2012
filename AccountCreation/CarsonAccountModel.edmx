@@ -31,19 +31,20 @@
           <Property Name="Org" Type="nvarchar" MaxLength="256" />
           <Property Name="Branch" Type="nvarchar" Nullable="false" MaxLength="256" />
           <Property Name="Installation" Type="nvarchar" MaxLength="256" />
-          <Property Name="NIPR_REG" Type="tinyint" />
-          <Property Name="NIPR_SA" Type="tinyint" />
-          <Property Name="NIPR_EP" Type="tinyint" />
-          <Property Name="VPN" Type="tinyint" />
-          <Property Name="SIPR" Type="tinyint" />
+          <Property Name="RequestType" Type="nvarchar" MaxLength="50" />
+          <Property Name="NIPR_REG" Type="bit" />
+          <Property Name="NIPR_SA" Type="bit" />
+          <Property Name="NIPR_EP" Type="bit" />
+          <Property Name="VPN" Type="bit" />
+          <Property Name="SIPR" Type="bit" />
           <Property Name="HomeFolder" Type="nvarchar" MaxLength="256" />
-          <Property Name="SupSigned" Type="tinyint" />
+          <Property Name="SupSigned" Type="bit" />
           <Property Name="SupEDIPI" Type="nvarchar" MaxLength="50" />
           <Property Name="SupDateSigned" Type="datetime" />
-          <Property Name="SecSigned" Type="tinyint" />
+          <Property Name="SecSigned" Type="bit" />
           <Property Name="SecEDIPI" Type="nvarchar" MaxLength="50" />
           <Property Name="SecDateSigned" Type="datetime" />
-          <Property Name="AcctStatus" Type="tinyint" />
+          <Property Name="AcctStatus" Type="nvarchar" MaxLength="100" />
         </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -76,18 +77,19 @@
           <Property Name="Created" Type="DateTime" Precision="3" />
           <Property Name="SamAccountName" Type="String" MaxLength="256" Unicode="false" FixedLength="false" />
           <Property Name="HomeFolder" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
-          <Property Name="NiprReg" Type="Byte" />
-          <Property Name="NiprSa" Type="Byte" />
-          <Property Name="NiprEp" Type="Byte" />
-          <Property Name="Vpn" Type="Byte" />
-          <Property Name="Sipr" Type="Byte" />
-          <Property Name="SupSigned" Type="Byte" />
-          <Property Name="SecSigned" Type="Byte" />
+          <Property Name="NiprReg" Type="Boolean" />
+          <Property Name="NiprSa" Type="Boolean" />
+          <Property Name="NiprEp" Type="Boolean" />
+          <Property Name="Vpn" Type="Boolean" />
+          <Property Name="Sipr" Type="Boolean" />
+          <Property Name="SupSigned" Type="Boolean" />
+          <Property Name="SecSigned" Type="Boolean" />
           <Property Type="String" Name="SupEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="SupDateSigned" Precision="3" />
           <Property Type="String" Name="SecEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="SecDateSigned" Precision="3" />
-          <Property Name="AcctStatus" Type="Byte" />
+          <Property Type="String" Name="RequestType" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AcctStatus" Type="String" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -98,6 +100,7 @@
           <EntitySetMapping Name="AccountRequests">
             <EntityTypeMapping TypeName="CarsonAccountModel.AccountRequest">
               <MappingFragment StoreEntitySet="tblAcctCreate_Auto">
+                <ScalarProperty Name="RequestType" ColumnName="RequestType" />
                 <ScalarProperty Name="SecDateSigned" ColumnName="SecDateSigned" />
                 <ScalarProperty Name="SecEdipi" ColumnName="SecEDIPI" />
                 <ScalarProperty Name="SupDateSigned" ColumnName="SupDateSigned" />
