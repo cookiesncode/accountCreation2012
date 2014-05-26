@@ -22,3 +22,13 @@ h1, h2, h3 {
 .input-group-addon {
     background-color: white;
 }
+
+#_requestType {
+    display: block;
+    margin-bottom: 1em;
+}
+
+#_requestType > label {
+    display: block;
+    margin-bottom: 1em;
+}
