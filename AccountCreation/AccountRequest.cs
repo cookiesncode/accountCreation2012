@@ -34,7 +34,7 @@ namespace AccountCreation
         public Nullable<System.DateTime> Created { get; set; }
         public string SamAccountName { get; set; }
         public string HomeFolder { get; set; }
-        public Nullable<bool> NiprReg { get; set; }
+        public Nullable<bool> Nipr { get; set; }
         public Nullable<bool> NiprSa { get; set; }
         public Nullable<bool> NiprEp { get; set; }
         public Nullable<bool> Vpn { get; set; }

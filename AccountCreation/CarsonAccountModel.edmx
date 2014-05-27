@@ -77,7 +77,7 @@
           <Property Name="Created" Type="DateTime" Precision="3" />
           <Property Name="SamAccountName" Type="String" MaxLength="256" Unicode="false" FixedLength="false" />
           <Property Name="HomeFolder" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
-          <Property Name="NiprReg" Type="Boolean" />
+          <Property Name="Nipr" Type="Boolean" />
           <Property Name="NiprSa" Type="Boolean" />
           <Property Name="NiprEp" Type="Boolean" />
           <Property Name="Vpn" Type="Boolean" />
@@ -124,7 +124,7 @@
                 <ScalarProperty Name="Org" ColumnName="Org" />
                 <ScalarProperty Name="Branch" ColumnName="Branch" />
                 <ScalarProperty Name="Installation" ColumnName="Installation" />
-                <ScalarProperty Name="NiprReg" ColumnName="NIPR_REG" />
+                <ScalarProperty Name="Nipr" ColumnName="NIPR_REG" />
                 <ScalarProperty Name="NiprSa" ColumnName="NIPR_SA" />
                 <ScalarProperty Name="NiprEp" ColumnName="NIPR_EP" />
                 <ScalarProperty Name="Vpn" ColumnName="VPN" />
