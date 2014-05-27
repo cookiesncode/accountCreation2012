@@ -159,6 +159,7 @@ namespace AccountCreation
 			if (IsPostBack)
 			{
 				_formview.Visible = true;
+				_formview.DataBind();
 			}
 			else
 			{

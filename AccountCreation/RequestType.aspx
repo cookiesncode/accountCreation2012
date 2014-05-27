@@ -7,21 +7,31 @@
 
 	<h2 class="page-header">Request Form</h2>
 	<asp:Panel ID="_adCheckContainer" runat="server">
-		<p class="lead">What type of account are you requesting?</p>
-		<div class="form-group">
-			<div class="col-sm-2 col-md-1">
-				<asp:RadioButtonList CssClass="radio" ID="_requestType" runat="server" RepeatLayout="Flow">
-					<asp:ListItem>NIPR</asp:ListItem>
-					<asp:ListItem>SIPR</asp:ListItem>
-					<asp:ListItem>EP</asp:ListItem>
-					<asp:ListItem>VPN</asp:ListItem>
-				</asp:RadioButtonList>
-			</div>
-			<div class="col-sm-4">
-				<asp:RequiredFieldValidator ID="_requestRequiredValidator" ControlToValidate="_requestType" runat="server" ErrorMessage="You must select an option." CssClass="label label-warning" Display="Dynamic"></asp:RequiredFieldValidator>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<p class="lead">What type of account are you requesting?</p>
+					</div>
+					<div class="panel-body">
+						<div class="form-group">
+							<div class="col-sm-3 col-md-2">
+								<asp:RadioButtonList CssClass="radio" ID="_requestType" runat="server" RepeatLayout="Flow">
+									<asp:ListItem>NIPR</asp:ListItem>
+									<asp:ListItem>SIPR</asp:ListItem>
+									<asp:ListItem>EP</asp:ListItem>
+									<asp:ListItem>VPN</asp:ListItem>
+								</asp:RadioButtonList>
+								<asp:RequiredFieldValidator ID="_requestRequiredValidator" ControlToValidate="_requestType" runat="server" ErrorMessage="You must select an option." CssClass="label label-warning" Display="Dynamic"></asp:RequiredFieldValidator>
+							</div>
+						</div>
+					</div>
+					<div class="panel-footer">
+						<asp:Button data-loading-text="Please wait, while we verify any existing accounts..." role="button" ID="_submitBtn" runat="server" Text="Submit" CssClass="btn btn-primary" OnClick="_submitBtn_Click" />
+					</div>
+				</div>
 			</div>
 		</div>
-		<asp:Button role="button" ID="_submitBtn" runat="server" Text="Submit" CssClass="btn btn-primary" OnClick="_submitBtn_Click" />		
 	</asp:Panel>
 
 </asp:Content>

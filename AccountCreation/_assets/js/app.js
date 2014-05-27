@@ -1,6 +1,15 @@
 ﻿(function ($) {
     $('[data-loading-text]').click(function () {
-        $(this).button('loading');
+    	var $button = $(this);
+        var $validationLabels = $('.label-warning');
+        $button.button('loading');
+        $validationLabels.each(function (index, el) {
+        	var $label = $(el);
+        	if ($label.is(':visible')) {
+        		$button.button('reset');
+        		return true;
+        	}
+        });
     });
 }(jQuery));
 

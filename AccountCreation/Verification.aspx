@@ -9,14 +9,13 @@
 	
 	<asp:Panel ID="_searchPanel" CssClass="search-panel buffer" DefaultButton="_searchButton" runat="server">
 		<p class="lead">Please search by the <abbr class="initialism" title="Electronic Data Interchange Personal Identifier">EDIPI</abbr> number, Last name, or First name.</p>
-		<p><strong class="text-info">Note:</strong> Searching by <abbr class="initialism" title="Electronic Data Interchange Personal Identifier">EDIPI</abbr> gives you more accurate results.</p>
-		
+		<p><strong class="text-info">Note:</strong> Searching by <abbr class="initialism" title="Electronic Data Interchange Personal Identifier">EDIPI</abbr> gives you more accurate results.</p>	
 		<div class="form-group">
 			<div class="col-xs-6 col-sm-5 col-md-4 col-lg-3">
 				<div class="input-group">
 					<asp:TextBox CssClass="form-control" ID="_searchBox" runat="server" ValidationGroup="_searchValidationGroup"></asp:TextBox>
 					<span class="input-group-btn">
-						<asp:Button ID="_searchButton" CausesValidation="true" CssClass="btn btn-primary" ValidationGroup="_searchValidationGroup" runat="server" Text="Search" OnClick="_searchButton_Click" />
+						<asp:Button data-loading-text="Searching..." ID="_searchButton" CausesValidation="true" CssClass="btn btn-primary" ValidationGroup="_searchValidationGroup" runat="server" Text="Search" OnClick="_searchButton_Click" />
 					</span>
 				</div>
 				<asp:RequiredFieldValidator ID="_searchRequiredValidator" runat="server" ErrorMessage="Enter your search criteria" Display="Dynamic" CssClass="label label-warning" ControlToValidate="_searchBox" ValidationGroup="_searchValidationGroup"></asp:RequiredFieldValidator>
@@ -27,6 +26,7 @@
 	<div class="panel panel-default buffer">
 		<div class="panel-heading"><h3>Search Results</h3></div>
 		<div class="table-responsive">
+			<%-- TODO: Style paging generated controls --%>
 			<asp:GridView ID="_gridview" runat="server" 
 				CssClass="table table-condensed table-hover"
 				SelectedRowStyle-CssClass="active"
@@ -37,7 +37,7 @@
 				AutoGenerateColumns="False" 
 				AllowSorting="True" 
 				OnSelectedIndexChanged="_gridview_SelectedIndexChanged"
-				Visible="false" 
+				Visible="False" 
 				EmptyDataText="No results found">
 				<Columns>
 					<asp:CommandField ShowSelectButton="True"></asp:CommandField>
@@ -47,9 +47,12 @@
 					<asp:BoundField DataField="Mi" HeaderText="Mi" SortExpression="Mi" />
 					<asp:BoundField DataField="Rank" HeaderText="Rank" SortExpression="Rank" />
 					<asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
-					<asp:BoundField DataField="SupEdipi" HeaderText="Supervisor EDIPI" SortExpression="SupEdipi" />
-					<asp:BoundField DataField="SecEdipi" HeaderText="Security EDIPI" SortExpression="SecEdipi" />
+					<asp:CheckBoxField HeaderText="Supervisor Verified" DataField="SupSigned" SortExpression="SupSigned"></asp:CheckBoxField>
+					<asp:CheckBoxField HeaderText="Security Verified" DataField="SecSigned" SortExpression="SecSigned"></asp:CheckBoxField>
+					<asp:BoundField DataField="AcctStatus" HeaderText="Request Status" SortExpression="AcctStatus" />
 				</Columns>
+
+<SelectedRowStyle CssClass="active"></SelectedRowStyle>
 			</asp:GridView>
 		</div>
 	</div>
