@@ -117,24 +117,27 @@ namespace AccountCreation
 					fNameControl.Enabled = false;
 				}
 
-				switch (PreviousPage.RequestedAccount.SelectedValue)
+				if (PreviousPage != null)
 				{
-					case "NIPR" :
-						niprControl.Checked = true;
-						requestType.Text = "Auto";
-						break;
-					case "SIPR" :
-						siprControl.Checked = true;
-						requestType.Text = "Manual";
-						break;
-					case "EP" :
-						epControl.Checked = true;
-						requestType.Text = "Manual";
-						break;
-					case "VPN" :
-						vpnControl.Checked = true;
-						requestType.Text = "Auto";
-						break;
+					switch (PreviousPage.RequestedAccount.SelectedValue)
+					{
+						case "NIPR":
+							niprControl.Checked = true;
+							requestType.Text = "Auto";
+							break;
+						case "SIPR":
+							siprControl.Checked = true;
+							requestType.Text = "Manual";
+							break;
+						case "EP":
+							epControl.Checked = true;
+							requestType.Text = "Manual";
+							break;
+						case "VPN":
+							vpnControl.Checked = true;
+							requestType.Text = "Auto";
+							break;
+					}
 				}
 			}
 		}
