@@ -37,6 +37,7 @@
           <Property Name="NIPR_EP" Type="bit" />
           <Property Name="VPN" Type="bit" />
           <Property Name="SIPR" Type="bit" />
+          <Property Name="SA_EDIPI" Type="nvarchar" MaxLength="50" />
           <Property Name="HomeFolder" Type="nvarchar" MaxLength="256" />
           <Property Name="SupSigned" Type="bit" />
           <Property Name="SupEDIPI" Type="nvarchar" MaxLength="50" />
@@ -89,7 +90,8 @@
           <Property Type="String" Name="SecEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="SecDateSigned" Precision="3" />
           <Property Type="String" Name="RequestType" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="AcctStatus" Type="String" />
+          <Property Type="String" Name="SaEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AcctStatus" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -100,6 +102,7 @@
           <EntitySetMapping Name="AccountRequests">
             <EntityTypeMapping TypeName="CarsonAccountModel.AccountRequest">
               <MappingFragment StoreEntitySet="tblAcctCreate_Auto">
+                <ScalarProperty Name="SaEdipi" ColumnName="SA_EDIPI" />
                 <ScalarProperty Name="RequestType" ColumnName="RequestType" />
                 <ScalarProperty Name="SecDateSigned" ColumnName="SecDateSigned" />
                 <ScalarProperty Name="SecEdipi" ColumnName="SecEDIPI" />

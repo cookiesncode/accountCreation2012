@@ -46,6 +46,7 @@ namespace AccountCreation
         public string SecEdipi { get; set; }
         public Nullable<System.DateTime> SecDateSigned { get; set; }
         public string RequestType { get; set; }
+        public string SaEdipi { get; set; }
         public string AcctStatus { get; set; }
     }
 }
