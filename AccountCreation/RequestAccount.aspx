@@ -64,6 +64,7 @@
 							</div>
 				
 							<div class="form-group">
+								<%-- TODO: FIX output from CAC --%>
 								<label for="_middleInitial" class="col-sm-4 col-md-4 control-label">MI:</label>
 								<div class="col-sm-3 col-md-2">
 									<asp:TextBox ID="_middleInitial" CssClass="form-control" runat="server" Text='<%# Bind("Mi") %>' />
@@ -193,7 +194,6 @@
 		DefaultContainerName="CarsonAccountEntities" 
 		EnableFlattening="False" 
 		EnableInsert="True" 
-		EnableUpdate="True" 
 		EntitySetName="AccountRequests">
 	</asp:EntityDataSource>
 

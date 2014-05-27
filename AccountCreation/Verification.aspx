@@ -244,7 +244,7 @@
 					<asp:ValidationSummary CssClass="alert alert-danger" ID="_validationSummary" runat="server" />	
 				</div>
 			</div>
-			<div>
+			<div class="hidden">
 				<asp:TextBox ID="_supSignedDate" Text='<%# Bind("SupDateSigned") %>' Enabled="false" runat="server"></asp:TextBox>
 				<asp:CheckBox ID="_supSigned" Checked='<%# Bind("SupSigned") %>' Enabled="false" runat="server" />
 				<asp:TextBox ID="_secSignedDate" Text='<%# Bind("SecDateSigned") %>' Enabled="false" runat="server"></asp:TextBox>
