@@ -106,14 +106,23 @@ namespace AccountCreation
 			{
 				var supervisorCheckBox = (CheckBox)(_formview).FindControl("_supervisorCheckBox");
 				var supervisorSignature = (TextBox)(_formview).FindControl("_supervisorSignature");
+				var supSignedDate = (TextBox)(_formview).FindControl("_supSignedDate");
+				var supSigned = (CheckBox)(_formview).FindControl("_supSigned");
+				var acctStatus = (TextBox)(_formview).FindControl("_acctStatus");
 
 				if (supervisorCheckBox.Checked)
 				{
 					supervisorSignature.Text = user.Edipi;
+					supSignedDate.Text = DateTime.Now.ToString();
+					supSigned.Checked = true;
+					acctStatus.Text = "Supervisor Approved";
 				}
 				else
 				{
 					supervisorSignature.Text = "";
+					supSignedDate.Text = "";
+					supSigned.Checked = false;
+					acctStatus.Text = "";
 				}
 			}
 		}
@@ -124,14 +133,23 @@ namespace AccountCreation
 			{
 				var securityCheckBox = (CheckBox)(_formview).FindControl("_securityCheckBox");
 				var securitySignature = (TextBox)(_formview).FindControl("_securitySignature");
+				var secSignedDate = (TextBox)(_formview).FindControl("_secSignedDate");
+				var secSigned = (CheckBox)(_formview).FindControl("_secSigned");
+				var acctStatus = (TextBox)(_formview).FindControl("_acctStatus");
 
 				if (securityCheckBox.Checked)
 				{
 					securitySignature.Text = user.Edipi;
+					secSignedDate.Text = DateTime.Now.ToString();
+					secSigned.Checked = true;
+					acctStatus.Text = "Ready";
 				}
 				else
 				{
 					securitySignature.Text = "";
+					secSignedDate.Text = "";
+					secSigned.Checked = false;
+					acctStatus.Text = "";
 				}
 			}
 		}

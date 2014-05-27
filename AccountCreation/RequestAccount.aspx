@@ -158,15 +158,6 @@
 									<asp:RegularExpressionValidator ID="RegularExpressionValidator1" CssClass="label label-warning" ControlToValidate="_phone" runat="server" ErrorMessage="Phone: Please enter a valid number in the format of 000-000-0000." Display="Dynamic" ValidationExpression="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}">Requires your attention.</asp:RegularExpressionValidator>
 								</div>
 							</div>
-
-							<div>
-								<asp:RadioButton ID="_niprAcct" Text="&nbsp;NIPR" runat="server" GroupName="RequestType" Checked='<%# Bind("Nipr") %>' />
-								<asp:RadioButton ID="_siprAcct" Text="&nbsp;SIPR" runat="server" GroupName="RequestType" Checked='<%# Bind("Sipr") %>' />
-								<asp:RadioButton ID="_epAcct" Text="&nbsp;EP" runat="server" GroupName="RequestType" Checked='<%# Bind("NiprEp") %>' />
-								<asp:RadioButton ID="_vpnAcct" Text="&nbsp;VPN" runat="server" GroupName="RequestType" Checked='<%# Bind("Vpn") %>' />
-								<asp:TextBox ID="_requestType" Text='<%# Bind("RequestType") %>' runat="server" />
-								<asp:TextBox ID="_date" Text='<%# Bind("RequestedDate") %>' runat="server"></asp:TextBox>
-							</div>
 			
 							<div class="form-group">
 								<div class="col-sm-offset-4 col-md-offset-4 col-sm-8 col-md-8">
@@ -181,6 +172,18 @@
 					<asp:ValidationSummary CssClass="alert alert-danger" ID="_validationSummary" runat="server" />
 				</div>
 			</div>
+			<div class="hidden">
+				<asp:RadioButton ID="_niprAcct" Enabled="false" Text="&nbsp;NIPR" runat="server" GroupName="RequestType" Checked='<%# Bind("Nipr") %>' />
+				<asp:RadioButton ID="_siprAcct" Enabled="false" Text="&nbsp;SIPR" runat="server" GroupName="RequestType" Checked='<%# Bind("Sipr") %>' />
+				<asp:RadioButton ID="_epAcct" Enabled="false" Text="&nbsp;EP" runat="server" GroupName="RequestType" Checked='<%# Bind("NiprEp") %>' />
+				<asp:RadioButton ID="_vpnAcct" Enabled="false" Text="&nbsp;VPN" runat="server" GroupName="RequestType" Checked='<%# Bind("Vpn") %>' />
+				<asp:CheckBox ID="_supSigned" Enabled="false" Checked='<%# Bind("SupSigned") %>' runat="server" />
+				<asp:CheckBox ID="_secSigned" Enabled="false" Checked='<%# Bind("SecSigned") %>' runat="server" />
+				<asp:TextBox ID="_requestType" Enabled="false" Text='<%# Bind("RequestType") %>' runat="server" />
+				<asp:TextBox ID="_acctStatus" Enabled="false" Text='<%# Bind("AcctStatus") %>' runat="server" />
+				<asp:TextBox ID="_date" Enabled="false" Text='<%# Bind("RequestedDate") %>' runat="server"></asp:TextBox>
+			</div>
+
 		</InsertItemTemplate>
 	</asp:FormView>
 							

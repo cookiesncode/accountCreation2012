@@ -85,6 +85,17 @@ namespace AccountCreation
 				var epControl = (CheckBox)(_formview).FindControl("_epAcct");
 				var vpnControl = (CheckBox)(_formview).FindControl("_vpnAcct");
 				var requestType = (TextBox)(_formview).FindControl("_requestType");
+				var acctStatus = (TextBox)(_formview).FindControl("_acctStatus");
+				var supSignedControl = (CheckBox)(_formview).FindControl("_supSigned");
+				var secSignedControl = (CheckBox)(_formview).FindControl("_secSigned");
+
+				edipiControl.Text = user.Edipi;
+				lNameControl.Text = user.LastName;
+				fNameControl.Text = user.FirstName;
+				acctStatus.Text = "Submitted";
+				date.Text = DateTime.Now.ToString();
+				supSignedControl.Checked = false;
+				secSignedControl.Checked = false;
 
 				foreach (string item in Setting.Rank)
 				{
@@ -98,10 +109,6 @@ namespace AccountCreation
 				{
 					branchControl.Items.Add(new ListItem(item, item));
 				}
-				edipiControl.Text = user.Edipi;
-				lNameControl.Text = user.LastName;
-				fNameControl.Text = user.FirstName;
-				date.Text = DateTime.Now.ToString();
 
 				if (user.FirstName != null)
 				{

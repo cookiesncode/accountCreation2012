@@ -244,7 +244,13 @@
 					<asp:ValidationSummary CssClass="alert alert-danger" ID="_validationSummary" runat="server" />	
 				</div>
 			</div>
-		
+			<div>
+				<asp:TextBox ID="_supSignedDate" Text='<%# Bind("SupDateSigned") %>' Enabled="false" runat="server"></asp:TextBox>
+				<asp:CheckBox ID="_supSigned" Checked='<%# Bind("SupSigned") %>' Enabled="false" runat="server" />
+				<asp:TextBox ID="_secSignedDate" Text='<%# Bind("SecDateSigned") %>' Enabled="false" runat="server"></asp:TextBox>
+				<asp:CheckBox ID="_secSigned" Checked='<%# Bind("SecSigned") %>' Enabled="false" runat="server" />
+				<asp:TextBox ID="_acctStatus" Text='<%# Bind("AcctStatus") %>' Enabled="false" runat="server"></asp:TextBox>
+			</div>		
 		</EditItemTemplate>
 		<EmptyDataTemplate>
 			<p>No records have been found.</p>
