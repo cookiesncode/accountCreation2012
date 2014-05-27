@@ -14,6 +14,7 @@ namespace AccountCreation
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			var cac = Request.ClientCertificate;
+			string requestedAccount = Session["RequestedAccount"] as string;
 			if (Request.ClientCertificate.IsPresent)
 			{
 				user = new CurrentUser(cac);
@@ -23,11 +24,11 @@ namespace AccountCreation
 				//testing purposes only; Note!: this method does not output any info from the CAC card.
 				user = new CurrentUser("1265020972");
 			}
-			if (PreviousPage != null)
+			if (requestedAccount != null)
 			{
 				bool accountExist;
 
-				switch (PreviousPage.RequestedAccount.SelectedValue)
+				switch (requestedAccount)
 				{
 					case "NIPR" :
 						accountExist = user.AccountInfo.queryForest();
@@ -71,6 +72,7 @@ namespace AccountCreation
 		{
 			if (_formview.CurrentMode == FormViewMode.Insert)
 			{
+				string requestedAccount = Session["RequestedAccount"] as string;
 				var edipiControl = (TextBox)(_formview).FindControl("_edipi");
 				var lNameControl = (TextBox)(_formview).FindControl("_lName");
 				var fNameControl = (TextBox)(_formview).FindControl("_fName");
@@ -117,9 +119,9 @@ namespace AccountCreation
 					fNameControl.Enabled = false;
 				}
 
-				if (PreviousPage != null)
+				if (requestedAccount != null)
 				{
-					switch (PreviousPage.RequestedAccount.SelectedValue)
+					switch (requestedAccount)
 					{
 						case "NIPR":
 							niprControl.Checked = true;

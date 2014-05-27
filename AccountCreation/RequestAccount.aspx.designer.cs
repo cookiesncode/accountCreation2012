@@ -83,17 +83,5 @@ namespace AccountCreation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.EntityDataSource _formviewEntitySource;
-        
-        /// <summary>
-        /// PreviousPage property.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated property.
-        /// </remarks>
-        public new AccountCreation.RequestType PreviousPage {
-            get {
-                return ((AccountCreation.RequestType)(base.PreviousPage));
-            }
-        }
     }
 }

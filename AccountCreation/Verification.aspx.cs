@@ -115,7 +115,7 @@ namespace AccountCreation
 					supervisorSignature.Text = user.Edipi;
 					supSignedDate.Text = DateTime.Now.ToString();
 					supSigned.Checked = true;
-					acctStatus.Text = "Supervisor Approved";
+					acctStatus.Text = "Partially Verified";
 				}
 				else
 				{

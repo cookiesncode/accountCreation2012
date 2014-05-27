@@ -9,43 +9,14 @@ namespace AccountCreation
 {
 	public partial class RequestType : System.Web.UI.Page
 	{
-		protected void Page_Load(object sender, EventArgs e)
-		{
-		}
-
 		protected void _submitBtn_Click(object sender, EventArgs e)
 		{
-
+			if (Page.IsValid)
+			{
+				string checkedValue = _requestType.SelectedValue;
+				Session["RequestedAccount"] = checkedValue;
+				Response.Redirect("~/RequestAccount.aspx");
+			}
 		}
-
-		public RadioButtonList RequestedAccount
-		{
-			get { return _requestType; }
-		}
-
-		//public bool NiprRequest
-		//{
-		//	get	{ return _niprAcct.Checked;	}
-		//}
-
-		//public bool VpnRequest
-		//{
-		//	get	{ return _vpnAcct.Checked; }
-		//}
-
-		//public bool SiprRequest
-		//{
-		//	get	{ return _siprAcct.Checked; }
-		//}
-
-		//public bool EpRequest
-		//{
-		//	get	{ return _epAcct.Checked; }
-		//}
-
-		//public bool SaRequest
-		//{
-		//	get { return _saAcct.Checked; }
-		//}
 	}
 }
