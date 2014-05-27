@@ -158,8 +158,15 @@
 									<asp:RegularExpressionValidator ID="RegularExpressionValidator1" CssClass="label label-warning" ControlToValidate="_phone" runat="server" ErrorMessage="Phone: Please enter a valid number in the format of 000-000-0000." Display="Dynamic" ValidationExpression="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}">Requires your attention.</asp:RegularExpressionValidator>
 								</div>
 							</div>
-					
-							<asp:TextBox CssClass="hidden" ID="_date" Text='<%# Bind("RequestedDate") %>' runat="server"></asp:TextBox>
+
+							<div>
+								<asp:RadioButton ID="_niprAcct" Text="&nbsp;NIPR" runat="server" GroupName="RequestType" Checked='<%# Bind("Nipr") %>' />
+								<asp:RadioButton ID="_siprAcct" Text="&nbsp;SIPR" runat="server" GroupName="RequestType" Checked='<%# Bind("Sipr") %>' />
+								<asp:RadioButton ID="_epAcct" Text="&nbsp;EP" runat="server" GroupName="RequestType" Checked='<%# Bind("NiprEp") %>' />
+								<asp:RadioButton ID="_vpnAcct" Text="&nbsp;VPN" runat="server" GroupName="RequestType" Checked='<%# Bind("Vpn") %>' />
+								<asp:TextBox ID="_requestType" Text='<%# Bind("RequestType") %>' runat="server" />
+								<asp:TextBox ID="_date" Text='<%# Bind("RequestedDate") %>' runat="server"></asp:TextBox>
+							</div>
 			
 							<div class="form-group">
 								<div class="col-sm-offset-4 col-md-offset-4 col-sm-8 col-md-8">

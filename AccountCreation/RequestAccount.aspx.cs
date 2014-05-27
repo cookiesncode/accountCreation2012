@@ -21,7 +21,7 @@ namespace AccountCreation
 			else
 			{
 				//testing purposes only; Note!: this method does not output any info from the CAC card.
-				user = new CurrentUser("1182013850");
+				user = new CurrentUser("1265020972");
 			}
 			if (PreviousPage != null)
 			{
@@ -55,6 +55,7 @@ namespace AccountCreation
 						if (!accountExist)
 						{
 							_epResults.Visible = true;
+							_redirectMessage.Visible = true;
 							_formview.Visible = false;
 						}
 						break;
@@ -79,6 +80,11 @@ namespace AccountCreation
 				//var orgControl = (DropDownList)(_formview).FindControl("_org");
 				var rankControl = (DropDownList)(_formview).FindControl("_rank");
 				var date = (TextBox)(_formview).FindControl("_date");
+				var niprControl = (CheckBox)(_formview).FindControl("_niprAcct");
+				var siprControl = (CheckBox)(_formview).FindControl("_siprAcct");
+				var epControl = (CheckBox)(_formview).FindControl("_epAcct");
+				var vpnControl = (CheckBox)(_formview).FindControl("_vpnAcct");
+				var requestType = (TextBox)(_formview).FindControl("_requestType");
 
 				foreach (string item in Setting.Rank)
 				{
@@ -102,6 +108,26 @@ namespace AccountCreation
 					edipiControl.Enabled = false;
 					lNameControl.Enabled = false;
 					fNameControl.Enabled = false;
+				}
+
+				switch (PreviousPage.RequestedAccount.SelectedValue)
+				{
+					case "NIPR" :
+						niprControl.Checked = true;
+						requestType.Text = "Auto";
+						break;
+					case "SIPR" :
+						siprControl.Checked = true;
+						requestType.Text = "Manual";
+						break;
+					case "EP" :
+						epControl.Checked = true;
+						requestType.Text = "Manual";
+						break;
+					case "VPN" :
+						vpnControl.Checked = true;
+						requestType.Text = "Auto";
+						break;
 				}
 			}
 		}
