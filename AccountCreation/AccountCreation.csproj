@@ -69,6 +69,7 @@
     <Content Include="Default.aspx" />
     <Content Include="RequestAccount.aspx" />
     <Content Include="RequestType.aspx" />
+    <Content Include="SA-Admin.aspx" />
     <Content Include="UserControls\SecSignatureControl.ascx" />
     <Content Include="Success.aspx" />
     <Content Include="Verification.aspx" />
@@ -139,6 +140,13 @@
     <Compile Include="RequestType.aspx.designer.cs">
       <DependentUpon>RequestType.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SA-Admin.aspx.cs">
+      <DependentUpon>SA-Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SA-Admin.aspx.designer.cs">
+      <DependentUpon>SA-Admin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\SecSignatureControl.ascx.cs">
       <DependentUpon>SecSignatureControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -181,6 +189,7 @@
     </Content>
     <Content Include="packages.config" />
     <Content Include="MainLayout.Master" />
+    <None Include="Properties\PublishProfiles\Production.pubxml" />
     <None Include="Properties\PublishProfiles\TestServer.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

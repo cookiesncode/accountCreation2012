@@ -51,8 +51,7 @@
 					<asp:CheckBoxField HeaderText="Security Verified" DataField="SecSigned" SortExpression="SecSigned"></asp:CheckBoxField>
 					<asp:BoundField DataField="AcctStatus" HeaderText="Request Status" SortExpression="AcctStatus" />
 				</Columns>
-
-<SelectedRowStyle CssClass="active"></SelectedRowStyle>
+				<SelectedRowStyle CssClass="active"></SelectedRowStyle>
 			</asp:GridView>
 		</div>
 	</div>
