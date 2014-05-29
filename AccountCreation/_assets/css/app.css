@@ -36,3 +36,7 @@ h1, h2, h3 {
 .start-links a {
      margin-bottom: 0.5em;
 }
+
+.sa-search {
+    margin-top: 10px;
+}

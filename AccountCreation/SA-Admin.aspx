@@ -7,27 +7,12 @@
 	
 	<h2 class="page-header">SA Admin Panel</h2>
 	
-	<asp:Panel ID="_searchPanel" CssClass="search-panel buffer" DefaultButton="_searchButton" runat="server">
-		<p class="lead">Please search by the <abbr class="initialism" title="Electronic Data Interchange Personal Identifier">EDIPI</abbr> number, Last name, or First name.</p>
-		<p><strong class="text-info">Note:</strong> Searching by <abbr class="initialism" title="Electronic Data Interchange Personal Identifier">EDIPI</abbr> gives you more accurate results.</p>	
-		<div class="form-group">
-			<div class="col-xs-6 col-sm-5 col-md-4 col-lg-3">
-				<div class="input-group">
-					<asp:TextBox CssClass="form-control" ID="_searchBox" runat="server" ValidationGroup="_searchValidationGroup"></asp:TextBox>
-					<span class="input-group-btn">
-						<asp:Button data-loading-text="Searching..." ID="_searchButton" CausesValidation="true" CssClass="btn btn-primary" ValidationGroup="_searchValidationGroup" runat="server" Text="Search" OnClick="_searchButton_Click" />
-					</span>
-				</div>
-				<asp:RequiredFieldValidator ID="_searchRequiredValidator" runat="server" ErrorMessage="Enter your search criteria" Display="Dynamic" CssClass="label label-warning" ControlToValidate="_searchBox" ValidationGroup="_searchValidationGroup"></asp:RequiredFieldValidator>
-			</div>
-		</div>
-	</asp:Panel>
-	<asp:Panel ID="_filterPanel" Visible="false" runat="server">
-		<p class="lead">Filter search:</p>
+	<asp:Panel ID="_filterPanel" Visible="true" runat="server">
+		<p class="lead">Filter Records:</p>
 		<div class="row">
 			<div class="col-sm-6">
 				<div class="form-group">
-					<label for="_filterRequestType" class="col-sm-5 col-md-4 control-label">Request type:</label>
+					<label for="_filterRequestType" class="col-sm-5 col-md-4 control-label">Request Type:</label>
 					<div class="col-sm-7 col-md-8">
 						<asp:DropDownList ID="_filterRequestType" CssClass="form-control" runat="server" AutoPostBack="true">
 							<asp:ListItem Text="No filter" Value=""></asp:ListItem>
@@ -56,7 +41,21 @@
 	</asp:Panel>
 	
 	<div class="panel panel-default buffer">
-		<div class="panel-heading"><h3>Search Results</h3></div>
+		<div class="panel-heading">
+			<div class="row">
+				<div class="col-sm-6">
+					<h3>Request Records</h3>
+				</div>
+				<div class="col-xs-5 col-sm-offset-2 col-sm-4">
+					<div class="input-group sa-search">
+						<asp:TextBox CssClass="form-control" placeholder="EDIPI or Last Name or First Name" ID="_searchBox" runat="server" ValidationGroup="_searchValidationGroup"></asp:TextBox>
+						<span class="input-group-btn">
+							<asp:Button data-loading-text="Searching..." ID="_searchButton" CausesValidation="true" CssClass="btn btn-primary" ValidationGroup="_searchValidationGroup" runat="server" Text="Search" OnClick="_searchButton_Click" />
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="table-responsive">
 			<%-- TODO: Style paging generated controls --%>
 			<asp:GridView ID="_gridview" runat="server" 
@@ -69,7 +68,7 @@
 				AutoGenerateColumns="False" 
 				AllowSorting="True" 
 				OnSelectedIndexChanged="_gridview_SelectedIndexChanged"
-				Visible="false" 
+				Visible="true" 
 				EmptyDataText="No results found">
 				<Columns>
 					<asp:CommandField ShowSelectButton="True"></asp:CommandField>
