@@ -77,9 +77,9 @@ namespace AccountCreation
 				var lNameControl = (TextBox)(_formview).FindControl("_lName");
 				var fNameControl = (TextBox)(_formview).FindControl("_fName");
 				var branchControl = (DropDownList)(_formview).FindControl("_branch");
-				var departmentControl = (DropDownList)(_formview).FindControl("_department");
-				//var installationControl = (DropDownList)(_formview).FindControl("_installation");
-				//var orgControl = (DropDownList)(_formview).FindControl("_org");
+				var orgUnitControl = (DropDownList)(_formview).FindControl("_orgUnit");
+				var installationControl = (DropDownList)(_formview).FindControl("_installation");
+				var personaControl = (DropDownList)(_formview).FindControl("_persona");
 				var rankControl = (DropDownList)(_formview).FindControl("_rank");
 				var date = (TextBox)(_formview).FindControl("_date");
 				var niprControl = (CheckBox)(_formview).FindControl("_niprAcct");
@@ -94,18 +94,26 @@ namespace AccountCreation
 				edipiControl.Text = user.Edipi;
 				lNameControl.Text = user.LastName;
 				fNameControl.Text = user.FirstName;
-				acctStatus.Text = "Submitted";
+				acctStatus.Text = "Requested";
 				date.Text = DateTime.Now.ToString();
 				supSignedControl.Checked = false;
 				secSignedControl.Checked = false;
 
+				foreach (string item in Setting.Persona)
+				{
+					personaControl.Items.Add(new ListItem(item, item));
+				}
+				foreach (string item in Setting.Installation)
+				{
+					installationControl.Items.Add(new ListItem(item, item));
+				}
 				foreach (string item in Setting.Rank)
 				{
 					rankControl.Items.Add(new ListItem(item, item));
 				}
-				foreach (string item in Setting.Department)
+				foreach (string item in Setting.OrgUnit)
 				{
-					departmentControl.Items.Add(new ListItem(item, item));
+					orgUnitControl.Items.Add(new ListItem(item, item));
 				}
 				foreach (string item in Setting.Branch)
 				{

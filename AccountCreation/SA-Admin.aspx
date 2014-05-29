@@ -28,10 +28,10 @@
 					<div class="col-sm-7 col-md-8">
 						<asp:DropDownList ID="_filterRequestStatus" CssClass="form-control" runat="server" AutoPostBack="true">
 							<asp:ListItem Text="No filter" Value=""></asp:ListItem>
-							<asp:ListItem Text="Submitted" Value="Submitted"></asp:ListItem>
+							<asp:ListItem Text="Requested" Value="Requested"></asp:ListItem>
 							<asp:ListItem Text="Partially Verified" Value="Partially Verified"></asp:ListItem>
 							<asp:ListItem Text="Ready to Create" Value="Ready"></asp:ListItem>
-							<asp:ListItem Text="Successfully Created" Value="Successful"></asp:ListItem>
+							<asp:ListItem Text="Account Created" Value="Created"></asp:ListItem>
 							<asp:ListItem Text="Failed to Create" Value="Failed"></asp:ListItem>
 						</asp:DropDownList>
 					</div>
@@ -72,6 +72,7 @@
 				EmptyDataText="No results found">
 				<Columns>
 					<asp:CommandField ShowSelectButton="True"></asp:CommandField>
+					<asp:BoundField DataField="Id" HeaderText="Unique ID" SortExpression="Id" />
 					<asp:BoundField DataField="Edipi" HeaderText="EDIPI" SortExpression="Edipi" />
 					<asp:BoundField DataField="LName" HeaderText="Last Name" SortExpression="LName" />
 					<asp:BoundField DataField="FName" HeaderText="First Name" SortExpression="FName" />
@@ -79,8 +80,8 @@
 					<asp:BoundField DataField="Rank" HeaderText="Rank" SortExpression="Rank" />
 					<asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
 					<asp:BoundField DataField="RequestType" HeaderText="Request Type" SortExpression="RequestType" />
-					<asp:BoundField DataField="SaEdipi" HeaderText="SA EDIPI" SortExpression="SaEdipi" />
 					<asp:BoundField DataField="AcctStatus" HeaderText="Request Status" SortExpression="AcctStatus" />
+					<asp:BoundField DataField="SaName" HeaderText="SA Employee" SortExpression="SaName" />
 				</Columns>
 				<SelectedRowStyle CssClass="active"></SelectedRowStyle>
 			</asp:GridView>
@@ -142,7 +143,7 @@
 							</div>
 
 							<div class="form-group">
-								<label for="_email" class="col-sm-4 control-label">AKO Email:</label>
+								<label for="_email" class="col-sm-4 control-label">Enterprise Email:</label>
 								<div class="col-sm-8">
 									<p class="form-control-static">
 										<asp:Literal ID="_email" Text='<%# Eval("Email") %>' runat="server"></asp:Literal>
@@ -151,10 +152,19 @@
 							</div>
 
 							<div class="form-group">
+								<label for="_persona" class="col-sm-4 control-label">Persona:</label>
+								<div class="col-sm-8">
+									<p class="form-control-static">
+										<asp:Literal ID="_persona" Text='<%# Eval("Persona") %>' runat="server"></asp:Literal>
+									</p>
+								</div>
+							</div>
+	
+							<div class="form-group">
 								<label for="_rank" class="col-sm-4 control-label">Rank:</label>
 								<div class="col-sm-8">
 									<p class="form-control-static">
-										<asp:Literal ID="_rank" Text='<%# Eval("Rank") %>' runat="server"></asp:Literal>
+										<asp:Literal ID="Literal2" Text='<%# Eval("Rank") %>' runat="server"></asp:Literal>
 									</p>
 								</div>
 							</div>
@@ -167,21 +177,12 @@
 									</p>
 								</div>
 							</div>
-		
+							
 							<div class="form-group">
-								<label for="_org" class="col-sm-4 control-label">Organization:</label>
+								<label for="_orgUnit" class="col-sm-4 control-label">Org/Unit:</label>
 								<div class="col-sm-8">
 									<p class="form-control-static">
-										<asp:Literal ID="_org" Text='<%# Eval("Org") %>' runat="server"></asp:Literal>
-									</p>
-								</div>
-							</div>
-					
-							<div class="form-group">
-								<label for="_department" class="col-sm-4 control-label">Department:</label>
-								<div class="col-sm-8">
-									<p class="form-control-static">
-										<asp:Literal ID="_department" Text='<%# Eval("Department") %>' runat="server"></asp:Literal>
+										<asp:Literal ID="_orgUnit" Text='<%# Eval("OrgUnit") %>' runat="server"></asp:Literal>
 									</p>
 								</div>
 							</div>
@@ -192,11 +193,11 @@
 									<p class="form-control-static">
 										<asp:Literal ID="_installation" Text='<%# Eval("Installation") %>' runat="server"></asp:Literal>
 									</p>
-				</div>
+								</div>
 							</div>
 		
 							<div class="form-group">
-								<label for="_bldgNum" class="col-sm-4 control-label">Bldg. Number:</label>
+								<label for="_bldgNum" class="col-sm-4 control-label">Bldg Number:</label>
 								<div class="col-sm-8">
 									<p class="form-control-static">
 										<asp:Literal ID="_bldgNum" Text='<%# Eval("Bldg") %>' runat="server"></asp:Literal>
@@ -239,8 +240,8 @@
 				<div class="col-sm-6">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h3>SA Signature Box:</h3>
-							<p>Once you have created the account, please check the box to apply your signature (EDIPI).</p>
+							<h3>SA Box:</h3>
+							<p>Please fill out the information below and then apply your signature (EDIPI).</p>
 						</div>
 						<div class="panel-body">
 							<div class="form-group">
@@ -266,6 +267,7 @@
 			</div>
 			<div class="hidden">
 				<asp:TextBox ID="_acctStatus" Text='<%# Bind("AcctStatus") %>' Enabled="false" runat="server"></asp:TextBox>
+				<asp:TextBox ID="_saName" Text='<%# Bind("SaName") %>' Enabled="false" runat="server"></asp:TextBox>
 			</div>		
 		</EditItemTemplate>
 		<EmptyDataTemplate>

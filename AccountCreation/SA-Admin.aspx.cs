@@ -91,16 +91,19 @@ namespace AccountCreation
 			if (_formview.CurrentMode == FormViewMode.Edit)
 			{
 				var saCheckBox = (CheckBox)(_formview).FindControl("_saCheckBox");
+				var saName = (TextBox)(_formview).FindControl("_saName");
 				var saSignature = (TextBox)(_formview).FindControl("_saSignature");
 				var acctStatus = (TextBox)(_formview).FindControl("_acctStatus");
 
 				if (saCheckBox.Checked)
 				{
+					saName.Text = user.FirstName + " " + user.LastName;
 					saSignature.Text = user.Edipi;
-					acctStatus.Text = "Successful";
+					acctStatus.Text = "Created";
 				}
 				else
 				{
+					saName.Text = "";
 					saSignature.Text = "";
 					acctStatus.Text = "";
 				}

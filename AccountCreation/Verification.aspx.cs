@@ -37,8 +37,10 @@ namespace AccountCreation
 		{
 			if (_formview.CurrentMode == FormViewMode.Edit)
 			{
+				var installationControl = (DropDownList)(_formview).FindControl("_installation");
+				var personaControl = (DropDownList)(_formview).FindControl("_persona");
 				var branchControl = (DropDownList)(_formview).FindControl("_branch");
-				var departmentControl = (DropDownList)(_formview).FindControl("_department");
+				var orgUnitControl = (DropDownList)(_formview).FindControl("_orgUnit");
 				var rankControl = (DropDownList)(_formview).FindControl("_rank");
 				var supervisorSignature = (TextBox)(_formview).FindControl("_supervisorSignature");
 				var supervisorCheckBox = (CheckBox)(_formview).FindControl("_supervisorCheckBox");
@@ -68,6 +70,22 @@ namespace AccountCreation
 					updateButton.Visible = false;
 				}
 
+				foreach (string item in Setting.Installation)
+				{
+					if (installationControl.SelectedValue == item)
+					{
+						continue;
+					}
+					installationControl.Items.Add(new ListItem(item, item));
+				}
+				foreach (string item in Setting.Persona)
+				{
+					if (personaControl.SelectedValue == item)
+					{
+						continue;
+					}
+					personaControl.Items.Add(new ListItem(item, item));
+				}
 				foreach (string item in Setting.Rank)
 				{
 					if (rankControl.SelectedValue == item)
@@ -76,13 +94,13 @@ namespace AccountCreation
 					}
 					rankControl.Items.Add(new ListItem(item, item));
 				}
-				foreach (string item in Setting.Department)
+				foreach (string item in Setting.OrgUnit)
 				{
-					if (departmentControl.SelectedValue == item)
+					if (orgUnitControl.SelectedValue == item)
 					{
 						continue;
 					}
-					departmentControl.Items.Add(new ListItem(item, item));
+					orgUnitControl.Items.Add(new ListItem(item, item));
 				}
 				foreach (string item in Setting.Branch)
 				{

@@ -108,18 +108,28 @@
 							</div>
 
 							<div class="form-group">
-								<label for="_email" class="col-sm-4 control-label">AKO Email:</label>
+								<label for="_email" class="col-sm-4 control-label">Enterprise Email:</label>
 								<div class="col-sm-8">
 									<asp:TextBox ID="_email" CssClass="form-control" runat="server" Text='<%# Bind("Email") %>' />
-									<asp:RequiredFieldValidator CssClass="label label-warning" ID="_emailRequiredValidator" runat="server" ErrorMessage="AKO Email: Please enter your AKO email address." ControlToValidate="_email" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
-									<asp:RegularExpressionValidator ID="_emailExpressionValidator" CssClass="label label-warning" runat="server" ErrorMessage="AKO Email: Please enter a valid email address." Display="Dynamic" ControlToValidate="_email" Text="Requires your attention." ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+									<asp:RequiredFieldValidator CssClass="label label-warning" ID="_emailRequiredValidator" runat="server" ErrorMessage="Enterprise Email: Please enter your enterprise email address." ControlToValidate="_email" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+									<asp:RegularExpressionValidator ID="_emailExpressionValidator" CssClass="label label-warning" runat="server" ErrorMessage="Enterprise Email: Please enter a valid email address." Display="Dynamic" ControlToValidate="_email" Text="Requires your attention." ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="_persona" class="col-sm-4 control-label">Persona Type:</label>
+								<div class="col-sm-8">
+									<asp:DropDownList ID="_persona" CssClass="form-control" runat="server" SelectedValue='<%# Bind("Persona") %>' DataSourceID="_formviewEntitySource" DataTextField="Persona" DataValueField="Persona">
+										<asp:ListItem Text="-- Select Persona --" Value="" />
+									</asp:DropDownList>
+									<asp:RequiredFieldValidator CssClass="label label-warning" ID="_personaRequiredValidator" runat="server" ErrorMessage="Persona: Please select a Persona." ControlToValidate="_persona" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label for="_rank" class="col-sm-4 control-label">Rank:</label>
 								<div class="col-sm-8">
-									<asp:DropDownList ID="_Rank" CssClass="form-control" runat="server" SelectedValue='<%# Bind("Rank") %>' DataSourceID="_formviewEntitySource" DataTextField="Rank" DataValueField="Rank">
+									<asp:DropDownList ID="_Rank" CssClass="form-control" runat="server" SelectedValue='<%# Bind("Rank") %>' DataSourceID="_formviewEntitySource" DataTextField="Rank" DataValueField="Rank" AppendDataBoundItems="True">
 										<asp:ListItem Text="-- Select Rank --" Value="" />
 									</asp:DropDownList>
 									<asp:RequiredFieldValidator CssClass="label label-warning" ID="_rankRequiredValidator" runat="server" ErrorMessage="Rank: Please select your rank." ControlToValidate="_rank" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
@@ -129,38 +139,30 @@
 							<div class="form-group">
 								<label for="_branch" class="col-sm-4 control-label">Branch:</label>
 								<div class="col-sm-8">
-									<asp:DropDownList ID="_branch" CssClass="form-control" runat="server" SelectedValue='<%# Bind("Branch") %>' DataSourceID="_formviewEntitySource" DataTextField="Branch" DataValueField="Branch">
+									<asp:DropDownList ID="_branch" CssClass="form-control" runat="server" SelectedValue='<%# Bind("Branch") %>' DataSourceID="_formviewEntitySource" DataTextField="Branch" DataValueField="Branch" AppendDataBoundItems="True">
 										<asp:ListItem Text="-- Select Branch --" Value="" />
 									</asp:DropDownList>
 									<asp:RequiredFieldValidator CssClass="label label-warning" ID="_branchRequiredValidator" runat="server" ErrorMessage="Branch: Please select your branch." ControlToValidate="_branch" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
 								</div>
 							</div>
-		
+							
 							<div class="form-group">
-								<label for="_org" class="col-sm-4 control-label">Organization:</label>
+								<label for="_orgUnit" class="col-sm-4 control-label">Org/Unit:</label>
 								<div class="col-sm-8">
-									<asp:DropDownList ID="_org" CssClass="form-control" runat="server" SelectedValue='<%# Bind("Org") %>' DataSourceID="_formviewEntitySource" DataTextField="Org" DataValueField="Org">
-										<asp:ListItem Text="-- Select Organization --" Value="" />
+									<asp:DropDownList ID="_orgUnit" CssClass="form-control" runat="server" SelectedValue='<%# Bind("OrgUnit") %>' DataSourceID="_formviewEntitySource" DataTextField="OrgUnit" DataValueField="OrgUnit" AppendDataBoundItems="True">
+										<asp:ListItem Text="-- Select a Org/Unit --" Value="" />
 									</asp:DropDownList>
-								</div>
-							</div>
-					
-							<div class="form-group">
-								<label for="_department" class="col-sm-4 control-label">Department:</label>
-								<div class="col-sm-8">
-									<asp:DropDownList ID="_department" CssClass="form-control" runat="server" SelectedValue='<%# Bind("Department") %>' DataSourceID="_formviewEntitySource" DataTextField="Department" DataValueField="Department">
-										<asp:ListItem Text="-- Select Department --" Value="" />
-									</asp:DropDownList>
-									<asp:RequiredFieldValidator CssClass="label label-warning" ID="_deptRequiredValidator" runat="server" ErrorMessage="Department: Please select your department." ControlToValidate="_department" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+									<asp:RequiredFieldValidator CssClass="label label-warning" ID="_orgUnitRequiredValidator" runat="server" ErrorMessage="Org/Unit: Please select your Org/Unit." ControlToValidate="_orgUnit" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
 								</div>
 							</div>
 					
 							<div class="form-group">
 								<label for="_installation" class="col-sm-4 control-label">Installation:</label>
 								<div class="col-sm-8">
-									<asp:DropDownList ID="_installation" CssClass="form-control" runat="server" SelectedValue='<%# Bind("Installation") %>' DataSourceID="_formviewEntitySource" DataTextField="Installation" DataValueField="Installation">
+									<asp:DropDownList ID="_installation" CssClass="form-control" runat="server" SelectedValue='<%# Bind("Installation") %>' DataSourceID="_formviewEntitySource" DataTextField="Installation" DataValueField="Installation" AppendDataBoundItems="True">
 										<asp:ListItem Text="-- Select Installation --" Value="" />
 									</asp:DropDownList>
+									<asp:RequiredFieldValidator CssClass="label label-warning" ID="_installationRequiredValidator" runat="server" ErrorMessage="Installation: Please select your installation." ControlToValidate="_installation" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
 								</div>
 							</div>
 		
@@ -168,6 +170,7 @@
 								<label for="_bldgNum" class="col-sm-4 control-label">Bldg. Number:</label>
 								<div class="col-sm-8">
 									<asp:TextBox ID="_bldgNum" CssClass="form-control" runat="server" Text='<%# Bind("Bldg") %>' />
+									<asp:RequiredFieldValidator CssClass="label label-warning" ID="_bldgRequiredValidator" runat="server" ErrorMessage="Bldg. Number: Please enter your Building Number." ControlToValidate="_bldgNum" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
 									<asp:RegularExpressionValidator ID="_bldgExpressionValidator" CssClass="label label-warning" runat="server" ErrorMessage="Bldg: Please enter numbers only." Text="Requires your attention." ControlToValidate="_bldgNum" Display="Dynamic" ValidationExpression="^[0-9]+$"></asp:RegularExpressionValidator>
 								</div>
 							</div>
@@ -181,7 +184,7 @@
 							</div>
 				
 							<div class="form-group">
-								<label for="_office" class="col-sm-4 control-label">Office:</label>
+								<label for="_office" class="col-sm-4 control-label">Office/Company:</label>
 								<div class="col-sm-8">
 									<asp:TextBox ID="_office" CssClass="form-control" runat="server" Text='<%# Bind("Office") %>' />
 								</div>
@@ -191,6 +194,7 @@
 								<label for="_phone" class="col-sm-4 control-label">Phone Number:</label>
 								<div class="col-sm-8">
 									<asp:TextBox ID="_phone" CssClass="form-control" placeholder="000-000-0000" runat="server" Text='<%# Bind("Phone") %>' />
+									<asp:RequiredFieldValidator CssClass="label label-warning" ID="_phoneRequiredValidator" runat="server" ErrorMessage="Office Phone Number: Please enter your office number." ControlToValidate="_phone" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
 									<asp:RegularExpressionValidator ID="RegularExpressionValidator1" CssClass="label label-warning" ControlToValidate="_phone" runat="server" ErrorMessage="Phone: Please enter a valid number." Display="Dynamic" ValidationExpression="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}">Requires your attention.</asp:RegularExpressionValidator>
 								</div>
 							</div>

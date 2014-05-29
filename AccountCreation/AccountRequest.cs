@@ -21,17 +21,16 @@ namespace AccountCreation
         public string Mi { get; set; }
         public string Email { get; set; }
         public string Rank { get; set; }
-        public string Org { get; set; }
-        public string Department { get; set; }
-        public string Installation { get; set; }
         public string Branch { get; set; }
+        public string Macom { get; set; }
+        public string Installation { get; set; }
+        public string OrgUnit { get; set; }
         public string Bldg { get; set; }
         public string Room { get; set; }
         public string Office { get; set; }
         public string Phone { get; set; }
-        public Nullable<System.DateTime> RequestedDate { get; set; }
         public string Persona { get; set; }
-        public Nullable<System.DateTime> Created { get; set; }
+        public Nullable<System.DateTime> RequestedDate { get; set; }
         public string SamAccountName { get; set; }
         public string HomeFolder { get; set; }
         public Nullable<bool> Nipr { get; set; }
@@ -39,6 +38,7 @@ namespace AccountCreation
         public Nullable<bool> NiprEp { get; set; }
         public Nullable<bool> Vpn { get; set; }
         public Nullable<bool> Sipr { get; set; }
+        public string EpUnits { get; set; }
         public Nullable<bool> SupSigned { get; set; }
         public Nullable<bool> SecSigned { get; set; }
         public string SupEdipi { get; set; }
@@ -46,7 +46,10 @@ namespace AccountCreation
         public string SecEdipi { get; set; }
         public Nullable<System.DateTime> SecDateSigned { get; set; }
         public string RequestType { get; set; }
+        public string AccountType { get; set; }
         public string SaEdipi { get; set; }
+        public string SaName { get; set; }
+        public Nullable<System.DateTime> Created { get; set; }
         public string AcctStatus { get; set; }
     }
 }

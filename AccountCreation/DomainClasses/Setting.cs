@@ -24,6 +24,38 @@ namespace AccountCreation
 			}
 		}
 
+		public static string[] Installation
+		{
+			get
+			{
+				return new string[]
+				{
+					"Fort Carson",
+					"Pueblo Chemical Depot"
+				};
+			}
+		}
+
+		public static string[] Persona
+		{
+			get
+			{
+				return new string[]
+				{
+					"CIV",
+					"CTR",
+					"MIL",
+					"FM",
+					"FN",
+					"LN",
+					"NAF",
+					"NFG",
+					"NGO",
+					"VOL"
+				};
+			}
+		}
+
 		public static string[] Branch
 		{
 			get
@@ -39,7 +71,7 @@ namespace AccountCreation
 			}
 		}
 
-		public static string[] Department
+		public static string[] OrgUnit
 		{
 			get
 			{

@@ -27,17 +27,20 @@
           <Property Name="Rank" Type="nvarchar" Nullable="false" MaxLength="256" />
           <Property Name="RequestedDate" Type="datetime" />
           <Property Name="Created" Type="datetime" />
-          <Property Name="Department" Type="varchar" Nullable="false" MaxLength="128" />
-          <Property Name="Org" Type="nvarchar" MaxLength="256" />
+          <Property Name="Unit_Org" Type="nvarchar" MaxLength="256" />
           <Property Name="Branch" Type="nvarchar" Nullable="false" MaxLength="256" />
           <Property Name="Installation" Type="nvarchar" MaxLength="256" />
+          <Property Name="MACOM" Type="varchar" MaxLength="50" />
           <Property Name="RequestType" Type="nvarchar" MaxLength="50" />
           <Property Name="NIPR_REG" Type="bit" />
           <Property Name="NIPR_SA" Type="bit" />
           <Property Name="NIPR_EP" Type="bit" />
+          <Property Name="EP_UNITS" Type="nvarchar" MaxLength="150" />
           <Property Name="VPN" Type="bit" />
           <Property Name="SIPR" Type="bit" />
+          <Property Name="SA_Name" Type="nvarchar" MaxLength="256" />
           <Property Name="SA_EDIPI" Type="nvarchar" MaxLength="50" />
+          <Property Name="Account_Type" Type="nvarchar" MaxLength="100" />
           <Property Name="HomeFolder" Type="nvarchar" MaxLength="256" />
           <Property Name="SupSigned" Type="bit" />
           <Property Name="SupEDIPI" Type="nvarchar" MaxLength="50" />
@@ -65,17 +68,16 @@
           <Property Name="Mi" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
           <Property Name="Rank" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
-          <Property Name="Org" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
-          <Property Name="Department" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
-          <Property Name="Installation" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
           <Property Name="Branch" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="Macom" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Installation" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="OrgUnit" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="Bldg" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
           <Property Name="Room" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Office" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
           <Property Name="Phone" Type="String" MaxLength="12" Unicode="false" FixedLength="true" />
-          <Property Type="DateTime" Name="RequestedDate" Precision="3" />
           <Property Name="Persona" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
-          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Type="DateTime" Name="RequestedDate" Precision="3" />
           <Property Name="SamAccountName" Type="String" MaxLength="256" Unicode="false" FixedLength="false" />
           <Property Name="HomeFolder" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
           <Property Name="Nipr" Type="Boolean" />
@@ -83,6 +85,7 @@
           <Property Name="NiprEp" Type="Boolean" />
           <Property Name="Vpn" Type="Boolean" />
           <Property Name="Sipr" Type="Boolean" />
+          <Property Type="String" Name="EpUnits" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="SupSigned" Type="Boolean" />
           <Property Name="SecSigned" Type="Boolean" />
           <Property Type="String" Name="SupEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -90,7 +93,10 @@
           <Property Type="String" Name="SecEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="SecDateSigned" Precision="3" />
           <Property Type="String" Name="RequestType" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AccountType" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="SaEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SaName" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
           <Property Name="AcctStatus" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
         </EntityType>
       </Schema>
@@ -102,6 +108,11 @@
           <EntitySetMapping Name="AccountRequests">
             <EntityTypeMapping TypeName="CarsonAccountModel.AccountRequest">
               <MappingFragment StoreEntitySet="tblAcctCreate_Auto">
+                <ScalarProperty Name="EpUnits" ColumnName="EP_UNITS" />
+                <ScalarProperty Name="AccountType" ColumnName="Account_Type" />
+                <ScalarProperty Name="SaName" ColumnName="SA_Name" />
+                <ScalarProperty Name="Macom" ColumnName="MACOM" />
+                <ScalarProperty Name="OrgUnit" ColumnName="Unit_Org" />
                 <ScalarProperty Name="SaEdipi" ColumnName="SA_EDIPI" />
                 <ScalarProperty Name="RequestType" ColumnName="RequestType" />
                 <ScalarProperty Name="SecDateSigned" ColumnName="SecDateSigned" />
@@ -123,8 +134,6 @@
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Rank" ColumnName="Rank" />
                 <ScalarProperty Name="Created" ColumnName="Created" />
-                <ScalarProperty Name="Department" ColumnName="Department" />
-                <ScalarProperty Name="Org" ColumnName="Org" />
                 <ScalarProperty Name="Branch" ColumnName="Branch" />
                 <ScalarProperty Name="Installation" ColumnName="Installation" />
                 <ScalarProperty Name="Nipr" ColumnName="NIPR_REG" />
