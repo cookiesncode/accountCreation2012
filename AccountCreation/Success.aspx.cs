@@ -15,7 +15,7 @@ namespace AccountCreation
 			if (Request.QueryString["search"] != null)
 			{
 				searchValue = Request.QueryString["search"];
-				string verifyPageUrl = "https://nec.carson.army.mil/test-account-creation/Verification.aspx?search=" + searchValue;
+				string verifyPageUrl = "https://nec.carson.army.mil/account-creation/Verification.aspx?search=" + searchValue;
 				_verifyUrl.Text = verifyPageUrl;
 				_verifyUrl.NavigateUrl = verifyPageUrl;
 			}

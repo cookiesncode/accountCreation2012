@@ -7,7 +7,7 @@
 	<h2 class="page-header">Form Submitted</h2>
 	<p class="lead">Please follow these next steps to complete the process.</p>
 	<ol>
-		<li>Send your supervisor and security manager the link below, so that they may review and verify your request.</li>
+		<li>Send your supervisor and security manager the link below, so that they may review and verify your request. If you requested a VPN account then only your supervisor needs to verify your request.</li>
 		<li>Wait until your supervisor notifies you that your account has been created. Until then, do not login into the Fort Carson network.</li>
 	</ol>
 	<p><asp:HyperLink ID="_verifyUrl" runat="server">HyperLink</asp:HyperLink></p>
