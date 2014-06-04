@@ -79,6 +79,7 @@ namespace AccountCreation
 				var branchControl = (DropDownList)(_formview).FindControl("_branch");
 				var orgUnitControl = (DropDownList)(_formview).FindControl("_orgUnit");
 				var installationControl = (DropDownList)(_formview).FindControl("_installation");
+				var macomControl = (DropDownList)(_formview).FindControl("_macom");
 				var personaControl = (DropDownList)(_formview).FindControl("_persona");
 				var rankControl = (DropDownList)(_formview).FindControl("_rank");
 				var date = (TextBox)(_formview).FindControl("_date");
@@ -102,6 +103,10 @@ namespace AccountCreation
 				foreach (string item in Setting.Persona)
 				{
 					personaControl.Items.Add(new ListItem(item, item));
+				}
+				foreach (string item in Setting.Macom)
+				{
+					macomControl.Items.Add(new ListItem(item, item));
 				}
 				foreach (string item in Setting.Installation)
 				{
@@ -158,6 +163,7 @@ namespace AccountCreation
 			Response.Redirect(successUrl);
 		}
 
+		// TODO: Does this method even get called?
 		protected void _formview_ItemInserting(object sender, FormViewInsertEventArgs e)
 		{
 			if (Page.IsValid)

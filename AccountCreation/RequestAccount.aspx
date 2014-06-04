@@ -27,7 +27,7 @@
 		DataSourceID="_formviewEntitySource" 
 		DefaultMode="Insert" 
 		RenderOuterTable="False" 
-		OnDataBound="_requestForm_DataBound" OnItemInserted="_formview_ItemInserted">		
+		OnDataBound="_requestForm_DataBound" OnItemInserted="_formview_ItemInserted" EnableViewState="True">		
 		
 		<InsertItemTemplate>
 			<div class="row">
@@ -67,7 +67,7 @@
 								<label for="_middleInitial" class="col-sm-4 col-md-4 control-label">MI:</label>
 								<div class="col-sm-3 col-md-2">
 									<asp:TextBox ID="_middleInitial" CssClass="form-control" runat="server" Text='<%# Bind("Mi") %>' />
-									<asp:CustomValidator ID="_middleInitialValidator" CssClass="label label-warning" ControlToValidate="_middleInitial" runat="server" ErrorMessage="MI: Please insert only one letter for your middle initial." Text="Requires your attention" OnServerValidate="_middleInitialValidator_ServerValidate"></asp:CustomValidator>
+									<asp:CustomValidator ID="_middleInitialValidator" CssClass="label label-warning" ControlToValidate="_middleInitial" runat="server" ErrorMessage="MI: Please insert only one letter for your middle initial." Text="Requires your attention" OnServerValidate="_middleInitialValidator_ServerValidate" Display="Dynamic"></asp:CustomValidator>
 								</div>
 							</div>
 
@@ -100,6 +100,16 @@
 								</div>
 							</div>
 	
+							<div class="form-group">
+								<label for="_macom" class="col-sm-4 col-md-4 control-label">MACOM:</label>
+								<div class="col-sm-7 col-md-6">
+									<asp:DropDownList ID="_macom" CssClass="form-control" runat="server" SelectedValue='<%# Bind("Macom") %>' AppendDataBoundItems="True">
+										<asp:ListItem Text="-- Select a MACOM --" Value="" />
+									</asp:DropDownList>
+									<asp:RequiredFieldValidator CssClass="label label-warning" ID="_macomRequiredValidator" runat="server" ErrorMessage="MACOM: Please select an option." ControlToValidate="_macom" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+								</div>
+							</div>
+
 							<div class="form-group">
 								<label for="_branch" class="col-sm-4 col-md-4 control-label">Branch:</label>
 								<div class="col-sm-7 col-md-6">
@@ -165,7 +175,7 @@
 			
 							<div class="form-group">
 								<div class="col-sm-offset-4 col-md-offset-4 col-sm-8 col-md-8">
-									<asp:Button ID="_submitBtn" runat="server" Text="Submit" CommandName="Insert" CssClass="btn btn-primary" />
+									<asp:Button ID="_submitBtn" data-loading-text="Validating information..." runat="server" Text="Submit" CommandName="Insert" CssClass="btn btn-primary" />
 									<asp:Button ID="_cancelBtn" runat="server" CommandName="Cancel" Text="Reset form" CausesValidation="False" CssClass="btn btn-default" />
 								</div>
 							</div>

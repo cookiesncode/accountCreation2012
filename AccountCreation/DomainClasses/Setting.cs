@@ -24,6 +24,32 @@ namespace AccountCreation
 			}
 		}
 
+		public static string[] Macom
+		{
+			get
+			{
+				return new string[]
+				{
+					"AMC",
+					"ASA/ALT",
+					"CHRA",
+					"DFAS",
+					"FMWRC",
+					"FORSCOM",
+					"HRC",
+					"IMCOM",
+					"INSCOM",
+					"MEDCOM",
+					"NETCOM",
+					"STRATCOM",
+					"USACIDC",
+					"USARC",
+					"USASOC",
+					"US-TRANSCOM"
+				};
+			}
+		}
+
 		public static string[] Installation
 		{
 			get
@@ -168,10 +194,7 @@ namespace AccountCreation
 			{
 				return new string[] 
 				{
-					"CIV",
-					"CTR",
-					"NAF",
-					"NGO",
+					"Mr./Mrs./Ms.",
 					"PVT",
 					"PV2",
 					"PFC",

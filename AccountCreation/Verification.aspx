@@ -47,8 +47,8 @@
 					<asp:BoundField DataField="Mi" HeaderText="Mi" SortExpression="Mi" />
 					<asp:BoundField DataField="Rank" HeaderText="Rank" SortExpression="Rank" />
 					<asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
-					<asp:CheckBoxField HeaderText="Supervisor Verified" DataField="SupSigned" SortExpression="SupSigned"></asp:CheckBoxField>
-					<asp:CheckBoxField HeaderText="Security Verified" DataField="SecSigned" SortExpression="SecSigned"></asp:CheckBoxField>
+<%--					<asp:CheckBoxField HeaderText="Supervisor Verified" DataField="SupSigned" SortExpression="SupSigned"></asp:CheckBoxField>
+					<asp:CheckBoxField HeaderText="Security Verified" DataField="SecSigned" SortExpression="SecSigned"></asp:CheckBoxField>--%>
 					<asp:BoundField DataField="AcctStatus" HeaderText="Request Status" SortExpression="AcctStatus" />
 				</Columns>
 				<SelectedRowStyle CssClass="active"></SelectedRowStyle>
@@ -103,7 +103,7 @@
 								<label for="_middleInitial" class="col-sm-4 control-label">MI:</label>
 								<div class="col-sm-3">
 									<asp:TextBox ID="_middleInitial" CssClass="form-control" runat="server" Text='<%# Bind("Mi") %>' />
-									<asp:CustomValidator ID="_middleInitialValidator" runat="server" ControlToValidate="_middleInitial" CssClass="label label-warning" ErrorMessage="MI: Please insert only one letter for your middle initial." Text="Requires your attention" OnServerValidate="_middleInitialValidator_ServerValidate"></asp:CustomValidator>
+									<asp:CustomValidator ID="_middleInitialValidator" runat="server" ControlToValidate="_middleInitial" CssClass="label label-warning" ErrorMessage="MI: Please insert only one letter for your middle initial." Text="Requires your attention" OnServerValidate="_middleInitialValidator_ServerValidate" Display="Dynamic"></asp:CustomValidator>
 								</div>
 							</div>
 
@@ -137,10 +137,20 @@
 							</div>
 	
 							<div class="form-group">
+								<label for="_macom" class="col-sm-4 control-label">MACOM:</label>
+								<div class="col-sm-8">
+									<asp:DropDownList ID="_macom" CssClass="form-control" runat="server" SelectedValue='<%# Bind("Macom") %>' DataSourceID="_formviewEntitySource" DataTextField="Macom" DataValueField="Macom" AppendDataBoundItems="True">
+										<asp:ListItem Text="-- Select a MACOM --" Value="" />
+									</asp:DropDownList>
+									<asp:RequiredFieldValidator CssClass="label label-warning" ID="_macomRequiredValidator" runat="server" ErrorMessage="MACOM: Please select an option." ControlToValidate="_macom" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+								</div>
+							</div>
+							
+							<div class="form-group">
 								<label for="_branch" class="col-sm-4 control-label">Branch:</label>
 								<div class="col-sm-8">
 									<asp:DropDownList ID="_branch" CssClass="form-control" runat="server" SelectedValue='<%# Bind("Branch") %>' DataSourceID="_formviewEntitySource" DataTextField="Branch" DataValueField="Branch" AppendDataBoundItems="True">
-										<asp:ListItem Text="-- Select Branch --" Value="" />
+										<asp:ListItem Text="-- Select a Branch --" Value="" />
 									</asp:DropDownList>
 									<asp:RequiredFieldValidator CssClass="label label-warning" ID="_branchRequiredValidator" runat="server" ErrorMessage="Branch: Please select your branch." ControlToValidate="_branch" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
 								</div>
@@ -243,7 +253,7 @@
 							</asp:PlaceHolder>
 						</div>
 						<div class="panel-footer">
-							<asp:Button ID="_updateButton" CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Verify Request" />
+							<asp:Button ID="_updateButton" data-loading-text="Validating information..." CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Verify Request" />
 							<asp:Button ID="_cancelButton" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" OnClick="_cancelButton_Click" />
 						</div>
 					</div> <%-- End Signature block --%>
@@ -253,6 +263,7 @@
 			<div class="hidden">
 				<asp:TextBox ID="_supSignedDate" Text='<%# Bind("SupDateSigned") %>' Enabled="false" runat="server"></asp:TextBox>
 				<asp:CheckBox ID="_supSigned" Checked='<%# Bind("SupSigned") %>' Enabled="false" runat="server" />
+				<asp:CheckBox ID="_vpnControl" Checked='<%# Bind("Vpn") %>' Enabled="false" runat="server" />
 				<asp:TextBox ID="_secSignedDate" Text='<%# Bind("SecDateSigned") %>' Enabled="false" runat="server"></asp:TextBox>
 				<asp:CheckBox ID="_secSigned" Checked='<%# Bind("SecSigned") %>' Enabled="false" runat="server" />
 				<asp:TextBox ID="_acctStatus" Text='<%# Bind("AcctStatus") %>' Enabled="false" runat="server"></asp:TextBox>

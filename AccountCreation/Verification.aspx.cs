@@ -39,11 +39,13 @@ namespace AccountCreation
 			{
 				var installationControl = (DropDownList)(_formview).FindControl("_installation");
 				var personaControl = (DropDownList)(_formview).FindControl("_persona");
+				var macomControl = (DropDownList)(_formview).FindControl("_macom");
 				var branchControl = (DropDownList)(_formview).FindControl("_branch");
 				var orgUnitControl = (DropDownList)(_formview).FindControl("_orgUnit");
 				var rankControl = (DropDownList)(_formview).FindControl("_rank");
 				var supervisorSignature = (TextBox)(_formview).FindControl("_supervisorSignature");
 				var supervisorCheckBox = (CheckBox)(_formview).FindControl("_supervisorCheckBox");
+				var vpnControl = (CheckBox)(_formview).FindControl("_vpnControl");
 				Button updateButton = null;
 				CheckBox securityCheckBox = null;
 				TextBox securitySignature = null;
@@ -53,9 +55,12 @@ namespace AccountCreation
 				{
 					supervisorCheckBox.Enabled = false;
 					supervisorCheckBox.Checked = true;
-					securityBoxPlaceholder.Visible = true;
-					securitySignature = (TextBox)(_formview).FindControl("_securitySignature");
-					securityCheckBox = (CheckBox)(_formview).FindControl("_securityCheckBox");
+					if (vpnControl.Checked == false)
+					{
+						securityBoxPlaceholder.Visible = true;
+						securitySignature = (TextBox)(_formview).FindControl("_securitySignature");
+						securityCheckBox = (CheckBox)(_formview).FindControl("_securityCheckBox");
+					}
 				}
 
 				if (securitySignature != null && securitySignature.Text.Length > 0)
@@ -64,12 +69,20 @@ namespace AccountCreation
 					securityCheckBox.Checked = true;
 				}
 
-				if (supervisorCheckBox.Checked && securityCheckBox.Checked)
+				if (supervisorCheckBox.Checked && securityCheckBox != null && securityCheckBox.Checked)
 				{
 					updateButton = (Button)(_formview).FindControl("_updateButton");
 					updateButton.Visible = false;
 				}
 
+				foreach (string item in Setting.Macom)
+				{
+					if (macomControl.SelectedValue == item)
+					{
+						continue;
+					}
+					macomControl.Items.Add(new ListItem(item, item));
+				}
 				foreach (string item in Setting.Installation)
 				{
 					if (installationControl.SelectedValue == item)
@@ -116,6 +129,7 @@ namespace AccountCreation
 		protected void _searchButton_Click(object sender, EventArgs e)
 		{
 			_gridview.Visible = true;
+			_formview.Visible = false;
 		}
 
 		protected void _supervisor_CheckBox_CheckedChanged(object sender, EventArgs e)

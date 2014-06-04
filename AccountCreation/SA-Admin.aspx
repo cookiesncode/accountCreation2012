@@ -170,6 +170,15 @@
 							</div>
 	
 							<div class="form-group">
+								<label for="_macom" class="col-sm-4 control-label">MACOM:</label>
+								<div class="col-sm-8">
+									<p class="form-control-static">
+										<asp:Literal ID="_macom" Text='<%# Eval("Macom") %>' runat="server"></asp:Literal>
+									</p>
+								</div>
+
+							</div>
+							<div class="form-group">
 								<label for="_branch" class="col-sm-4 control-label">Branch:</label>
 								<div class="col-sm-8">
 									<p class="form-control-static">
@@ -245,6 +254,20 @@
 						</div>
 						<div class="panel-body">
 							<div class="form-group">
+								<label for="_samAccount" class="col-sm-4 control-label">SAM Account:</label>
+								<div class="col-sm-8">
+									<asp:TextBox ID="_samAccount" CssClass="form-control" Text='<%# Bind("SamAccountName") %>' runat="server"></asp:TextBox>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="_homeFolder" class="col-sm-4 control-label">Home Folder:</label>
+								<div class="col-sm-8">
+									<asp:TextBox ID="_homeFolder" CssClass="form-control" Text='<%# Bind("HomeFolder") %>' runat="server"></asp:TextBox>
+								</div>
+							</div>
+
+							<div class="form-group">
 								<label for="_saCheckBox" class="col-sm-4 control-label">Completed by:</label>
 								<div class="col-sm-8">
 									<div class="input-group">
@@ -257,8 +280,9 @@
 								</div>
 							</div>
 						</div>
+
 						<div class="panel-footer">
-							<asp:Button ID="_updateButton" CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Complete Request" />
+							<asp:Button ID="_updateButton" data-loading-text="Validating information..." CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Complete Request" />
 							<asp:Button ID="_cancelButton" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" OnClick="_cancelButton_Click" />
 						</div>
 					</div> <%-- End Signature block --%>
@@ -268,6 +292,7 @@
 			<div class="hidden">
 				<asp:TextBox ID="_acctStatus" Text='<%# Bind("AcctStatus") %>' Enabled="false" runat="server"></asp:TextBox>
 				<asp:TextBox ID="_saName" Text='<%# Bind("SaName") %>' Enabled="false" runat="server"></asp:TextBox>
+				<asp:TextBox ID="_dateCreated" Text='<%# Bind("Created") %>' Enabled="false" runat="server"></asp:TextBox>
 			</div>		
 		</EditItemTemplate>
 		<EmptyDataTemplate>
