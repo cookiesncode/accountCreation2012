@@ -94,12 +94,14 @@ namespace AccountCreation
 				var saName = (TextBox)(_formview).FindControl("_saName");
 				var saSignature = (TextBox)(_formview).FindControl("_saSignature");
 				var acctStatus = (TextBox)(_formview).FindControl("_acctStatus");
+				var dateCreated = (TextBox)(_formview).FindControl("_dateCreated");
 
 				if (saCheckBox.Checked)
 				{
 					saName.Text = user.FirstName + " " + user.LastName;
 					saSignature.Text = user.Edipi;
 					acctStatus.Text = "Created";
+					dateCreated.Text = DateTime.Now.ToString();
 				}
 				else
 				{
