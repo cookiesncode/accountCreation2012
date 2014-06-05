@@ -88,6 +88,7 @@ namespace AccountCreation
 				var epControl = (CheckBox)(_formview).FindControl("_epAcct");
 				var vpnControl = (CheckBox)(_formview).FindControl("_vpnAcct");
 				var requestType = (TextBox)(_formview).FindControl("_requestType");
+				var accountType = (TextBox)(_formview).FindControl("_accountType");
 				var acctStatus = (TextBox)(_formview).FindControl("_acctStatus");
 				var supSignedControl = (CheckBox)(_formview).FindControl("_supSigned");
 				var secSignedControl = (CheckBox)(_formview).FindControl("_secSigned");
@@ -95,6 +96,7 @@ namespace AccountCreation
 				edipiControl.Text = user.Edipi;
 				lNameControl.Text = user.LastName;
 				fNameControl.Text = user.FirstName;
+				accountType.Text = requestedAccount;
 				acctStatus.Text = "Requested";
 				date.Text = DateTime.Now.ToString();
 				supSignedControl.Checked = false;

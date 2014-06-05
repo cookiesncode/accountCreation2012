@@ -79,6 +79,7 @@
 					<asp:BoundField DataField="Mi" HeaderText="Mi" SortExpression="Mi" />
 					<asp:BoundField DataField="Rank" HeaderText="Rank" SortExpression="Rank" />
 					<asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
+					<asp:BoundField DataField="AccountType" HeaderText="Account Type" SortExpression="AccountType" />
 					<asp:BoundField DataField="RequestType" HeaderText="Request Type" SortExpression="RequestType" />
 					<asp:BoundField DataField="AcctStatus" HeaderText="Request Status" SortExpression="AcctStatus" />
 					<asp:BoundField DataField="SaName" HeaderText="SA Employee" SortExpression="SaName" />

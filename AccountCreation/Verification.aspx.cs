@@ -45,7 +45,7 @@ namespace AccountCreation
 				var rankControl = (DropDownList)(_formview).FindControl("_rank");
 				var supervisorSignature = (TextBox)(_formview).FindControl("_supervisorSignature");
 				var supervisorCheckBox = (CheckBox)(_formview).FindControl("_supervisorCheckBox");
-				var vpnControl = (CheckBox)(_formview).FindControl("_vpnControl");
+				var accountType = (TextBox)(_formview).FindControl("_accountType");
 				Button updateButton = null;
 				CheckBox securityCheckBox = null;
 				TextBox securitySignature = null;
@@ -55,7 +55,7 @@ namespace AccountCreation
 				{
 					supervisorCheckBox.Enabled = false;
 					supervisorCheckBox.Checked = true;
-					if (vpnControl.Checked == false)
+					if (accountType.Text != "VPN")
 					{
 						securityBoxPlaceholder.Visible = true;
 						securitySignature = (TextBox)(_formview).FindControl("_securitySignature");

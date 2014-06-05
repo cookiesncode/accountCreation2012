@@ -47,8 +47,7 @@
 					<asp:BoundField DataField="Mi" HeaderText="Mi" SortExpression="Mi" />
 					<asp:BoundField DataField="Rank" HeaderText="Rank" SortExpression="Rank" />
 					<asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
-<%--					<asp:CheckBoxField HeaderText="Supervisor Verified" DataField="SupSigned" SortExpression="SupSigned"></asp:CheckBoxField>
-					<asp:CheckBoxField HeaderText="Security Verified" DataField="SecSigned" SortExpression="SecSigned"></asp:CheckBoxField>--%>
+					<asp:BoundField DataField="AccountType" HeaderText="Account Type" SortExpression="AccountType" />
 					<asp:BoundField DataField="AcctStatus" HeaderText="Request Status" SortExpression="AcctStatus" />
 				</Columns>
 				<SelectedRowStyle CssClass="active"></SelectedRowStyle>
@@ -263,10 +262,10 @@
 			<div class="hidden">
 				<asp:TextBox ID="_supSignedDate" Text='<%# Bind("SupDateSigned") %>' Enabled="false" runat="server"></asp:TextBox>
 				<asp:CheckBox ID="_supSigned" Checked='<%# Bind("SupSigned") %>' Enabled="false" runat="server" />
-				<asp:CheckBox ID="_vpnControl" Checked='<%# Bind("Vpn") %>' Enabled="false" runat="server" />
 				<asp:TextBox ID="_secSignedDate" Text='<%# Bind("SecDateSigned") %>' Enabled="false" runat="server"></asp:TextBox>
 				<asp:CheckBox ID="_secSigned" Checked='<%# Bind("SecSigned") %>' Enabled="false" runat="server" />
 				<asp:TextBox ID="_acctStatus" Text='<%# Bind("AcctStatus") %>' Enabled="false" runat="server"></asp:TextBox>
+				<asp:TextBox ID="_accountType" Text='<%# Bind("AccountType") %>' Enabled="false" runat="server"></asp:TextBox>
 			</div>		
 		</EditItemTemplate>
 		<EmptyDataTemplate>
