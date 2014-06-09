@@ -37,9 +37,16 @@ namespace AccountCreation
 		{
 			if (_formview.CurrentMode == FormViewMode.Edit)
 			{
+				var adInfo = (PlaceHolder)(_formview).FindControl("_adInfo");
+				var accountType = (TextBox)(_formview).FindControl("_accountType");
 				var saSignature = (TextBox)(_formview).FindControl("_saSignature");
 				var saCheckBox = (CheckBox)(_formview).FindControl("_saCheckBox");
 				Button updateButton = null;
+
+				if (accountType.Text == "NIPR")
+				{
+					adInfo.Visible = true;
+				}
 
 				if (saSignature.Text.Length > 0)
 				{

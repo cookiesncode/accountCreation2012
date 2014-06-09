@@ -254,20 +254,21 @@
 							<p>Please fill out the information below and then apply your signature (EDIPI).</p>
 						</div>
 						<div class="panel-body">
-							<div class="form-group">
-								<label for="_samAccount" class="col-sm-4 control-label">SAM Account:</label>
-								<div class="col-sm-8">
-									<asp:TextBox ID="_samAccount" CssClass="form-control" Text='<%# Bind("SamAccountName") %>' runat="server"></asp:TextBox>
+							<asp:PlaceHolder ID="_adInfo" Visible="false" runat="server">
+								<div class="form-group">
+									<label for="_samAccount" class="col-sm-4 control-label">SAM Account:</label>
+									<div class="col-sm-8">
+										<asp:TextBox ID="_samAccount" CssClass="form-control" Text='<%# Bind("SamAccountName") %>' runat="server"></asp:TextBox>
+									</div>
 								</div>
-							</div>
 
-							<div class="form-group">
-								<label for="_homeFolder" class="col-sm-4 control-label">Home Folder:</label>
-								<div class="col-sm-8">
-									<asp:TextBox ID="_homeFolder" CssClass="form-control" Text='<%# Bind("HomeFolder") %>' runat="server"></asp:TextBox>
+								<div class="form-group">
+									<label for="_homeFolder" class="col-sm-4 control-label">Home Folder:</label>
+									<div class="col-sm-8">
+										<asp:TextBox ID="_homeFolder" CssClass="form-control" Text='<%# Bind("HomeFolder") %>' runat="server"></asp:TextBox>
+									</div>
 								</div>
-							</div>
-
+							</asp:PlaceHolder>
 							<div class="form-group">
 								<label for="_saCheckBox" class="col-sm-4 control-label">Completed by:</label>
 								<div class="col-sm-8">
@@ -292,6 +293,7 @@
 			</div>
 			<div class="hidden">
 				<asp:TextBox ID="_acctStatus" Text='<%# Bind("AcctStatus") %>' Enabled="false" runat="server"></asp:TextBox>
+				<asp:TextBox ID="_accountType" Text='<%# Bind("AccountType") %>' Enabled="false" runat="server"></asp:TextBox>
 				<asp:TextBox ID="_saName" Text='<%# Bind("SaName") %>' Enabled="false" runat="server"></asp:TextBox>
 				<asp:TextBox ID="_dateCreated" Text='<%# Bind("Created") %>' Enabled="false" runat="server"></asp:TextBox>
 			</div>		

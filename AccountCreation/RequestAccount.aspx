@@ -27,8 +27,7 @@
 		DataSourceID="_formviewEntitySource" 
 		DefaultMode="Insert" 
 		RenderOuterTable="False" 
-		OnDataBound="_requestForm_DataBound" OnItemInserted="_formview_ItemInserted" EnableViewState="True">		
-		
+		OnDataBound="_requestForm_DataBound" OnItemInserted="_formview_ItemInserted" EnableViewState="True">
 		<InsertItemTemplate>
 			<div class="row">
 				<div class="col-sm-7">
