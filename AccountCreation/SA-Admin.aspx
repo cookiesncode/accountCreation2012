@@ -14,7 +14,7 @@
 				<div class="form-group">
 					<label for="_filterRequestType" class="col-sm-5 col-md-4 control-label">Request Type:</label>
 					<div class="col-sm-7 col-md-8">
-						<asp:DropDownList ID="_filterRequestType" CssClass="form-control" runat="server" AutoPostBack="true">
+						<asp:DropDownList ID="_filterRequestType" OnSelectedIndexChanged="_filter_SelectedIndexChanged" CssClass="form-control" runat="server" AutoPostBack="true">
 							<asp:ListItem Text="No filter" Value=""></asp:ListItem>
 							<asp:ListItem Text="Automated Creation" Value="Auto"></asp:ListItem>
 							<asp:ListItem Text="Manual Creation (SA)" Value="Manual"></asp:ListItem>
@@ -26,7 +26,7 @@
 				<div class="form-group">
 					<label for="_filterRequestStatus" class="col-sm-5 col-md-4 control-label">Request Status:</label>
 					<div class="col-sm-7 col-md-8">
-						<asp:DropDownList ID="_filterRequestStatus" CssClass="form-control" runat="server" AutoPostBack="true">
+						<asp:DropDownList ID="_filterRequestStatus" OnSelectedIndexChanged="_filter_SelectedIndexChanged" CssClass="form-control" runat="server" AutoPostBack="true">
 							<asp:ListItem Text="No filter" Value=""></asp:ListItem>
 							<asp:ListItem Text="Requested" Value="Requested"></asp:ListItem>
 							<asp:ListItem Text="Partially Verified" Value="Partially Verified"></asp:ListItem>

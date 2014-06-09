@@ -124,5 +124,13 @@ namespace AccountCreation
 				}
 			}
 		}
+
+		protected void _filter_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (IsPostBack)
+			{
+				_formview.Visible = false;
+			}
+		}
 	}
 }
