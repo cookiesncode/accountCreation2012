@@ -46,10 +46,21 @@ namespace AccountCreation
 				var supervisorSignature = (TextBox)(_formview).FindControl("_supervisorSignature");
 				var supervisorCheckBox = (CheckBox)(_formview).FindControl("_supervisorCheckBox");
 				var accountType = (TextBox)(_formview).FindControl("_accountType");
+				var epUnits = (ListBox)(_formview).FindControl("_epUnitsList");
+				var epPanel = (Panel)(_formview).FindControl("_epPanel");
 				Button updateButton = null;
 				CheckBox securityCheckBox = null;
 				TextBox securitySignature = null;
 				PlaceHolder securityBoxPlaceholder = (PlaceHolder)(_formview).FindControl("_securityBoxPlaceholder");
+
+				if (accountType.Text == "EP")
+				{
+					epPanel.Visible = true;
+					foreach (string item in Setting.OrgUnit)
+					{
+						epUnits.Items.Add(new ListItem(item, item));
+					}
+				}
 
 				if (supervisorSignature.Text.Length > 0  && securitySignature == null)
 				{

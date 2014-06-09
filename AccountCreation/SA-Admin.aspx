@@ -241,6 +241,18 @@
 									</p>
 								</div>
 							</div>
+							
+							<asp:Panel ID="_epPanel" Visible="false" runat="server">
+								<div class="form-group">
+									<label for="_epUnits" class="col-sm-4 control-label">EP Units:</label>
+									<div class="col-sm-8">
+										<p class="form-control-static">
+											<asp:Literal ID="_epUnits" Text='<%# Eval("EpUnits") %>' runat="server"></asp:Literal>
+										</p>
+									</div>
+								</div>
+							</asp:Panel>
+
 						</div>
 					</div>
 				</div>
@@ -293,7 +305,7 @@
 			</div>
 			<div class="hidden">
 				<asp:TextBox ID="_acctStatus" Text='<%# Bind("AcctStatus") %>' Enabled="false" runat="server"></asp:TextBox>
-				<asp:TextBox ID="_requestType" Text='<%# Bind("RequestType") %>' Enabled="false" runat="server"></asp:TextBox>
+				<asp:TextBox ID="_accountType" Text='<%# Bind("AccountType") %>' Enabled="false" runat="server"></asp:TextBox>
 				<asp:TextBox ID="_saName" Text='<%# Bind("SaName") %>' Enabled="false" runat="server"></asp:TextBox>
 				<asp:TextBox ID="_dateCreated" Text='<%# Bind("Created") %>' Enabled="false" runat="server"></asp:TextBox>
 			</div>		

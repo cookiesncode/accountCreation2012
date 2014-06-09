@@ -38,14 +38,20 @@ namespace AccountCreation
 			if (_formview.CurrentMode == FormViewMode.Edit)
 			{
 				var adInfo = (PlaceHolder)(_formview).FindControl("_adInfo");
-				var requestType = (TextBox)(_formview).FindControl("_requestType");
+				var epPanel = (Panel)(_formview).FindControl("_epPanel");
+				var accountType = (TextBox)(_formview).FindControl("_accountType");
 				var saSignature = (TextBox)(_formview).FindControl("_saSignature");
 				var saCheckBox = (CheckBox)(_formview).FindControl("_saCheckBox");
 				Button updateButton = null;
 
-				if (requestType.Text == "Manual")
+				if (accountType.Text != "NIPR")
 				{
 					adInfo.Visible = true;
+				}
+
+				if (accountType.Text == "EP")
+				{
+					epPanel.Visible = true;
 				}
 
 				if (saSignature.Text.Length > 0)

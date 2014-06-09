@@ -24,7 +24,7 @@ namespace AccountCreation
 				//testing purposes only; Note!: this method does not output any info from the CAC card.
 				user = new CurrentUser("1265020972");
 			}
-			if (requestedAccount != null)
+			if (!IsPostBack && requestedAccount != null)
 			{
 				bool accountExist;
 
@@ -92,6 +92,8 @@ namespace AccountCreation
 				var acctStatus = (TextBox)(_formview).FindControl("_acctStatus");
 				var supSignedControl = (CheckBox)(_formview).FindControl("_supSigned");
 				var secSignedControl = (CheckBox)(_formview).FindControl("_secSigned");
+				var epUnits = (ListBox)(_formview).FindControl("_epUnitsList");
+				var epPanel = (Panel)(_formview).FindControl("_epPanel");
 
 				edipiControl.Text = user.Edipi;
 				lNameControl.Text = user.LastName;
@@ -102,6 +104,34 @@ namespace AccountCreation
 				supSignedControl.Checked = false;
 				secSignedControl.Checked = false;
 
+				if (requestedAccount != null)
+				{
+					switch (requestedAccount)
+					{
+						case "NIPR":
+							niprControl.Checked = true;
+							requestType.Text = "Auto";
+							break;
+						case "SIPR":
+							siprControl.Checked = true;
+							requestType.Text = "Manual";
+							break;
+						case "EP":
+							epPanel.Visible = true;
+							epControl.Checked = true;
+							requestType.Text = "Manual";
+							break;
+						case "VPN":
+							vpnControl.Checked = true;
+							requestType.Text = "Auto";
+							break;
+					}
+				}
+
+				foreach (string item in Setting.OrgUnit)
+				{
+					epUnits.Items.Add(new ListItem(item, item));
+				}
 				foreach (string item in Setting.Persona)
 				{
 					personaControl.Items.Add(new ListItem(item, item));
@@ -133,29 +163,6 @@ namespace AccountCreation
 					lNameControl.Enabled = false;
 					fNameControl.Enabled = false;
 				}
-
-				if (requestedAccount != null)
-				{
-					switch (requestedAccount)
-					{
-						case "NIPR":
-							niprControl.Checked = true;
-							requestType.Text = "Auto";
-							break;
-						case "SIPR":
-							siprControl.Checked = true;
-							requestType.Text = "Manual";
-							break;
-						case "EP":
-							epControl.Checked = true;
-							requestType.Text = "Manual";
-							break;
-						case "VPN":
-							vpnControl.Checked = true;
-							requestType.Text = "Auto";
-							break;
-					}
-				}
 			}
 		}
 
@@ -165,12 +172,11 @@ namespace AccountCreation
 			Response.Redirect(successUrl);
 		}
 
-		// TODO: Does this method even get called?
 		protected void _formview_ItemInserting(object sender, FormViewInsertEventArgs e)
 		{
-			if (Page.IsValid)
+			if (!Page.IsValid)
 			{
-				_formview.InsertItem(true);
+				e.Cancel = true;
 			}
 		}
 

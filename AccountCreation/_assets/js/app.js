@@ -11,6 +11,17 @@
         	}
         });
     });
+
+    var $epUnitsList = $('#_epUnitsList');
+    $epUnitsList.on('change', function(event) {
+        var str = "";
+        $epUnitsList.children('option:selected')
+        .each(function(index, el) {
+            str += $(this).text() + " ";
+            $('#_epSelectedUnits').val(str);
+        });
+    })
+    .change();
 }(jQuery));
 
 

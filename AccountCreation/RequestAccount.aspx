@@ -27,7 +27,10 @@
 		DataSourceID="_formviewEntitySource" 
 		DefaultMode="Insert" 
 		RenderOuterTable="False" 
-		OnDataBound="_requestForm_DataBound" OnItemInserted="_formview_ItemInserted" EnableViewState="True">
+		OnDataBound="_requestForm_DataBound" 
+		OnItemInserted="_formview_ItemInserted" 
+		OnItemInserting="_formview_ItemInserting"
+		EnableViewState="True">
 		<InsertItemTemplate>
 			<div class="row">
 				<div class="col-sm-7">
@@ -171,7 +174,28 @@
 									<asp:RegularExpressionValidator ID="RegularExpressionValidator1" CssClass="label label-warning" ControlToValidate="_phone" runat="server" ErrorMessage="Phone: Please enter a valid number in the format of 000-000-0000." Display="Dynamic" ValidationExpression="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}">Requires your attention.</asp:RegularExpressionValidator>
 								</div>
 							</div>
-			
+
+							<asp:Panel ID="_epPanel" Visible="false" runat="server">
+								<h4 class="page-header">EP Section</h4>
+								<div class="form-group">
+									<label for="_epUnitsList" class="col-sm-4 col-md-4 control-label">EP Unit List:</label>
+									<div class="col-sm-7 col-md-6">
+										<asp:ListBox ID="_epUnitsList" Rows="8" CssClass="form-control" ClientIDMode="Static" SelectionMode="Multiple" runat="server">
+											<asp:ListItem Text="-- Select Units --" Value="" />
+										</asp:ListBox>
+										<span class="help-block">Hold the Ctrl button on your keyboard to make multiple selections.</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="_epSelectedUnits" class="col-sm-4 col-md-4 control-label">EP Selected Units:</label>
+									<div class="col-sm-7 col-md-6">
+										<asp:TextBox ID="_epSelectedUnits" Rows="4" TextMode="MultiLine" CssClass="form-control" ClientIDMode="Static" Text='<%# Bind("EpUnits") %>' runat="server" />
+										<span class="help-block">Use the EP Units list above to populate this field.</span>
+										<asp:RequiredFieldValidator CssClass="label label-warning" ID="_epUnitsRequiredValidator" runat="server" ErrorMessage="Selected Units: Please enter the units you want to have elevated privelages over." ControlToValidate="_epSelectedUnits" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+									</div>
+								</div>
+							</asp:Panel>
+
 							<div class="form-group">
 								<div class="col-sm-offset-4 col-md-offset-4 col-sm-8 col-md-8">
 									<asp:Button ID="_submitBtn" data-loading-text="Validating information..." runat="server" Text="Submit" CommandName="Insert" CssClass="btn btn-primary" />
@@ -181,10 +205,12 @@
 						</div>
 					</div>
 				</div><%-- End left column --%> 
+
 				<div class="col-sm-5">
 					<asp:ValidationSummary CssClass="alert alert-danger" ID="_validationSummary" runat="server" />
 				</div>
 			</div>
+
 			<div class="hidden">
 				<asp:RadioButton ID="_niprAcct" Enabled="false" Text="&nbsp;NIPR" runat="server" GroupName="RequestType" Checked='<%# Bind("Nipr") %>' />
 				<asp:RadioButton ID="_siprAcct" Enabled="false" Text="&nbsp;SIPR" runat="server" GroupName="RequestType" Checked='<%# Bind("Sipr") %>' />

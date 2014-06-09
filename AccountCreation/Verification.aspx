@@ -207,6 +207,28 @@
 									<asp:RegularExpressionValidator ID="RegularExpressionValidator1" CssClass="label label-warning" ControlToValidate="_phone" runat="server" ErrorMessage="Phone: Please enter a valid number." Display="Dynamic" ValidationExpression="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}">Requires your attention.</asp:RegularExpressionValidator>
 								</div>
 							</div>
+
+							<asp:Panel ID="_epPanel" Visible="false" runat="server">
+								<h4 class="page-header">EP Section</h4>
+								<div class="form-group">
+									<label for="_epUnitsList" class="col-sm-4 col-md-4 control-label">EP Unit List:</label>
+									<div class="col-sm-7 col-md-6">
+										<asp:ListBox ID="_epUnitsList" Rows="8" CssClass="form-control" ClientIDMode="Static" SelectionMode="Multiple" runat="server">
+											<asp:ListItem Text="-- Select Units --" Value="" />
+										</asp:ListBox>
+										<span class="help-block">Hold the Ctrl button on your keyboard to make multiple selections.</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="_epSelectedUnits" class="col-sm-4 col-md-4 control-label">EP Selected Units:</label>
+									<div class="col-sm-7 col-md-6">
+										<asp:TextBox ID="_epSelectedUnits" Rows="4" TextMode="MultiLine" CssClass="form-control" ClientIDMode="Static" Text='<%# Bind("EpUnits") %>' runat="server" />
+										<span class="help-block">Use the EP Units list above to populate this field.</span>
+										<asp:RequiredFieldValidator CssClass="label label-warning" ID="_epUnitsRequiredValidator" runat="server" ErrorMessage="Selected Units: Please enter the units you want to have elevated privelages over." ControlToValidate="_epSelectedUnits" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+									</div>
+								</div>
+							</asp:Panel>
+
 						</div>
 					</div>
 				</div>
