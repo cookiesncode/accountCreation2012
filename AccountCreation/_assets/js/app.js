@@ -18,8 +18,8 @@
         $epUnitsList.children('option:selected')
         .each(function(index, el) {
             str += $(this).text() + " ";
-            $('#_epSelectedUnits').val(str);
         });
+        $('#_epSelectedUnits').val(str);
     })
     .change();
 }(jQuery));
