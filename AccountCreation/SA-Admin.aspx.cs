@@ -13,9 +13,16 @@ namespace AccountCreation
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			if (!Page.User.IsInRole("CARSON NEC SSD SMB SA SG"))
+			{
+				Response.StatusCode = 403;
+				Response.SuppressContent = true;
+			}
+
 			var cert = Request.ClientCertificate;
 			var seachQueryString = Request.QueryString["search"];
 
+			//TODO create new CurrentUser with Page.User property instead
 			if (cert.IsPresent)
 			{
 				user = new CurrentUser(cert);
