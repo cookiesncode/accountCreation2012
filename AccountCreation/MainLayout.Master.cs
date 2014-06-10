@@ -11,7 +11,10 @@ namespace AccountCreation
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-
+			if (Page.User.IsInRole("CARSON NEC SSD SMB SA SG"))
+			{
+				_saLink.Visible = true;
+			}
 		}
 	}
 }

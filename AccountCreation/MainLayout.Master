@@ -31,6 +31,7 @@
 			<ul class="nav navbar-nav">
 				<li><a href="RequestType.aspx">New Request</a></li>
 				<li><a href="Verification.aspx">Request Verification</a></li>
+				<li id="_saLink" visible="false" runat="server"><a href="SA-Admin.aspx">SA Admin Panel</a></li>
 			</ul>
 		</div>
 	</nav>

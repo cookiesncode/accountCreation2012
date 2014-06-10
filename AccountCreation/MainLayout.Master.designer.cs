@@ -22,6 +22,15 @@ namespace AccountCreation {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder _masterHead;
         
         /// <summary>
+        /// _saLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl _saLink;
+        
+        /// <summary>
         /// masterForm control.
         /// </summary>
         /// <remarks>
