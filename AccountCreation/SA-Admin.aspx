@@ -68,8 +68,10 @@
 				AutoGenerateColumns="False" 
 				AllowSorting="True" 
 				OnSelectedIndexChanged="_gridview_SelectedIndexChanged"
+				OnPageIndexChanged="_gridview_PageIndexChanged"
 				Visible="true" 
-				EmptyDataText="No results found">
+				EmptyDataText="No results found"
+				EnablePersistedSelection="True">
 				<Columns>
 					<asp:CommandField ShowSelectButton="True"></asp:CommandField>
 					<asp:BoundField DataField="Id" HeaderText="Unique ID" SortExpression="Id" />

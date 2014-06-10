@@ -38,9 +38,12 @@
 				AllowSorting="True" 
 				OnSelectedIndexChanged="_gridview_SelectedIndexChanged"
 				Visible="False" 
-				EmptyDataText="No results found">
+				EmptyDataText="No results found" 
+				EnablePersistedSelection="True" 
+				OnPageIndexChanged="_gridview_PageIndexChanged">
 				<Columns>
 					<asp:CommandField ShowSelectButton="True"></asp:CommandField>
+					<asp:BoundField DataField="Id" HeaderText="Unique ID" SortExpression="Id" />
 					<asp:BoundField DataField="Edipi" HeaderText="EDIPI" SortExpression="Edipi" />
 					<asp:BoundField DataField="LName" HeaderText="Last Name" SortExpression="LName" />
 					<asp:BoundField DataField="FName" HeaderText="First Name" SortExpression="FName" />

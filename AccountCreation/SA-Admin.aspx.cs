@@ -13,11 +13,11 @@ namespace AccountCreation
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			if (!Page.User.IsInRole("CARSON NEC SSD SMB SA SG"))
-			{
-				Response.StatusCode = 403;
-				Response.SuppressContent = true;
-			}
+			//if (!Page.User.IsInRole("CARSON NEC SSD SMB SA SG"))
+			//{
+			//	Response.StatusCode = 403;
+			//	Response.SuppressContent = true;
+			//}
 
 			var cert = Request.ClientCertificate;
 			var seachQueryString = Request.QueryString["search"];
@@ -44,7 +44,7 @@ namespace AccountCreation
 		{
 			if (_formview.CurrentMode == FormViewMode.Edit)
 			{
-				var adInfo = (PlaceHolder)(_formview).FindControl("_adInfo");
+				var adContainer = (PlaceHolder)(_formview).FindControl("_adInfo");
 				var epPanel = (Panel)(_formview).FindControl("_epPanel");
 				var accountType = (TextBox)(_formview).FindControl("_accountType");
 				var saSignature = (TextBox)(_formview).FindControl("_saSignature");
@@ -53,7 +53,7 @@ namespace AccountCreation
 
 				if (accountType.Text != "NIPR")
 				{
-					adInfo.Visible = true;
+					adContainer.Visible = true;
 				}
 
 				if (accountType.Text == "EP")
@@ -75,10 +75,24 @@ namespace AccountCreation
 			}
 		}
 
+		protected void _formview_ItemUpdated(object sender, FormViewUpdatedEventArgs e)
+		{
+			_gridview.DataBind();
+			_formview.Visible = false;
+		}
+
 		protected void _searchButton_Click(object sender, EventArgs e)
 		{
 			_filterPanel.Visible = true;
 			_gridview.Visible = true;
+		}
+
+		protected void _filter_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (IsPostBack)
+			{
+				_formview.Visible = false;
+			}
 		}
 
 		protected void _gridview_SelectedIndexChanged(object sender, EventArgs e)
@@ -94,15 +108,8 @@ namespace AccountCreation
 			}
 		}
 
-		protected void _cancelButton_Click(object sender, EventArgs e)
+		protected void _gridview_PageIndexChanged(object sender, EventArgs e)
 		{
-			_formview.Visible = false;
-			_formview.DataBind();
-		}
-
-		protected void _formview_ItemUpdated(object sender, FormViewUpdatedEventArgs e)
-		{
-			_gridview.DataBind();
 			_formview.Visible = false;
 		}
 
@@ -132,12 +139,10 @@ namespace AccountCreation
 			}
 		}
 
-		protected void _filter_SelectedIndexChanged(object sender, EventArgs e)
+		protected void _cancelButton_Click(object sender, EventArgs e)
 		{
-			if (IsPostBack)
-			{
-				_formview.Visible = false;
-			}
+			_formview.Visible = false;
+			_formview.DataBind();
 		}
 	}
 }

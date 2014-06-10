@@ -33,6 +33,30 @@ namespace AccountCreation
 			}
 		}
 
+		protected void _searchButton_Click(object sender, EventArgs e)
+		{
+			_gridview.Visible = true;
+			_formview.Visible = false;
+		}
+
+		protected void _gridview_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (IsPostBack)
+			{
+				_formview.Visible = true;
+				_formview.DataBind();
+			}
+			else
+			{
+				_formview.Visible = false;
+			}
+		}
+		
+		protected void _gridview_PageIndexChanged(object sender, EventArgs e)
+		{
+			_formview.Visible = false;
+		}
+
 		protected void _formview_DataBound(object sender, EventArgs e)
 		{
 			if (_formview.CurrentMode == FormViewMode.Edit)
@@ -62,7 +86,7 @@ namespace AccountCreation
 					}
 				}
 
-				if (supervisorSignature.Text.Length > 0  && securitySignature == null)
+				if (supervisorSignature.Text.Length > 0 && securitySignature == null)
 				{
 					supervisorCheckBox.Enabled = false;
 					supervisorCheckBox.Checked = true;
@@ -137,10 +161,22 @@ namespace AccountCreation
 			}
 		}
 
-		protected void _searchButton_Click(object sender, EventArgs e)
+		protected void _formview_ItemUpdated(object sender, FormViewUpdatedEventArgs e)
 		{
-			_gridview.Visible = true;
+			_gridview.DataBind();
 			_formview.Visible = false;
+		}
+
+		protected void _middleInitialValidator_ServerValidate(object source, ServerValidateEventArgs args)
+		{
+			if (args.Value.Length > 1)
+			{
+				args.IsValid = false;
+			}
+			else
+			{
+				args.IsValid = true;
+			}
 		}
 
 		protected void _supervisor_CheckBox_CheckedChanged(object sender, EventArgs e)
@@ -197,41 +233,11 @@ namespace AccountCreation
 			}
 		}
 
-		protected void _gridview_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			if (IsPostBack)
-			{
-				_formview.Visible = true;
-				_formview.DataBind();
-			}
-			else
-			{
-				_formview.Visible = false;
-			}
-		}
-
 		protected void _cancelButton_Click(object sender, EventArgs e)
 		{
 			_formview.Visible = false;
 			_formview.DataBind();
 		}
 
-		protected void _formview_ItemUpdated(object sender, FormViewUpdatedEventArgs e)
-		{
-			_gridview.DataBind();
-			_formview.Visible = false;
-		}
-
-		protected void _middleInitialValidator_ServerValidate(object source, ServerValidateEventArgs args)
-		{
-			if (args.Value.Length > 1)
-			{
-				args.IsValid = false;
-			}
-			else
-			{
-				args.IsValid = true;
-			}
-		}
 	}
 }
