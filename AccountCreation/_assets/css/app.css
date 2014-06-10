@@ -3,6 +3,10 @@ body {
 	background-color: white;
 }
 
+table {
+    font-size: 14px;
+}
+
 h1, h2, h3 {
 }
 
