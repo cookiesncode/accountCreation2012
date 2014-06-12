@@ -19,6 +19,11 @@ namespace AccountCreation
 			LogonName = edipi + "@mil";
 		}
 
+		public ADAccount()
+		{
+			LogonName = HttpContext.Current.User.Identity.Name;
+		}
+
 		public bool queryForest()
 		{
 			var forest = Forest.GetForest(new DirectoryContext(DirectoryContextType.Forest, "ds.army.mil"));
