@@ -22,7 +22,7 @@ namespace AccountCreation
 			else
 			{
 				//testing purposes only; Note!: this method does not output any info from the CAC card.
-				user = new CurrentUser("1265020972");
+				user = new CurrentUser("6423164");
 			}
 			if (!IsPostBack && requestedAccount != null)
 			{
