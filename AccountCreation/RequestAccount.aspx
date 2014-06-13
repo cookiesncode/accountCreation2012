@@ -175,6 +175,30 @@
 								</div>
 							</div>
 
+							<asp:Panel ID="_niprPanel" Visible="false" runat="server">
+								<h4 class="page-header">Awareness Training</h4>
+								<div class="form-group">
+									<div class="col-sm-12 col-md-offset-1 col-md-11">
+										<div class="checkbox">
+											<label>
+												<asp:CheckBox ID="_trainingCheck" runat="server" />
+												I have completed the Annual Information Awareness Training.
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="_trainingDate" class="col-sm-4 col-md-4 control-label">Date Completed:</label>
+									<div class="col-sm-7 col-md-6">									
+										<div id="datePicker" class="input-group date">
+											<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+											<asp:TextBox ID="_trainingDate" CssClass="form-control" Enabled="false" runat="server" />
+										  
+										</div>
+									</div>
+								</div>
+							</asp:Panel>
+
 							<asp:Panel ID="_epPanel" Visible="false" runat="server">
 								<h4 class="page-header">EP Section</h4>
 								<div class="form-group">
@@ -239,4 +263,5 @@
 </asp:Content>
 
 <asp:Content ID="_childBtmScripts" ContentPlaceHolderID="_masterBtmScripts" runat="server">
+	<script src="_assets/js/bootstrap-datepicker.js"></script>
 </asp:Content>

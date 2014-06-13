@@ -43,7 +43,7 @@
 	</article>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="_assets/js/bootstrap.min.js"></script>
-	<script src="_assets/js/app.js"></script>
 	<asp:ContentPlaceHolder ID="_masterBtmScripts" runat="server"></asp:ContentPlaceHolder>
+	<script src="_assets/js/app.js"></script>
 </body>
 </html>

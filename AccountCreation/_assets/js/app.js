@@ -22,6 +22,12 @@
         $('#_epSelectedUnits').val(str);
     })
     .change();
+
+    var date = new Date();
+    $('#datePicker').attr("data-date", date);
+    $('#datePicker').datepicker({
+        'format' : 'mm/dd/yyyy'
+    });
 }(jQuery));
 
 

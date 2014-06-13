@@ -22,7 +22,7 @@ namespace AccountCreation
 			else
 			{
 				//testing purposes only; Note!: this method does not output any info from the CAC card.
-				user = new CurrentUser("1265020972");
+				user = new CurrentUser("321461351");
 			}
 			if (!IsPostBack && requestedAccount != null)
 			{
@@ -94,6 +94,7 @@ namespace AccountCreation
 				var secSignedControl = (CheckBox)(_formview).FindControl("_secSigned");
 				var epUnits = (ListBox)(_formview).FindControl("_epUnitsList");
 				var epPanel = (Panel)(_formview).FindControl("_epPanel");
+				var niprPanel = (Panel)(_formview).FindControl("_niprPanel");
 
 				edipiControl.Text = user.Edipi;
 				lNameControl.Text = user.LastName;
@@ -109,6 +110,7 @@ namespace AccountCreation
 					switch (requestedAccount)
 					{
 						case "NIPR":
+							niprPanel.Visible = true;
 							niprControl.Checked = true;
 							requestType.Text = "Auto";
 							break;
