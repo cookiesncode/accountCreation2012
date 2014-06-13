@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
+    <Content Include="Test.aspx" />
     <Content Include="RequestAccount.aspx" />
     <Content Include="RequestType.aspx" />
     <Content Include="SA-Admin.aspx" />
@@ -116,7 +117,15 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="DomainClasses\ADAccount.cs" />
+    <Compile Include="DomainClasses\CacCard.cs" />
     <Compile Include="DomainClasses\Setting.cs" />
+    <Compile Include="Test.aspx.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test.aspx.designer.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MainLayout.Master.cs">
       <DependentUpon>MainLayout.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -132,7 +141,6 @@
     <Compile Include="RequestAccount.aspx.designer.cs">
       <DependentUpon>RequestAccount.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DomainClasses\CurrentUser.cs" />
     <Compile Include="RequestType.aspx.cs">
       <DependentUpon>RequestType.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

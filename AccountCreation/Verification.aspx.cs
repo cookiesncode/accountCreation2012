@@ -9,22 +9,9 @@ namespace AccountCreation
 {
 	public partial class Verification : System.Web.UI.Page
 	{
-		CurrentUser user;
-
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			var cert = Request.ClientCertificate;
 			var seachQueryString = Request.QueryString["search"];
-
-			if (cert.IsPresent)
-			{
-				user = new CurrentUser(cert);
-			}
-			else
-			{
-				// Local testing only. Does not output card info to textboxes!!
-				user = new CurrentUser("1265020972");
-			}
 
 			if (!IsPostBack && seachQueryString != null)
 			{
@@ -191,7 +178,7 @@ namespace AccountCreation
 
 				if (supervisorCheckBox.Checked)
 				{
-					supervisorSignature.Text = user.Edipi;
+					supervisorSignature.Text = CacCard.Edipi;
 					supSignedDate.Text = DateTime.Now.ToString();
 					supSigned.Checked = true;
 					acctStatus.Text = "Partially Verified";
@@ -218,7 +205,7 @@ namespace AccountCreation
 
 				if (securityCheckBox.Checked)
 				{
-					securitySignature.Text = user.Edipi;
+					securitySignature.Text = CacCard.Edipi;
 					secSignedDate.Text = DateTime.Now.ToString();
 					secSigned.Checked = true;
 					acctStatus.Text = "Ready";
