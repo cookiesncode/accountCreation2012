@@ -1,15 +1,30 @@
 ﻿(function ($) {
-    $('[data-loading-text]').click(function () {
-    	var $button = $(this);
+
+    $(':submit').click(function (event) {
+        var $button = $(this);
+        var btnLoadingText = $button.attr('data-loading-text');
+        var btnConfirmText = $button.attr('data-confirm-modal');
         var $validationLabels = $('.label-warning');
-        $button.button('loading');
+        var passesValidation = true;
+
         $validationLabels.each(function (index, el) {
-        	var $label = $(el);
-        	if ($label.is(':visible')) {
-        		$button.button('reset');
-        		return true;
-        	}
+            var $label = $(el);
+            if ($label.is(':visible')) {
+                passesValidation = false;
+                return false;
+            }
         });
+        if (passesValidation && btnLoadingText && !btnConfirmText) {
+            $button.button('loading');
+        }
+        if (passesValidation && btnConfirmText) {
+            var confirmEntry = confirm(btnConfirmText);
+            if (confirmEntry === false) {
+                event.preventDefault();
+            } else {
+                $button.button('loading');
+            }
+        }
     });
 
     var $epUnitsList = $('#_epUnitsList');
@@ -20,18 +35,6 @@
             str += $(this).text() + " ";
         });
         $('#_epSelectedUnits').val(str);
-    })
-    .change();
+    })   
+
 }(jQuery));
-
-
-//var ua = navigator.userAgent.toLowerCase();
-//var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
-//var isIEMobile = ua.indexOf("iemobile") > -1; //&& ua.indexOf("mobile");
-//if (!isAndroid && !isIEMobile) {
-//	$('[data-input-mask="tel"]').mask('(999) 999-9999');
-//	$('[data-input-mask="ssn"]').mask('999-99-9999');
-//	$('[data-input-mask="date"]').mask('99/99/9999');
-//	$('[data-input-mask="tag"]').mask('99/99');
-//	$('[data-input-mask="time"]').mask('99:99');
-//}

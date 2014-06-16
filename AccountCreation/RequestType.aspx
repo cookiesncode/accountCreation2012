@@ -27,7 +27,7 @@
 						</div>
 					</div>
 					<div class="panel-footer">
-						<asp:Button data-loading-text="Please wait, while we verify any existing accounts..." role="button" ID="_submitBtn" runat="server" Text="Submit" CssClass="btn btn-primary" OnClick="_submitBtn_Click" />
+						<asp:Button data-confirm-modal="Are you sure?" data-loading-text="Please wait, while we verify any existing accounts..." role="button" ID="_submitBtn" runat="server" Text="Submit" CssClass="btn btn-primary" OnClick="_submitBtn_Click" />
 					</div>
 				</div>
 			</div>
