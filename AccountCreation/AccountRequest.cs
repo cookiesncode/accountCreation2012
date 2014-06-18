@@ -45,6 +45,8 @@ namespace AccountCreation
         public Nullable<System.DateTime> SupDateSigned { get; set; }
         public string SecEdipi { get; set; }
         public Nullable<System.DateTime> SecDateSigned { get; set; }
+        public Nullable<bool> Training { get; set; }
+        public Nullable<System.DateTime> TrainingDate { get; set; }
         public string RequestType { get; set; }
         public string AccountType { get; set; }
         public string SaEdipi { get; set; }

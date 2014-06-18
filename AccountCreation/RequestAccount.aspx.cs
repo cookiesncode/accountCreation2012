@@ -9,42 +9,33 @@ namespace AccountCreation
 {
 	public partial class RequestAccount : System.Web.UI.Page
 	{
-		private CurrentUser user;
-
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			var cac = Request.ClientCertificate;
 			string requestedAccount = Session["RequestedAccount"] as string;
-			if (Request.ClientCertificate.IsPresent)
-			{
-				user = new CurrentUser(cac);
-			}
-			else
-			{
-				//testing purposes only; Note!: this method does not output any info from the CAC card.
-				user = new CurrentUser("321461351");
-			}
+			var userAccount = new AdAccount();
+			 //Un-comment next line for testing a specific user
+			//var userAccount = new AdAccount("1265020972");
+
 			if (!IsPostBack && requestedAccount != null)
 			{
 				bool accountExist;
-
 				switch (requestedAccount)
 				{
 					case "NIPR" :
-						accountExist = user.AccountInfo.queryForest();
+						accountExist = userAccount.queryForest();
 						if (accountExist)
 						{
-							_niprName.Text = user.AccountInfo.NiprAccountName;
+							_niprName.Text = userAccount.NiprAccountName;
 							_niprResults.Visible = true;
 							_redirectMessage.Visible = true;
 							_formview.Visible = false;
 						}
 						break;
 					case "VPN"  :
-						accountExist = user.AccountInfo.queryVpn();
+						accountExist = userAccount.queryVpn();
 						if (accountExist)
 						{
-							_vpnGroup.Text = user.AccountInfo.VpnGroupName;
+							_vpnGroup.Text = userAccount.VpnGroupName;
 							_vpnResults.Visible = true;
 							_redirectMessage.Visible = true;
 							_formview.Visible = false;
@@ -52,7 +43,7 @@ namespace AccountCreation
 						break;
 					case "SIPR" :
 					case "EP"   :
-						accountExist = user.AccountInfo.queryOurDomain();
+						accountExist = userAccount.queryOurDomain();
 						if (!accountExist)
 						{
 							_epResults.Visible = true;
@@ -96,9 +87,9 @@ namespace AccountCreation
 				var epPanel = (Panel)(_formview).FindControl("_epPanel");
 				var niprPanel = (Panel)(_formview).FindControl("_niprPanel");
 
-				edipiControl.Text = user.Edipi;
-				lNameControl.Text = user.LastName;
-				fNameControl.Text = user.FirstName;
+				edipiControl.Text = CacCard.Edipi;
+				lNameControl.Text = CacCard.LastName;
+				fNameControl.Text = CacCard.FirstName;
 				accountType.Text = requestedAccount;
 				acctStatus.Text = "Requested";
 				date.Text = DateTime.Now.ToString();
@@ -159,7 +150,7 @@ namespace AccountCreation
 					branchControl.Items.Add(new ListItem(item, item));
 				}
 
-				if (user.FirstName != null)
+				if (CacCard.FirstName != null)
 				{
 					edipiControl.Enabled = false;
 					lNameControl.Enabled = false;
@@ -170,7 +161,7 @@ namespace AccountCreation
 
 		protected void _formview_ItemInserted(object sender, FormViewInsertedEventArgs e)
 		{
-			string successUrl = "Success.aspx?search=" + user.Edipi;
+			string successUrl = "Success.aspx?search=" + CacCard.Edipi;
 			Response.Redirect(successUrl);
 		}
 

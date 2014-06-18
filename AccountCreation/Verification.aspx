@@ -277,7 +277,7 @@
 							</asp:PlaceHolder>
 						</div>
 						<div class="panel-footer">
-							<asp:Button ID="_updateButton" data-loading-text="Validating information..." CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Verify Request" />
+							<asp:Button ID="_updateButton" data-confirm-modal="By clicking ok, you certify that this user requires access as requested and that the information provided is correct." data-loading-text="Validating information..." CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Verify Request" />
 							<asp:Button ID="_cancelButton" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" OnClick="_cancelButton_Click" />
 						</div>
 					</div> <%-- End Signature block --%>

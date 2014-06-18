@@ -9,30 +9,15 @@ namespace AccountCreation
 {
 	public partial class SA_Admin : System.Web.UI.Page
 	{
-		CurrentUser user;
-
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			if (!Page.User.IsInRole("CARSON NEC SSD SMB SA SG"))
-			{
-				Response.StatusCode = 403;
-				Response.SuppressContent = true;
-			}
+			//if (!Page.User.IsInRole("CARSON NEC SSD SMB SA SG"))
+			//{
+			//	Response.StatusCode = 403;
+			//	Response.SuppressContent = true;
+			//}
 
-			var cert = Request.ClientCertificate;
 			var seachQueryString = Request.QueryString["search"];
-
-			//TODO create new CurrentUser with Page.User property instead
-			if (cert.IsPresent)
-			{
-				user = new CurrentUser(cert);
-			}
-			else
-			{
-				// Local testing only. Does not output card info to textboxes!!
-				user = new CurrentUser("1265020972");
-			}
-
 			if (!IsPostBack && seachQueryString != null)
 			{
 				_gridview.Visible = true;
@@ -125,8 +110,8 @@ namespace AccountCreation
 
 				if (saCheckBox.Checked)
 				{
-					saName.Text = user.FirstName + " " + user.LastName;
-					saSignature.Text = user.Edipi;
+					saName.Text = CacCard.FirstName + " " + CacCard.LastName;
+					saSignature.Text = CacCard.Edipi;
 					acctStatus.Text = "Created";
 					dateCreated.Text = DateTime.Now.ToString();
 				}

@@ -219,13 +219,10 @@
 									</div>
 								</div>
 							</asp:Panel>
-
-							<div class="form-group">
-								<div class="col-sm-offset-4 col-md-offset-4 col-sm-8 col-md-8">
-									<asp:Button ID="_submitBtn" data-loading-text="Validating information..." runat="server" Text="Submit" CommandName="Insert" CssClass="btn btn-primary" />
-									<asp:Button ID="_cancelBtn" runat="server" CommandName="Cancel" Text="Reset form" CausesValidation="False" CssClass="btn btn-default" />
-								</div>
-							</div>
+						</div> <%-- End .panel-body --%>
+						<div class="panel-footer">
+							<asp:Button ID="_submitBtn" data-loading-text="Validating information..." runat="server" Text="Submit" CommandName="Insert" CssClass="btn btn-primary" />
+							<asp:Button ID="_cancelBtn" runat="server" CommandName="Cancel" Text="Reset form" CausesValidation="False" CssClass="btn btn-default" />
 						</div>
 					</div>
 				</div><%-- End left column --%> 

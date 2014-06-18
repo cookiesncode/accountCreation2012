@@ -48,6 +48,8 @@
           <Property Name="SecSigned" Type="bit" />
           <Property Name="SecEDIPI" Type="nvarchar" MaxLength="50" />
           <Property Name="SecDateSigned" Type="datetime" />
+          <Property Name="TrainingDate" Type="datetime" />
+          <Property Name="Training" Type="bit" />
           <Property Name="AcctStatus" Type="nvarchar" MaxLength="100" />
         </EntityType>
       </Schema></edmx:StorageModels>
@@ -92,6 +94,8 @@
           <Property Type="DateTime" Name="SupDateSigned" Precision="3" />
           <Property Type="String" Name="SecEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="SecDateSigned" Precision="3" />
+          <Property Type="Boolean" Name="Training" />
+          <Property Type="DateTime" Name="TrainingDate" Precision="3" />
           <Property Type="String" Name="RequestType" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="AccountType" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="SaEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -108,6 +112,8 @@
           <EntitySetMapping Name="AccountRequests">
             <EntityTypeMapping TypeName="CarsonAccountModel.AccountRequest">
               <MappingFragment StoreEntitySet="tblAcctCreate_Auto">
+                <ScalarProperty Name="Training" ColumnName="Training" />
+                <ScalarProperty Name="TrainingDate" ColumnName="TrainingDate" />
                 <ScalarProperty Name="EpUnits" ColumnName="EP_UNITS" />
                 <ScalarProperty Name="AccountType" ColumnName="Account_Type" />
                 <ScalarProperty Name="SaName" ColumnName="SA_Name" />

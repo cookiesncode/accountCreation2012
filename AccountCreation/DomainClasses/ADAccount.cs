@@ -8,15 +8,21 @@ using System.Web;
 
 namespace AccountCreation
 {
-	public class ADAccount
+	public class AdAccount
 	{
-		public string LogonName { get; set; }
+		public string CurrentUser { get; set; }
 		public string NiprAccountName { get; set; }
 		public string VpnGroupName { get; set; }
 
-		public ADAccount(string edipi)
+		public AdAccount()
 		{
-			LogonName = edipi + "@mil";
+			CurrentUser = HttpContext.Current.User.Identity.Name;
+		}
+
+		// This constructor is used for testing purposes only
+		public AdAccount(string edipi)
+		{
+			CurrentUser = edipi + "@mil";
 		}
 
 		public bool queryForest()
@@ -31,7 +37,7 @@ namespace AccountCreation
 				domainContext = new PrincipalContext(ContextType.Domain, null, domain.Name);
 				try
 				{
-					using (user = UserPrincipal.FindByIdentity(domainContext, LogonName))
+					using (user = UserPrincipal.FindByIdentity(domainContext, CurrentUser))
 					{
 						if (user != null)
 						{
@@ -81,7 +87,8 @@ namespace AccountCreation
 						members = vpnGroup.Members;
 						foreach (Principal member in members)
 						{
-							if (member.UserPrincipalName == LogonName)
+							// This works with either contructor that was used to instantiate the AdAccount class.
+							if ("NANW\\" + member.SamAccountName == CurrentUser || member.UserPrincipalName == CurrentUser)
 							{
 								VpnGroupName = vpnGroup.Name;
 								return true;
@@ -102,7 +109,7 @@ namespace AccountCreation
 			UserPrincipal user = null;
 			try
 			{
-				using (user = UserPrincipal.FindByIdentity(domainContext, LogonName))
+				using (user = UserPrincipal.FindByIdentity(domainContext, CurrentUser))
 				{
 					if (user != null)
 					{
