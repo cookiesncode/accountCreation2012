@@ -177,7 +177,7 @@
 
 							<asp:Panel ID="_niprPanel" Visible="false" runat="server">
 								<h4 class="page-header">DoD Cyber Awareness Training</h4>
-                                <p>You must have completed the DoD Cyber Awareness Training within the last year. If you have not, here is the link: <a href="https://ia.signal.army.mil/DoDIAA/default.asp" target="new">DoD Cyber Awarneness Training</a>.</p>
+                                <p>You must have completed the DoD Cyber Awareness Training within the last year. If you have not, here is the link: <a href="https://ia.signal.army.mil/DoDIAA/default.asp" target="new">DoD Cyber Awareness Training</a>.</p>
 								<div class="form-group">
 									<div class="col-sm-12">
 										<div class="checkbox">
