@@ -43,7 +43,9 @@
         $('#datePicker').attr("data-date", date);
         $('#datePicker').datepicker({
             format: 'm/d/yyyy',
-            orientation: 'bottom'
+            orientation: 'bottom',
+            startDate: '-1y',
+            endDate: date
         });
     }
 
