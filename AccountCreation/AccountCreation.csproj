@@ -198,7 +198,9 @@
       <LastGenOutput>CarsonAccountModel.cs</LastGenOutput>
     </Content>
     <Content Include="MainLayout.Master" />
+    <None Include="Properties\PublishProfiles\Production Server.pubxml" />
     <None Include="Properties\PublishProfiles\Production.pubxml" />
+    <None Include="Properties\PublishProfiles\Testing Server.pubxml" />
     <None Include="Properties\PublishProfiles\TestServer.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
