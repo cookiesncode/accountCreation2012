@@ -15,12 +15,12 @@
 					</div>
 					<div class="panel-body">
 						<div class="form-group">
-							<div class="col-sm-3 col-md-2">
+							<div class="col-sm-12">
 								<asp:RadioButtonList CssClass="radio" ID="_requestType" runat="server" RepeatLayout="Flow">
-									<asp:ListItem>NIPR</asp:ListItem>
-									<asp:ListItem>SIPR</asp:ListItem>
-									<asp:ListItem>EP</asp:ListItem>
-									<asp:ListItem>VPN</asp:ListItem>
+                                    <asp:ListItem Value="NIPR">NIPR - Fort Carson User Account</asp:ListItem>
+                                    <asp:ListItem Value="SIPR">SIPR - Classified Network</asp:ListItem>
+                                    <asp:ListItem Value="EP">EP/SA - Elevated Priveleges</asp:ListItem>
+                                    <asp:ListItem Value="VPN">VPN - Virtual Private Network</asp:ListItem>
 								</asp:RadioButtonList>
 								<asp:RequiredFieldValidator ID="_requestRequiredValidator" ControlToValidate="_requestType" runat="server" ErrorMessage="You must select an option." CssClass="label label-warning" Display="Dynamic"></asp:RequiredFieldValidator>
 							</div>
