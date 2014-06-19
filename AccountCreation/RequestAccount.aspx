@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Request Form" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="RequestAccount.aspx.cs" Inherits="AccountCreation.RequestAccount" %>
+﻿<%@ Page Title="Request Form" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="RequestAccount.aspx.cs" MaintainScrollPositionOnPostback="true" Inherits="AccountCreation.RequestAccount" %>
 
 <asp:Content ID="_childHead" ContentPlaceHolderID="_masterHead" runat="server">
 </asp:Content>
