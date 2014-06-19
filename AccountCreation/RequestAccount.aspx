@@ -182,10 +182,9 @@
 									<div class="col-sm-12">
 										<div class="checkbox">
 											<label>
-												<asp:CheckBox ID="_training" runat="server" Checked='<%# Bind("Training") %>' />
+												<asp:CheckBox ID="_training" runat="server" AutoPostBack="true" Checked='<%# Bind("Training") %>' />
 												I have completed the DoD Cyber Awareness Training.
 											</label>
-<%--                                            <asp:RequiredFieldValidator CssClass="label label-warning" ID="_trainingRequiredValidator" runat="server" ErrorMessage="Training: You must have completed the DoD Cyber Awareness Training." InitialValue="" ControlToValidate="_training" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>--%>
 										</div>
 									</div>
 								</div>
@@ -193,9 +192,10 @@
 									<label for="_trainingDate" class="col-sm-4 col-md-4 control-label">Date Completed:</label>
 									<div class="col-sm-7 col-md-6">									
 										<div id="datePicker" class="input-group date">
-											<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+											<span id="_trainingDateAddOn" runat="server" visible="false" class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 											<asp:TextBox ID="_trainingDate" Text='<%# Bind("TrainingDate") %>' Enabled="false" CssClass="form-control" runat="server" />
 										</div>
+                                        <span class="help-block">You must check the box above in order to enter a date.</span>
                                         <asp:RequiredFieldValidator CssClass="label label-warning" ID="_trainingDateRequiredValidator" runat="server" ErrorMessage="Date Completed: Please enter your certification date." ControlToValidate="_trainingDate" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
                                         <asp:RangeValidator ID="_trainingDateRangeValidator" runat="server" ErrorMessage="Date Completed: The training date is out of the accepted range." Text="Requires your attention." Display="Dynamic" ControlToValidate="_trainingDate" CssClass="label label-warning"></asp:RangeValidator>
 									</div>

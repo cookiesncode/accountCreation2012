@@ -22,8 +22,8 @@ namespace AccountCreation
 				switch (requestedAccount)
 				{
 					case "NIPR" :
-                        //accountExist = userAccount.queryForest();
-                        accountExist = userAccount.queryOurDomain();
+                        accountExist = userAccount.queryForest();
+                        //accountExist = userAccount.queryOurDomain();
                         if (accountExist)
                         {
                             _niprName.Text = userAccount.NiprAccountName;
@@ -67,6 +67,19 @@ namespace AccountCreation
 			{
 				Response.Redirect("~/RequestType.aspx", true);
 			}
+            if (IsPostBack)
+            {
+                var trainingCheckBox = (CheckBox)(_formview).FindControl("_training");
+                var trainingDateContainer = (Control)(_formview).FindControl("_trainingDateAddOn");
+                if (trainingCheckBox.Checked)
+                {
+                    trainingDateContainer.Visible = true;
+                }
+                else
+                {
+                    trainingDateContainer.Visible = false;
+                }
+            }
 		}
 		
 		protected void _requestForm_DataBound(object sender, EventArgs e)
