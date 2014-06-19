@@ -12,9 +12,9 @@ namespace AccountCreation
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			string requestedAccount = Session["RequestedAccount"] as string;
-			//var userAccount = new AdAccount();
+            var userAccount = new AdAccount();
 			 //Un-comment next line for testing a specific user
-			var userAccount = new AdAccount("564321354");
+            //var userAccount = new AdAccount("564321354");
 
 			if (!IsPostBack && requestedAccount != null)
 			{
