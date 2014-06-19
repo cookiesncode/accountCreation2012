@@ -12,9 +12,9 @@ namespace AccountCreation
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			string requestedAccount = Session["RequestedAccount"] as string;
-            var userAccount = new AdAccount();
+            //var userAccount = new AdAccount();
 			 //Un-comment next line for testing a specific user
-            //var userAccount = new AdAccount("564321354");
+            var userAccount = new AdAccount("564321354");
 
 			if (!IsPostBack && requestedAccount != null)
 			{
@@ -23,22 +23,13 @@ namespace AccountCreation
 				{
 					case "NIPR" :
                         accountExist = userAccount.queryForest();
-                        //accountExist = userAccount.queryOurDomain();
+                        accountExist = userAccount.queryOurDomain();
                         if (accountExist)
                         {
                             _niprName.Text = userAccount.NiprAccountName;
                             _niprResults.Visible = true;
                             _redirectMessage.Visible = true;
                             _formview.Visible = false;
-                        }
-                        else
-                        {
-                            var dateRangeValidator = (RangeValidator)(_formview).FindControl("_trainingDateRangeValidator");
-                            string dynamicMinValue = DateTime.Today.AddYears(-1).ToShortDateString();
-                            string dynamicMaxValue = DateTime.Today.ToShortDateString();
-
-                            dateRangeValidator.MinimumValue = dynamicMinValue;
-                            dateRangeValidator.MaximumValue = dynamicMaxValue;
                         }
 						break;
 					case "VPN"  :
@@ -69,15 +60,20 @@ namespace AccountCreation
 			}
             if (IsPostBack)
             {
+                var trainingDatePlaceHolder = (PlaceHolder)(_formview).FindControl("_trainingDatePlaceHolder");
                 var trainingCheckBox = (CheckBox)(_formview).FindControl("_training");
-                var trainingDateContainer = (Control)(_formview).FindControl("_trainingDateAddOn");
                 if (trainingCheckBox.Checked)
                 {
-                    trainingDateContainer.Visible = true;
+                    trainingDatePlaceHolder.Visible = true;
+                    var dateRangeValidator = (RangeValidator)(_formview).FindControl("_trainingDateRangeValidator");
+                    string dynamicMinValue = DateTime.Today.AddYears(-1).ToShortDateString();
+                    string dynamicMaxValue = DateTime.Today.ToShortDateString();
+                    dateRangeValidator.MinimumValue = dynamicMinValue;
+                    dateRangeValidator.MaximumValue = dynamicMaxValue;
                 }
                 else
                 {
-                    trainingDateContainer.Visible = false;
+                    trainingDatePlaceHolder.Visible = false;
                 }
             }
 		}
