@@ -194,7 +194,9 @@ namespace AccountCreation
 			{
 				return new string[] 
 				{
-					"Mr./Mrs./Ms.",
+					"Mr.",
+                    "Mrs.",
+                    "Ms.",
 					"PVT",
 					"PV2",
 					"PFC",
