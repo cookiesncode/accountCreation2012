@@ -11,11 +11,11 @@ namespace AccountCreation
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			//if (!Page.User.IsInRole("CARSON NEC SSD SMB SA SG"))
-			//{
-			//	Response.StatusCode = 403;
-			//	Response.SuppressContent = true;
-			//}
+            if (!Page.User.IsInRole("CARSON NEC SSD SMB SA SG"))
+            {
+                Response.StatusCode = 403;
+                Response.SuppressContent = true;
+            }
 
 			var seachQueryString = Request.QueryString["search"];
 			if (!IsPostBack && seachQueryString != null)
