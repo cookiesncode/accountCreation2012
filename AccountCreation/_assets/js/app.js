@@ -16,6 +16,7 @@
         });
         if (passesValidation && btnLoadingText && !btnConfirmText) {
             $button.button('loading');
+            $('#datePicker input:text').removeAttr('disabled'); // JANK: to get ASP.NET to accept the date entered when field is disabled
         }
         if (passesValidation && btnConfirmText) {
             var confirmEntry = confirm(btnConfirmText);
@@ -37,10 +38,12 @@
         $('#_epSelectedUnits').val(str);
     })   
 
-    var date = new Date();
-    $('#datePicker').attr("data-date", date);
-    $('#datePicker').datepicker({
-        'format' : 'mm/dd/yyyy'
-    });
+    if ($.fn.datepicker) {
+        var date = new Date();
+        $('#datePicker').attr("data-date", date);
+        $('#datePicker').datepicker({
+            'format': 'm/d/yyyy'
+        });
+    }
 
 }(jQuery));

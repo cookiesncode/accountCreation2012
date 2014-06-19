@@ -176,14 +176,16 @@
 							</div>
 
 							<asp:Panel ID="_niprPanel" Visible="false" runat="server">
-								<h4 class="page-header">Awareness Training</h4>
+								<h4 class="page-header">DoD Cyber Awareness Training</h4>
+                                <p>You must have completed the DoD Cyber Awareness Training within the last year. If you have not, here is the link: <a href="https://ia.signal.army.mil/DoDIAA/default.asp" target="new">DoD Cyber Awarneness Training</a>.</p>
 								<div class="form-group">
-									<div class="col-sm-12 col-md-offset-1 col-md-11">
+									<div class="col-sm-12">
 										<div class="checkbox">
 											<label>
-												<asp:CheckBox ID="_trainingCheck" runat="server" />
-												I have completed the Annual Information Awareness Training.
+												<asp:CheckBox ID="_training" runat="server" Checked='<%# Bind("Training") %>' />
+												I have completed the DoD Cyber Awareness Training.
 											</label>
+<%--                                            <asp:RequiredFieldValidator CssClass="label label-warning" ID="_trainingRequiredValidator" runat="server" ErrorMessage="Training: You must have completed the DoD Cyber Awareness Training." InitialValue="" ControlToValidate="_training" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>--%>
 										</div>
 									</div>
 								</div>
@@ -192,9 +194,10 @@
 									<div class="col-sm-7 col-md-6">									
 										<div id="datePicker" class="input-group date">
 											<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-											<asp:TextBox ID="_trainingDate" CssClass="form-control" Enabled="false" runat="server" />
-										  
+											<asp:TextBox ID="_trainingDate" Text='<%# Bind("TrainingDate") %>' Enabled="false" CssClass="form-control" runat="server" />
 										</div>
+                                        <asp:RequiredFieldValidator CssClass="label label-warning" ID="_trainingDateRequiredValidator" runat="server" ErrorMessage="Date Completed: Please enter your certification date." ControlToValidate="_trainingDate" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+                                        <asp:RangeValidator ID="_trainingDateRangeValidator" runat="server" ErrorMessage="Date Completed: The training date is out of the accepted range." Text="Requires your attention." Display="Dynamic" ControlToValidate="_trainingDate" CssClass="label label-warning"></asp:RangeValidator>
 									</div>
 								</div>
 							</asp:Panel>
