@@ -42,7 +42,8 @@
         var date = new Date();
         $('#datePicker').attr("data-date", date);
         $('#datePicker').datepicker({
-            'format': 'm/d/yyyy'
+            format: 'm/d/yyyy',
+            orientation: 'bottom'
         });
     }
 
