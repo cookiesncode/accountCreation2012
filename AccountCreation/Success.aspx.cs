@@ -20,19 +20,30 @@ namespace AccountCreation
             {
                 string searchQuery = null;
                 string verificationPageWithQuery = null;
+
                 if (Request.QueryString["search"] != null)
                 {
                     searchQuery = Request.QueryString["search"];
                     verificationPageWithQuery = "https://nec.carson.army.mil/account-creation/Verification.aspx?search=" + searchQuery;
                 }
+
                 using(var smtp = new SmtpClient("155.214.100.30"))
                 {
                     var mail = new MailMessage();
-                    var emailToAddress = new MailAddress(_email.Text);
+                    var supervisorText = _supervisorEmail.Text;
+                    var securityText = _securityEmail.Text;
                     var emailFromAddress = new MailAddress("miguel.gomez16.ctr@mail.mil");
-                  
+
+                    if (supervisorText.Length > 0)
+                    {
+                        mail.To.Add(supervisorText);
+                    }
+                    if (securityText.Length > 0)
+                    {
+                        mail.To.Add(securityText);
+                    }
+
                     mail.From = emailFromAddress;
-                    mail.To.Add(emailToAddress);
                     mail.Subject = "Account Creation Email";
                     mail.Body = verificationPageWithQuery;
                     mail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;

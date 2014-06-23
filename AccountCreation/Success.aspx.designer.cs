@@ -31,31 +31,58 @@ namespace AccountCreation {
         protected global::System.Web.UI.WebControls.View _viewEmailForm;
         
         /// <summary>
-        /// _email control.
+        /// _supervisorEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox _email;
+        protected global::System.Web.UI.WebControls.TextBox _supervisorEmail;
         
         /// <summary>
-        /// _emailRequiredValidator control.
+        /// _supEmailRequiredValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator _emailRequiredValidator;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator _supEmailRequiredValidator;
         
         /// <summary>
-        /// _emailExpressionValidator control.
+        /// _supEmailExpressionValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator _emailExpressionValidator;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator _supEmailExpressionValidator;
+        
+        /// <summary>
+        /// _securityEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox _securityEmail;
+        
+        /// <summary>
+        /// _secEmailRequiredValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator _secEmailRequiredValidator;
+        
+        /// <summary>
+        /// _secEmailExpressionValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator _secEmailExpressionValidator;
         
         /// <summary>
         /// _button control.
