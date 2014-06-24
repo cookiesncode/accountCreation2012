@@ -12,6 +12,14 @@ namespace AccountCreation
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
+            string requestedAccount = Session["RequestedAccount"] as string;
+            if (!IsPostBack)
+            {
+                if (requestedAccount != null && requestedAccount == "VPN")
+                {
+                    _securityPlaceHolder.Visible = false;
+                }
+            }
 		}
 
         protected void _button_Click(object sender, EventArgs e)

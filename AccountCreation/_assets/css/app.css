@@ -4,7 +4,7 @@ body {
 }
 
 table {
-    font-size: 14px;
+	font-size: 14px;
 }
 
 h1, h2, h3 {
@@ -20,29 +20,38 @@ h1, h2, h3 {
 
 .buffer
 {
-    margin-bottom: 30px;
+	margin-bottom: 30px;
 }
 
 .input-group-addon {
-    background-color: white;
+	background-color: white;
+}
+
+.email-form-container {
+	width: 55%;
+	margin: 30px auto;
+}
+
+.email-form-sent {
+	padding: 15px;
 }
 
 #_requestType {
-    display: block;
-    margin-bottom: 1em;
+	display: block;
+	margin-bottom: 1em;
 }
 
 #_requestType > label {
-    display: block;
-    margin-bottom: 1em;
+	display: block;
+	margin-bottom: 1em;
 }
 
 .start-links a {
-     margin-bottom: 0.5em;
+	 margin-bottom: 0.5em;
 }
 
 .sa-search {
-    margin-top: 10px;
+	margin-top: 10px;
 }
 
 /*!
