@@ -182,7 +182,7 @@ namespace AccountCreation
 		protected void _formview_ItemInserted(object sender, FormViewInsertedEventArgs e)
 		{
 			string successUrl = "Success.aspx?search=" + CacCard.Edipi;
-			Response.Redirect(successUrl);
+            Server.Transfer(successUrl, false);
 		}
 
 		protected void _formview_ItemInserting(object sender, FormViewInsertEventArgs e)
