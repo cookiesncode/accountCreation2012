@@ -11,11 +11,11 @@
 		<li>Wait until your supervisor notifies you that your account has been created. Until then, do not login into the Fort Carson network.</li>
 	</ol>
     <div class="email-form-container">
-        <asp:MultiView ID="_multiviewForm" ActiveViewIndex="1" runat="server">
+        <asp:MultiView ID="_multiviewForm" ActiveViewIndex="0" runat="server">
             <asp:View ID="_viewEmailForm" runat="server">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4>Email Form:</h4>
+                        <h4>Email Form</h4>
                     </div>
                     <div class="panel-body"> 
                         <p>Enter the email addresses of your approval staff.</p>
