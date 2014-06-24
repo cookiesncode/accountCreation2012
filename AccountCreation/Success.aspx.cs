@@ -64,7 +64,7 @@ namespace AccountCreation
                         mail.To.Add(_securityEmail.Text);
                     }
                     mail.Subject = "Fort Carson Accounts: New account verification request";
-                    mail.Body += "This email is to inform you that an account verfication request has been submitted by:" + lineBreak + _emailSignature.Text + doubleLineBreak;
+                    mail.Body += "This email is to inform you that an account verification request has been submitted by:" + lineBreak + _emailSignature.Text + doubleLineBreak;
                     mail.Body += "Please visit the link below to verify this request." + lineBreak; 
                     mail.Body += VerificationLink;
                     mail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
