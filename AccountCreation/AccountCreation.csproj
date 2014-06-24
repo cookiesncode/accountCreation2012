@@ -78,9 +78,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="_assets\css\app.css" />
-    <Content Include="_assets\css\bootstrap-theme.css" />
     <Content Include="_assets\css\bootstrap-theme.min.css" />
-    <Content Include="_assets\css\bootstrap.css" />
     <Content Include="_assets\css\bootstrap.min.css" />
     <Content Include="_assets\docs\RankList.txt" />
     <Content Include="_assets\docs\UnitList.txt" />
