@@ -94,6 +94,24 @@ namespace AccountCreation {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator _secEmailExpressionValidator;
         
         /// <summary>
+        /// _verificationLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label _verificationLink;
+        
+        /// <summary>
+        /// _emailSignature control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label _emailSignature;
+        
+        /// <summary>
         /// _button control.
         /// </summary>
         /// <remarks>

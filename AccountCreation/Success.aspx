@@ -23,8 +23,8 @@
 		                    <div class="col-sm-12">
                                 <label for="_supervisorEmail">Supervisor's email:</label>
 			                    <asp:TextBox ID="_supervisorEmail" CssClass="form-control" runat="server" />
-			                    <asp:RequiredFieldValidator CssClass="label label-warning" ID="_supEmailRequiredValidator" runat="server" ErrorMessage="Email: Please enter a valid email address." ControlToValidate="_supervisorEmail" Display="Dynamic"></asp:RequiredFieldValidator>
-			                    <asp:RegularExpressionValidator ID="_supEmailExpressionValidator" CssClass="label label-warning" runat="server" ErrorMessage="Email: Please enter a valid email address." Display="Dynamic" ControlToValidate="_supervisorEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+			                    <asp:RequiredFieldValidator CssClass="label label-warning" ID="_supEmailRequiredValidator" runat="server" ErrorMessage="Please enter a valid email address." ControlToValidate="_supervisorEmail" Display="Dynamic"></asp:RequiredFieldValidator>
+			                    <asp:RegularExpressionValidator ID="_supEmailExpressionValidator" CssClass="label label-warning" runat="server" ErrorMessage="Please enter a valid email address." Display="Dynamic" ControlToValidate="_supervisorEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
 		                    </div>
 	                    </div>
                         <asp:PlaceHolder ID="_securityPlaceHolder" runat="server">
@@ -32,11 +32,30 @@
 		                        <div class="col-sm-12">
                                     <label for="_securityEmail">Security Manager's email:</label>
 			                        <asp:TextBox ID="_securityEmail" CssClass="form-control" runat="server" />
-                                    <asp:RequiredFieldValidator CssClass="label label-warning" ID="_secEmailRequiredValidator" runat="server" ErrorMessage="Email: Please enter a valid email address." ControlToValidate="_securityEmail" Display="Dynamic"></asp:RequiredFieldValidator>
-			                        <asp:RegularExpressionValidator ID="_secEmailExpressionValidator" CssClass="label label-warning" runat="server" ErrorMessage="Email: Please enter a valid email address." Display="Dynamic" ControlToValidate="_securityEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                                    <asp:RequiredFieldValidator CssClass="label label-warning" ID="_secEmailRequiredValidator" runat="server" ErrorMessage="Please enter a valid email address." ControlToValidate="_securityEmail" Display="Dynamic"></asp:RequiredFieldValidator>
+			                        <asp:RegularExpressionValidator ID="_secEmailExpressionValidator" CssClass="label label-warning" runat="server" ErrorMessage="Please enter a valid email address." Display="Dynamic" ControlToValidate="_securityEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
 		                        </div>
 	                        </div>
                         </asp:PlaceHolder>
+<%--                        <div class="form-group">
+		                    <div class="col-sm-12">
+                                <label for="_message">Message:</label>
+			                    <asp:TextBox ID="_message" TextMode="MultiLine" Text="ALCON, please visit the link below to verify my account request." CssClass="form-control" runat="server" />
+			                    <asp:RequiredFieldValidator CssClass="label label-warning" ID="_messageRequiredFieldValidator" runat="server" ErrorMessage="Please enter your message." ControlToValidate="_message" Display="Dynamic"></asp:RequiredFieldValidator>
+		                    </div>
+	                    </div>--%>
+                        <div class="form-group">
+		                    <div class="col-sm-12">
+                                <label for="_link">Verification Link:</label>
+			                    <p class="form-control-static"><asp:Label ID="_verificationLink" runat="server"></asp:Label></p>
+		                    </div>
+	                    </div>
+                        <div class="form-group">
+		                    <div class="col-sm-12">
+                                <label for="_emailSignature">Sent from:</label>
+			                    <p class="form-control-static"><asp:Label ID="_emailSignature" runat="server"></asp:Label></p>
+		                    </div>
+	                    </div>
                     </div>
                     <div class="panel-footer">
                         <asp:Button ID="_button" data-loading-text="Sending email..." CssClass="btn btn-primary" runat="server" CausesValidation="True" Text="Send Email" OnClick="_button_Click" />
