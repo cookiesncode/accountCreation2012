@@ -42,7 +42,7 @@ namespace AccountCreation
             }
             else if (!IsPostBack && VerificationLink == null)
             {
-                Response.Redirect("~/Default.aspx", true);
+                Server.Transfer("~/default.aspx");
             }
 		}
 

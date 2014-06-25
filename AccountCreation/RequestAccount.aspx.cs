@@ -57,7 +57,7 @@ namespace AccountCreation
 			}
 			else if (!IsPostBack)
 			{
-				Response.Redirect("~/RequestType.aspx", true);
+                Server.Transfer("~/default.aspx");
 			}
             if (IsPostBack)
             {
@@ -181,7 +181,7 @@ namespace AccountCreation
 
 		protected void _formview_ItemInserted(object sender, FormViewInsertedEventArgs e)
 		{
-			string successUrl = "Success.aspx?search=" + CacCard.Edipi;
+			string successUrl = "success.aspx?search=" + CacCard.Edipi;
             Server.Transfer(successUrl, false);
 		}
 

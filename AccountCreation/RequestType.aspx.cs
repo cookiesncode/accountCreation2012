@@ -15,7 +15,7 @@ namespace AccountCreation
 			{
 				string checkedValue = _requestType.SelectedValue;
 				Session["RequestedAccount"] = checkedValue;
-				Response.Redirect("~/RequestAccount.aspx");
+                Server.Transfer("~/requestaccount.aspx");
 			}
 		}
 	}
