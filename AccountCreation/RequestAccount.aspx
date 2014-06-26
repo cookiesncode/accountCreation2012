@@ -102,7 +102,7 @@
 								</div>
 							</div>
 	
-							<div class="form-group">
+<%--							<div class="form-group">
 								<label for="_macom" class="col-sm-4 col-md-4 control-label">MACOM:</label>
 								<div class="col-sm-7 col-md-6">
 									<asp:DropDownList ID="_macom" CssClass="form-control" runat="server" SelectedValue='<%# Bind("Macom") %>' AppendDataBoundItems="True">
@@ -110,7 +110,7 @@
 									</asp:DropDownList>
 									<asp:RequiredFieldValidator CssClass="label label-warning" ID="_macomRequiredValidator" runat="server" ErrorMessage="MACOM: Please select an option." ControlToValidate="_macom" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
 								</div>
-							</div>
+							</div>--%>
 
 							<div class="form-group">
 								<label for="_branch" class="col-sm-4 col-md-4 control-label">Branch:</label>
@@ -245,6 +245,7 @@
 				<asp:CheckBox ID="_supSigned" Enabled="false" Checked='<%# Bind("SupSigned") %>' runat="server" />
 				<asp:CheckBox ID="_secSigned" Enabled="false" Checked='<%# Bind("SecSigned") %>' runat="server" />
 				<asp:TextBox ID="_requestType" Enabled="false" Text='<%# Bind("RequestType") %>' runat="server" />
+				<asp:TextBox ID="_macom" Enabled="true" ClientIDMode="Static" Text='<%# Bind("Macom") %>' runat="server" />
 				<asp:TextBox ID="_accountType" Enabled="false" Text='<%# Bind("AccountType") %>' runat="server" />
 				<asp:TextBox ID="_acctStatus" Enabled="false" Text='<%# Bind("AcctStatus") %>' runat="server" />
 				<asp:TextBox ID="_date" Enabled="false" Text='<%# Bind("RequestedDate") %>' runat="server"></asp:TextBox>

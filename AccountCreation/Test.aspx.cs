@@ -16,6 +16,14 @@ namespace AccountCreation
 			_currentUser.Text = adAccount.CurrentUser;
 			adAccount.queryOurDomain();
 			_niprAccount.Text = adAccount.NiprAccountName;
+            if (!IsPostBack)
+            {
+                foreach (string item in Setting.OrgUnit)
+				{
+                    _units.Items.Add(new ListItem(item, item));
+				}
+				
+            }
 		}
 	}
 }
