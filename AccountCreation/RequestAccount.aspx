@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Request Form" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="RequestAccount.aspx.cs" MaintainScrollPositionOnPostback="true" Inherits="AccountCreation.RequestAccount" %>
 
 <asp:Content ID="_childHead" ContentPlaceHolderID="_masterHead" runat="server">
+    <meta http-equiv="refresh" content="1200;URL='<% Response.Write(ResolveUrl("~/default.aspx")); %>'" /> 
 </asp:Content>
 
 <asp:Content ID="_childMainContent" ContentPlaceHolderID="_masterMainContent" runat="server">
@@ -74,7 +75,7 @@
 							</div>
 
 							<div class="form-group">
-								<label for="_email" class="col-sm-4 col-md-4 control-label">Enterprise Email:</label>
+								<label for="_email" class="col-sm-4 col-md-4 control-label">NIPR Enterprise Email:</label>
 								<div class="col-sm-7 col-md-6">
 									<asp:TextBox ID="_email" CssClass="form-control" runat="server" Text='<%# Bind("Email") %>' />
 									<asp:RequiredFieldValidator CssClass="label label-warning" ID="_emailRequiredValidator" runat="server" ErrorMessage="Email: Please enter your enterprise email address." ControlToValidate="_email" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
