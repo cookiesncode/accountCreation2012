@@ -34,6 +34,11 @@ namespace AccountCreation
 
 			foreach (Domain domain in domains)
 			{
+                // Skip these domains that are not open to us
+                if (domain.Name == "conus.ds.army.mil" || domain.Name == "service.ds.army.mil")
+                {
+                    continue;
+                }
 				domainContext = new PrincipalContext(ContextType.Domain, null, domain.Name);
 				try
 				{
