@@ -16,7 +16,16 @@ namespace AccountCreation
 
 		public AdAccount()
 		{
-			CurrentUser = HttpContext.Current.User.Identity.Name;
+            string edipi = CacCard.Edipi;
+            if (edipi != null)
+            {
+                CurrentUser = edipi + "@mil";
+            }
+            else
+            {
+                CurrentUser = HttpContext.Current.User.Identity.Name;
+            }
+			
 		}
 
 		// This constructor is used for testing purposes only
