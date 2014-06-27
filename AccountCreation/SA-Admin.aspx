@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="SA Admin Panel" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="SA-Admin.aspx.cs" Inherits="AccountCreation.SA_Admin" %>
 
 <asp:Content ID="_childHead" ContentPlaceHolderID="_masterHead" runat="server">
-    <meta http-equiv="refresh" content="1200;URL='<% Response.Write(ResolveUrl("~/default.aspx")); %>'" />
 </asp:Content>
 
 <asp:Content ID="_childMainContent" ContentPlaceHolderID="_masterMainContent" runat="server">

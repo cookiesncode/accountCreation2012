@@ -13,7 +13,7 @@
     <asp:TextBox ID="_macom" runat="server"></asp:TextBox>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="_masterBtmScripts" runat="server">
-    <script>
+<%--    <script>
         var $macom = $('#_macom');
         $('#_units').change(function (e) {
             var $this = $(this);
@@ -148,5 +148,6 @@
                     $macom.val('Select a unit');
             }
         });
-    </script>
+    </script>--%>
+
 </asp:Content>
