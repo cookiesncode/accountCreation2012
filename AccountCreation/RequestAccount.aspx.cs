@@ -29,7 +29,6 @@ namespace AccountCreation
                         {
                             _niprName.Text = userAccount.NiprAccountName;
                             _niprResults.Visible = true;
-                            _redirectMessage.Visible = true;
                             _formview.Visible = false;
                         }
 						break;
@@ -39,7 +38,6 @@ namespace AccountCreation
 						{
 							_vpnGroup.Text = userAccount.VpnGroupName;
 							_vpnResults.Visible = true;
-							_redirectMessage.Visible = true;
 							_formview.Visible = false;
 						}
 						break;
@@ -49,7 +47,6 @@ namespace AccountCreation
 						if (!accountExist)
 						{
 							_epResults.Visible = true;
-							_redirectMessage.Visible = true;
 							_formview.Visible = false;
 						}
 						break;

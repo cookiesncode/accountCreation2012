@@ -58,15 +58,6 @@ namespace AccountCreation {
         protected global::System.Web.UI.WebControls.Panel _epResults;
         
         /// <summary>
-        /// _redirectMessage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel _redirectMessage;
-        
-        /// <summary>
         /// _formview control.
         /// </summary>
         /// <remarks>
