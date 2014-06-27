@@ -23,12 +23,10 @@ namespace AccountCreation
 				{
 					case "NIPR" :
                         accountExist = userAccount.queryForest();
-                        // Test Code next line
-                        //accountExist = userAccount.queryOurDomain();
                         if (accountExist)
                         {
                             _niprName.Text = userAccount.NiprAccountName;
-                            _niprResults.Visible = true;
+                            _niprQuery.Visible = true;
                             _formview.Visible = false;
                         }
 						break;
@@ -37,16 +35,23 @@ namespace AccountCreation
 						if (accountExist)
 						{
 							_vpnGroup.Text = userAccount.VpnGroupName;
-							_vpnResults.Visible = true;
+							_vpnQuery.Visible = true;
 							_formview.Visible = false;
+                            break;
 						}
+                        accountExist = userAccount.queryOurDomain();
+                        if (!accountExist)
+                        {
+                            _noAccountQuery.Visible = true;
+                            _formview.Visible = false;
+                        }
 						break;
 					case "SIPR" :
 					case "EP"   :
 						accountExist = userAccount.queryOurDomain();
 						if (!accountExist)
 						{
-							_epResults.Visible = true;
+                            _noAccountQuery.Visible = true;
 							_formview.Visible = false;
 						}
 						break;

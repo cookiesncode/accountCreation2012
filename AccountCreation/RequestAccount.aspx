@@ -5,15 +5,15 @@
 
 <asp:Content ID="_childMainContent" ContentPlaceHolderID="_masterMainContent" runat="server">
 	<h2 class="page-header">Request Form</h2>	
-	<asp:Panel ID="_niprResults" runat="server" Visible="false">
+	<asp:Panel ID="_niprQuery" runat="server" Visible="false">
 		<p>We’re sorry, but our records indicate that you already have a NIPR account with a display name of <strong><asp:Label ID="_niprName" runat="server" CssClass="text-warning"></asp:Label></strong>. This account could be from your previous installation and in order for you to create a Fort Carson account, you need to delete your existing one. To delete this account, call AESD at 1-866-335-2769 and request an account deletion.</p>
 	</asp:Panel>
 
-	<asp:Panel ID="_vpnResults" runat="server" Visible="false">
+	<asp:Panel ID="_vpnQuery" runat="server" Visible="false">
 		<p>Our records indicate that you already have a VPN account. The name of the VPN group you reside in is <strong><asp:Label ID="_vpnGroup" runat="server" CssClass="text-warning"></asp:Label></strong></p>
 	</asp:Panel>
 
-	<asp:Panel ID="_epResults" runat="server" Visible="false">
+	<asp:Panel ID="_noAccountQuery" runat="server" Visible="false">
 		<p>Our records indicate that you don't have a Fort Carson NIPR account. In order for you to create an account either than NIPR, you must have an existing NIPR account.</p>
 	</asp:Panel>
 

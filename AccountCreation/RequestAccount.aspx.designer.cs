@@ -13,13 +13,13 @@ namespace AccountCreation {
     public partial class RequestAccount {
         
         /// <summary>
-        /// _niprResults control.
+        /// _niprQuery control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel _niprResults;
+        protected global::System.Web.UI.WebControls.Panel _niprQuery;
         
         /// <summary>
         /// _niprName control.
@@ -31,13 +31,13 @@ namespace AccountCreation {
         protected global::System.Web.UI.WebControls.Label _niprName;
         
         /// <summary>
-        /// _vpnResults control.
+        /// _vpnQuery control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel _vpnResults;
+        protected global::System.Web.UI.WebControls.Panel _vpnQuery;
         
         /// <summary>
         /// _vpnGroup control.
@@ -49,13 +49,13 @@ namespace AccountCreation {
         protected global::System.Web.UI.WebControls.Label _vpnGroup;
         
         /// <summary>
-        /// _epResults control.
+        /// _noAccountQuery control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel _epResults;
+        protected global::System.Web.UI.WebControls.Panel _noAccountQuery;
         
         /// <summary>
         /// _formview control.
