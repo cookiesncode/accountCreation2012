@@ -55,6 +55,20 @@
         });
     }
 
+    var $trainingTextBox = $('#_trainingTextBox');
+    var $trainingDatePanel = $('#_trainingDatePanel');
+    $trainingDatePanel.hide();
+    $('#_trainingCheckBox').change(function (e) {
+        var $this = $(this);
+        if ($this.is(':checked')) {
+            $trainingDatePanel.show(300);
+            $trainingTextBox.val('checked');
+        } else {
+            $trainingDatePanel.hide(300);
+            $trainingTextBox.val('');
+        }
+    });
+
 ///////////////////////////////////////////////////////////////////
 // Autopopulate MACOM code.
     var $macom = $('#_macom');

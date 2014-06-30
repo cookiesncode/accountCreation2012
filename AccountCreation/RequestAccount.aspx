@@ -169,25 +169,25 @@
 									<div class="col-sm-12">
 										<div class="checkbox">
 											<label>
-												<asp:CheckBox ID="_training" runat="server" AutoPostBack="true" Checked='<%# Bind("Training") %>' />
+                                                <asp:CheckBox ID="_trainingCheckBox" Checked='<%# Bind("Training") %>' ClientIDMode="Static" runat="server" />
+                                                <asp:TextBox ID="_trainingTextBox" ClientIDMode="Static" CssClass="hidden" runat="server"></asp:TextBox>
 												I have completed the DoD Cyber Awareness Training.
 											</label>
 										</div>
+                                        <asp:RequiredFieldValidator CssClass="label label-warning" ID="_trainingRequiredValidator" runat="server" ErrorMessage="Training: You must have completed the DoD Cyber Awareness Training." ControlToValidate="_trainingTextBox" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
 									</div>
 								</div>
-                                <asp:PlaceHolder ID="_trainingDatePlaceHolder" Visible="false" runat="server">
-								    <div class="form-group">
-									    <label for="_trainingDate" class="col-sm-4 col-md-4 control-label">Date Completed:</label>
-									    <div class="col-sm-7 col-md-6">									
-										    <div id="datePicker" class="input-group date">
-											    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-											    <asp:TextBox ID="_trainingDate" Text='<%# Bind("TrainingDate") %>' Enabled="false" CssClass="form-control" runat="server" />
-										    </div>
-                                            <asp:RequiredFieldValidator CssClass="label label-warning" ID="_trainingDateRequiredValidator" runat="server" ErrorMessage="Date Completed: Please enter your certification date." ControlToValidate="_trainingDate" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
-                                            <asp:RangeValidator ID="_trainingDateRangeValidator" Type="Date" runat="server" ErrorMessage="Date Completed: The training date is out of the accepted range." Text="Requires your attention." Display="Dynamic" ControlToValidate="_trainingDate" CssClass="label label-warning"></asp:RangeValidator>
-									    </div>
-								    </div>
-                                </asp:PlaceHolder>
+								<div id="_trainingDatePanel" class="form-group">
+									<label for="_trainingDate" class="col-sm-4 col-md-4 control-label">Date Completed:</label>
+									<div class="col-sm-7 col-md-6">									
+										<div id="datePicker" class="input-group date">
+											<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+											<asp:TextBox ID="_trainingDate" Text='<%# Bind("TrainingDate") %>' Enabled="false" CssClass="form-control" runat="server" />
+										</div>
+                                        <asp:RequiredFieldValidator CssClass="label label-warning" ID="_trainingDateRequiredValidator" runat="server" ErrorMessage="Date Completed: Please enter your certification date." ControlToValidate="_trainingDate" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+                                        <asp:RangeValidator ID="_trainingDateRangeValidator" runat="server" ErrorMessage="Date Completed: The training date is out of the accepted range." Text="Requires your attention." Display="Dynamic" ControlToValidate="_trainingDate" CssClass="label label-warning"></asp:RangeValidator>
+									</div>
+								</div>
 							</asp:Panel>
 
 							<asp:Panel ID="_epPanel" Visible="false" runat="server">

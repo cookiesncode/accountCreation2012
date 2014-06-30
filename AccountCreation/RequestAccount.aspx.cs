@@ -12,73 +12,67 @@ namespace AccountCreation
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			string requestedAccount = Session["RequestedAccount"] as string;
-            var userAccount = new AdAccount();
+            //var userAccount = new AdAccount();
 			 //Un-comment next line for testing a specific user
-            //var userAccount = new AdAccount("564321354");
+            var userAccount = new AdAccount("564321354");
 
-			if (!IsPostBack && requestedAccount != null)
+			if (requestedAccount != null)
 			{
-				bool accountExist;
-				switch (requestedAccount)
-				{
-					case "NIPR" :
-                        accountExist = userAccount.queryForest();
-                        if (accountExist)
-                        {
-                            _niprName.Text = userAccount.NiprAccountName;
-                            _niprQuery.Visible = true;
-                            _formview.Visible = false;
-                        }
-						break;
-					case "VPN"  :
-						accountExist = userAccount.queryVpn();
-						if (accountExist)
-						{
-							_vpnGroup.Text = userAccount.VpnGroupName;
-							_vpnQuery.Visible = true;
-							_formview.Visible = false;
-                            break;
-						}
-                        accountExist = userAccount.queryOurDomain();
-                        if (!accountExist)
-                        {
-                            _noAccountQuery.Visible = true;
-                            _formview.Visible = false;
-                        }
-						break;
-					case "SIPR" :
-					case "EP"   :
-						accountExist = userAccount.queryOurDomain();
-						if (!accountExist)
-						{
-                            _noAccountQuery.Visible = true;
-							_formview.Visible = false;
-						}
-						break;
-				}
-			}
-			else if (!IsPostBack)
-			{
-                Server.Transfer("~/default.aspx");
-			}
-            if (IsPostBack)
-            {
-                var trainingDatePlaceHolder = (PlaceHolder)(_formview).FindControl("_trainingDatePlaceHolder");
-                var trainingCheckBox = (CheckBox)(_formview).FindControl("_training");
-                if (trainingCheckBox.Checked)
+                if (!IsPostBack)
                 {
-                    trainingDatePlaceHolder.Visible = true;
+                    bool accountExist = false;
+                    switch (requestedAccount)
+                    {
+                        case "NIPR":
+                            accountExist = userAccount.queryForest();
+                            if (accountExist)
+                            {
+                                _niprName.Text = userAccount.NiprAccountName;
+                                _niprQuery.Visible = true;
+                                _formview.Visible = false;
+                            }
+                            break;
+                        case "VPN":
+                            accountExist = userAccount.queryVpn();
+                            if (accountExist)
+                            {
+                                _vpnGroup.Text = userAccount.VpnGroupName;
+                                _vpnQuery.Visible = true;
+                                _formview.Visible = false;
+                                break;
+                            }
+                            accountExist = userAccount.queryOurDomain();
+                            if (!accountExist)
+                            {
+                                _noAccountQuery.Visible = true;
+                                _formview.Visible = false;
+                            }
+                            break;
+                        case "SIPR":
+                        case "EP":
+                            accountExist = userAccount.queryOurDomain();
+                            if (!accountExist)
+                            {
+                                _noAccountQuery.Visible = true;
+                                _formview.Visible = false;
+                            }
+                            break;
+                    }
+                }
+                if (requestedAccount == "NIPR")
+                {
                     var dateRangeValidator = (RangeValidator)(_formview).FindControl("_trainingDateRangeValidator");
                     string dynamicMinValue = DateTime.Today.AddYears(-1).ToShortDateString();
                     string dynamicMaxValue = DateTime.Today.ToShortDateString();
                     dateRangeValidator.MinimumValue = dynamicMinValue;
                     dateRangeValidator.MaximumValue = dynamicMaxValue;
+                    dateRangeValidator.Type = ValidationDataType.Date;
                 }
-                else
-                {
-                    trainingDatePlaceHolder.Visible = false;
-                }
-            }
+			}
+			else if (!IsPostBack && requestedAccount == null)
+			{
+                Server.Transfer("~/default.aspx");
+			}
 		}
 		
 		protected void _requestForm_DataBound(object sender, EventArgs e)
