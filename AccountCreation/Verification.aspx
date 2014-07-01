@@ -43,15 +43,14 @@
 				OnPageIndexChanged="_gridview_PageIndexChanged">
 				<Columns>
 					<asp:CommandField ShowSelectButton="True"></asp:CommandField>
-					<asp:BoundField DataField="Id" HeaderText="Unique ID" SortExpression="Id" />
 					<asp:BoundField DataField="Edipi" HeaderText="EDIPI" SortExpression="Edipi" />
 					<asp:BoundField DataField="LName" HeaderText="Last Name" SortExpression="LName" />
 					<asp:BoundField DataField="FName" HeaderText="First Name" SortExpression="FName" />
 					<asp:BoundField DataField="Mi" HeaderText="Mi" SortExpression="Mi" />
 					<asp:BoundField DataField="Rank" HeaderText="Rank" SortExpression="Rank" />
 					<asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
+					<asp:BoundField DataField="OrgUnit" HeaderText="Org/Unit" SortExpression="OrgUnit" />
 					<asp:BoundField DataField="AccountType" HeaderText="Account Type" SortExpression="AccountType" />
-					<asp:BoundField DataField="RequestType" HeaderText="Request Type" SortExpression="RequestType" />
 					<asp:BoundField DataField="AcctStatus" HeaderText="Request Status" SortExpression="AcctStatus" />
 				</Columns>
 				<SelectedRowStyle CssClass="active"></SelectedRowStyle>
@@ -244,7 +243,8 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h3>Signature Box</h3>
-							<p>Check the appropriate box to apply your signature (EDIPI). The Supervisor must sign off before the Security Manager.</p>
+							<p>Check the appropriate box to apply your signature (EDIPI). If two approving authorities are required, then the supervisor must sign off before the security manager.</p>
+                            <p>If the EDIPI information in the signature box is not correct when you click the checkbox then try closing and opening your browser and start again.</p>
 						</div>
 						<div class="panel-body">
 							<div class="form-group">

@@ -16,8 +16,9 @@
 					<div class="col-sm-7 col-md-8">
 						<asp:DropDownList ID="_filterRequestType" OnSelectedIndexChanged="_filter_SelectedIndexChanged" CssClass="form-control" runat="server" AutoPostBack="true">
 							<asp:ListItem Text="No filter" Value=""></asp:ListItem>
-							<asp:ListItem Text="Automated Creation" Value="Auto"></asp:ListItem>
-							<asp:ListItem Text="Manual Creation (SA)" Value="Manual"></asp:ListItem>
+							<asp:ListItem Text="Automated Creation" Value="Auto Create"></asp:ListItem>
+							<asp:ListItem Text="Manual Creation (SA)" Value="Manual Create"></asp:ListItem>
+							<asp:ListItem Text="Manual Deletion (SA)" Value="Manual Delete"></asp:ListItem>
 						</asp:DropDownList>
 					</div>
 				</div>
@@ -30,8 +31,8 @@
 							<asp:ListItem Text="No filter" Value=""></asp:ListItem>
 							<asp:ListItem Text="Requested" Value="Requested"></asp:ListItem>
 							<asp:ListItem Text="Partially Verified" Value="Partially Verified"></asp:ListItem>
-							<asp:ListItem Text="Ready to Create" Value="Ready"></asp:ListItem>
-							<asp:ListItem Text="Account Created" Value="Created"></asp:ListItem>
+							<asp:ListItem Text="Ready to Process Request" Value="Ready"></asp:ListItem>
+							<asp:ListItem Text="Account Created" Value="Completed"></asp:ListItem>
 							<asp:ListItem Text="Failed to Create" Value="Failed"></asp:ListItem>
 						</asp:DropDownList>
 					</div>
