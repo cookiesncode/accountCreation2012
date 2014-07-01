@@ -10,14 +10,18 @@ namespace AccountCreation
 {
 	public partial class Success : System.Web.UI.Page
 	{
-        private string VerificationLink
+        private string SearchQuery
         {
             get
             {
-                string searchQuery = Request.QueryString["search"];
-                if (searchQuery != null)
+                bool formSuccess = false;
+                if (Session["FormSubmitted"] != null)
                 {
-                    return "https://nec.carson.army.mil/account-creation/verification.aspx?search=" + searchQuery;
+                    formSuccess = (bool)Session["FormSubmitted"];
+                }
+                if (formSuccess == true)
+                {
+                    return "https://nec.carson.army.mil/account-creation/verification.aspx?search=" + CacCard.Edipi;
                 }
                 else
                 {
@@ -28,19 +32,18 @@ namespace AccountCreation
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-            string requestedAccount = Session["RequestedAccount"] as string;
-            if (!IsPostBack && VerificationLink != null)
+            string accountType = Session["AccountType"] as string;
+            string requestType = Session["RequestType"] as string;
+            if (!IsPostBack && SearchQuery != null && accountType != null && requestType != null)
             {
-                var firstName = CacCard.FirstName;
-                var lastName = CacCard.LastName;
-                if (requestedAccount != null && requestedAccount == "VPN")
+                if (accountType == "VPN" || requestType == "Delete")
                 {
                     _securityPlaceHolder.Visible = false;
                 }
-                _verificationLink.Text = VerificationLink;
-                _emailSignature.Text = firstName + " " + lastName;
+                _verificationLink.Text = SearchQuery;
+                _emailSignature.Text = CacCard.FirstName + " " + CacCard.LastName;
             }
-            else if (!IsPostBack && VerificationLink == null)
+            else if (!IsPostBack && SearchQuery == null)
             {
                 Server.Transfer("~/default.aspx");
             }
@@ -63,10 +66,10 @@ namespace AccountCreation
                     {
                         mail.To.Add(_securityEmail.Text);
                     }
-                    mail.Subject = "Fort Carson Accounts: New account verification request";
+                    mail.Subject = "Fort Carson Accounts: account verfication requested";
                     mail.Body += "This email is to inform you that an account verification request has been submitted by:" + lineBreak + _emailSignature.Text + doubleLineBreak;
-                    mail.Body += "Please visit the link below to verify this request." + lineBreak; 
-                    mail.Body += VerificationLink;
+                    mail.Body += "Please visit the link below to verify this request." + lineBreak;
+                    mail.Body += SearchQuery;
                     mail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
                     smtp.Send(mail);
                     _multiviewForm.ActiveViewIndex = 1;
