@@ -11,25 +11,35 @@ namespace AccountCreation
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			string requestedAccount = Session["RequestedAccount"] as string;
+            string accountType = Session["AccountType"] as string;
+            string requestType = Session["RequestType"] as string;
             //var userAccount = new AdAccount();
 			 //Un-comment next line for testing a specific user
-            var userAccount = new AdAccount("564321354");
+            var userAccount = new AdAccount("123");
 
-			if (requestedAccount != null)
+			if (!IsPostBack && accountType != null && requestType != null)
 			{
-                if (!IsPostBack)
+                if (requestType == "Create")
                 {
                     bool accountExist = false;
-                    switch (requestedAccount)
+                    switch (accountType)
                     {
                         case "NIPR":
                             accountExist = userAccount.queryForest();
                             if (accountExist)
                             {
                                 _niprName.Text = userAccount.NiprAccountName;
-                                _niprQuery.Visible = true;
+                                _createNiprFail.Visible = true;
                                 _formview.Visible = false;
+                            }
+                            else
+                            {
+                                var dateRangeValidator = (RangeValidator)(_formview).FindControl("_trainingDateRangeValidator");
+                                string dynamicMinValue = DateTime.Today.AddYears(-1).ToShortDateString();
+                                string dynamicMaxValue = DateTime.Today.ToShortDateString();
+                                dateRangeValidator.MinimumValue = dynamicMinValue;
+                                dateRangeValidator.MaximumValue = dynamicMaxValue;
+                                dateRangeValidator.Type = ValidationDataType.Date;
                             }
                             break;
                         case "VPN":
@@ -37,14 +47,14 @@ namespace AccountCreation
                             if (accountExist)
                             {
                                 _vpnGroup.Text = userAccount.VpnGroupName;
-                                _vpnQuery.Visible = true;
+                                _createVpnFail.Visible = true;
                                 _formview.Visible = false;
                                 break;
                             }
                             accountExist = userAccount.queryOurDomain();
                             if (!accountExist)
                             {
-                                _noAccountQuery.Visible = true;
+                                _createSpecialAcctFail.Visible = true;
                                 _formview.Visible = false;
                             }
                             break;
@@ -53,23 +63,37 @@ namespace AccountCreation
                             accountExist = userAccount.queryOurDomain();
                             if (!accountExist)
                             {
-                                _noAccountQuery.Visible = true;
+                                _createSpecialAcctFail.Visible = true;
                                 _formview.Visible = false;
                             }
                             break;
                     }
                 }
-                if (requestedAccount == "NIPR")
+                else
                 {
-                    var dateRangeValidator = (RangeValidator)(_formview).FindControl("_trainingDateRangeValidator");
-                    string dynamicMinValue = DateTime.Today.AddYears(-1).ToShortDateString();
-                    string dynamicMaxValue = DateTime.Today.ToShortDateString();
-                    dateRangeValidator.MinimumValue = dynamicMinValue;
-                    dateRangeValidator.MaximumValue = dynamicMaxValue;
-                    dateRangeValidator.Type = ValidationDataType.Date;
+                    bool accountExist = false;
+                    switch (accountType)
+                    {
+                        case "NIPR":
+                            accountExist = userAccount.queryOurDomain();
+                            if (!accountExist)
+                            {
+                                _deleteNiprFail.Visible = true;
+                                _formview.Visible = false;
+                            }
+                            break;
+                        case "VPN":
+                            accountExist = userAccount.queryVpn();
+                            if (!accountExist)
+                            {
+                                _deleteVpnFail.Visible = true;
+                                _formview.Visible = false;
+                            }
+                            break;
+                    }
                 }
 			}
-			else if (!IsPostBack && requestedAccount == null)
+            else if (!IsPostBack && accountType == null)
 			{
                 Server.Transfer("~/default.aspx");
 			}
@@ -79,8 +103,9 @@ namespace AccountCreation
 		{
 			if (_formview.CurrentMode == FormViewMode.Insert)
 			{
-				string requestedAccount = Session["RequestedAccount"] as string;
-				var edipiControl = (TextBox)(_formview).FindControl("_edipi");
+                string accountType = Session["AccountType"] as string;
+                string requestType = Session["RequestType"] as string;
+                var edipiControl = (TextBox)(_formview).FindControl("_edipi");
 				var lNameControl = (TextBox)(_formview).FindControl("_lName");
 				var fNameControl = (TextBox)(_formview).FindControl("_fName");
 				var branchControl = (DropDownList)(_formview).FindControl("_branch");
@@ -88,57 +113,94 @@ namespace AccountCreation
 				var installationControl = (DropDownList)(_formview).FindControl("_installation");
 				var personaControl = (DropDownList)(_formview).FindControl("_persona");
 				var rankControl = (DropDownList)(_formview).FindControl("_rank");
-				var date = (TextBox)(_formview).FindControl("_date");
+				var dateControl = (TextBox)(_formview).FindControl("_date");
 				var niprControl = (CheckBox)(_formview).FindControl("_niprAcct");
 				var siprControl = (CheckBox)(_formview).FindControl("_siprAcct");
 				var epControl = (CheckBox)(_formview).FindControl("_epAcct");
 				var vpnControl = (CheckBox)(_formview).FindControl("_vpnAcct");
-				var requestType = (TextBox)(_formview).FindControl("_requestType");
-				var accountType = (TextBox)(_formview).FindControl("_accountType");
-				var acctStatus = (TextBox)(_formview).FindControl("_acctStatus");
+				var requestTypeControl = (TextBox)(_formview).FindControl("_requestType");
+				var accountTypeControl = (TextBox)(_formview).FindControl("_accountType");
+				var acctStatusControl = (TextBox)(_formview).FindControl("_acctStatus");
 				var supSignedControl = (CheckBox)(_formview).FindControl("_supSigned");
 				var secSignedControl = (CheckBox)(_formview).FindControl("_secSigned");
-				var epUnits = (ListBox)(_formview).FindControl("_epUnitsList");
-				var epPanel = (Panel)(_formview).FindControl("_epPanel");
-				var niprPanel = (Panel)(_formview).FindControl("_niprPanel");
+				var epUnitsControl = (ListBox)(_formview).FindControl("_epUnitsList");
+				var epPanelControl = (Panel)(_formview).FindControl("_epPanel");
+				var niprPanelControl = (Panel)(_formview).FindControl("_niprPanel");
 
-				edipiControl.Text = CacCard.Edipi;
-				lNameControl.Text = CacCard.LastName;
-				fNameControl.Text = CacCard.FirstName;
-				accountType.Text = requestedAccount;
-				acctStatus.Text = "Requested";
-				date.Text = DateTime.Now.ToString();
+				acctStatusControl.Text = "Requested";
+				dateControl.Text = DateTime.Now.ToString();
 				supSignedControl.Checked = false;
 				secSignedControl.Checked = false;
+                edipiControl.Text = CacCard.Edipi;
+                lNameControl.Text = CacCard.LastName;
+                fNameControl.Text = CacCard.FirstName;
 
-				if (requestedAccount != null)
+                if (CacCard.FirstName != null)
+                {
+                    edipiControl.Enabled = false;
+                    lNameControl.Enabled = false;
+                    fNameControl.Enabled = false;
+                }
+
+				if (accountType != null && requestType != null)
 				{
-					switch (requestedAccount)
+                    accountTypeControl.Text = accountType;
+					switch (accountType)
 					{
 						case "NIPR":
-							niprPanel.Visible = true;
+                            if (requestType == "Create")
+                            {
+                                niprPanelControl.Visible = true;
+                                requestTypeControl.Text = "Auto Create";
+                            }
+                            else
+                            {
+                                niprPanelControl.Visible = false;
+                                requestTypeControl.Text = "Manual Delete";
+                            }
 							niprControl.Checked = true;
-							requestType.Text = "Auto";
 							break;
 						case "SIPR":
+                            if (requestType == "Create")
+                            {
+                                requestTypeControl.Text = "Manual Create";
+                            }
+                            else
+                            {
+                                requestTypeControl.Text = "Manual Delete";
+                            }
 							siprControl.Checked = true;
-							requestType.Text = "Manual";
 							break;
 						case "EP":
-							epPanel.Visible = true;
+                            if (requestType == "Create")
+                            {
+                                epPanelControl.Visible = true;
+                                requestTypeControl.Text = "Manual Create";
+                            }
+                            else
+                            {
+                                requestTypeControl.Text = "Manual Delete";
+                            }
 							epControl.Checked = true;
-							requestType.Text = "Manual";
 							break;
 						case "VPN":
+                            if (requestType == "Create")
+                            {
+                                // TODO: check if vpn is auto or manual
+                                requestTypeControl.Text = "Manual Create";
+                            }
+                            else
+                            {
+                                requestTypeControl.Text = "Manual Delete";
+                            }
 							vpnControl.Checked = true;
-							requestType.Text = "Auto";
 							break;
 					}
 				}
 
 				foreach (string item in Setting.OrgUnit)
 				{
-					epUnits.Items.Add(new ListItem(item, item));
+					epUnitsControl.Items.Add(new ListItem(item, item));
 				}
 				foreach (string item in Setting.Persona)
 				{
@@ -160,20 +222,13 @@ namespace AccountCreation
 				{
 					branchControl.Items.Add(new ListItem(item, item));
 				}
-
-				if (CacCard.FirstName != null)
-				{
-					edipiControl.Enabled = false;
-					lNameControl.Enabled = false;
-					fNameControl.Enabled = false;
-				}
 			}
 		}
 
 		protected void _formview_ItemInserted(object sender, FormViewInsertedEventArgs e)
 		{
-			string successUrl = "success.aspx?search=" + CacCard.Edipi;
-            Server.Transfer(successUrl, false);
+            Session["FormSubmitted"] = true;
+            Server.Transfer("success.aspx");
 		}
 
 		protected void _formview_ItemInserting(object sender, FormViewInsertEventArgs e)
