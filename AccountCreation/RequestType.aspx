@@ -11,7 +11,7 @@
 			<div class="col-sm-6">
 				<div id="requestTypePanel" class="panel panel-default">
 					<div class="panel-heading">
-						<p class="lead">Account information</p>
+						<p class="lead">Please choose the account type.</p>
 					</div>
 					<div class="panel-body">
                         <p>Do you want to create or delete an existing account?</p>
