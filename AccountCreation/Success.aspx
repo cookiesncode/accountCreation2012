@@ -37,13 +37,6 @@
 		                        </div>
 	                        </div>
                         </asp:PlaceHolder>
-<%--                        <div class="form-group">
-		                    <div class="col-sm-12">
-                                <label for="_message">Message:</label>
-			                    <asp:TextBox ID="_message" TextMode="MultiLine" Text="ALCON, please visit the link below to verify my account request." CssClass="form-control" runat="server" />
-			                    <asp:RequiredFieldValidator CssClass="label label-warning" ID="_messageRequiredFieldValidator" runat="server" ErrorMessage="Please enter your message." ControlToValidate="_message" Display="Dynamic"></asp:RequiredFieldValidator>
-		                    </div>
-	                    </div>--%>
                         <div class="form-group">
 		                    <div class="col-sm-12">
                                 <label for="_link">Verification Link:</label>
