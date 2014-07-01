@@ -37,12 +37,7 @@ h1, h2, h3 {
 	padding: 15px;
 }
 
-#_requestType {
-	display: block;
-	margin-bottom: 1em;
-}
-
-#_requestType > label {
+#requestTypePanel .requestRadios {
 	display: block;
 	margin-bottom: 1em;
 }

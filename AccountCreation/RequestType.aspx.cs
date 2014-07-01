@@ -13,8 +13,8 @@ namespace AccountCreation
 		{
 			if (Page.IsValid)
 			{
-				string checkedValue = _requestType.SelectedValue;
-				Session["RequestedAccount"] = checkedValue;
+                Session["RequestType"] = _requestType.SelectedValue;
+                Session["AccountType"] = _accountType.SelectedValue;
                 Server.Transfer("~/requestaccount.aspx");
 			}
 		}

@@ -31,6 +31,24 @@ namespace AccountCreation {
         protected global::System.Web.UI.WebControls.RadioButtonList _requestType;
         
         /// <summary>
+        /// _createDeleteRequiredValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator _createDeleteRequiredValidator;
+        
+        /// <summary>
+        /// _accountType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList _accountType;
+        
+        /// <summary>
         /// _requestRequiredValidator control.
         /// </summary>
         /// <remarks>
