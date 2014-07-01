@@ -9,6 +9,23 @@ namespace AccountCreation
 {
 	public partial class Verification : System.Web.UI.Page
 	{
+        private bool RequiresTwoSignatures
+        {
+            get
+            {
+                var accountTypeControl = (TextBox)(_formview).FindControl("_accountType");
+                var requestTypeControl = (TextBox)(_formview).FindControl("_requestType");
+                if (requestTypeControl.Text.Contains("Delete") || accountTypeControl.Text == "VPN")
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
+        
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			var seachQueryString = Request.QueryString["search"];
@@ -54,48 +71,54 @@ namespace AccountCreation
 				var branchControl = (DropDownList)(_formview).FindControl("_branch");
 				var orgUnitControl = (DropDownList)(_formview).FindControl("_orgUnit");
 				var rankControl = (DropDownList)(_formview).FindControl("_rank");
-				var supervisorSignature = (TextBox)(_formview).FindControl("_supervisorSignature");
-				var supervisorCheckBox = (CheckBox)(_formview).FindControl("_supervisorCheckBox");
-				var accountType = (TextBox)(_formview).FindControl("_accountType");
-				var epUnits = (ListBox)(_formview).FindControl("_epUnitsList");
-				var epPanel = (Panel)(_formview).FindControl("_epPanel");
-				Button updateButton = null;
-				CheckBox securityCheckBox = null;
-				TextBox securitySignature = null;
-				PlaceHolder securityBoxPlaceholder = (PlaceHolder)(_formview).FindControl("_securityBoxPlaceholder");
+				var supervisorSignatureControl = (TextBox)(_formview).FindControl("_supervisorSignature");
+				var supervisorCheckBoxControl = (CheckBox)(_formview).FindControl("_supervisorCheckBox");
+                var accountTypeControl = (TextBox)(_formview).FindControl("_accountType");
+                var requestTypeControl = (TextBox)(_formview).FindControl("_requestType");
+                var epUnitsControl = (ListBox)(_formview).FindControl("_epUnitsList");
+				var epPanelControl = (Panel)(_formview).FindControl("_epPanel");
+				Button updateButtonControl = null;
+				CheckBox securityCheckBoxControl = null;
+				TextBox securitySignatureControl = null;
+				PlaceHolder securityBoxPlaceholderControl = (PlaceHolder)(_formview).FindControl("_securityBoxPlaceholder");
 
-				if (accountType.Text == "EP")
-				{
-					epPanel.Visible = true;
-					foreach (string item in Setting.OrgUnit)
-					{
-						epUnits.Items.Add(new ListItem(item, item));
-					}
-				}
+                if (RequiresTwoSignatures)
+                {
+                    if (supervisorSignatureControl.Text.Length > 0 && securitySignatureControl == null)
+                    {
+                        supervisorCheckBoxControl.Enabled = false;
+                        supervisorCheckBoxControl.Checked = true;
+                        securityBoxPlaceholderControl.Visible = true;
+                        securitySignatureControl = (TextBox)(_formview).FindControl("_securitySignature");
+                        securityCheckBoxControl = (CheckBox)(_formview).FindControl("_securityCheckBox");
+                    }
+                    if (securitySignatureControl != null && securitySignatureControl.Text.Length > 0)
+                    {
+                        securityCheckBoxControl.Enabled = false;
+                        securityCheckBoxControl.Checked = true;
+                    }
+                    if (supervisorCheckBoxControl.Checked && securityCheckBoxControl != null && securityCheckBoxControl.Checked)
+                    {
+                        updateButtonControl = (Button)(_formview).FindControl("_updateButton");
+                        updateButtonControl.Visible = false;
+                    }
+                }
+                else if (supervisorSignatureControl.Text.Length > 0)
+                {
+                    supervisorCheckBoxControl.Enabled = false;
+                    supervisorCheckBoxControl.Checked = true;
+                    updateButtonControl = (Button)(_formview).FindControl("_updateButton");
+                    updateButtonControl.Visible = false;
+                }
 
-				if (supervisorSignature.Text.Length > 0 && securitySignature == null)
-				{
-					supervisorCheckBox.Enabled = false;
-					supervisorCheckBox.Checked = true;
-					if (accountType.Text != "VPN")
-					{
-						securityBoxPlaceholder.Visible = true;
-						securitySignature = (TextBox)(_formview).FindControl("_securitySignature");
-						securityCheckBox = (CheckBox)(_formview).FindControl("_securityCheckBox");
-					}
-				}
-
-				if (securitySignature != null && securitySignature.Text.Length > 0)
-				{
-					securityCheckBox.Enabled = false;
-					securityCheckBox.Checked = true;
-				}
-
-				if (supervisorCheckBox.Checked && securityCheckBox != null && securityCheckBox.Checked)
-				{
-					updateButton = (Button)(_formview).FindControl("_updateButton");
-					updateButton.Visible = false;
-				}
+                if (accountTypeControl.Text == "EP")
+                {
+                    epPanelControl.Visible = true;
+                    foreach (string item in Setting.OrgUnit)
+                    {
+                        epUnitsControl.Items.Add(new ListItem(item, item));
+                    }
+                }
 
 				foreach (string item in Setting.Macom)
 				{
@@ -170,25 +193,32 @@ namespace AccountCreation
 		{
 			if (_formview.CurrentMode == FormViewMode.Edit)
 			{
-				var supervisorCheckBox = (CheckBox)(_formview).FindControl("_supervisorCheckBox");
-				var supervisorSignature = (TextBox)(_formview).FindControl("_supervisorSignature");
-				var supSignedDate = (TextBox)(_formview).FindControl("_supSignedDate");
-				var supSigned = (CheckBox)(_formview).FindControl("_supSigned");
-				var acctStatus = (TextBox)(_formview).FindControl("_acctStatus");
+				var supervisorCheckBoxControl = (CheckBox)(_formview).FindControl("_supervisorCheckBox");
+				var supervisorSignatureControl = (TextBox)(_formview).FindControl("_supervisorSignature");
+				var supSignedDateControl = (TextBox)(_formview).FindControl("_supSignedDate");
+				var supSignedControl = (CheckBox)(_formview).FindControl("_supSigned");
+				var acctStatusControl = (TextBox)(_formview).FindControl("_acctStatus");
 
-				if (supervisorCheckBox.Checked)
+				if (supervisorCheckBoxControl.Checked)
 				{
-					supervisorSignature.Text = CacCard.Edipi;
-					supSignedDate.Text = DateTime.Now.ToString();
-					supSigned.Checked = true;
-					acctStatus.Text = "Partially Verified";
+					supervisorSignatureControl.Text = CacCard.Edipi;
+					supSignedDateControl.Text = DateTime.Now.ToString();
+					supSignedControl.Checked = true;
+                    if (RequiresTwoSignatures)
+                    {
+                        acctStatusControl.Text = "Partially Verified";
+                    }
+                    else
+                    {
+                        acctStatusControl.Text = "Ready";
+                    }
 				}
 				else
 				{
-					supervisorSignature.Text = "";
-					supSignedDate.Text = "";
-					supSigned.Checked = false;
-					acctStatus.Text = "";
+					supervisorSignatureControl.Text = "";
+					supSignedDateControl.Text = "";
+					supSignedControl.Checked = false;
+					acctStatusControl.Text = "";
 				}
 			}
 		}
@@ -197,25 +227,25 @@ namespace AccountCreation
 		{
 			if (_formview.CurrentMode == FormViewMode.Edit)
 			{
-				var securityCheckBox = (CheckBox)(_formview).FindControl("_securityCheckBox");
-				var securitySignature = (TextBox)(_formview).FindControl("_securitySignature");
-				var secSignedDate = (TextBox)(_formview).FindControl("_secSignedDate");
-				var secSigned = (CheckBox)(_formview).FindControl("_secSigned");
-				var acctStatus = (TextBox)(_formview).FindControl("_acctStatus");
+				var securityCheckBoxControl = (CheckBox)(_formview).FindControl("_securityCheckBox");
+				var securitySignatureControl = (TextBox)(_formview).FindControl("_securitySignature");
+				var secSignedDateControl = (TextBox)(_formview).FindControl("_secSignedDate");
+				var secSignedControl = (CheckBox)(_formview).FindControl("_secSigned");
+				var acctStatusControl = (TextBox)(_formview).FindControl("_acctStatus");
 
-				if (securityCheckBox.Checked)
+                if (securityCheckBoxControl.Checked)
 				{
-					securitySignature.Text = CacCard.Edipi;
-					secSignedDate.Text = DateTime.Now.ToString();
-					secSigned.Checked = true;
-					acctStatus.Text = "Ready";
+					securitySignatureControl.Text = CacCard.Edipi;
+					secSignedDateControl.Text = DateTime.Now.ToString();
+					secSignedControl.Checked = true;
+					acctStatusControl.Text = "Ready";
 				}
 				else
 				{
-					securitySignature.Text = "";
-					secSignedDate.Text = "";
-					secSigned.Checked = false;
-					acctStatus.Text = "";
+					securitySignatureControl.Text = "";
+					secSignedDateControl.Text = "";
+					secSignedControl.Checked = false;
+					acctStatusControl.Text = "";
 				}
 			}
 		}
