@@ -6,8 +6,8 @@
 <asp:Content ID="childMainContent" ContentPlaceHolderID="_masterMainContent" runat="server">
 	<h2 class="page-header">What would you like to do?</h2>
 	<div class="start-links">
-		<a class="btn btn-primary" href="requesttype.aspx">Request a new account</a>
-		<a class="btn btn-primary" href="verification.aspx">Verify and sign an existing request</a>
+		<a class="btn btn-primary" href="requesttype.aspx">Account creation or deletion</a>
+		<a class="btn btn-primary" href="verification.aspx">Review an existing request</a>
 	</div>
 </asp:Content>
 
