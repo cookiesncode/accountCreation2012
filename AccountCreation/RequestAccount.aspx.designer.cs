@@ -13,13 +13,13 @@ namespace AccountCreation {
     public partial class RequestAccount {
         
         /// <summary>
-        /// _niprQuery control.
+        /// _createNiprFail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel _niprQuery;
+        protected global::System.Web.UI.WebControls.Panel _createNiprFail;
         
         /// <summary>
         /// _niprName control.
@@ -31,13 +31,13 @@ namespace AccountCreation {
         protected global::System.Web.UI.WebControls.Label _niprName;
         
         /// <summary>
-        /// _vpnQuery control.
+        /// _createVpnFail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel _vpnQuery;
+        protected global::System.Web.UI.WebControls.Panel _createVpnFail;
         
         /// <summary>
         /// _vpnGroup control.
@@ -49,13 +49,31 @@ namespace AccountCreation {
         protected global::System.Web.UI.WebControls.Label _vpnGroup;
         
         /// <summary>
-        /// _noAccountQuery control.
+        /// _createSpecialAcctFail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel _noAccountQuery;
+        protected global::System.Web.UI.WebControls.Panel _createSpecialAcctFail;
+        
+        /// <summary>
+        /// _deleteNiprFail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel _deleteNiprFail;
+        
+        /// <summary>
+        /// _deleteVpnFail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel _deleteVpnFail;
         
         /// <summary>
         /// _formview control.
