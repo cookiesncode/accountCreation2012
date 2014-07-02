@@ -209,6 +209,7 @@
     <Content Include="_assets\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="_assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="_assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="_assets\docs\persona-types.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="_assets\img\" />
