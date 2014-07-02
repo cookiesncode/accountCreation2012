@@ -51,7 +51,7 @@
 					<asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
 					<asp:BoundField DataField="OrgUnit" HeaderText="Org/Unit" SortExpression="OrgUnit" />
 					<asp:BoundField DataField="AccountType" HeaderText="Account Type" SortExpression="AccountType" />
-					<asp:BoundField DataField="AcctStatus" HeaderText="Request Status" SortExpression="AcctStatus" />
+					<asp:BoundField DataField="AcctStatus" HeaderStyle-CssClass="js-popover" HeaderText="Request Status" SortExpression="AcctStatus" />
 				</Columns>
 				<SelectedRowStyle CssClass="active"></SelectedRowStyle>
 			</asp:GridView>

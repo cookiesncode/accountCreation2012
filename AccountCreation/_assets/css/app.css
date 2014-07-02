@@ -11,6 +11,19 @@ table {
 h1, h2, h3 {
 }
 
+[data-toggle="popover"] {
+    padding: 0 10px;
+}
+.popover {
+    max-width: 400px;
+}
+
+.popover-content > ul {
+    margin: 0;
+    padding: 0 0 0 20px;
+    font-size: 14px;
+}
+
 .form-control {
 	color: #000;
 }

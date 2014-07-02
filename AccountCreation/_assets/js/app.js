@@ -70,6 +70,17 @@
     });
 
 ///////////////////////////////////////////////////////////////////
+// Popover tooltip code.
+    var content = $('<span data-toggle="popover" data-placement="auto top" title="Request Status Stages" data-content="<ul><li>Requested - User submitted request</li><li>Partially Verified - Supervisor signed (Only occurs if two signatures are required)</li><li>Ready - Request is ready to be processed.</li><li>Completed - Request was completed</li><li>Failed - Request failed to be completed</ul>" class="glyphicon glyphicon-info-sign"></span>');
+    $('.js-popover').append(content);
+    $('[data-toggle="popover"]').popover({
+        html: true,
+        trigger: 'click',
+        container: 'body'
+    });
+
+
+///////////////////////////////////////////////////////////////////
 // Autopopulate MACOM code.
     var $macom = $('#_macom');
     $('#_masterMainContent__formview__orgUnit').change(function (e) {
