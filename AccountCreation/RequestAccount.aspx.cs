@@ -125,7 +125,7 @@ namespace AccountCreation
 				var secSignedControl = (CheckBox)(_formview).FindControl("_secSigned");
 				var epUnitsControl = (ListBox)(_formview).FindControl("_epUnitsList");
 				var epPanelControl = (Panel)(_formview).FindControl("_epPanel");
-				var niprPanelControl = (Panel)(_formview).FindControl("_niprPanel");
+                var trainingPanelControl = (Panel)(_formview).FindControl("_trainingPanel");
 
 				acctStatusControl.Text = "Requested";
 				dateControl.Text = DateTime.Now.ToString();
@@ -145,17 +145,25 @@ namespace AccountCreation
 				if (accountType != null && requestType != null)
 				{
                     accountTypeControl.Text = accountType;
+
+                    if (requestType == "Create")
+                    {
+                        trainingPanelControl.Visible = true;
+                    }
+                    else
+                    {
+                        trainingPanelControl.Visible = false;
+                    }
+
 					switch (accountType)
 					{
 						case "NIPR":
                             if (requestType == "Create")
                             {
-                                niprPanelControl.Visible = true;
                                 requestTypeControl.Text = "Auto Create";
                             }
                             else
                             {
-                                niprPanelControl.Visible = false;
                                 requestTypeControl.Text = "Manual Delete";
                             }
 							niprControl.Checked = true;

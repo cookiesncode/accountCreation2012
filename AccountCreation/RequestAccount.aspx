@@ -45,6 +45,7 @@
                             <p>If the information populated is not correct, then try closing and opening your browser and start again.</p>
 						</div>
 						<div class="panel-body">
+                            <h4 class="page-header">Personal Information</h4>
 							<div class="form-group">
 								<label for="_edipi" class="col-sm-4 col-md-4 control-label">EDIPI:</label>
 								<div class="col-sm-7 col-md-6">
@@ -171,7 +172,7 @@
 								</div>
 							</div>
 
-							<asp:Panel ID="_niprPanel" Visible="false" runat="server">
+							<asp:Panel ID="_trainingPanel" Visible="false" runat="server">
 								<h4 class="page-header">DoD Cyber Awareness Training</h4>
                                 <p>You must have completed the DoD Cyber Awareness Training within the last year. If you have not, here is the link: <a href="https://ia.signal.army.mil/DoDIAA/default.asp" target="new">DoD Cyber Awareness Training</a>.</p>
 								<div class="form-group">

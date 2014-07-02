@@ -11,6 +11,14 @@ table {
 h1, h2, h3 {
 }
 
+.page-header {
+    margin: 70px 0 20px;
+}
+
+.panel-body > .page-header {
+    margin-top: 20px;
+}
+
 [data-toggle="popover"] {
     padding: 0 10px;
 }
