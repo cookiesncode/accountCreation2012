@@ -40,7 +40,7 @@
 				<div class="col-sm-7">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<p class="lead">Please fill out your information.</p>
+							<p class="lead">Please fill out this form.</p>
 							<p><strong class="text-info">Note:</strong> The EDIPI, last name, and first name fields are pre-populated from your CAC card.</p>
                             <p>If the information populated is not correct, then try closing and opening your browser and start again.</p>
 						</div>
