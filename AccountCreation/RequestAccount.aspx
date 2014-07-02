@@ -88,12 +88,13 @@
 								</div>
 							</div>
 
-							<div class="form-group">
-								<label for="_persona" class="col-sm-4 col-md-4 control-label">Persona Type: <a href="_assets/docs/persona-types.pdf" target="new" title="Persona PDF Guide"><span class="glyphicon glyphicon-file"></span></a></label>
+							<div class="form-group js-persona">
+								<label for="_persona" class="col-sm-4 col-md-4 control-label">Persona Type:</label>
 								<div class="col-sm-7 col-md-6">
 									<asp:DropDownList ID="_persona" CssClass="form-control" runat="server" SelectedValue='<%# Bind("Persona") %>' AppendDataBoundItems="True">
 										<asp:ListItem Text="-- Select Persona --" Value="" />
 									</asp:DropDownList>
+                                    <a href="_assets/docs/persona-types.pdf" class="js-persona-link" target="new" title="Persona PDF Guide"><span class="glyphicon glyphicon-info-sign"></span></a>
 									<asp:RequiredFieldValidator CssClass="label label-warning" ID="_personaRequiredValidator" runat="server" ErrorMessage="Persona: Please select a Persona." ControlToValidate="_persona" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
 								</div>
 							</div>

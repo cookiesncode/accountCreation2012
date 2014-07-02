@@ -32,6 +32,19 @@ h1, h2, h3 {
     font-size: 14px;
 }
 
+.persona {
+    position: relative;
+}
+
+.panel-body {
+    padding: 30px;
+}
+.js-persona-link {
+    position: absolute;
+    top: 7px;
+    right: -2%;
+}
+
 .form-control {
 	color: #000;
 }
