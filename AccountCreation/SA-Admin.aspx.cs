@@ -112,7 +112,7 @@ namespace AccountCreation
 				{
 					saName.Text = CacCard.FirstName + " " + CacCard.LastName;
 					saSignature.Text = CacCard.Edipi;
-					acctStatus.Text = "Created";
+					acctStatus.Text = "Completed";
 					dateCreated.Text = DateTime.Now.ToString();
 				}
 				else
