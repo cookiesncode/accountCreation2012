@@ -75,7 +75,7 @@
     $('.js-popover').append(content);
     $('[data-toggle="popover"]').popover({
         html: true,
-        trigger: 'click',
+        trigger: 'hover',
         container: 'body'
     });
 
