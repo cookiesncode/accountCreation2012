@@ -21,6 +21,13 @@ namespace AccountCreation
 			{
                 if (requestType == "Create")
                 {
+                    var dateRangeValidator = (RangeValidator)(_formview).FindControl("_trainingDateRangeValidator");
+                    string dynamicMinValue = DateTime.Today.AddYears(-1).ToShortDateString();
+                    string dynamicMaxValue = DateTime.Today.ToShortDateString();
+                    dateRangeValidator.MinimumValue = dynamicMinValue;
+                    dateRangeValidator.MaximumValue = dynamicMaxValue;
+                    dateRangeValidator.Type = ValidationDataType.Date;
+
                     bool accountExist = false;
                     switch (accountType)
                     {
@@ -31,15 +38,6 @@ namespace AccountCreation
                                 _niprName.Text = userAccount.NiprAccountName;
                                 _createNiprFail.Visible = true;
                                 _formview.Visible = false;
-                            }
-                            else
-                            {
-                                var dateRangeValidator = (RangeValidator)(_formview).FindControl("_trainingDateRangeValidator");
-                                string dynamicMinValue = DateTime.Today.AddYears(-1).ToShortDateString();
-                                string dynamicMaxValue = DateTime.Today.ToShortDateString();
-                                dateRangeValidator.MinimumValue = dynamicMinValue;
-                                dateRangeValidator.MaximumValue = dynamicMaxValue;
-                                dateRangeValidator.Type = ValidationDataType.Date;
                             }
                             break;
                         case "VPN":
