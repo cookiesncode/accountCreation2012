@@ -88,7 +88,7 @@
 							</div>
 
 							<div class="form-group">
-								<label for="_persona" class="col-sm-4 col-md-4 control-label">Persona Type:</label>
+								<label for="_persona" class="col-sm-4 col-md-4 control-label">Persona Type: <a href="_assets/docs/persona-types.pdf" target="new" title="Persona Guide"><span class="glyphicon glyphicon-book"></span></a></label>
 								<div class="col-sm-7 col-md-6">
 									<asp:DropDownList ID="_persona" CssClass="form-control" runat="server" SelectedValue='<%# Bind("Persona") %>' AppendDataBoundItems="True">
 										<asp:ListItem Text="-- Select Persona --" Value="" />
