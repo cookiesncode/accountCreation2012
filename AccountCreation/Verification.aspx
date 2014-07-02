@@ -119,7 +119,7 @@
 							</div>
 
 							<div class="form-group">
-								<label for="_persona" class="col-sm-4 control-label">Persona Type:</label>
+								<label for="_persona" class="col-sm-4 control-label">Persona Type: <a href="_assets/docs/persona-types.pdf" target="new" title="Persona PDF Guide"><span class="glyphicon glyphicon-file"></span></a></label>
 								<div class="col-sm-8">
 									<asp:DropDownList ID="_persona" CssClass="form-control" runat="server" SelectedValue='<%# Bind("Persona") %>' DataSourceID="_formviewEntitySource" DataTextField="Persona" DataValueField="Persona">
 										<asp:ListItem Text="-- Select Persona --" Value="" />
