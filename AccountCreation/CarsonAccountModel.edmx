@@ -51,6 +51,8 @@
           <Property Name="TrainingDate" Type="datetime" />
           <Property Name="Training" Type="bit" />
           <Property Name="AcctStatus" Type="nvarchar" MaxLength="100" />
+          <Property Name="MOS" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeleteDate" Type="datetime" />
         </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -79,7 +81,8 @@
           <Property Name="Office" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
           <Property Name="Phone" Type="String" MaxLength="12" Unicode="false" FixedLength="true" />
           <Property Name="Persona" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
-          <Property Type="DateTime" Name="RequestedDate" Precision="3" />
+          <Property Type="String" Name="EpUnits" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Mos" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SamAccountName" Type="String" MaxLength="256" Unicode="false" FixedLength="false" />
           <Property Name="HomeFolder" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
           <Property Name="Nipr" Type="Boolean" />
@@ -87,7 +90,6 @@
           <Property Name="NiprEp" Type="Boolean" />
           <Property Name="Vpn" Type="Boolean" />
           <Property Name="Sipr" Type="Boolean" />
-          <Property Type="String" Name="EpUnits" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="SupSigned" Type="Boolean" />
           <Property Name="SecSigned" Type="Boolean" />
           <Property Type="String" Name="SupEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -95,12 +97,14 @@
           <Property Type="String" Name="SecEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="SecDateSigned" Precision="3" />
           <Property Type="Boolean" Name="Training" />
+          <Property Type="DateTime" Name="RequestedDate" Precision="3" />
           <Property Type="DateTime" Name="TrainingDate" Precision="3" />
+          <Property Type="DateTime" Name="DeleteDate" Precision="3" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
           <Property Type="String" Name="RequestType" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="AccountType" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="SaEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="SaName" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="Created" Type="DateTime" Precision="3" />
           <Property Name="AcctStatus" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
         </EntityType>
       </Schema>
@@ -112,6 +116,8 @@
           <EntitySetMapping Name="AccountRequests">
             <EntityTypeMapping TypeName="CarsonAccountModel.AccountRequest">
               <MappingFragment StoreEntitySet="tblAcctCreate_Auto">
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="Mos" ColumnName="MOS" />
                 <ScalarProperty Name="Training" ColumnName="Training" />
                 <ScalarProperty Name="TrainingDate" ColumnName="TrainingDate" />
                 <ScalarProperty Name="EpUnits" ColumnName="EP_UNITS" />

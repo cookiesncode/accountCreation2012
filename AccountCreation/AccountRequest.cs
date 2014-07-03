@@ -30,7 +30,8 @@ namespace AccountCreation
         public string Office { get; set; }
         public string Phone { get; set; }
         public string Persona { get; set; }
-        public Nullable<System.DateTime> RequestedDate { get; set; }
+        public string EpUnits { get; set; }
+        public string Mos { get; set; }
         public string SamAccountName { get; set; }
         public string HomeFolder { get; set; }
         public Nullable<bool> Nipr { get; set; }
@@ -38,7 +39,6 @@ namespace AccountCreation
         public Nullable<bool> NiprEp { get; set; }
         public Nullable<bool> Vpn { get; set; }
         public Nullable<bool> Sipr { get; set; }
-        public string EpUnits { get; set; }
         public Nullable<bool> SupSigned { get; set; }
         public Nullable<bool> SecSigned { get; set; }
         public string SupEdipi { get; set; }
@@ -46,12 +46,14 @@ namespace AccountCreation
         public string SecEdipi { get; set; }
         public Nullable<System.DateTime> SecDateSigned { get; set; }
         public Nullable<bool> Training { get; set; }
+        public Nullable<System.DateTime> RequestedDate { get; set; }
         public Nullable<System.DateTime> TrainingDate { get; set; }
+        public Nullable<System.DateTime> DeleteDate { get; set; }
+        public Nullable<System.DateTime> Created { get; set; }
         public string RequestType { get; set; }
         public string AccountType { get; set; }
         public string SaEdipi { get; set; }
         public string SaName { get; set; }
-        public Nullable<System.DateTime> Created { get; set; }
         public string AcctStatus { get; set; }
     }
 }
