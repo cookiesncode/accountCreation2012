@@ -4,12 +4,10 @@
 </asp:Content>
 
 <asp:Content ID="_childMainContent" ContentPlaceHolderID="_masterMainContent" runat="server">
-	<h2 class="page-header">Your request has been submitted</h2>
-	<h3>Please follow these next steps to complete the process.</h3>
-	<ol>
-		<li>Use the form below to notify your approval staff that your request needs to be verified. If you requested a VPN account then only your supervisor needs to verify your request.</li>
-		<li>Wait until your supervisor notifies you that your account has been created. Until then, do not login into the Fort Carson network.</li>
-	</ol>
+	<h2 class="page-header">Your request has been submitted...</h2>
+	<h3>But you're not done yet!</h3>
+    <p>Please use the form below to notify your approval staff that your request needs to be verified. Your request <strong>will not</strong> be processed until you have obtained the approval signatures. </p>
+    <p><strong class="text-info">Note:</strong> If you requested to <em>create</em> a VPN account or if you requested an any type of <em>deletion</em>, then only your supervisor needs to sign your request.</p>
     <div class="email-form-container">
         <asp:MultiView ID="_multiviewForm" ActiveViewIndex="0" runat="server">
             <asp:View ID="_viewEmailForm" runat="server">
