@@ -75,7 +75,6 @@
 				EnablePersistedSelection="True">
 				<Columns>
 					<asp:CommandField ShowSelectButton="True"></asp:CommandField>
-					<asp:BoundField DataField="Id" HeaderText="Unique ID" SortExpression="Id" />
 					<asp:BoundField DataField="Edipi" HeaderText="EDIPI" SortExpression="Edipi" />
 					<asp:BoundField DataField="LName" HeaderText="Last Name" SortExpression="LName" />
 					<asp:BoundField DataField="FName" HeaderText="First Name" SortExpression="FName" />
@@ -85,6 +84,7 @@
 					<asp:BoundField DataField="AccountType" HeaderText="Account Type" SortExpression="AccountType" />
 					<asp:BoundField DataField="RequestType" HeaderText="Request Type" SortExpression="RequestType" />
 					<asp:BoundField DataField="AcctStatus" HeaderText="Request Status" SortExpression="AcctStatus" />
+					<asp:BoundField DataField="RequestedDate" HeaderText="Requested Date" SortExpression="RequestedDate" />
 					<asp:BoundField DataField="SaName" HeaderText="SA Employee" SortExpression="SaName" />
 				</Columns>
 				<SelectedRowStyle CssClass="active"></SelectedRowStyle>
@@ -114,7 +114,7 @@
 								<label for="_edipi" class="col-sm-4 control-label">EDIPI:</label>
 								<div class="col-sm-8">
 									<p class="form-control-static">
-										<asp:Literal ID="Literal1" Text='<%# Eval("Edipi") %>' runat="server"></asp:Literal>
+										<asp:Literal ID="_edipi" Text='<%# Eval("Edipi") %>' runat="server"></asp:Literal>
 									</p>
 								</div>
 							</div>
@@ -168,7 +168,7 @@
 								<label for="_rank" class="col-sm-4 control-label">Rank:</label>
 								<div class="col-sm-8">
 									<p class="form-control-static">
-										<asp:Literal ID="Literal2" Text='<%# Eval("Rank") %>' runat="server"></asp:Literal>
+										<asp:Literal ID="_rank" Text='<%# Eval("Rank") %>' runat="server"></asp:Literal>
 									</p>
 								</div>
 							</div>
