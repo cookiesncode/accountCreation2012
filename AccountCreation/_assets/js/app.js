@@ -28,7 +28,19 @@
             }
         }
     });
+    // The code below is to dynamically add the alert dialogue box if they selected an account deletion.
+    var $createDeleteRadio = $('#_requestType :radio');
+    var $submitBtn = $('[data-js="delete-alert"]');
 
+    $createDeleteRadio.change(function () {
+        $optionSelected = $(this);
+        if ($optionSelected.val() === "Delete") {
+            $submitBtn.attr('data-confirm-modal','Please confirm that you are requesting an account deletion.');
+        }
+        else {
+            $submitBtn.removeAttr('data-confirm-modal');
+        }
+    });
 
 ///////////////////////////////////////////////////////////////////
 // EP unit selected code.
