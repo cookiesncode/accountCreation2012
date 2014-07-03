@@ -204,6 +204,13 @@
 							<asp:Panel ID="_epPanel" Visible="false" runat="server">
 								<h4 class="page-header">EP Section</h4>
 								<div class="form-group">
+									<label for="_mos" class="col-sm-4 col-md-4 control-label"><abbr class="initialism" title="Military Occupational Specialty">MOS</abbr>:</label>
+									<div class="col-sm-7 col-md-6">
+										<asp:TextBox ID="_mos" CssClass="form-control" Text='<%# Bind("Mos") %>' runat="server" />
+										<asp:RequiredFieldValidator CssClass="label label-warning" ID="_mosRequiredValidator" runat="server" ErrorMessage="MOS: Please enter you MOS." ControlToValidate="_mos" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+									</div>
+								</div>
+								<div class="form-group">
 									<label for="_epUnitsList" class="col-sm-4 col-md-4 control-label">EP Unit List:</label>
 									<div class="col-sm-7 col-md-6">
 										<asp:ListBox ID="_epUnitsList" Rows="8" CssClass="form-control" ClientIDMode="Static" SelectionMode="Multiple" runat="server">

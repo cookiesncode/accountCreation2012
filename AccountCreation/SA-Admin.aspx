@@ -247,6 +247,14 @@
 							
 							<asp:Panel ID="_epPanel" Visible="false" runat="server">
 								<div class="form-group">
+									<label for="_mos" class="col-sm-4 control-label">MOS:</label>
+									<div class="col-sm-8">
+										<p class="form-control-static">
+											<asp:Literal ID="_mos" Text='<%# Eval("Mos") %>' runat="server"></asp:Literal>
+										</p>
+									</div>
+								</div>
+								<div class="form-group">
 									<label for="_epUnits" class="col-sm-4 control-label">EP Units:</label>
 									<div class="col-sm-8">
 										<p class="form-control-static">
