@@ -79,34 +79,29 @@ namespace AccountCreation
 				var epPanelControl = (Panel)(_formview).FindControl("_epPanel");
 				Button updateButtonControl = null;
 				CheckBox securityCheckBoxControl = null;
-				TextBox securitySignatureControl = null;
 				PlaceHolder securityBoxPlaceholderControl = (PlaceHolder)(_formview).FindControl("_securityBoxPlaceholder");
 
                 if (RequiresTwoSignatures)
                 {
-                    if (supervisorSignatureControl.Text.Length > 0 && securitySignatureControl == null)
+                    if (supervisorCheckBoxControl.Checked && !securityBoxPlaceholderControl.Visible)
                     {
                         supervisorCheckBoxControl.Enabled = false;
-                        supervisorCheckBoxControl.Checked = true;
                         securityBoxPlaceholderControl.Visible = true;
-                        securitySignatureControl = (TextBox)(_formview).FindControl("_securitySignature");
                         securityCheckBoxControl = (CheckBox)(_formview).FindControl("_securityCheckBox");
                     }
-                    if (securitySignatureControl != null && securitySignatureControl.Text.Length > 0)
+                    if (securityBoxPlaceholderControl.Visible && securityCheckBoxControl.Checked)
                     {
                         securityCheckBoxControl.Enabled = false;
-                        securityCheckBoxControl.Checked = true;
                     }
-                    if (supervisorCheckBoxControl.Checked && securityCheckBoxControl != null && securityCheckBoxControl.Checked)
+                    if (supervisorCheckBoxControl.Checked && securityBoxPlaceholderControl.Visible && securityCheckBoxControl.Checked)
                     {
                         updateButtonControl = (Button)(_formview).FindControl("_updateButton");
                         updateButtonControl.Visible = false;
                     }
                 }
-                else if (supervisorSignatureControl.Text.Length > 0)
+                else if (supervisorCheckBoxControl.Checked)
                 {
                     supervisorCheckBoxControl.Enabled = false;
-                    supervisorCheckBoxControl.Checked = true;
                     updateButtonControl = (Button)(_formview).FindControl("_updateButton");
                     updateButtonControl.Visible = false;
                 }
