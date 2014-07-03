@@ -51,7 +51,8 @@
 					<asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
 					<asp:BoundField DataField="OrgUnit" HeaderText="Org/Unit" SortExpression="OrgUnit" />
 					<asp:BoundField DataField="AccountType" HeaderText="Account Type" SortExpression="AccountType" />
-					<asp:BoundField DataField="AcctStatus" HeaderStyle-CssClass="js-popover" HeaderText="Request Status" SortExpression="AcctStatus" />
+					<asp:BoundField DataField="RequestType" HeaderStyle-CssClass="js-popover-request" HeaderText="Request Type" SortExpression="RequestType" />
+					<asp:BoundField DataField="AcctStatus" HeaderStyle-CssClass="js-popover-status" HeaderText="Request Status" SortExpression="AcctStatus" />
 				</Columns>
 				<SelectedRowStyle CssClass="active"></SelectedRowStyle>
 			</asp:GridView>
@@ -253,7 +254,7 @@
 								<div class="col-sm-8">
 									<div class="input-group">
 										<span class="input-group-addon">
-											<asp:CheckBox ID="_supervisorCheckBox" runat="server" OnCheckedChanged="_supervisor_CheckBox_CheckedChanged" AutoPostBack="True" />
+											<asp:CheckBox ID="_supervisorCheckBox" runat="server" Checked='<%# Bind("SupSigned") %>' OnCheckedChanged="_supervisor_CheckBox_CheckedChanged" AutoPostBack="True" />
 										</span>
 										<asp:TextBox ID="_supervisorSignature" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("SupEdipi") %>' />
 									</div>
@@ -268,7 +269,7 @@
 									<div class="col-sm-8">
 										<div class="input-group">
 											<span class="input-group-addon">
-												<asp:CheckBox ID="_securityCheckBox" OnCheckedChanged="_security_CheckBox_CheckedChanged"  runat="server" AutoPostBack="True" />
+												<asp:CheckBox ID="_securityCheckBox" OnCheckedChanged="_security_CheckBox_CheckedChanged" Checked='<%# Bind("SecSigned") %>' runat="server" AutoPostBack="True" />
 											</span>
 											<asp:TextBox ID="_securitySignature" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("SecEdipi") %>' />
 										</div>

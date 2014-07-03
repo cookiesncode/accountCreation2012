@@ -83,8 +83,10 @@
 
 ///////////////////////////////////////////////////////////////////
 // Popover tooltip code.
-    var content = $('<span class="glyphicon glyphicon-info-sign" data-toggle="popover" data-placement="auto top" title="Request Status Stages" data-content="<ul><li>Requested - User submitted request</li><li>Partially Verified - Supervisor signed (Only occurs if two signatures are required)</li><li>Ready - Request is ready to be processed.</li><li>Completed - Request was completed</li><li>Failed - Request failed to be completed</ul>"></span>');
-    $('.js-popover').append(content);
+    var statusContent = $('<span class="glyphicon glyphicon-info-sign" data-toggle="popover" data-placement="auto top" title="Request Status Stages" data-content="<ul><li>Requested - User submitted request</li><li>Partially Verified - Supervisor signed (Only occurs if two signatures are required)</li><li>Ready - Request is ready to be processed.</li><li>Completed - Request was completed</li><li>Failed - Request failed to be completed</ul>"></span>');
+    var requestTypeContent = $('<span class="glyphicon glyphicon-info-sign" data-toggle="popover" data-placement="auto top" title="Request Type Terms" data-content="<p>This field shows whether the user requested a deletion or creation of the <em>Account Type</em>. Do not be confused with the <em>Manual</em> or <em>Auto</em> part. The important piece is whether the request is a <em>Create</em> or <em>Delete</em>."></span>');
+    $('.js-popover-status').append(statusContent);
+    $('js-popover-request').append(requestTypeContent);
     $('[data-toggle="popover"]').popover({
         html: true,
         trigger: 'hover',
