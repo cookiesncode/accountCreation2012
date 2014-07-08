@@ -69,6 +69,13 @@ namespace AccountCreation
                 }
                 else
                 {
+                    var dateRangeValidator = (RangeValidator)(_formview).FindControl("_deleteDateRangeValidator");
+                    string dynamicMinValue = DateTime.Today.ToShortDateString();
+                    string dynamicMaxValue = DateTime.Today.AddMonths(2).ToShortDateString();
+                    dateRangeValidator.MinimumValue = dynamicMinValue;
+                    dateRangeValidator.MaximumValue = dynamicMaxValue;
+                    dateRangeValidator.Type = ValidationDataType.Date;
+
                     bool accountExist = false;
                     switch (accountType)
                     {
@@ -124,6 +131,7 @@ namespace AccountCreation
 				var epUnitsControl = (ListBox)(_formview).FindControl("_epUnitsList");
 				var epPanelControl = (Panel)(_formview).FindControl("_epPanel");
                 var trainingPanelControl = (Panel)(_formview).FindControl("_trainingPanel");
+                var deleteRequestPanelControl = (Panel)(_formview).FindControl("_deleteRequestPanel");
 
 				acctStatusControl.Text = "Requested";
 				dateControl.Text = DateTime.Now.ToString();
@@ -146,10 +154,12 @@ namespace AccountCreation
 
                     if (requestType == "Create")
                     {
+                        deleteRequestPanelControl.Visible = false;
                         trainingPanelControl.Visible = true;
                     }
                     else
                     {
+                        deleteRequestPanelControl.Visible = true;
                         trainingPanelControl.Visible = false;
                     }
 

@@ -17,7 +17,7 @@
         });
         if (passesValidation && btnLoadingText && !btnConfirmText) {
             $button.button('loading');
-            $('#datePicker input:text').removeAttr('disabled'); // JANK: to get ASP.NET to accept the date entered when field is disabled
+            $('[data-js-datepicker] input:text').removeAttr('disabled'); // JANK: to get ASP.NET to accept the date entered when field is disabled
         }
         if (passesValidation && btnConfirmText) {
             var confirmEntry = confirm(btnConfirmText);
@@ -55,15 +55,26 @@
     })   
 
 ///////////////////////////////////////////////////////////////////
-// Datepicker code
+// Datepicker code: Note: The submit button code above affects the datepicker as well (JANK)
+
     if ($.fn.datepicker) {
-        var date = new Date();
-        $('#datePicker').attr("data-date", date);
-        $('#datePicker').datepicker({
+        var todaysDate = new Date();
+        var $trainingDate = $('[data-js-datepicker="training-date"]');
+        var $deleteDate = $('[data-js-datepicker="delete-date"]');
+        $trainingDate.attr("data-date", todaysDate);
+        $deleteDate.attr("data-date", todaysDate);
+        $deleteDate.datepicker({
+            format: 'm/d/yyyy',
+            endDate: '+2m',
+            startDate: todaysDate,
+            todayBtn: true
+        });
+        $trainingDate.datepicker({
             format: 'm/d/yyyy',
             orientation: 'bottom',
             startDate: '-1y',
-            endDate: date
+            endDate: todaysDate,
+            todayBtn: true
         });
     }
 

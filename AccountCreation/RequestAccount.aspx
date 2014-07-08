@@ -173,6 +173,21 @@
 								</div>
 							</div>
 
+                            <asp:Panel ID="_deleteRequestPanel" Visible="false" runat="server">
+								<div class="form-group">
+									<label for="_deleteDate" class="col-sm-4 col-md-4 control-label">Requested Delete Date:</label>
+									<div class="col-sm-7 col-md-6">									
+										<div data-js-datepicker="delete-date" class="input-group date">
+											<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+											<asp:TextBox ID="_deleteDate" Text='<%# Bind("DeleteDate") %>' Enabled="false" CssClass="form-control" runat="server" />
+										</div>
+                                        <span class="help-block">You can not select a date more than 2 months out from today.</span>
+                                        <asp:RequiredFieldValidator CssClass="label label-warning" ID="_deleteDateRequiredValidator" runat="server" ErrorMessage="Requested Delete Date: Please enter your the date you want your account to be deleted." ControlToValidate="_deleteDate" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+                                        <asp:RangeValidator ID="_deleteDateRangeValidator" runat="server" ErrorMessage="Requested Delete Date: The training date is out of the accepted range." Text="Requires your attention." Display="Dynamic" ControlToValidate="_deleteDate" CssClass="label label-warning"></asp:RangeValidator>
+									</div>
+								</div>
+                            </asp:Panel>
+
 							<asp:Panel ID="_trainingPanel" Visible="false" runat="server">
 								<h4 class="page-header">DoD Cyber Awareness Training</h4>
                                 <p>You must have completed the DoD Cyber Awareness Training within the last year. If you have not, take the training here: <a href="https://ia.signal.army.mil/DoDIAA/default.asp" target="new">DoD Cyber Awareness Training  <span title="New Window" class="glyphicon glyphicon-new-window"></span></a>.</p>
@@ -188,10 +203,11 @@
                                         <asp:RequiredFieldValidator CssClass="label label-warning" ID="_trainingRequiredValidator" runat="server" ErrorMessage="Training: You must have completed the DoD Cyber Awareness Training." ControlToValidate="_trainingTextBox" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
 									</div>
 								</div>
+
 								<div id="_trainingDatePanel" class="form-group">
 									<label for="_trainingDate" class="col-sm-4 col-md-4 control-label">Date Completed:</label>
 									<div class="col-sm-7 col-md-6">									
-										<div id="datePicker" class="input-group date">
+										<div data-js-datepicker="training-date" class="input-group date">
 											<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 											<asp:TextBox ID="_trainingDate" Text='<%# Bind("TrainingDate") %>' Enabled="false" CssClass="form-control" runat="server" />
 										</div>
