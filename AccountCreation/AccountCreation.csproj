@@ -89,6 +89,7 @@
     <Content Include="_assets\js\bootstrap.min.js" />
     <Content Include="_assets\js\jquery.min.js" />
     <Content Include="_assets\js\jquery.maskedinput.js" />
+    <Content Include="_support-files\screenshot.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountRequest.cs">
