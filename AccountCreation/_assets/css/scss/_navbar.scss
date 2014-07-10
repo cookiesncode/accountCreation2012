@@ -1,0 +1,28 @@
+.navbar {
+	
+	.navbar-brand {
+		padding: 10px 15px;
+		height: auto;
+
+		.logo-army {
+			width: 50px;
+		  	height: auto;
+		}
+
+		span {
+			padding-left: 5px;
+		}
+	}
+	
+	@media (min-width: 768px) {
+		.navbar-nav > li > a {
+			line-height: 50px;
+		}
+	}
+
+	.navbar-toggle {
+		margin-top: 20px;
+		color: #333333;
+	}
+	
+}
