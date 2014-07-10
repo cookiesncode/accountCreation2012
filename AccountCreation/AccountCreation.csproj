@@ -83,6 +83,7 @@
     <Content Include="_assets\docs\UnitList.txt" />
     <Content Include="_assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="_assets\img\logo-army.png" />
+    <Content Include="_assets\img\logo-carson.png" />
     <Content Include="_assets\js\app.js" />
     <Content Include="_assets\js\bootstrap-datepicker.js" />
     <Content Include="_assets\js\bootstrap.js" />
