@@ -281,7 +281,11 @@
     <Content Include="_assets\css\scss\bootstrap\_utilities.scss" />
     <Content Include="_assets\css\scss\bootstrap\_variables.scss" />
     <Content Include="_assets\css\scss\bootstrap\_wells.scss" />
-    <Content Include="_assets\css\scss\_global.scss" />
+    <Content Include="_assets\css\scss\_datepicker.scss" />
+    <Content Include="_assets\css\scss\_misc.scss" />
+    <Content Include="_assets\css\scss\_navbar.scss" />
+    <Content Include="_assets\css\scss\_override.scss" />
+    <Content Include="_assets\css\scss\_panel.scss" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
