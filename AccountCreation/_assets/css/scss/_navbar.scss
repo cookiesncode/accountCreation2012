@@ -22,7 +22,14 @@
 
 	.navbar-toggle {
 		margin-top: 20px;
-		color: #333333;
+		color: #fff;
+    	background-color: #428bca;
+    	border-color: #357ebd;
+
+    	&:hover {
+    		background-color: #3071a9;
+    		border-color: #285e8e;
+    	}
 	}
 	
 }
