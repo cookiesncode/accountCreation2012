@@ -3,7 +3,6 @@
 @import "bootstrap/mixins";
 
 // Variable override
-@import "override";
 // Reset and dependencies
 @import "bootstrap/normalize";
 @import "bootstrap/print";
@@ -53,6 +52,7 @@
 
 
 // Custom CSS
+@import "override";
 @import "misc";
 @import "navbar";
 @import "panel";

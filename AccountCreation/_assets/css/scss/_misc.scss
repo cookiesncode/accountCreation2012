@@ -1,82 +1,10 @@
 /*Custom css */
-body {
-	background-color: $gray-darker;
-  background: $gray-darker url("../img/logo-carson.png") no-repeat;
-  background-position: 110% 38px;
-  background-size: contain;
-  font-size: 16px;
-  color: #F8F8F8;
-
-  @media (min-width: $screen-sm) {
-    background-size: 55%;
-    background-position: 110% -10px;
-  }
-}
 
 
-table {
-	font-size: 14px;
-}
-
-h1, h2, h3 {
-}
-
-h2.page-header {
-  border: none;
-}
-
-.page-header {
-    margin: 70px 0 20px;
-}
-
-
-.popover {
-  color: #333333;
-}
-[data-toggle="popover"] {
-    padding: 0 10px;
-    color: #333333;
-}
-
-.popover {
-    max-width: 400px;
-}
-
-.popover-content > ul {
-    margin: 0;
-    padding: 0 0 0 20px;
-    font-size: 14px;
-}
-
-.persona {
-    position: relative;
-}
-
-
-.js-persona-link {
-    position: absolute;
-    top: 7px;
-    right: -2%;
-}
-
-.form-control {
-	color: #000;
-}
-
-.form-group, .radio {
-	margin-bottom: 25px;
-}
 
 .buffer
 {
 	margin-bottom: 30px;
-}
-
-.radio input[type="radio"] {
-  margin-left: 0;
-}
-.input-group-addon {
-	background-color: white;
 }
 
 .email-form-container {
@@ -85,11 +13,6 @@ h2.page-header {
 
 .email-form-sent {
 	padding: 15px;
-}
-
-#requestTypePanel .requestRadios {
-	display: block;
-	margin-bottom: 1em;
 }
 
 .start-links a {
