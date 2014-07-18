@@ -23,11 +23,11 @@
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav-collapse">
 				<span>Menu</span>
 			</button>
-			<a class="navbar-brand" href="Default.aspx"><img class="logo-army" src="_assets/img/logo-army.png" /><span>Fort Carson</span></a>
+			<a class="navbar-brand" href="default.aspx"><img class="logo-army" src="_assets/img/logo-army.png" /><span>Fort Carson</span></a>
 		</div>
 		<div class="collapse navbar-collapse" id="main-nav-collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="requesttype.aspx">New Request</a></li>
+				<li><a href="request-type.aspx">New Request</a></li>
 				<li><a href="verification.aspx">Existing Request</a></li>
 				<li id="_saLink" visible="false" runat="server"><a href="sa-admin.aspx">SA Admin Panel</a></li>
 			</ul>

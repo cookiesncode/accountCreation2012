@@ -15,7 +15,7 @@ namespace AccountCreation
 			{
                 Session["RequestType"] = _requestType.SelectedValue;
                 Session["AccountType"] = _accountType.SelectedValue;
-                Server.Transfer("~/requestaccount.aspx");
+                Server.Transfer("~/request-account.aspx");
 			}
 		}
 	}

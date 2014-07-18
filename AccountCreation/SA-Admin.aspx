@@ -1,4 +1,4 @@
-﻿<%@ Page Title="SA Admin Panel" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="SA-Admin.aspx.cs" Inherits="AccountCreation.SA_Admin" %>
+﻿<%@ Page Title="SA Admin Panel" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="sa-admin.aspx.cs" Inherits="AccountCreation.SA_Admin" %>
 
 <asp:Content ID="_childHead" ContentPlaceHolderID="_masterHead" runat="server">
 </asp:Content>

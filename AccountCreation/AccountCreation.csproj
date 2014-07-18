@@ -67,14 +67,14 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Default.aspx" />
+    <Content Include="default.aspx" />
     <Content Include="Test.aspx" />
-    <Content Include="RequestAccount.aspx" />
-    <Content Include="RequestType.aspx" />
-    <Content Include="SA-Admin.aspx" />
+    <Content Include="request-account.aspx" />
+    <Content Include="request-type.aspx" />
+    <Content Include="sa-admin.aspx" />
     <Content Include="UserControls\SecSignatureControl.ascx" />
-    <Content Include="Success.aspx" />
-    <Content Include="Verification.aspx" />
+    <Content Include="success.aspx" />
+    <Content Include="verification.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -110,12 +110,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CarsonAccountModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
     </Compile>
     <Compile Include="DomainClasses\ADAccount.cs" />
     <Compile Include="DomainClasses\CacCard.cs" />
@@ -135,26 +135,26 @@
       <DependentUpon>MainLayout.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RequestAccount.aspx.cs">
-      <DependentUpon>RequestAccount.aspx</DependentUpon>
+    <Compile Include="request-account.aspx.cs">
+      <DependentUpon>request-account.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="RequestAccount.aspx.designer.cs">
-      <DependentUpon>RequestAccount.aspx</DependentUpon>
+    <Compile Include="request-account.aspx.designer.cs">
+      <DependentUpon>request-account.aspx</DependentUpon>
     </Compile>
-    <Compile Include="RequestType.aspx.cs">
-      <DependentUpon>RequestType.aspx</DependentUpon>
+    <Compile Include="request-type.aspx.cs">
+      <DependentUpon>request-type.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="RequestType.aspx.designer.cs">
-      <DependentUpon>RequestType.aspx</DependentUpon>
+    <Compile Include="request-type.aspx.designer.cs">
+      <DependentUpon>request-type.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SA-Admin.aspx.cs">
-      <DependentUpon>SA-Admin.aspx</DependentUpon>
+    <Compile Include="sa-admin.aspx.cs">
+      <DependentUpon>sa-admin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SA-Admin.aspx.designer.cs">
-      <DependentUpon>SA-Admin.aspx</DependentUpon>
+    <Compile Include="sa-admin.aspx.designer.cs">
+      <DependentUpon>sa-admin.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SecSignatureControl.ascx.cs">
       <DependentUpon>SecSignatureControl.ascx</DependentUpon>
@@ -163,19 +163,19 @@
     <Compile Include="UserControls\SecSignatureControl.ascx.designer.cs">
       <DependentUpon>SecSignatureControl.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Success.aspx.cs">
-      <DependentUpon>Success.aspx</DependentUpon>
+    <Compile Include="success.aspx.cs">
+      <DependentUpon>success.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Success.aspx.designer.cs">
-      <DependentUpon>Success.aspx</DependentUpon>
+    <Compile Include="success.aspx.designer.cs">
+      <DependentUpon>success.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Verification.aspx.cs">
-      <DependentUpon>Verification.aspx</DependentUpon>
+    <Compile Include="verification.aspx.cs">
+      <DependentUpon>verification.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Verification.aspx.designer.cs">
-      <DependentUpon>Verification.aspx</DependentUpon>
+    <Compile Include="verification.aspx.designer.cs">
+      <DependentUpon>verification.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

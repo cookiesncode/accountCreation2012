@@ -21,7 +21,7 @@ namespace AccountCreation
                 }
                 if (formSuccess == true)
                 {
-                    return "https://nec.carson.army.mil/account-creation/verification.aspx?search=" + CacCard.Edipi;
+                    return "https://nec.carson.army.mil/accounts/verification.aspx?search=" + CacCard.Edipi;
                 }
                 else
                 {

@@ -14,7 +14,7 @@ namespace AccountCreation
             string accountType = Session["AccountType"] as string;
             string requestType = Session["RequestType"] as string;
             var userAccount = new AdAccount();
-			 //Un-comment next line for testing a specific user
+             //Un-comment next line for testing a specific user
             //var userAccount = new AdAccount("123");
 
 			if (!IsPostBack && accountType != null && requestType != null)

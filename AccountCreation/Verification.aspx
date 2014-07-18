@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Existing Request" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="Verification.aspx.cs" Inherits="AccountCreation.Verification" MaintainScrollPositionOnPostback="true" %>
+﻿<%@ Page Title="Existing Request" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="verification.aspx.cs" Inherits="AccountCreation.Verification" MaintainScrollPositionOnPostback="true" %>
 
 <asp:Content ID="_childHead" ContentPlaceHolderID="_masterHead" runat="server">
 </asp:Content>
