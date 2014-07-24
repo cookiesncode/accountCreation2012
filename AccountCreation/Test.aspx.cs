@@ -12,10 +12,7 @@ namespace AccountCreation
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			_cacTest.Text = CacCard.LastName + " " + CacCard.FirstName + " " + CacCard.Edipi;
-			var adAccount = new AdAccount();
-			_currentUser.Text = adAccount.CurrentUser;
-			adAccount.queryOurDomain();
-			_niprAccount.Text = adAccount.NiprAccountName;
+            _cacMiddleInitial.Text = CacCard.MiddleInitial;
             if (!IsPostBack)
             {
                 foreach (string item in Setting.OrgUnit)
