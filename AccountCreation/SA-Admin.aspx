@@ -59,20 +59,18 @@
 		</div>
 		<div class="table-responsive">
 			<%-- TODO: Style paging generated controls --%>
-			<asp:GridView ID="_gridview" runat="server" 
-				CssClass="table table-condensed table-hover"
-				SelectedRowStyle-CssClass="active"
-				DataKeyNames="Id" 
-				DataSourceID="_gridEntitySource" 
-				GridLines="None"
-				AllowPaging="True" 
-				AutoGenerateColumns="False" 
-				AllowSorting="True" 
-				OnSelectedIndexChanged="_gridview_SelectedIndexChanged"
-				OnPageIndexChanged="_gridview_PageIndexChanged"
-				Visible="true" 
-				EmptyDataText="No results found"
-				EnablePersistedSelection="True">
+            <asp:GridView ID="_gridview" runat="server"
+                CssClass="table table-condensed table-hover"
+                SelectedRowStyle-CssClass="active"
+                DataKeyNames="Id"
+                DataSourceID="_gridEntitySource"
+                GridLines="None"
+                AutoGenerateColumns="False"
+                AllowSorting="True"
+                OnSelectedIndexChanged="_gridview_SelectedIndexChanged"
+                OnPageIndexChanged="_gridview_PageIndexChanged"
+                EmptyDataText="No results found"
+                EnablePersistedSelection="True">
 				<Columns>
 					<asp:CommandField ShowSelectButton="True"></asp:CommandField>
 					<asp:BoundField DataField="Edipi" HeaderText="EDIPI" SortExpression="Edipi" />
