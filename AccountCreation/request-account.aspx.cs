@@ -112,8 +112,9 @@ namespace AccountCreation
                 string requestType = Session["RequestType"] as string;
                 var edipiControl = (TextBox)(_formview).FindControl("_edipi");
 				var lNameControl = (TextBox)(_formview).FindControl("_lName");
-				var fNameControl = (TextBox)(_formview).FindControl("_fName");
-				var branchControl = (DropDownList)(_formview).FindControl("_branch");
+                var fNameControl = (TextBox)(_formview).FindControl("_fName");
+                var mNameControl = (TextBox)(_formview).FindControl("_middleInitial");
+                var branchControl = (DropDownList)(_formview).FindControl("_branch");
 				var orgUnitControl = (DropDownList)(_formview).FindControl("_orgUnit");
 				var installationControl = (DropDownList)(_formview).FindControl("_installation");
 				var personaControl = (DropDownList)(_formview).FindControl("_persona");
@@ -140,12 +141,14 @@ namespace AccountCreation
                 edipiControl.Text = CacCard.Edipi;
                 lNameControl.Text = CacCard.LastName;
                 fNameControl.Text = CacCard.FirstName;
+                mNameControl.Text = CacCard.MiddleInitial;
 
                 if (CacCard.FirstName != null)
                 {
                     edipiControl.Enabled = false;
                     lNameControl.Enabled = false;
                     fNameControl.Enabled = false;
+                    mNameControl.Enabled = false;
                 }
 
 				if (accountType != null && requestType != null)
