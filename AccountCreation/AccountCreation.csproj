@@ -286,6 +286,7 @@
     <Content Include="_assets\css\scss\_navbar.scss" />
     <Content Include="_assets\css\scss\_override.scss" />
     <Content Include="_assets\css\scss\_panel.scss" />
+    <Content Include="_assets\docs\howto-guide.pdf" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
