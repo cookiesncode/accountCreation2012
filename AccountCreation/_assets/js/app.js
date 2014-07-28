@@ -1,6 +1,6 @@
 ﻿(function ($) {
-///////////////////////////////////////////////////////////////////
-// Submit button loading text and pop confirmation dialogue modals.
+    ///////////////////////////////////////////////////////////////////
+    // Submit button loading text and pop confirmation dialogue modals.
     $(':submit').click(function (event) {
         var $button = $(this);
         var btnLoadingText = $button.attr('data-loading-text');
@@ -42,8 +42,15 @@
         }
     });
 
-///////////////////////////////////////////////////////////////////
-// EP unit selected code.
+    ///////////////////////////////////////////////////////////////////
+    // Print button
+    $('#print-btn').click(function(event) {
+        window.print();
+    });
+
+
+    ///////////////////////////////////////////////////////////////////
+    // EP unit selected code.
     var $epUnitsList = $('#_epUnitsList');
     $epUnitsList.on('change', function(event) {
         var str = "";
@@ -54,8 +61,8 @@
         $('#_epSelectedUnits').val(str);
     })   
 
-///////////////////////////////////////////////////////////////////
-// Datepicker code: Note: The submit button code above affects the datepicker as well (JANK)
+    ///////////////////////////////////////////////////////////////////
+    // Datepicker code: Note: The submit button code above affects the datepicker as well (JANK)
 
     if ($.fn.datepicker) {
         var todaysDate = new Date();
@@ -92,8 +99,8 @@
         }
     });
 
-///////////////////////////////////////////////////////////////////
-// Popover tooltip code.
+    ///////////////////////////////////////////////////////////////////
+    // Popover tooltip code.
     var statusContent = $('<span class="glyphicon glyphicon-info-sign" data-toggle="popover" data-placement="auto top" title="Request Status Stages" data-content="<ul><li>Requested - User submitted request</li><li>Partially Verified - Supervisor signed (Only occurs if two signatures are required)</li><li>Ready - Request is ready to be processed.</li><li>Completed - Request was completed</li><li>Failed - Request failed to be completed</ul>"></span>');
     var requestTypeContent = $('<span class="glyphicon glyphicon-info-sign" data-toggle="popover" data-placement="auto top" title="Request Type Terms" data-content="<p>This field shows whether the user requested a deletion or creation of the <em>Account Type</em>. Do not be confused with the <em>Manual</em> or <em>Auto</em> part. The important piece is whether the request is a <em>Create</em> or <em>Delete</em>."></span>');
     $('.js-popover-status').append(statusContent);
@@ -105,8 +112,8 @@
     });
 
 
-///////////////////////////////////////////////////////////////////
-// Autopopulate MACOM code.
+    ///////////////////////////////////////////////////////////////////
+    // Autopopulate MACOM code.
     var $macom = $('#_macom');
     $('#_masterMainContent__formview__orgUnit').change(function (e) {
         var $this = $(this);
