@@ -5,9 +5,9 @@
 
 <asp:Content ID="_childMainContent" ContentPlaceHolderID="_masterMainContent" runat="server">
 	
-	<h2 class="page-header">SA Admin Panel</h2>
+	<h2 class="page-header hidden-print">SA Admin Panel</h2>
 	
-	<asp:Panel ID="_filterPanel" Visible="true" runat="server">
+	<asp:Panel ID="_filterPanel" CssClass="hidden-print" Visible="true" runat="server">
 		<p class="lead">Filter Records:</p>
 		<div class="row">
 			<div class="col-sm-6">
@@ -41,7 +41,7 @@
 		</div>
 	</asp:Panel>
 	
-	<div class="panel panel-default buffer">
+	<div class="panel panel-default buffer hidden-print">
 		<div class="panel-heading">
 			<div class="row">
 				<div class="col-sm-6">
@@ -104,8 +104,9 @@
 				<%-- Start left column --%>
 				<div class="col-sm-6">
 					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3>Request Entry</h3>
+						<div class="panel-heading hidden-print clearfix">
+							<h3 class="pull-left">Request Entry</h3>
+                            <button id="print-btn" class="btn btn-primary pull-right print-btn"><i class="glyphicon glyphicon-print"></i></button>
 						</div>
 						<div class="panel-body">							
 							<div class="form-group">
@@ -268,7 +269,7 @@
 				<%-- End left column --%>
 
 				<%-- Start right column --%>
-				<div class="col-sm-6">
+				<div class="col-sm-6 hidden-print">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h3>SA Box:</h3>
