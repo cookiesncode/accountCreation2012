@@ -95,6 +95,7 @@
 									<asp:TextBox ID="_email" CssClass="form-control" runat="server" Text='<%# Bind("Email") %>' />
 									<asp:RequiredFieldValidator CssClass="label label-warning" ID="_emailRequiredValidator" runat="server" ErrorMessage="Email: Please enter your enterprise email address." ControlToValidate="_email" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
 									<asp:RegularExpressionValidator ID="_emailExpressionValidator" CssClass="label label-warning" runat="server" ErrorMessage="Email: Please enter a valid email address." Display="Dynamic" ControlToValidate="_email" Text="Requires your attention." ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                                     <a href="_assets/docs/find-email-guide.pdf" class="js-persona-link" target="_blank" title="Help locate your email"><span class="glyphicon glyphicon-info-sign"></span></a>
 								</div>
 							</div>
 
@@ -104,7 +105,7 @@
 									<asp:DropDownList ID="_persona" CssClass="form-control" runat="server" SelectedValue='<%# Bind("Persona") %>' AppendDataBoundItems="True">
 										<asp:ListItem Text="-- Select Persona --" Value="" />
 									</asp:DropDownList>
-                                    <a href="_assets/docs/persona-types.pdf" class="js-persona-link" target="new" title="Persona PDF Guide"><span class="glyphicon glyphicon-info-sign"></span></a>
+                                    <a href="_assets/docs/persona-types.pdf" class="js-persona-link" target="_blank" title="Persona PDF Guide"><span class="glyphicon glyphicon-info-sign"></span></a>
 									<asp:RequiredFieldValidator CssClass="label label-warning" ID="_personaRequiredValidator" runat="server" ErrorMessage="Persona: Please select a Persona." ControlToValidate="_persona" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
 								</div>
 							</div>
