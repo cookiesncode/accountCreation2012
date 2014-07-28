@@ -31,9 +31,9 @@
 							<asp:ListItem Text="No filter" Value=""></asp:ListItem>
 							<asp:ListItem Text="Requested" Value="Requested"></asp:ListItem>
 							<asp:ListItem Text="Partially Verified" Value="Partially Verified"></asp:ListItem>
-							<asp:ListItem Text="Ready to Process Request" Value="Ready"></asp:ListItem>
-							<asp:ListItem Text="Account Created" Value="Completed"></asp:ListItem>
-							<asp:ListItem Text="Failed to Create" Value="Failed"></asp:ListItem>
+							<asp:ListItem Text="Ready to Process" Value="Ready"></asp:ListItem>
+							<asp:ListItem Text="Completed" Value="Completed"></asp:ListItem>
+							<asp:ListItem Text="Failed" Value="Failed"></asp:ListItem>
 						</asp:DropDownList>
 					</div>
 				</div>
@@ -338,12 +338,13 @@
 		TargetControlID="_gridEntitySource">		
 		<asp:SearchExpression DataFields="LName, FName, Edipi" SearchType="Contains">
 			<asp:ControlParameter ControlID="_searchBox" />
+            <asp:ControlParameter ControlID="_filterRequestStatus" />
+		</asp:SearchExpression>
+		<asp:SearchExpression DataFields="AcctStatus" SearchType="Contains">
+            <asp:ControlParameter ControlID="_filterRequestStatus" />
 		</asp:SearchExpression>
 		<asp:PropertyExpression>
 			<asp:ControlParameter ControlID="_filterRequestType" Name="RequestType" />
-		</asp:PropertyExpression>
-		<asp:PropertyExpression>
-			<asp:ControlParameter ControlID="_filterRequestStatus" Name="AcctStatus" />
 		</asp:PropertyExpression>
 	</asp:QueryExtender>
 	
