@@ -48,8 +48,21 @@ table {
     margin-top: 20px;
 }
 
-.panel {
+.panel.panel-default {
   color: #333333;
+
+  @media print {
+  	border: none;
+
+  	.form-group {
+  		margin: 0 0 20pt 0;
+  	}
+
+  	.form-control-static {
+  		margin: 0;
+  		padding: 0;
+  	}
+  }
 }
 
 .panel-body {
