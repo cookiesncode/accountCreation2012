@@ -16,9 +16,8 @@
 					<div class="col-sm-7 col-md-8">
 						<asp:DropDownList ID="_filterRequestType" OnSelectedIndexChanged="_filter_SelectedIndexChanged" CssClass="form-control" runat="server" AutoPostBack="true">
 							<asp:ListItem Text="No filter" Value=""></asp:ListItem>
-							<asp:ListItem Text="Automated Creation" Value="Auto Create"></asp:ListItem>
-							<asp:ListItem Text="Manual Creation (SA)" Value="Manual Create"></asp:ListItem>
-							<asp:ListItem Text="Manual Deletion (SA)" Value="Manual Delete"></asp:ListItem>
+							<asp:ListItem Text="Automated Request" Value="Auto Create"></asp:ListItem>
+							<asp:ListItem Text="Manual Request (SA)" Value="Manual"></asp:ListItem>
 						</asp:DropDownList>
 					</div>
 				</div>
@@ -351,14 +350,13 @@
 		TargetControlID="_gridEntitySource">		
 		<asp:SearchExpression DataFields="LName, FName, Edipi" SearchType="Contains">
 			<asp:ControlParameter ControlID="_searchBox" />
-            <asp:ControlParameter ControlID="_filterRequestStatus" />
 		</asp:SearchExpression>
 		<asp:SearchExpression DataFields="AcctStatus" SearchType="Contains">
             <asp:ControlParameter ControlID="_filterRequestStatus" />
 		</asp:SearchExpression>
-		<asp:PropertyExpression>
-			<asp:ControlParameter ControlID="_filterRequestType" Name="RequestType" />
-		</asp:PropertyExpression>
+		<asp:SearchExpression DataFields="RequestType" SearchType="Contains">
+            <asp:ControlParameter ControlID="_filterRequestType" />
+		</asp:SearchExpression>
 	</asp:QueryExtender>
 	
 	<asp:EntityDataSource ID="_formviewEntitySource" runat="server" 
