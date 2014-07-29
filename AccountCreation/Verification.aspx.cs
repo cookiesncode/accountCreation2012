@@ -80,6 +80,14 @@ namespace AccountCreation
 				Button updateButtonControl = null;
 				CheckBox securityCheckBoxControl = null;
 				PlaceHolder securityBoxPlaceholderControl = (PlaceHolder)(_formview).FindControl("_securityBoxPlaceholder");
+                var deleteDatePanelControl = (Panel)(_formview).FindControl("_deleteRequestPanel");
+                var dateRangeValidator = (RangeValidator)(_formview).FindControl("_deleteDateRangeValidator");
+                string dynamicMinValue = DateTime.Today.ToShortDateString();
+                string dynamicMaxValue = DateTime.Today.AddMonths(2).ToShortDateString();
+
+                dateRangeValidator.MinimumValue = dynamicMinValue;
+                dateRangeValidator.MaximumValue = dynamicMaxValue;
+                dateRangeValidator.Type = ValidationDataType.Date;
 
                 if (RequiresTwoSignatures)
                 {
@@ -104,6 +112,11 @@ namespace AccountCreation
                     supervisorCheckBoxControl.Enabled = false;
                     updateButtonControl = (Button)(_formview).FindControl("_updateButton");
                     updateButtonControl.Visible = false;
+                }
+
+                if (requestTypeControl.Text == "Manual Delete" || requestTypeControl.Text == "Auto Delete")
+                {
+                    deleteDatePanelControl.Visible = true;
                 }
 
                 if (accountTypeControl.Text == "EP")

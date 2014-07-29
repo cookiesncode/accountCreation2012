@@ -243,6 +243,17 @@
 									</p>
 								</div>
 							</div>
+
+                            <asp:Panel ID="_deleteRequestPanel" Visible="false" runat="server">
+								<div class="form-group">
+									<label for="_deleteDate" class="col-sm-4 control-label">Requested Delete Date:</label>
+									<div class="col-sm-8">
+                                        <p class="form-control-static">
+										    <asp:Literal ID="_deleteDate" Text='<%# Eval("DeleteDate") %>' runat="server"></asp:Literal>
+									    </p>									
+									</div>
+								</div>
+                            </asp:Panel>
 							
 							<asp:Panel ID="_epPanel" Visible="false" runat="server">
 								<div class="form-group">
@@ -314,10 +325,12 @@
 				</div>
 			</div>
 			<div class="hidden">
+                <%-- TODO: Change to one way data binding if not editing --%>
 				<asp:TextBox ID="_acctStatus" Text='<%# Bind("AcctStatus") %>' Enabled="false" runat="server"></asp:TextBox>
 				<asp:TextBox ID="_accountType" Text='<%# Bind("AccountType") %>' Enabled="false" runat="server"></asp:TextBox>
 				<asp:TextBox ID="_saName" Text='<%# Bind("SaName") %>' Enabled="false" runat="server"></asp:TextBox>
 				<asp:TextBox ID="_dateCreated" Text='<%# Bind("Created") %>' Enabled="false" runat="server"></asp:TextBox>
+				<asp:TextBox ID="_requestType" Text='<%# Bind("RequestType") %>' Enabled="false" runat="server"></asp:TextBox>
 			</div>		
 		</EditItemTemplate>
 		<EmptyDataTemplate>

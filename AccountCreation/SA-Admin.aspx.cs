@@ -27,6 +27,7 @@ namespace AccountCreation
 
 		protected void _formview_DataBound(object sender, EventArgs e)
 		{
+            // TODO: Change formview if not using edit mode
 			if (_formview.CurrentMode == FormViewMode.Edit)
 			{
 				var adContainer = (PlaceHolder)(_formview).FindControl("_adInfo");
@@ -34,8 +35,15 @@ namespace AccountCreation
 				var accountType = (TextBox)(_formview).FindControl("_accountType");
 				var saSignature = (TextBox)(_formview).FindControl("_saSignature");
 				var saCheckBox = (CheckBox)(_formview).FindControl("_saCheckBox");
+                var deleteDatePanelControl = (Panel)(_formview).FindControl("_deleteRequestPanel");
+                var requestTypeControl = (TextBox)(_formview).FindControl("_requestType");
+
 				Button updateButton = null;
 
+                if (requestTypeControl.Text == "Manual Delete" || requestTypeControl.Text == "Auto Delete")
+                {
+                    deleteDatePanelControl.Visible = true;
+                }
 				if (accountType.Text != "NIPR")
 				{
 					adContainer.Visible = true;

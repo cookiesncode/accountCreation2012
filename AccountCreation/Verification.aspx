@@ -214,6 +214,21 @@
 								</div>
 							</div>
 
+                            <asp:Panel ID="_deleteRequestPanel" Visible="false" runat="server">
+								<div class="form-group">
+									<label for="_deleteDate" class="col-sm-4 col-md-4 control-label">Requested Delete Date:</label>
+									<div class="col-sm-7 col-md-6">									
+										<div data-js-datepicker="delete-date" class="input-group date">
+											<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+											<asp:TextBox ID="_deleteDate" Text='<%# Bind("DeleteDate") %>' Enabled="false" CssClass="form-control" runat="server" />
+										</div>
+                                        <span class="help-block">You can not select a date more than 2 months out from today.</span>
+                                        <asp:RequiredFieldValidator CssClass="label label-warning" ID="_deleteDateRequiredValidator" runat="server" ErrorMessage="Requested Delete Date: Please enter your the date you want your account to be deleted." ControlToValidate="_deleteDate" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+                                        <asp:RangeValidator ID="_deleteDateRangeValidator" runat="server" ErrorMessage="Requested Delete Date: The training date is out of the accepted range." Text="Requires your attention." Display="Dynamic" ControlToValidate="_deleteDate" CssClass="label label-warning"></asp:RangeValidator>
+									</div>
+								</div>
+                            </asp:Panel>
+
 							<asp:Panel ID="_epPanel" Visible="false" runat="server">
 								<h4 class="page-header">EP Section</h4>
 								<div class="form-group">
@@ -344,4 +359,5 @@
 </asp:Content>
 
 <asp:Content ID="_childBtmScripts" ContentPlaceHolderID="_masterBtmScripts" runat="server">
+	<script src="_assets/js/bootstrap-datepicker.js"></script>
 </asp:Content>
