@@ -8,7 +8,7 @@
 	<h2 class="page-header">Existing Request</h2>
 	
 	<asp:Panel ID="_searchPanel" CssClass="search-panel buffer" DefaultButton="_searchButton" runat="server">
-		<p class="lead">Please search by the <abbr class="initialism" title="Electronic Data Interchange Personal Identifier">EDIPI</abbr> number, Last name, or First name.</p>
+		<p class="lead">You can search by the <abbr class="initialism" title="Electronic Data Interchange Personal Identifier">EDIPI</abbr> number, or last name, or first name.</p>
 		<p><strong class="text-info">Note:</strong> Searching by <abbr class="initialism" title="Electronic Data Interchange Personal Identifier">EDIPI</abbr> gives you more accurate results.</p>	
 		<div class="form-group">
 			<div class="col-xs-6 col-sm-5 col-md-4 col-lg-3">
