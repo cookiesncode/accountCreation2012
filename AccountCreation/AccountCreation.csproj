@@ -72,7 +72,6 @@
     <Content Include="request-account.aspx" />
     <Content Include="request-type.aspx" />
     <Content Include="sa-admin.aspx" />
-    <Content Include="UserControls\SecSignatureControl.ascx" />
     <Content Include="success.aspx" />
     <Content Include="verification.aspx" />
     <Content Include="Web.config">
@@ -155,13 +154,6 @@
     </Compile>
     <Compile Include="sa-admin.aspx.designer.cs">
       <DependentUpon>sa-admin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\SecSignatureControl.ascx.cs">
-      <DependentUpon>SecSignatureControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UserControls\SecSignatureControl.ascx.designer.cs">
-      <DependentUpon>SecSignatureControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="success.aspx.cs">
       <DependentUpon>success.aspx</DependentUpon>
