@@ -211,7 +211,7 @@
 									<asp:TextBox ID="_phone" CssClass="form-control" runat="server" Text='<%# Bind("Phone") %>' />
                                     <span class="help-block">Format: 000.000.0000</span>
 									<asp:RequiredFieldValidator CssClass="label label-warning" ID="_phoneRequiredValidator" runat="server" ErrorMessage="Office Phone Number: Please enter your office number." ControlToValidate="_phone" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
-									<asp:RegularExpressionValidator ID="_phoneExpressionValidator" CssClass="label label-warning" ControlToValidate="_phone" runat="server" ErrorMessage="Phone: Please enter a valid number." Display="Dynamic" ValidationExpression="\d{3}\.\d{3}\.\d{4}">Requires your attention.</asp:RegularExpressionValidator>
+									<asp:RegularExpressionValidator ID="_phoneExpressionValidator" CssClass="label label-warning" ControlToValidate="_phone" runat="server" ErrorMessage="Phone: Please enter a valid number." Display="Dynamic" ValidationExpression="719\.(526|524|503)\.\d{4}">Requires your attention.</asp:RegularExpressionValidator>
 								</div>
 							</div>
 
