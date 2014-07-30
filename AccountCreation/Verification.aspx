@@ -40,7 +40,8 @@
 				Visible="False" 
 				EmptyDataText="No results found" 
 				EnablePersistedSelection="True" 
-				OnPageIndexChanged="_gridview_PageIndexChanged">
+				OnPageIndexChanged="_gridview_PageIndexChanged" 
+                PagerStyle-CssClass="table-pagination">
 				<Columns>
 					<asp:CommandField ShowSelectButton="True"></asp:CommandField>
 					<asp:BoundField DataField="Edipi" HeaderText="EDIPI" SortExpression="Edipi" />
