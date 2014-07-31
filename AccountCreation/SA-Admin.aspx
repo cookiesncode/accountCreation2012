@@ -1,4 +1,4 @@
-﻿<%@ Page Title="SA Admin Panel" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="sa-admin.aspx.cs" Inherits="AccountCreation.SA_Admin" %>
+﻿<%@ Page Title="SA Admin Panel" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="sa-admin.aspx.cs" Inherits="AccountCreation.SA_Admin" MaintainScrollPositionOnPostback="true" %>
 
 <asp:Content ID="_childHead" ContentPlaceHolderID="_masterHead" runat="server">
 </asp:Content>
@@ -71,19 +71,62 @@
                 EmptyDataText="No results found"
                 EnablePersistedSelection="True">
 				<Columns>
-					<asp:CommandField ShowSelectButton="True"></asp:CommandField>
-					<asp:BoundField DataField="Edipi" HeaderText="EDIPI" SortExpression="Edipi" />
-					<asp:BoundField DataField="LName" HeaderText="Last Name" SortExpression="LName" />
-					<asp:BoundField DataField="FName" HeaderText="First Name" SortExpression="FName" />
-					<asp:BoundField DataField="Mi" HeaderText="Mi" SortExpression="Mi" />
-					<asp:BoundField DataField="Rank" HeaderText="Rank" SortExpression="Rank" />
-					<asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
-					<asp:BoundField DataField="AccountType" HeaderText="Account Type" SortExpression="AccountType" />
-					<asp:BoundField DataField="RequestType" HeaderText="Request Type" SortExpression="RequestType" />
-					<asp:BoundField DataField="AcctStatus" HeaderText="Request Status" SortExpression="AcctStatus" />
-					<asp:BoundField DataField="RequestedDate" HeaderText="Requested Date" SortExpression="RequestedDate" />
-					<asp:BoundField DataField="SaName" HeaderText="SA Employee" SortExpression="SaName" />
-				</Columns>
+                    <asp:CommandField ShowSelectButton="True"></asp:CommandField>
+                    <asp:TemplateField HeaderText="EDIPI" SortExpression="Edipi">
+                        <ItemTemplate>
+                            <asp:Label runat="server" Text='<%# Eval("Edipi") %>' ID="_edipi"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Last Name" SortExpression="LName">
+                        <ItemTemplate>
+                            <asp:Label runat="server" Text='<%# Eval("LName") %>' ID="_lastName"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="First Name" SortExpression="FName">
+                        <ItemTemplate>
+                            <asp:Label runat="server" Text='<%# Eval("FName") %>' ID="_firstName"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Mi" SortExpression="Mi">
+                        <ItemTemplate>
+                            <asp:Label runat="server" Text='<%# Eval("Mi") %>' ID="_middleInitial"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Rank" SortExpression="Rank">
+                        <ItemTemplate>
+                            <asp:Label runat="server" Text='<%# Eval("Rank") %>' ID="_rank"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Email" SortExpression="Email">
+                        <ItemTemplate>
+                            <asp:Label runat="server" Text='<%# Eval("Email") %>' ID="_email"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Account Type" SortExpression="AccountType">
+                        <ItemTemplate>
+                            <asp:Label runat="server" Text='<%# Eval("AccountType") %>' ID="_accountType"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Request Type" SortExpression="RequestType">
+                        <ItemTemplate>
+                            <asp:Label runat="server" Text='<%# Eval("RequestType") %>' ID="_requestType"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:CommandField ShowEditButton="True"></asp:CommandField>
+                    <asp:TemplateField HeaderText="Request Status" SortExpression="AcctStatus">
+                        <ItemTemplate>
+                            <asp:Label runat="server" Text='<%# Eval("AcctStatus") %>' ID="_requestStatus"></asp:Label>
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:TextBox runat="server" Text='<%# Bind("AcctStatus") %>' ID="_requestStatusEdit"></asp:TextBox>
+                        </EditItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="SA Employee" SortExpression="SaName">
+                        <ItemTemplate>
+                            <asp:Label runat="server" Text='<%# Eval("SaName") %>' ID="_saName"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
 				<SelectedRowStyle CssClass="active"></SelectedRowStyle>
 			</asp:GridView>
 		</div>
