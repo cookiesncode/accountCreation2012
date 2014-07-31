@@ -269,17 +269,17 @@
 			</div>
 
 			<div class="hidden">
-				<asp:RadioButton ID="_niprAcct" Enabled="false" Text="&nbsp;NIPR" runat="server" GroupName="RequestType" Checked='<%# Bind("Nipr") %>' />
-				<asp:RadioButton ID="_siprAcct" Enabled="false" Text="&nbsp;SIPR" runat="server" GroupName="RequestType" Checked='<%# Bind("Sipr") %>' />
-				<asp:RadioButton ID="_epAcct" Enabled="false" Text="&nbsp;EP" runat="server" GroupName="RequestType" Checked='<%# Bind("NiprEp") %>' />
-				<asp:RadioButton ID="_vpnAcct" Enabled="false" Text="&nbsp;VPN" runat="server" GroupName="RequestType" Checked='<%# Bind("Vpn") %>' />
-				<asp:CheckBox ID="_supSigned" Enabled="false" Checked='<%# Bind("SupSigned") %>' runat="server" />
-				<asp:CheckBox ID="_secSigned" Enabled="false" Checked='<%# Bind("SecSigned") %>' runat="server" />
-				<asp:TextBox ID="_requestType" Enabled="false" Text='<%# Bind("RequestType") %>' runat="server" />
-				<asp:TextBox ID="_macom" Enabled="true" ClientIDMode="Static" Text='<%# Bind("Macom") %>' runat="server" />
-				<asp:TextBox ID="_accountType" Enabled="false" Text='<%# Bind("AccountType") %>' runat="server" />
-				<asp:TextBox ID="_acctStatus" Enabled="false" Text='<%# Bind("AcctStatus") %>' runat="server" />
-				<asp:TextBox ID="_date" Enabled="false" Text='<%# Bind("RequestedDate") %>' runat="server"></asp:TextBox>
+				<asp:RadioButton ID="_niprAcct" Text="&nbsp;NIPR" runat="server" GroupName="RequestType" Checked='<%# Bind("Nipr") %>' />
+				<asp:RadioButton ID="_siprAcct" Text="&nbsp;SIPR" runat="server" GroupName="RequestType" Checked='<%# Bind("Sipr") %>' />
+				<asp:RadioButton ID="_epAcct" Text="&nbsp;EP" runat="server" GroupName="RequestType" Checked='<%# Bind("NiprEp") %>' />
+				<asp:RadioButton ID="_vpnAcct" Text="&nbsp;VPN" runat="server" GroupName="RequestType" Checked='<%# Bind("Vpn") %>' />
+				<asp:CheckBox ID="_supSigned" Checked='<%# Bind("SupSigned") %>' runat="server" />
+				<asp:CheckBox ID="_secSigned" Checked='<%# Bind("SecSigned") %>' runat="server" />
+				<asp:TextBox ID="_requestType" Text='<%# Bind("RequestType") %>' runat="server" />
+				<asp:TextBox ID="_macom" ClientIDMode="Static" Text='<%# Bind("Macom") %>' runat="server" />
+				<asp:TextBox ID="_accountType" Text='<%# Bind("AccountType") %>' runat="server" />
+				<asp:TextBox ID="_acctStatus" Text='<%# Bind("AcctStatus") %>' runat="server" />
+				<asp:TextBox ID="_date" Text='<%# Bind("RequestedDate") %>' runat="server"></asp:TextBox>
 			</div>
 
 		</InsertItemTemplate>
