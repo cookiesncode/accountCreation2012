@@ -221,7 +221,7 @@
 									<div class="col-sm-7 col-md-6">									
 										<div data-js-datepicker="delete-date" class="input-group date">
 											<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-											<asp:TextBox ID="_deleteDate" Text='<%# Bind("DeleteDate") %>' Enabled="false" CssClass="form-control" runat="server" />
+											<asp:TextBox ID="_deleteDate" Text='<%# Bind("DeleteDate", "{0:d}") %>' Enabled="false" CssClass="form-control" runat="server" />
 										</div>
                                         <span class="help-block">You can not select a date more than 2 months out from today.</span>
                                         <asp:RequiredFieldValidator CssClass="label label-warning" ID="_deleteDateRequiredValidator" runat="server" ErrorMessage="Requested Delete Date: Please enter your the date you want your account to be deleted." ControlToValidate="_deleteDate" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
