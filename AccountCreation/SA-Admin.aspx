@@ -32,9 +32,9 @@
 							<asp:ListItem Text="Partially Verified" Value="Partially Verified"></asp:ListItem>
 							<asp:ListItem Text="Ready" Value="Ready"></asp:ListItem>
 							<asp:ListItem Text="Completed" Value="Completed"></asp:ListItem>
+							<asp:ListItem Text="Denied" Value="Denied"></asp:ListItem>
 							<asp:ListItem Text="Failed" Value="Failed"></asp:ListItem>
 							<asp:ListItem Text="Pending" Value="Pending"></asp:ListItem>
-							<asp:ListItem Text="Denied" Value="Denied"></asp:ListItem>
 						</asp:DropDownList>
 					</div>
 				</div>
@@ -123,7 +123,15 @@
                             <asp:Label runat="server" Text='<%# Eval("RequestStatus") %>' ID="_requestStatus"></asp:Label>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox runat="server" Text='<%# Bind("RequestStatus") %>' ID="_requestStatusEdit"></asp:TextBox>
+                            <asp:DropDownList runat="server" ID="_requestStatusEdit" SelectedValue='<%# Bind("RequestStatus") %>' CssClass="form-control">
+							    <asp:ListItem Text="Requested" Value="Requested"></asp:ListItem>
+							    <asp:ListItem Text="Partially Verified" Value="Partially Verified"></asp:ListItem>
+							    <asp:ListItem Text="Ready" Value="Ready"></asp:ListItem>
+							    <asp:ListItem Text="Completed" Value="Completed"></asp:ListItem>
+							    <asp:ListItem Text="Denied" Value="Denied"></asp:ListItem>
+							    <asp:ListItem Text="Failed" Value="Failed"></asp:ListItem>
+							    <asp:ListItem Text="Pending" Value="Pending"></asp:ListItem>
+                            </asp:DropDownList>
                         </EditItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="SA Employee" SortExpression="SaName">
