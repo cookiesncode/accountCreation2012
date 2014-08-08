@@ -77,6 +77,11 @@
                 PagerStyle-CssClass="table-pagination">
 				<Columns>
                     <asp:CommandField ShowSelectButton="True"></asp:CommandField>
+                    <asp:TemplateField HeaderText="Requested Date" SortExpression="RequestedDate">
+                        <ItemTemplate>
+                            <asp:Label runat="server" Text='<%# Eval("RequestedDate", "{0:d}") %>' ID="_requestedDate"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="EDIPI" SortExpression="Edipi">
                         <ItemTemplate>
                             <asp:Label runat="server" Text='<%# Eval("Edipi") %>' ID="_edipi"></asp:Label>
@@ -100,11 +105,6 @@
                     <asp:TemplateField HeaderText="Rank" SortExpression="Rank">
                         <ItemTemplate>
                             <asp:Label runat="server" Text='<%# Eval("Rank") %>' ID="_rank"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Email" SortExpression="Email">
-                        <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Eval("Email") %>' ID="_email"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Account Type" SortExpression="AccountType">
