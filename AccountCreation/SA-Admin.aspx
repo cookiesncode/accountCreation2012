@@ -30,9 +30,11 @@
 							<asp:ListItem Text="No filter" Value=""></asp:ListItem>
 							<asp:ListItem Text="Requested" Value="Requested"></asp:ListItem>
 							<asp:ListItem Text="Partially Verified" Value="Partially Verified"></asp:ListItem>
-							<asp:ListItem Text="Ready to Process" Value="Ready"></asp:ListItem>
+							<asp:ListItem Text="Ready" Value="Ready"></asp:ListItem>
 							<asp:ListItem Text="Completed" Value="Completed"></asp:ListItem>
 							<asp:ListItem Text="Failed" Value="Failed"></asp:ListItem>
+							<asp:ListItem Text="Pending" Value="Pending"></asp:ListItem>
+							<asp:ListItem Text="Denied" Value="Denied"></asp:ListItem>
 						</asp:DropDownList>
 					</div>
 				</div>
@@ -69,7 +71,10 @@
                 OnSelectedIndexChanged="_gridview_SelectedIndexChanged"
                 OnPageIndexChanged="_gridview_PageIndexChanged"
                 EmptyDataText="No results found"
-                EnablePersistedSelection="True">
+                EnablePersistedSelection="True" 
+                AllowPaging="True" 
+                PageSize="25"
+                PagerStyle-CssClass="table-pagination">
 				<Columns>
                     <asp:CommandField ShowSelectButton="True"></asp:CommandField>
                     <asp:TemplateField HeaderText="EDIPI" SortExpression="Edipi">
