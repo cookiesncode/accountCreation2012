@@ -357,6 +357,12 @@
 									</div>
 								</div>
 							</asp:PlaceHolder>
+                            <div class="form-group">
+                                <label for="_remark" class="col-sm-4 control-label">Remark:</label>
+                                <div class="col-sm-8">
+                                    <asp:TextBox runat="server" ID="_remark" TextMode="MultiLine" Rows="6" CssClass="form-control" Text='<%# Bind("Remark") %>'></asp:TextBox>
+                                </div>
+                            </div>
 							<div class="form-group">
 								<label for="_saCheckBox" class="col-sm-4 control-label">Completed by:</label>
 								<div class="col-sm-8">
