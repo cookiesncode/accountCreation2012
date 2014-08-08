@@ -126,7 +126,7 @@ namespace AccountCreation
 				var vpnControl = (CheckBox)(_formview).FindControl("_vpnAcct");
 				var requestTypeControl = (TextBox)(_formview).FindControl("_requestType");
 				var accountTypeControl = (TextBox)(_formview).FindControl("_accountType");
-				var acctStatusControl = (TextBox)(_formview).FindControl("_acctStatus");
+				var requestStatusControl = (TextBox)(_formview).FindControl("_requestStatus");
 				var supSignedControl = (CheckBox)(_formview).FindControl("_supSigned");
 				var secSignedControl = (CheckBox)(_formview).FindControl("_secSigned");
 				var epUnitsControl = (ListBox)(_formview).FindControl("_epUnitsList");
@@ -134,7 +134,7 @@ namespace AccountCreation
                 var trainingPanelControl = (Panel)(_formview).FindControl("_trainingPanel");
                 var deleteRequestPanelControl = (Panel)(_formview).FindControl("_deleteRequestPanel");
 
-				acctStatusControl.Text = "Requested";
+				requestStatusControl.Text = "Requested";
 				dateControl.Text = DateTime.Now.ToString();
 				supSignedControl.Checked = false;
 				secSignedControl.Checked = false;

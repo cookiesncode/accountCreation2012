@@ -278,7 +278,7 @@
 				<asp:TextBox ID="_requestType" Text='<%# Bind("RequestType") %>' runat="server" />
 				<asp:TextBox ID="_macom" ClientIDMode="Static" Text='<%# Bind("Macom") %>' runat="server" />
 				<asp:TextBox ID="_accountType" Text='<%# Bind("AccountType") %>' runat="server" />
-				<asp:TextBox ID="_acctStatus" Text='<%# Bind("AcctStatus") %>' runat="server" />
+				<asp:TextBox ID="_requestStatus" Text='<%# Bind("RequestStatus") %>' runat="server" />
 				<asp:TextBox ID="_date" Text='<%# Bind("RequestedDate") %>' runat="server"></asp:TextBox>
 			</div>
 

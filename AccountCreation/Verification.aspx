@@ -53,7 +53,7 @@
 					<asp:BoundField DataField="OrgUnit" HeaderText="Org/Unit" SortExpression="OrgUnit" />
 					<asp:BoundField DataField="AccountType" HeaderText="Account Type" SortExpression="AccountType" />
 					<asp:BoundField DataField="RequestType" HeaderStyle-CssClass="js-popover-request" HeaderText="Request Type" SortExpression="RequestType" />
-					<asp:BoundField DataField="AcctStatus" HeaderStyle-CssClass="js-popover-status" HeaderText="Request Status" SortExpression="AcctStatus" />
+					<asp:BoundField DataField="RequestStatus" HeaderStyle-CssClass="js-popover-status" HeaderText="Request Status" SortExpression="RequestStatus" />
 				</Columns>
 				<SelectedRowStyle CssClass="active"></SelectedRowStyle>
 			</asp:GridView>
@@ -316,7 +316,7 @@
 				<asp:CheckBox ID="_supSigned" Checked='<%# Bind("SupSigned") %>' runat="server" />
 				<asp:TextBox ID="_secSignedDate" Text='<%# Bind("SecDateSigned") %>' runat="server"></asp:TextBox>
 				<asp:CheckBox ID="_secSigned" Checked='<%# Bind("SecSigned") %>' runat="server" />
-				<asp:TextBox ID="_acctStatus" Text='<%# Bind("AcctStatus") %>' runat="server"></asp:TextBox>
+				<asp:TextBox ID="_requestStatus" Text='<%# Bind("RequestStatus") %>' runat="server"></asp:TextBox>
 				<asp:TextBox ID="_accountType" Text='<%# Bind("AccountType") %>' runat="server"></asp:TextBox>
 				<asp:TextBox ID="_requestType" Text='<%# Bind("RequestType") %>' runat="server"></asp:TextBox>
 			</div>		

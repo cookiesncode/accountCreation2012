@@ -113,21 +113,21 @@ namespace AccountCreation
 				var saCheckBox = (CheckBox)(_formview).FindControl("_saCheckBox");
 				var saName = (TextBox)(_formview).FindControl("_saName");
 				var saSignature = (TextBox)(_formview).FindControl("_saSignature");
-				var acctStatus = (TextBox)(_formview).FindControl("_acctStatus");
+				var requestStatus = (TextBox)(_formview).FindControl("_requestStatus");
 				var dateCreated = (TextBox)(_formview).FindControl("_dateCreated");
 
 				if (saCheckBox.Checked)
 				{
 					saName.Text = CacCard.FirstName + " " + CacCard.LastName;
 					saSignature.Text = CacCard.Edipi;
-					acctStatus.Text = "Completed";
+					requestStatus.Text = "Completed";
 					dateCreated.Text = DateTime.Now.ToString();
 				}
 				else
 				{
 					saName.Text = "";
 					saSignature.Text = "";
-					acctStatus.Text = "";
+					requestStatus.Text = "";
 				}
 			}
 		}

@@ -205,7 +205,7 @@ namespace AccountCreation
 				var supervisorSignatureControl = (TextBox)(_formview).FindControl("_supervisorSignature");
 				var supSignedDateControl = (TextBox)(_formview).FindControl("_supSignedDate");
 				var supSignedControl = (CheckBox)(_formview).FindControl("_supSigned");
-				var acctStatusControl = (TextBox)(_formview).FindControl("_acctStatus");
+				var requestStatusControl = (TextBox)(_formview).FindControl("_requestStatus");
 
 				if (supervisorCheckBoxControl.Checked)
 				{
@@ -214,11 +214,11 @@ namespace AccountCreation
 					supSignedControl.Checked = true;
                     if (RequiresTwoSignatures)
                     {
-                        acctStatusControl.Text = "Partially Verified";
+                        requestStatusControl.Text = "Partially Verified";
                     }
                     else
                     {
-                        acctStatusControl.Text = "Ready";
+                        requestStatusControl.Text = "Ready";
                     }
 				}
 				else
@@ -226,7 +226,7 @@ namespace AccountCreation
 					supervisorSignatureControl.Text = "";
 					supSignedDateControl.Text = "";
 					supSignedControl.Checked = false;
-					acctStatusControl.Text = "";
+					requestStatusControl.Text = "";
 				}
 			}
 		}
@@ -239,21 +239,21 @@ namespace AccountCreation
 				var securitySignatureControl = (TextBox)(_formview).FindControl("_securitySignature");
 				var secSignedDateControl = (TextBox)(_formview).FindControl("_secSignedDate");
 				var secSignedControl = (CheckBox)(_formview).FindControl("_secSigned");
-				var acctStatusControl = (TextBox)(_formview).FindControl("_acctStatus");
+                var requestStatusControl = (TextBox)(_formview).FindControl("_requestStatus");
 
                 if (securityCheckBoxControl.Checked)
 				{
 					securitySignatureControl.Text = CacCard.Edipi;
 					secSignedDateControl.Text = DateTime.Now.ToString();
 					secSignedControl.Checked = true;
-					acctStatusControl.Text = "Ready";
+                    requestStatusControl.Text = "Ready";
 				}
 				else
 				{
 					securitySignatureControl.Text = "";
 					secSignedDateControl.Text = "";
 					secSignedControl.Checked = false;
-					acctStatusControl.Text = "";
+                    requestStatusControl.Text = "";
 				}
 			}
 		}

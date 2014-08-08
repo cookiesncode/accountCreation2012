@@ -113,12 +113,12 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:CommandField ShowEditButton="True"></asp:CommandField>
-                    <asp:TemplateField HeaderText="Request Status" SortExpression="AcctStatus">
+                    <asp:TemplateField HeaderText="Request Status" SortExpression="RequestStatus">
                         <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Eval("AcctStatus") %>' ID="_requestStatus"></asp:Label>
+                            <asp:Label runat="server" Text='<%# Eval("RequestStatus") %>' ID="_requestStatus"></asp:Label>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox runat="server" Text='<%# Bind("AcctStatus") %>' ID="_requestStatusEdit"></asp:TextBox>
+                            <asp:TextBox runat="server" Text='<%# Bind("RequestStatus") %>' ID="_requestStatusEdit"></asp:TextBox>
                         </EditItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="SA Employee" SortExpression="SaName">
@@ -368,11 +368,11 @@
 			</div>
 			<div class="hidden">
                 <%-- TODO: Change to one way data binding if not editing --%>
-				<asp:TextBox ID="_acctStatus" Text='<%# Bind("AcctStatus") %>' Enabled="false" runat="server"></asp:TextBox>
-				<asp:TextBox ID="_accountType" Text='<%# Bind("AccountType") %>' Enabled="false" runat="server"></asp:TextBox>
-				<asp:TextBox ID="_saName" Text='<%# Bind("SaName") %>' Enabled="false" runat="server"></asp:TextBox>
-				<asp:TextBox ID="_dateCreated" Text='<%# Bind("Created") %>' Enabled="false" runat="server"></asp:TextBox>
-				<asp:TextBox ID="_requestType" Text='<%# Bind("RequestType") %>' Enabled="false" runat="server"></asp:TextBox>
+				<asp:TextBox ID="_requestStatus" Text='<%# Bind("RequestStatus") %>' runat="server"></asp:TextBox>
+				<asp:TextBox ID="_accountType" Text='<%# Bind("AccountType") %>' runat="server"></asp:TextBox>
+				<asp:TextBox ID="_saName" Text='<%# Bind("SaName") %>' runat="server"></asp:TextBox>
+				<asp:TextBox ID="_dateCreated" Text='<%# Bind("CompletedDate") %>' runat="server"></asp:TextBox>
+				<asp:TextBox ID="_requestType" Text='<%# Bind("RequestType") %>' runat="server"></asp:TextBox>
 			</div>		
 		</EditItemTemplate>
 		<EmptyDataTemplate>
@@ -394,7 +394,7 @@
 		<asp:SearchExpression DataFields="LName, FName, Edipi" SearchType="Contains">
 			<asp:ControlParameter ControlID="_searchBox" />
 		</asp:SearchExpression>
-		<asp:SearchExpression DataFields="AcctStatus" SearchType="Contains">
+		<asp:SearchExpression DataFields="RequestStatus" SearchType="Contains">
             <asp:ControlParameter ControlID="_filterRequestStatus" />
 		</asp:SearchExpression>
 		<asp:SearchExpression DataFields="RequestType" SearchType="Contains">
