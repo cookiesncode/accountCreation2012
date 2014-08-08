@@ -26,7 +26,7 @@
           <Property Name="Phone" Type="char" MaxLength="12" />
           <Property Name="Rank" Type="nvarchar" Nullable="false" MaxLength="256" />
           <Property Name="RequestedDate" Type="datetime" />
-          <Property Name="Created" Type="datetime" />
+          <Property Name="CompletedDate" Type="datetime" />
           <Property Name="Unit_Org" Type="nvarchar" MaxLength="256" />
           <Property Name="Branch" Type="nvarchar" Nullable="false" MaxLength="256" />
           <Property Name="Installation" Type="nvarchar" MaxLength="256" />
@@ -53,6 +53,15 @@
           <Property Name="AcctStatus" Type="nvarchar" MaxLength="100" />
           <Property Name="MOS" Type="nvarchar" MaxLength="50" />
           <Property Name="DeleteDate" Type="datetime" />
+          <Property Name="InvestigationType" Type="nvarchar" MaxLength="256" />
+          <Property Name="InvestigationDate" Type="datetime" />
+          <Property Name="ClearanceLevel" Type="nvarchar" MaxLength="256" />
+          <Property Name="LevelDesignation" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="256" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="IASigned" Type="bit" />
+          <Property Name="IAEDIPI" Type="nvarchar" MaxLength="50" />
+          <Property Name="IADateSigned" Type="datetime" />
         </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -85,27 +94,36 @@
           <Property Type="String" Name="Mos" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SamAccountName" Type="String" MaxLength="256" Unicode="false" FixedLength="false" />
           <Property Name="HomeFolder" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Type="Boolean" Name="Training" />
+          <Property Type="DateTime" Name="TrainingDate" Precision="3" />
+          <Property Type="DateTime" Name="DeleteDate" Precision="3" />
           <Property Name="Nipr" Type="Boolean" />
           <Property Name="NiprSa" Type="Boolean" />
           <Property Name="NiprEp" Type="Boolean" />
           <Property Name="Vpn" Type="Boolean" />
           <Property Name="Sipr" Type="Boolean" />
-          <Property Name="SupSigned" Type="Boolean" />
-          <Property Name="SecSigned" Type="Boolean" />
-          <Property Type="String" Name="SupEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="SupDateSigned" Precision="3" />
-          <Property Type="String" Name="SecEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="SecDateSigned" Precision="3" />
-          <Property Type="Boolean" Name="Training" />
-          <Property Type="DateTime" Name="RequestedDate" Precision="3" />
-          <Property Type="DateTime" Name="TrainingDate" Precision="3" />
-          <Property Type="DateTime" Name="DeleteDate" Precision="3" />
-          <Property Name="Created" Type="DateTime" Precision="3" />
-          <Property Type="String" Name="RequestType" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="AccountType" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="SaEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RequestType" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="InvestigationType" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="InvestigationDate" Precision="3" />
+          <Property Type="String" Name="ClearanceLevel" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LevelDesignation" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SecEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SecSigned" Type="Boolean" />
+          <Property Type="DateTime" Name="SecDateSigned" Precision="3" />
           <Property Type="String" Name="SaName" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="AcctStatus" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="SupEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SupSigned" Type="Boolean" />
+          <Property Type="DateTime" Name="SupDateSigned" Precision="3" />
+          <Property Type="String" Name="SaEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Remark" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IaEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IaSigned" />
+          <Property Type="DateTime" Name="IaDateSigned" Precision="3" />
+          <Property Type="DateTime" Name="RequestedDate" Precision="3" />
+          <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
+          <Property Type="DateTime" Name="CompletedDate" Precision="3" />
+          <Property Name="RequestStatus" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -116,6 +134,16 @@
           <EntitySetMapping Name="AccountRequests">
             <EntityTypeMapping TypeName="CarsonAccountModel.AccountRequest">
               <MappingFragment StoreEntitySet="tblAcctCreate_Auto">
+                <ScalarProperty Name="IaDateSigned" ColumnName="IADateSigned" />
+                <ScalarProperty Name="IaEdipi" ColumnName="IAEDIPI" />
+                <ScalarProperty Name="IaSigned" ColumnName="IASigned" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="LevelDesignation" ColumnName="LevelDesignation" />
+                <ScalarProperty Name="ClearanceLevel" ColumnName="ClearanceLevel" />
+                <ScalarProperty Name="InvestigationDate" ColumnName="InvestigationDate" />
+                <ScalarProperty Name="InvestigationType" ColumnName="InvestigationType" />
+                <ScalarProperty Name="CompletedDate" ColumnName="CompletedDate" />
                 <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
                 <ScalarProperty Name="Mos" ColumnName="MOS" />
                 <ScalarProperty Name="Training" ColumnName="Training" />
@@ -145,7 +173,6 @@
                 <ScalarProperty Name="Persona" ColumnName="Persona" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Rank" ColumnName="Rank" />
-                <ScalarProperty Name="Created" ColumnName="Created" />
                 <ScalarProperty Name="Branch" ColumnName="Branch" />
                 <ScalarProperty Name="Installation" ColumnName="Installation" />
                 <ScalarProperty Name="Nipr" ColumnName="NIPR_REG" />
@@ -156,7 +183,7 @@
                 <ScalarProperty Name="HomeFolder" ColumnName="HomeFolder" />
                 <ScalarProperty Name="SupSigned" ColumnName="SupSigned" />
                 <ScalarProperty Name="SecSigned" ColumnName="SecSigned" />
-                <ScalarProperty Name="AcctStatus" ColumnName="AcctStatus" />
+                <ScalarProperty Name="RequestStatus" ColumnName="AcctStatus" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

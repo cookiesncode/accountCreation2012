@@ -34,26 +34,35 @@ namespace AccountCreation
         public string Mos { get; set; }
         public string SamAccountName { get; set; }
         public string HomeFolder { get; set; }
+        public Nullable<bool> Training { get; set; }
+        public Nullable<System.DateTime> TrainingDate { get; set; }
+        public Nullable<System.DateTime> DeleteDate { get; set; }
         public Nullable<bool> Nipr { get; set; }
         public Nullable<bool> NiprSa { get; set; }
         public Nullable<bool> NiprEp { get; set; }
         public Nullable<bool> Vpn { get; set; }
         public Nullable<bool> Sipr { get; set; }
-        public Nullable<bool> SupSigned { get; set; }
-        public Nullable<bool> SecSigned { get; set; }
-        public string SupEdipi { get; set; }
-        public Nullable<System.DateTime> SupDateSigned { get; set; }
-        public string SecEdipi { get; set; }
-        public Nullable<System.DateTime> SecDateSigned { get; set; }
-        public Nullable<bool> Training { get; set; }
-        public Nullable<System.DateTime> RequestedDate { get; set; }
-        public Nullable<System.DateTime> TrainingDate { get; set; }
-        public Nullable<System.DateTime> DeleteDate { get; set; }
-        public Nullable<System.DateTime> Created { get; set; }
-        public string RequestType { get; set; }
         public string AccountType { get; set; }
-        public string SaEdipi { get; set; }
+        public string RequestType { get; set; }
+        public string InvestigationType { get; set; }
+        public Nullable<System.DateTime> InvestigationDate { get; set; }
+        public string ClearanceLevel { get; set; }
+        public string LevelDesignation { get; set; }
+        public string SecEdipi { get; set; }
+        public Nullable<bool> SecSigned { get; set; }
+        public Nullable<System.DateTime> SecDateSigned { get; set; }
         public string SaName { get; set; }
-        public string AcctStatus { get; set; }
+        public string SupEdipi { get; set; }
+        public Nullable<bool> SupSigned { get; set; }
+        public Nullable<System.DateTime> SupDateSigned { get; set; }
+        public string SaEdipi { get; set; }
+        public string Remark { get; set; }
+        public string IaEdipi { get; set; }
+        public Nullable<bool> IaSigned { get; set; }
+        public Nullable<System.DateTime> IaDateSigned { get; set; }
+        public Nullable<System.DateTime> RequestedDate { get; set; }
+        public Nullable<System.DateTime> ModifiedDate { get; set; }
+        public Nullable<System.DateTime> CompletedDate { get; set; }
+        public string RequestStatus { get; set; }
     }
 }
