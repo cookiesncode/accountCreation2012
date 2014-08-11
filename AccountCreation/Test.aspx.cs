@@ -13,6 +13,15 @@ namespace AccountCreation
 		{
 			_cacTest.Text = CacCard.LastName + " " + CacCard.FirstName + " " + CacCard.Edipi;
             _cacMiddleInitial.Text = CacCard.MiddleInitial;
+            var existingRequest = Record.QueryRecords("1398696464", "SIPR", "Manual Create");
+            if (existingRequest != null)
+            {
+                _entity.Text = existingRequest.FName;
+            }
+            else
+            {
+                _entity.Text = "no records found";
+            }
             if (!IsPostBack)
             {
                 foreach (string item in Setting.OrgUnit)

@@ -2,6 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="_masterHead" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="_masterMainContent" runat="server">
+	<div><asp:Label ID="_entity" runat="server" Text="Test Label"></asp:Label></div>
 	<div><asp:Label ID="_cacTest" runat="server" Text="Test Label"></asp:Label></div>
 	<div><asp:Label ID="_cacCert" runat="server" Text="Test Label"></asp:Label></div>
 	<div><asp:Label ID="_cacMiddleInitial" runat="server" Text="Test Label"></asp:Label></div>
