@@ -205,7 +205,6 @@ namespace AccountCreation
 						case "VPN":
                             if (requestType == "Create")
                             {
-                                // TODO: check if vpn is auto or manual
                                 requestTypeControl.Text = "Manual Create";
                             }
                             else
