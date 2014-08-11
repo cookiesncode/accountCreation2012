@@ -38,8 +38,6 @@ namespace AccountCreation
                 var deleteDatePanelControl = (Panel)(_formview).FindControl("_deleteRequestPanel");
                 var requestTypeControl = (TextBox)(_formview).FindControl("_requestType");
 
-				Button updateButton = null;
-
                 if (requestTypeControl.Text == "Manual Delete" || requestTypeControl.Text == "Auto Delete")
                 {
                     deleteDatePanelControl.Visible = true;
@@ -58,12 +56,6 @@ namespace AccountCreation
 				{
 					saCheckBox.Enabled = false;
 					saCheckBox.Checked = true;
-				}
-
-				if (saCheckBox.Checked)
-				{
-					updateButton = (Button)(_formview).FindControl("_updateButton");
-					updateButton.Visible = false;
 				}
 			}
 		}
