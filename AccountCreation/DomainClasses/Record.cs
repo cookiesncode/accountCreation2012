@@ -15,7 +15,14 @@ namespace AccountCreation
                             && request.AccountType == accountType
                             && request.RequestType == requestType
                         select request;
-            return query.First();
+            if (query.Count() > 0)
+            {
+                return query.First();
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
