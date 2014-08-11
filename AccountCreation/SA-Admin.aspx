@@ -351,6 +351,20 @@
                                     <asp:TextBox runat="server" ID="_remark" TextMode="MultiLine" Rows="6" CssClass="form-control" Text='<%# Bind("Remark") %>'></asp:TextBox>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for="_editRequestStatus" class="col-sm-4 control-label">Request Status:</label>
+                                <div class="col-sm-8">
+                                    <asp:DropDownList runat="server" ID="_editRequestStatus" SelectedValue='<%# Bind("RequestStatus") %>' CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="_editRequestStatus_SelectedIndexChanged">
+							            <asp:ListItem Text="Requested" Value="Requested"></asp:ListItem>
+							            <asp:ListItem Text="Partially Verified" Value="Partially Verified"></asp:ListItem>
+							            <asp:ListItem Text="Ready" Value="Ready"></asp:ListItem>
+							            <asp:ListItem Text="Completed" Value="Completed"></asp:ListItem>
+							            <asp:ListItem Text="Denied" Value="Denied"></asp:ListItem>
+							            <asp:ListItem Text="Failed" Value="Failed"></asp:ListItem>
+							            <asp:ListItem Text="Pending" Value="Pending"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
 							<div class="form-group">
 								<label for="_saCheckBox" class="col-sm-4 control-label">Completed by:</label>
 								<div class="col-sm-8">
@@ -366,7 +380,7 @@
 						</div>
 
 						<div class="panel-footer">
-							<asp:Button ID="_updateButton" data-loading-text="Validating information..." CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Complete Request" />
+							<asp:Button ID="_updateButton" data-loading-text="Validating information..." CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Update Request" />
 							<asp:Button ID="_cancelButton" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" OnClick="_cancelButton_Click" />
 						</div>
 					</div> <%-- End Signature block --%>
@@ -374,12 +388,11 @@
 				</div>
 			</div>
 			<div class="hidden">
-                <%-- TODO: Change to one way data binding if not editing --%>
-				<asp:TextBox ID="_requestStatus" Text='<%# Bind("RequestStatus") %>' runat="server"></asp:TextBox>
-				<asp:TextBox ID="_accountType" Text='<%# Bind("AccountType") %>' runat="server"></asp:TextBox>
+				<asp:TextBox ID="_accountType" Text='<%# Eval("AccountType") %>' runat="server"></asp:TextBox>
 				<asp:TextBox ID="_saName" Text='<%# Bind("SaName") %>' runat="server"></asp:TextBox>
-				<asp:TextBox ID="_dateCreated" Text='<%# Bind("CompletedDate") %>' runat="server"></asp:TextBox>
-				<asp:TextBox ID="_requestType" Text='<%# Bind("RequestType") %>' runat="server"></asp:TextBox>
+				<asp:TextBox ID="_completedDate" Text='<%# Bind("CompletedDate") %>' runat="server"></asp:TextBox>
+				<asp:TextBox ID="_modifiedDate" Text='<%# Bind("ModifiedDate") %>' runat="server"></asp:TextBox>
+				<asp:TextBox ID="_requestType" Text='<%# Eval("RequestType") %>' runat="server"></asp:TextBox>
 			</div>		
 		</EditItemTemplate>
 		<EmptyDataTemplate>

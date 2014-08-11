@@ -113,21 +113,16 @@ namespace AccountCreation
 				var saCheckBox = (CheckBox)(_formview).FindControl("_saCheckBox");
 				var saName = (TextBox)(_formview).FindControl("_saName");
 				var saSignature = (TextBox)(_formview).FindControl("_saSignature");
-				var requestStatus = (TextBox)(_formview).FindControl("_requestStatus");
-				var dateCreated = (TextBox)(_formview).FindControl("_dateCreated");
 
 				if (saCheckBox.Checked)
 				{
 					saName.Text = CacCard.FirstName + " " + CacCard.LastName;
 					saSignature.Text = CacCard.Edipi;
-					requestStatus.Text = "Completed";
-					dateCreated.Text = DateTime.Now.ToString();
 				}
 				else
 				{
 					saName.Text = "";
 					saSignature.Text = "";
-					requestStatus.Text = "";
 				}
 			}
 		}
@@ -137,5 +132,25 @@ namespace AccountCreation
 			_formview.Visible = false;
 			_formview.DataBind();
 		}
+
+        protected void _editRequestStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_formview.CurrentMode == FormViewMode.Edit)
+            {
+                var requestStatus = (DropDownList)(_formview).FindControl("_editRequestStatus");
+                var completedDate = (TextBox)(_formview).FindControl("_completedDate");
+                var modifiedDate = (TextBox)(_formview).FindControl("_modifiedDate");
+                if (requestStatus.SelectedValue == "Completed" || requestStatus.SelectedValue == "Denied")
+                {
+                    completedDate.Text = DateTime.Now.ToString();
+                    modifiedDate.Text = "";
+                }
+                else
+                {
+                    modifiedDate.Text = DateTime.Now.ToString();
+                    completedDate.Text = "";
+                }
+            }
+        }
 	}
 }
