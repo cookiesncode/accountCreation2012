@@ -119,6 +119,7 @@
     </Compile>
     <Compile Include="DomainClasses\ADAccount.cs" />
     <Compile Include="DomainClasses\CacCard.cs" />
+    <Compile Include="DomainClasses\Record.cs" />
     <Compile Include="DomainClasses\Setting.cs" />
     <Compile Include="Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>
