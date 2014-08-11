@@ -13,9 +13,68 @@ namespace AccountCreation
 		{
 			if (Page.IsValid)
 			{
-                Session["RequestType"] = _requestType.SelectedValue;
-                Session["AccountType"] = _accountType.SelectedValue;
-                Server.Transfer("~/request-account.aspx");
+                var accountType = _accountType.SelectedValue;
+                var requestType = _requestType.SelectedValue;
+                string computedRequestType = null;
+				switch (accountType)
+				{
+					case "NIPR":
+                        if (requestType == "Create")
+                        {
+                            computedRequestType = "Auto Create";
+                        }
+                        else
+                        {
+                            computedRequestType = "Manual Delete";
+                        }
+						break;
+					case "SIPR":
+                        if (requestType == "Create")
+                        {
+                            computedRequestType = "Manual Create";
+                        }
+                        else
+                        {
+                            computedRequestType = "Manual Delete";
+                        }
+						break;
+					case "EP":
+                        if (requestType == "Create")
+                        {
+                            computedRequestType = "Manual Create";
+                        }
+                        else
+                        {
+                            computedRequestType = "Manual Delete";
+                        }
+						break;
+					case "VPN":
+                        if (requestType == "Create")
+                        {
+                            computedRequestType = "Manual Create";
+                        }
+                        else
+                        {
+                            computedRequestType = "Manual Delete";
+                        }
+						break;
+				}
+                // Testing variable:
+                //var existingRequest = Record.QueryRecords("1398696464", accountType, computedRequestType);
+                // Production variable:
+                var existingRequest = Record.QueryRecords(CacCard.Edipi, accountType, computedRequestType);
+
+                if (existingRequest != null)
+                {
+                    _requestWarning.Visible = true;
+                    _reviewLink.NavigateUrl = "~/verification.aspx?search=" + CacCard.Edipi;
+                }
+                else
+                {
+                    Session["RequestType"] = _requestType.SelectedValue;
+                    Session["AccountType"] = _accountType.SelectedValue;
+                    Server.Transfer("~/request-account.aspx");
+                }
 			}
 		}
 	}
