@@ -58,7 +58,7 @@ namespace AccountCreation
                     var lineBreak = Environment.NewLine;
                     var doubleLineBreak = Environment.NewLine + Environment.NewLine;
                     var mail = new MailMessage();
-                    var emailFromAddress = new MailAddress("Fort Carson Accounts<netcom.carsonwebmaster.webmasterinbox@mail.mil>");
+                    var emailFromAddress = new MailAddress("Fort Carson Accounts<donotreply.netcom.carsonwebmaster.webmasterinbox@mail.mil>");
 
                     mail.From = emailFromAddress;
                     mail.To.Add(_supervisorEmail.Text);
@@ -66,7 +66,8 @@ namespace AccountCreation
                     {
                         mail.To.Add(_securityEmail.Text);
                     }
-                    mail.Subject = "Fort Carson Accounts: account verfication requested";
+                    mail.Subject = "Fort Carson Accounts: Account verfication requested; DO NOT REPLY";
+                    mail.Body += "This is an automated message. Please DO NOT REPLY to this email address" + doubleLineBreak + doubleLineBreak;
                     mail.Body += "This email is to inform you that an account verification request has been submitted by:" + lineBreak + _emailSignature.Text + doubleLineBreak;
                     mail.Body += "Please visit the link below to verify this request." + lineBreak;
                     mail.Body += SearchQuery;
