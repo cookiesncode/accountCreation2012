@@ -42,6 +42,14 @@
 					</div>
 				</div>
 			</div>
+            <asp:PlaceHolder ID="_requestWarning" runat="server" Visible="false">
+                <div class="col-sm-6">
+                    <div class="alert alert-danger">
+                        <h3>Duplicate Entry Found</h3>
+                        <p>You already have an existing request for the options you have selected. Please change your selection or <asp:HyperLink ID="_reviewLink" CssClass="btn btn-primary btn-xs" runat="server">Review all your existing request</asp:HyperLink>.</p>
+                    </div>
+                </div>
+            </asp:PlaceHolder>
 		</div>
 	</asp:Panel>
 
