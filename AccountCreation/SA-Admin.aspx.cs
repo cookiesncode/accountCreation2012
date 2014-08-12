@@ -29,7 +29,7 @@ namespace AccountCreation
 		{
 			if (_formview.CurrentMode == FormViewMode.Edit)
 			{
-                var accountType = (TextBox)(_formview).FindControl("_accountType");
+                var accountTypeControl = (TextBox)(_formview).FindControl("_accountType");
                 var requestTypeControl = (TextBox)(_formview).FindControl("_requestType");
 
                 if (requestTypeControl.Text == "Manual Delete" || requestTypeControl.Text == "Auto Delete")
@@ -38,27 +38,31 @@ namespace AccountCreation
                     deleteDatePanelControl.Visible = true;
                 }
 
-                var adContainer = (PlaceHolder)(_formview).FindControl("_adInfo");
-
-                if (accountType.Text != "NIPR")
+                if (accountTypeControl.Text != "NIPR")
 				{
-					adContainer.Visible = true;
+                    var adContainerControl = (PlaceHolder)(_formview).FindControl("_adInfo");
+                    adContainerControl.Visible = true;
 				}
 
-                var epPanel = (Panel)(_formview).FindControl("_epPanel");
+                if (requestTypeControl.Text.Contains("Create") && accountTypeControl.Text == "EP")
+                {
+                    var epPanelControl = (Panel)(_formview).FindControl("_epPanel");
+                    epPanelControl.Visible = true;
+                }
 
-				if (accountType.Text == "EP")
-				{
-					epPanel.Visible = true;
-				}
-            
-                var saSignature = (TextBox)(_formview).FindControl("_saSignature");
-                var saCheckBox = (CheckBox)(_formview).FindControl("_saCheckBox");
+                if (requestTypeControl.Text.Contains("Create") && (accountTypeControl.Text == "SA" || accountTypeControl.Text == "EP"))
+                {
+                    var justificationPanelControl = (Panel)(_formview).FindControl("_justificationPanel");
+                    justificationPanelControl.Visible = true;
+                }
+
+                var saSignatureControl = (TextBox)(_formview).FindControl("_saSignature");
                 // TODO: change this to saSignature.checked
-				if (saSignature.Text.Length > 0)
+				if (saSignatureControl.Text.Length > 0)
 				{
-					saCheckBox.Enabled = false;
-					saCheckBox.Checked = true;
+                    var saCheckBoxControl = (CheckBox)(_formview).FindControl("_saCheckBox");
+                    saCheckBoxControl.Enabled = false;
+					saCheckBoxControl.Checked = true;
 				}
 			}
 		}

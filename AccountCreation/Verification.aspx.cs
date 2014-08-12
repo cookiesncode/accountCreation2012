@@ -110,19 +110,25 @@ namespace AccountCreation
                     deleteDateRangeValidator.MaximumValue = DateTime.Today.AddMonths(2).ToShortDateString();
                     deleteDateRangeValidator.Type = ValidationDataType.Date;
                 }
-                
-                if (accountTypeControl.Text == "EP")
+
+                if (requestTypeControl.Text.Contains("Create") && accountTypeControl.Text == "EP")
                 {
                     var epPanelControl = (Panel)(_formview).FindControl("_epPanel");
                     epPanelControl.Visible = true;
-  
+
                     var epUnitsControl = (ListBox)(_formview).FindControl("_epUnitsList");
                     foreach (string item in Setting.OrgUnit)
                     {
                         epUnitsControl.Items.Add(new ListItem(item, item));
                     }
                 }
-                
+
+                if (requestTypeControl.Text.Contains("Create") &&  (accountTypeControl.Text == "SA" || accountTypeControl.Text == "EP"))
+                {
+                    var justificationPanelControl = (Panel)(_formview).FindControl("_justificationPanel");
+                    justificationPanelControl.Visible = true;
+                }
+
                 var installationControl = (DropDownList)(_formview).FindControl("_installation");
                 var personaControl = (DropDownList)(_formview).FindControl("_persona");
                 var macomControl = (DropDownList)(_formview).FindControl("_macom");
