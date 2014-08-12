@@ -62,6 +62,7 @@
           <Property Name="IASigned" Type="bit" />
           <Property Name="IAEDIPI" Type="nvarchar" MaxLength="50" />
           <Property Name="IADateSigned" Type="datetime" />
+          <Property Name="Justification" Type="nvarchar" MaxLength="256" />
         </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -92,6 +93,7 @@
           <Property Name="Persona" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
           <Property Type="String" Name="EpUnits" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Mos" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Justification" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="SamAccountName" Type="String" MaxLength="256" Unicode="false" FixedLength="false" />
           <Property Name="HomeFolder" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
           <Property Type="Boolean" Name="Training" />
@@ -134,6 +136,7 @@
           <EntitySetMapping Name="AccountRequests">
             <EntityTypeMapping TypeName="CarsonAccountModel.AccountRequest">
               <MappingFragment StoreEntitySet="tblAcctCreate_Auto">
+                <ScalarProperty Name="Justification" ColumnName="Justification" />
                 <ScalarProperty Name="IaDateSigned" ColumnName="IADateSigned" />
                 <ScalarProperty Name="IaEdipi" ColumnName="IAEDIPI" />
                 <ScalarProperty Name="IaSigned" ColumnName="IASigned" />
