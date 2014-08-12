@@ -29,26 +29,9 @@ namespace AccountCreation
                         }
 						break;
 					case "SIPR":
-                        if (requestType == "Create")
-                        {
-                            computedRequestType = "Manual Create";
-                        }
-                        else
-                        {
-                            computedRequestType = "Manual Delete";
-                        }
-						break;
-					case "EP":
-                        if (requestType == "Create")
-                        {
-                            computedRequestType = "Manual Create";
-                        }
-                        else
-                        {
-                            computedRequestType = "Manual Delete";
-                        }
-						break;
-					case "VPN":
+                    case "EP":
+                    case "VPN":
+                    case "SA":
                         if (requestType == "Create")
                         {
                             computedRequestType = "Manual Create";
@@ -60,9 +43,9 @@ namespace AccountCreation
 						break;
 				}
                 // Testing variable:
-                //var existingRequest = Record.QueryRecords("1398696464", accountType, computedRequestType);
+                var existingRequest = Record.QueryRecords("1398696464", accountType, computedRequestType);
                 // Production variable:
-                var existingRequest = Record.QueryRecords(CacCard.Edipi, accountType, computedRequestType);
+                //var existingRequest = Record.QueryRecords(CacCard.Edipi, accountType, computedRequestType);
 
                 if (existingRequest != null)
                 {
