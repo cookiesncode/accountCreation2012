@@ -65,32 +65,18 @@ namespace AccountCreation
 		{
 			if (_formview.CurrentMode == FormViewMode.Edit)
 			{
-				var installationControl = (DropDownList)(_formview).FindControl("_installation");
-				var personaControl = (DropDownList)(_formview).FindControl("_persona");
-				var macomControl = (DropDownList)(_formview).FindControl("_macom");
-				var branchControl = (DropDownList)(_formview).FindControl("_branch");
-				var orgUnitControl = (DropDownList)(_formview).FindControl("_orgUnit");
-				var rankControl = (DropDownList)(_formview).FindControl("_rank");
-				var supervisorSignatureControl = (TextBox)(_formview).FindControl("_supervisorSignature");
-				var supervisorCheckBoxControl = (CheckBox)(_formview).FindControl("_supervisorCheckBox");
                 var accountTypeControl = (TextBox)(_formview).FindControl("_accountType");
                 var requestTypeControl = (TextBox)(_formview).FindControl("_requestType");
-                var epUnitsControl = (ListBox)(_formview).FindControl("_epUnitsList");
-				var epPanelControl = (Panel)(_formview).FindControl("_epPanel");
-				Button updateButtonControl = null;
-				CheckBox securityCheckBoxControl = null;
-				PlaceHolder securityBoxPlaceholderControl = (PlaceHolder)(_formview).FindControl("_securityBoxPlaceholder");
-                var deleteDatePanelControl = (Panel)(_formview).FindControl("_deleteRequestPanel");
-                var dateRangeValidator = (RangeValidator)(_formview).FindControl("_deleteDateRangeValidator");
-                string dynamicMinValue = DateTime.Today.ToShortDateString();
-                string dynamicMaxValue = DateTime.Today.AddMonths(2).ToShortDateString();
 
-                dateRangeValidator.MinimumValue = dynamicMinValue;
-                dateRangeValidator.MaximumValue = dynamicMaxValue;
-                dateRangeValidator.Type = ValidationDataType.Date;
+                Button updateButtonControl = null;
+                var supervisorSignatureControl = (TextBox)(_formview).FindControl("_supervisorSignature");
+                var supervisorCheckBoxControl = (CheckBox)(_formview).FindControl("_supervisorCheckBox");
 
                 if (RequiresTwoSignatures)
                 {
+                    CheckBox securityCheckBoxControl = null;
+                    PlaceHolder securityBoxPlaceholderControl = (PlaceHolder)(_formview).FindControl("_securityBoxPlaceholder");
+
                     if (supervisorCheckBoxControl.Checked && !securityBoxPlaceholderControl.Visible)
                     {
                         supervisorCheckBoxControl.Enabled = false;
@@ -116,19 +102,35 @@ namespace AccountCreation
 
                 if (requestTypeControl.Text == "Manual Delete" || requestTypeControl.Text == "Auto Delete")
                 {
+                    var deleteDatePanelControl = (Panel)(_formview).FindControl("_deleteRequestPanel");
                     deleteDatePanelControl.Visible = true;
-                }
 
+                    var deleteDateRangeValidator = (RangeValidator)(_formview).FindControl("_deleteDateRangeValidator"); 
+                    deleteDateRangeValidator.MinimumValue = DateTime.Today.ToShortDateString();
+                    deleteDateRangeValidator.MaximumValue = DateTime.Today.AddMonths(2).ToShortDateString();
+                    deleteDateRangeValidator.Type = ValidationDataType.Date;
+                }
+                
                 if (accountTypeControl.Text == "EP")
                 {
+                    var epPanelControl = (Panel)(_formview).FindControl("_epPanel");
                     epPanelControl.Visible = true;
+  
+                    var epUnitsControl = (ListBox)(_formview).FindControl("_epUnitsList");
                     foreach (string item in Setting.OrgUnit)
                     {
                         epUnitsControl.Items.Add(new ListItem(item, item));
                     }
                 }
+                
+                var installationControl = (DropDownList)(_formview).FindControl("_installation");
+                var personaControl = (DropDownList)(_formview).FindControl("_persona");
+                var macomControl = (DropDownList)(_formview).FindControl("_macom");
+                var branchControl = (DropDownList)(_formview).FindControl("_branch");
+                var orgUnitControl = (DropDownList)(_formview).FindControl("_orgUnit");
+                var rankControl = (DropDownList)(_formview).FindControl("_rank");
 
-				foreach (string item in Setting.Macom)
+                foreach (string item in Setting.Macom)
 				{
 					if (macomControl.SelectedValue == item)
 					{
