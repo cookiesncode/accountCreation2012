@@ -43,9 +43,9 @@ namespace AccountCreation
 						break;
 				}
                 // Testing variable:
-                var existingRequest = Record.QueryRecords("1398696464", accountType, computedRequestType);
+                //var existingRequest = Record.QueryRecords("1398696464", accountType, computedRequestType);
                 // Production variable:
-                //var existingRequest = Record.QueryRecords(CacCard.Edipi, accountType, computedRequestType);
+                var existingRequest = Record.QueryRecords(CacCard.Edipi, accountType, computedRequestType);
 
                 if (existingRequest != null)
                 {
