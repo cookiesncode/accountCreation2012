@@ -27,31 +27,34 @@ namespace AccountCreation
 
 		protected void _formview_DataBound(object sender, EventArgs e)
 		{
-            // TODO: Change formview if not using edit mode
 			if (_formview.CurrentMode == FormViewMode.Edit)
 			{
-				var adContainer = (PlaceHolder)(_formview).FindControl("_adInfo");
-				var epPanel = (Panel)(_formview).FindControl("_epPanel");
-				var accountType = (TextBox)(_formview).FindControl("_accountType");
-				var saSignature = (TextBox)(_formview).FindControl("_saSignature");
-				var saCheckBox = (CheckBox)(_formview).FindControl("_saCheckBox");
-                var deleteDatePanelControl = (Panel)(_formview).FindControl("_deleteRequestPanel");
+                var accountType = (TextBox)(_formview).FindControl("_accountType");
                 var requestTypeControl = (TextBox)(_formview).FindControl("_requestType");
 
                 if (requestTypeControl.Text == "Manual Delete" || requestTypeControl.Text == "Auto Delete")
                 {
+                    var deleteDatePanelControl = (Panel)(_formview).FindControl("_deleteRequestPanel");
                     deleteDatePanelControl.Visible = true;
                 }
-				if (accountType.Text != "NIPR")
+
+                var adContainer = (PlaceHolder)(_formview).FindControl("_adInfo");
+
+                if (accountType.Text != "NIPR")
 				{
 					adContainer.Visible = true;
 				}
+
+                var epPanel = (Panel)(_formview).FindControl("_epPanel");
 
 				if (accountType.Text == "EP")
 				{
 					epPanel.Visible = true;
 				}
-
+            
+                var saSignature = (TextBox)(_formview).FindControl("_saSignature");
+                var saCheckBox = (CheckBox)(_formview).FindControl("_saCheckBox");
+                // TODO: change this to saSignature.checked
 				if (saSignature.Text.Length > 0)
 				{
 					saCheckBox.Enabled = false;
