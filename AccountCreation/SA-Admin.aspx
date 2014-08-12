@@ -315,6 +315,14 @@
 										</p>
 									</div>
 								</div>
+                                <div class="form-group">
+								    <label for="_justification" class="col-sm-4 control-label">Justification:</label>
+								    <div class="col-sm-8">
+                                        <p class="form-control-static">
+									        <asp:Literal ID="_justification" runat="server" Text='<%# Eval("Justification") %>' />
+                                        </p>
+								    </div>
+							    </div>
 							</asp:Panel>
 
 						</div>
