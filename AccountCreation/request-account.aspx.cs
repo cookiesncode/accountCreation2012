@@ -51,6 +51,7 @@ namespace AccountCreation
                             break;
                         case "SIPR":
                         case "EP":
+                        case "SA":
                             accountExist = userAccount.queryOurDomain();
                             if (!accountExist)
                             {
@@ -158,6 +159,7 @@ namespace AccountCreation
 
                     var epPanelControl = (Panel)(_formview).FindControl("_epPanel");
                     var epControl = (CheckBox)(_formview).FindControl("_epAcct");
+                    var saControl = (CheckBox)(_formview).FindControl("_saAcct");
                     var niprControl = (CheckBox)(_formview).FindControl("_niprAcct");
                     var siprControl = (CheckBox)(_formview).FindControl("_siprAcct");
                     var vpnControl = (CheckBox)(_formview).FindControl("_vpnAcct");
@@ -199,6 +201,17 @@ namespace AccountCreation
                             }
 							epControl.Checked = true;
 							break;
+                        case "SA":
+                            if (requestType == "Create")
+                            {
+                                requestTypeControl.Text = "Manual Create";
+                            }
+                            else
+                            {
+                                requestTypeControl.Text = "Manual Delete";
+                            }
+                            saControl.Checked = true;
+                            break;
 						case "VPN":
                             if (requestType == "Create")
                             {
