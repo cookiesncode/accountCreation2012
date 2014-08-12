@@ -199,6 +199,17 @@
 								</div>
                             </asp:Panel>
 
+                            <asp:Panel ID="_justificationPanel" runat="server" Visible="false">
+                                <div class="form-group">
+								    <label for="_justification" class="col-sm-4 col-md-4 control-label">Justification:</label>
+								    <div class="col-sm-7 col-md-6">
+									    <asp:TextBox ID="_justification" TextMode="MultiLine" Rows="5" CssClass="form-control" runat="server" Text='<%# Bind("Justification") %>' />
+                                        <span class="help-block">Write a short summary explaining your <em>need</em> for this account</span>
+									    <asp:RequiredFieldValidator CssClass="label label-warning" ID="_justificationRequiredValidator" runat="server" ErrorMessage="Justification: Please fill out your justification for this account." ControlToValidate="_justification" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+								    </div>
+							    </div>
+                            </asp:Panel>
+
 							<asp:Panel ID="_trainingPanel" Visible="false" runat="server">
 								<h4 class="page-header">DoD Cyber Awareness Training</h4>
                                 <p>You must have completed the DoD Cyber Awareness Training within the last year. If you have not, take the training here: <a href="https://ia.signal.army.mil/DoDIAA/default.asp" target="new">DoD Cyber Awareness Training  <span title="New Window" class="glyphicon glyphicon-new-window"></span></a>.</p>
@@ -255,18 +266,6 @@
 									</div>
 								</div>
 							</asp:Panel>
-
-                            <asp:Panel ID="_justificationPanel" runat="server" Visible="false">
-                                <div class="form-group">
-								    <label for="_justification" class="col-sm-4 col-md-4 control-label">Justification:</label>
-								    <div class="col-sm-7 col-md-6">
-									    <asp:TextBox ID="_justification" TextMode="MultiLine" Rows="5" CssClass="form-control" runat="server" Text='<%# Bind("Justification") %>' />
-                                        <span class="help-block">Write a short summary explaining your <em>need</em> for this account</span>
-									    <asp:RequiredFieldValidator CssClass="label label-warning" ID="_justificationRequiredValidator" runat="server" ErrorMessage="Justification: Please fill out your justification for this account." ControlToValidate="_justification" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
-								    </div>
-							    </div>
-                            </asp:Panel>
-
 						</div> <%-- End .panel-body --%>
 						<div class="panel-footer">
 							<asp:Button ID="_submitBtn" data-loading-text="Validating information..." runat="server" Text="Submit" CommandName="Insert" CssClass="btn btn-primary" />

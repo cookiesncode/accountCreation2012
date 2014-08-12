@@ -297,6 +297,17 @@
 									</div>
 								</div>
                             </asp:Panel>
+
+                            <asp:Panel ID="_justificationPanel" runat="server" Visible="false">
+                                <div class="form-group">
+								    <label for="_justification" class="col-sm-4 control-label">Justification:</label>
+								    <div class="col-sm-8">
+                                        <p class="form-control-static">
+									        <asp:Literal ID="_justification" runat="server" Text='<%# Eval("Justification") %>' />
+                                        </p>
+								    </div>
+							    </div>
+                            </asp:Panel>
 							
 							<asp:Panel ID="_epPanel" Visible="false" runat="server">
 								<div class="form-group">
@@ -316,17 +327,6 @@
 									</div>
 								</div>
 							</asp:Panel>
-
-                            <asp:Panel ID="_justificationPanel" runat="server" Visible="false">
-                                <div class="form-group">
-								    <label for="_justification" class="col-sm-4 control-label">Justification:</label>
-								    <div class="col-sm-8">
-                                        <p class="form-control-static">
-									        <asp:Literal ID="_justification" runat="server" Text='<%# Eval("Justification") %>' />
-                                        </p>
-								    </div>
-							    </div>
-                            </asp:Panel>
 						</div>
 					</div>
 				</div>
