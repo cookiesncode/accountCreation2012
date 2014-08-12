@@ -21,13 +21,6 @@ namespace AccountCreation
 			{
                 if (requestType == "Create")
                 {
-                    var dateRangeValidator = (RangeValidator)(_formview).FindControl("_trainingDateRangeValidator");
-                    string dynamicMinValue = DateTime.Today.AddYears(-1).ToShortDateString();
-                    string dynamicMaxValue = DateTime.Today.ToShortDateString();
-                    dateRangeValidator.MinimumValue = dynamicMinValue;
-                    dateRangeValidator.MaximumValue = dynamicMaxValue;
-                    dateRangeValidator.Type = ValidationDataType.Date;
-
                     bool accountExist = false;
                     switch (accountType)
                     {
@@ -69,13 +62,6 @@ namespace AccountCreation
                 }
                 else
                 {
-                    var dateRangeValidator = (RangeValidator)(_formview).FindControl("_deleteDateRangeValidator");
-                    string dynamicMinValue = DateTime.Today.ToShortDateString();
-                    string dynamicMaxValue = DateTime.Today.AddMonths(2).ToShortDateString();
-                    dateRangeValidator.MinimumValue = dynamicMinValue;
-                    dateRangeValidator.MaximumValue = dynamicMaxValue;
-                    dateRangeValidator.Type = ValidationDataType.Date;
-
                     bool accountExist = false;
                     switch (accountType)
                     {
@@ -108,65 +94,76 @@ namespace AccountCreation
 		{
 			if (_formview.CurrentMode == FormViewMode.Insert)
 			{
-                string accountType = Session["AccountType"] as string;
-                string requestType = Session["RequestType"] as string;
-                var edipiControl = (TextBox)(_formview).FindControl("_edipi");
-				var lNameControl = (TextBox)(_formview).FindControl("_lName");
-                var fNameControl = (TextBox)(_formview).FindControl("_fName");
-                var mNameControl = (TextBox)(_formview).FindControl("_middleInitial");
-                var branchControl = (DropDownList)(_formview).FindControl("_branch");
-				var orgUnitControl = (DropDownList)(_formview).FindControl("_orgUnit");
-				var installationControl = (DropDownList)(_formview).FindControl("_installation");
-				var personaControl = (DropDownList)(_formview).FindControl("_persona");
-				var rankControl = (DropDownList)(_formview).FindControl("_rank");
-				var dateControl = (TextBox)(_formview).FindControl("_date");
-				var niprControl = (CheckBox)(_formview).FindControl("_niprAcct");
-				var siprControl = (CheckBox)(_formview).FindControl("_siprAcct");
-				var epControl = (CheckBox)(_formview).FindControl("_epAcct");
-				var vpnControl = (CheckBox)(_formview).FindControl("_vpnAcct");
-				var requestTypeControl = (TextBox)(_formview).FindControl("_requestType");
-				var accountTypeControl = (TextBox)(_formview).FindControl("_accountType");
 				var requestStatusControl = (TextBox)(_formview).FindControl("_requestStatus");
-				var supSignedControl = (CheckBox)(_formview).FindControl("_supSigned");
-				var secSignedControl = (CheckBox)(_formview).FindControl("_secSigned");
-				var epUnitsControl = (ListBox)(_formview).FindControl("_epUnitsList");
-				var epPanelControl = (Panel)(_formview).FindControl("_epPanel");
-                var trainingPanelControl = (Panel)(_formview).FindControl("_trainingPanel");
-                var deleteRequestPanelControl = (Panel)(_formview).FindControl("_deleteRequestPanel");
+                requestStatusControl.Text = "Requested";
 
-				requestStatusControl.Text = "Requested";
+                var supSignedControl = (CheckBox)(_formview).FindControl("_supSigned");
+                supSignedControl.Checked = false;
+
+                var secSignedControl = (CheckBox)(_formview).FindControl("_secSigned");
+                secSignedControl.Checked = false;
+
+                var dateControl = (TextBox)(_formview).FindControl("_date");          
 				dateControl.Text = DateTime.Now.ToString();
-				supSignedControl.Checked = false;
-				secSignedControl.Checked = false;
-                edipiControl.Text = CacCard.Edipi;
-                lNameControl.Text = CacCard.LastName;
-                fNameControl.Text = CacCard.FirstName;
-                mNameControl.Text = CacCard.MiddleInitial;
 
                 if (CacCard.FirstName != null)
                 {
+                    var edipiControl = (TextBox)(_formview).FindControl("_edipi");
+                    edipiControl.Text = CacCard.Edipi;
                     edipiControl.Enabled = false;
+
+                    var lNameControl = (TextBox)(_formview).FindControl("_lName");
+                    lNameControl.Text = CacCard.LastName;
                     lNameControl.Enabled = false;
+
+                    var fNameControl = (TextBox)(_formview).FindControl("_fName");
+                    fNameControl.Text = CacCard.FirstName;
                     fNameControl.Enabled = false;
+                   
+                    var mNameControl = (TextBox)(_formview).FindControl("_middleInitial");
+                    mNameControl.Text = CacCard.MiddleInitial;
                     mNameControl.Enabled = false;
                 }
+                
+                string accountType = Session["AccountType"] as string;
+                string requestType = Session["RequestType"] as string;
 
 				if (accountType != null && requestType != null)
 				{
+                    var accountTypeControl = (TextBox)(_formview).FindControl("_accountType");
                     accountTypeControl.Text = accountType;
+
+                    var deleteRequestPanelControl = (Panel)(_formview).FindControl("_deleteRequestPanel");
+                    var trainingPanelControl = (Panel)(_formview).FindControl("_trainingPanel");
 
                     if (requestType == "Create")
                     {
                         deleteRequestPanelControl.Visible = false;
                         trainingPanelControl.Visible = true;
+
+                        var trainingDateRangeValidator = (RangeValidator)(_formview).FindControl("_trainingDateRangeValidator");
+                        trainingDateRangeValidator.MinimumValue = DateTime.Today.AddYears(-1).ToShortDateString();
+                        trainingDateRangeValidator.MaximumValue = DateTime.Today.ToShortDateString();
+                        trainingDateRangeValidator.Type = ValidationDataType.Date;
                     }
                     else
                     {
                         deleteRequestPanelControl.Visible = true;
+                        var deleteDateRangeValidator = (RangeValidator)(_formview).FindControl("_deleteDateRangeValidator");
+                        deleteDateRangeValidator.MinimumValue = DateTime.Today.ToShortDateString();
+                        deleteDateRangeValidator.MaximumValue = DateTime.Today.AddMonths(2).ToShortDateString();
+                        deleteDateRangeValidator.Type = ValidationDataType.Date;
                         trainingPanelControl.Visible = false;
                     }
 
-					switch (accountType)
+                    var epPanelControl = (Panel)(_formview).FindControl("_epPanel");
+                    var epControl = (CheckBox)(_formview).FindControl("_epAcct");
+                    var niprControl = (CheckBox)(_formview).FindControl("_niprAcct");
+                    var siprControl = (CheckBox)(_formview).FindControl("_siprAcct");
+                    var vpnControl = (CheckBox)(_formview).FindControl("_vpnAcct");
+                    var requestTypeControl = (TextBox)(_formview).FindControl("_requestType");
+                   
+                    switch (accountType)
 					{
 						case "NIPR":
                             if (requestType == "Create")
@@ -215,6 +212,13 @@ namespace AccountCreation
 							break;
 					}
 				}
+
+                var epUnitsControl = (ListBox)(_formview).FindControl("_epUnitsList");
+                var branchControl = (DropDownList)(_formview).FindControl("_branch");
+                var orgUnitControl = (DropDownList)(_formview).FindControl("_orgUnit");
+                var installationControl = (DropDownList)(_formview).FindControl("_installation");
+                var personaControl = (DropDownList)(_formview).FindControl("_persona");
+                var rankControl = (DropDownList)(_formview).FindControl("_rank");
 
 				foreach (string item in Setting.OrgUnit)
 				{
