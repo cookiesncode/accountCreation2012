@@ -315,6 +315,9 @@
 										</p>
 									</div>
 								</div>
+							</asp:Panel>
+
+                            <asp:Panel ID="_justificationPanel" runat="server" Visible="false">
                                 <div class="form-group">
 								    <label for="_justification" class="col-sm-4 control-label">Justification:</label>
 								    <div class="col-sm-8">
@@ -323,8 +326,7 @@
                                         </p>
 								    </div>
 							    </div>
-							</asp:Panel>
-
+                            </asp:Panel>
 						</div>
 					</div>
 				</div>

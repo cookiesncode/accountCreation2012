@@ -256,19 +256,20 @@
 										<asp:RequiredFieldValidator CssClass="label label-warning" ID="_epUnitsRequiredValidator" runat="server" ErrorMessage="Selected Units: Please enter the units you want to have elevated privelages over." ControlToValidate="_epSelectedUnits" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
 									</div>
 								</div>
-                                
-                                <div class="form-group">
-								    <label for="_justification" class="col-sm-4 col-md-4 control-label">Justification:</label>
-								    <div class="col-sm-7 col-md-6">
+							</asp:Panel>
+
+                            <asp:Panel ID="_justificationPanel" runat="server" Visible="false">
+                                 <div class="form-group">
+								    <label for="_justification" class="col-sm-4 control-label">Justification:</label>
+								    <div class="col-sm-8">
 									    <asp:TextBox ID="_justification" TextMode="MultiLine" Rows="5" CssClass="form-control" runat="server" Text='<%# Bind("Justification") %>' />
                                         <span class="help-block">Write a short summary explaining your <em>need</em> for this account</span>
 									    <asp:RequiredFieldValidator CssClass="label label-warning" ID="_justificationRequiredValidator" runat="server" ErrorMessage="Justification: Please fill out your justification for this account." ControlToValidate="_justification" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
 								    </div>
 							    </div>
-
-							</asp:Panel>
-
+                           </asp:Panel>                                
 						</div>
+                        <%-- End panel body --%>
 					</div>
 				</div>
 				<%-- End left column --%>
