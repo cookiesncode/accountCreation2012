@@ -77,6 +77,11 @@ namespace AccountCreation
                     CheckBox securityCheckBoxControl = null;
                     PlaceHolder securityBoxPlaceholderControl = (PlaceHolder)(_formview).FindControl("_securityBoxPlaceholder");
 
+                    var investigationDateRangeValidator = (RangeValidator)(_formview).FindControl("_investigationDateRangeValidator");
+                    investigationDateRangeValidator.MinimumValue = DateTime.Today.AddYears(-5).ToShortDateString();
+                    investigationDateRangeValidator.MaximumValue = DateTime.Today.ToShortDateString();
+                    investigationDateRangeValidator.Type = ValidationDataType.Date;
+
                     if (supervisorCheckBoxControl.Checked && !securityBoxPlaceholderControl.Visible)
                     {
                         supervisorCheckBoxControl.Enabled = false;
