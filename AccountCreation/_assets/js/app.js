@@ -15,9 +15,11 @@
                 return false;
             }
         });
+        if (passesValidation) {
+            $('[data-js-datepicker] input:text').removeAttr('disabled'); // JANK: to get ASP.NET to accept the date entered when field is disabled
+        }
         if (passesValidation && btnLoadingText && !btnConfirmText) {
             $button.button('loading');
-            $('[data-js-datepicker] input:text').removeAttr('disabled'); // JANK: to get ASP.NET to accept the date entered when field is disabled
         }
         if (passesValidation && btnConfirmText) {
             var confirmEntry = confirm(btnConfirmText);
@@ -44,9 +46,14 @@
 
     ///////////////////////////////////////////////////////////////////
     // Print button
-    $('#print-btn').click(function(event) {
+    $('#print-btn').click(function (event) {
         window.print();
     });
+
+    ///////////////////////////////////////////////////////////////////
+    // Hide first IT Level radio option (JANK)
+    $('[data-js="hidden-radio"] .aspNetDisabled').add('[data-js="hidden-radio"] > br:first').remove();
+   
 
 
     ///////////////////////////////////////////////////////////////////
@@ -68,8 +75,11 @@
         var todaysDate = new Date();
         var $trainingDate = $('[data-js-datepicker="training-date"]');
         var $deleteDate = $('[data-js-datepicker="delete-date"]');
+        var $investigationDate = $('[data-js-datepicker="investigation-date"]');
         $trainingDate.attr("data-date", todaysDate);
         $deleteDate.attr("data-date", todaysDate);
+        $investigationDate.attr("data-date", todaysDate);
+
         $deleteDate.datepicker({
             format: 'm/d/yyyy',
             endDate: '+2m',
@@ -80,6 +90,13 @@
             format: 'm/d/yyyy',
             orientation: 'bottom',
             startDate: '-1y',
+            endDate: todaysDate,
+            todayBtn: true
+        });
+        $investigationDate.datepicker({
+            format: 'm/d/yyyy',
+            orientation: 'bottom',
+            startDate: '-5y',
             endDate: todaysDate,
             todayBtn: true
         });
