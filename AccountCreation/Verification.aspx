@@ -332,6 +332,7 @@
 									<label for="_investigationLevel" class="col-sm-5 control-label">IT Level Designation:</label>
 									<div class="col-sm-7">
                                         <asp:RadioButtonList ID="_investigationLevel" CssClass="radio requestRadio" data-js="hidden-radio" RepeatLayout="Flow" runat="server" SelectedValue='<%# Bind("LevelDesignation") %>'>
+                                            <%-- TODO: Make app work withouth first option (Jank) --%>
                                             <asp:ListItem Value="" Enabled="false">Select an option</asp:ListItem>
                                             <asp:ListItem Value="Level I">Level I</asp:ListItem>
                                             <asp:ListItem Value="Level II">Level II</asp:ListItem>
@@ -346,7 +347,7 @@
 								    <div class="col-sm-8">
 									    <div class="input-group">
 										    <span class="input-group-addon">
-											    <asp:CheckBox ID="_securityCheckBox" OnCheckedChanged="_security_CheckBox_CheckedChanged" Checked='<%# Bind("SecSigned") %>' runat="server" AutoPostBack="True" />
+											    <asp:CheckBox ID="_securityCheckBox" data-js="remove-disabled" OnCheckedChanged="_security_CheckBox_CheckedChanged" Checked='<%# Bind("SecSigned") %>' runat="server" AutoPostBack="True" />
 										    </span>
 										    <asp:TextBox ID="_securitySignature" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("SecEdipi") %>' />
 									    </div>

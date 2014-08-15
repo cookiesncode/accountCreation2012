@@ -1,4 +1,6 @@
 ﻿(function ($) {
+    var $disabledFields = $('[data-js-datepicker] input:text');
+
     ///////////////////////////////////////////////////////////////////
     // Submit button loading text and pop confirmation dialogue modals.
     $(':submit').click(function (event) {
@@ -16,7 +18,7 @@
             }
         });
         if (passesValidation) {
-            $('[data-js-datepicker] input:text').removeAttr('disabled'); // JANK: to get ASP.NET to accept the date entered when field is disabled
+            $disabledFields.removeAttr('disabled'); // JANK: to get ASP.NET to accept the date entered when field is disabled
         }
         if (passesValidation && btnLoadingText && !btnConfirmText) {
             $button.button('loading');
@@ -30,6 +32,11 @@
             }
         }
     });
+
+    $('[data-js="remove-disabled"]').change(function () {
+        $disabledFields.removeAttr('disabled');
+    });
+
     // The code below is to dynamically add the alert dialogue box if they selected an account deletion.
     var $createDeleteRadio = $('#_requestType :radio');
     var $submitBtn = $('[data-js="delete-alert"]');
@@ -96,7 +103,7 @@
         $investigationDate.datepicker({
             format: 'm/d/yyyy',
             orientation: 'bottom',
-            startDate: '-5y',
+            startDate: '-10y',
             endDate: todaysDate,
             todayBtn: true
         });
