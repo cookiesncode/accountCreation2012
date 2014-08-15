@@ -78,7 +78,7 @@ namespace AccountCreation
                     PlaceHolder securityBoxPlaceholderControl = (PlaceHolder)(_formview).FindControl("_securityBoxPlaceholder");
 
                     var investigationDateRangeValidator = (RangeValidator)(_formview).FindControl("_investigationDateRangeValidator");
-                    investigationDateRangeValidator.MinimumValue = DateTime.Today.AddYears(-5).ToShortDateString();
+                    investigationDateRangeValidator.MinimumValue = DateTime.Today.AddYears(-10).ToShortDateString();
                     investigationDateRangeValidator.MaximumValue = DateTime.Today.ToShortDateString();
                     investigationDateRangeValidator.Type = ValidationDataType.Date;
 
