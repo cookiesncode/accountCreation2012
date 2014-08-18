@@ -266,6 +266,12 @@ namespace AccountCreation
 		protected void _formview_ItemInserted(object sender, FormViewInsertedEventArgs e)
 		{
             Session["FormSubmitted"] = true;
+            var userEmail = (TextBox)(_formview).FindControl("_email");
+            var message = "To check the status of this request, please visit the link below.";
+            var userName = CacCard.FirstName + " " + CacCard.LastName;
+            var searchLink = "https://nec.carson.army.mil/accounts/verification.aspx?search=" + CacCard.Edipi;
+
+            Email.SendEmail(userEmail.Text, message, userName, searchLink);
             Server.Transfer("success.aspx");
 		}
 
