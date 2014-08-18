@@ -198,18 +198,6 @@ namespace AccountCreation
 			_formview.Visible = false;
 		}
 
-		protected void _middleInitialValidator_ServerValidate(object source, ServerValidateEventArgs args)
-		{
-			if (args.Value.Length > 1)
-			{
-				args.IsValid = false;
-			}
-			else
-			{
-				args.IsValid = true;
-			}
-		}
-
 		protected void _supervisor_CheckBox_CheckedChanged(object sender, EventArgs e)
 		{
 			if (_formview.CurrentMode == FormViewMode.Edit)

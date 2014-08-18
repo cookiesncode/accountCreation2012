@@ -276,17 +276,5 @@ namespace AccountCreation
 				e.Cancel = true;
 			}
 		}
-
-		protected void _middleInitialValidator_ServerValidate(object source, ServerValidateEventArgs args)
-		{
-			if (args.Value.Length > 1)
-			{
-				args.IsValid = false;
-			}
-			else
-			{
-				args.IsValid = true;
-			}
-		}
 	}
 }
