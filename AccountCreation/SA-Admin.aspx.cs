@@ -4,6 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.DirectoryServices;
+using System.DirectoryServices.AccountManagement;
+using System.DirectoryServices.ActiveDirectory;
+
 
 namespace AccountCreation
 {
@@ -56,6 +60,11 @@ namespace AccountCreation
                 {
                     var justificationPanelControl = (Panel)(_formview).FindControl("_justificationPanel");
                     justificationPanelControl.Visible = true;
+
+                    var supervisorNameControl = (Literal)(_formview).FindControl("_supervisorName");
+                    var supervisorEdipiControl = (TextBox)(_formview).FindControl("_supervisorEdipi");
+                    var supervisorInfo = AdAccount.FindAdUser(supervisorEdipiControl.Text);
+                    supervisorNameControl.Text = supervisorInfo;
                 }
 
                 var saSignatureControl = (TextBox)(_formview).FindControl("_saSignature");
