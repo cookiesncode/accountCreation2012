@@ -28,7 +28,6 @@ namespace AccountCreation
 			
 		}
 
-		// This constructor is used for testing purposes only
 		public AdAccount(string edipi)
 		{
 			CurrentUser = edipi + "@mil";
@@ -117,36 +116,67 @@ namespace AccountCreation
 			return false;
 		}
 
-		public bool queryOurDomain()
-		{
-			var domainContext = new PrincipalContext(ContextType.Domain, null, "DC=nanw,DC=ds,DC=army,DC=mil");
-			UserPrincipal user = null;
-			try
-			{
-				using (user = UserPrincipal.FindByIdentity(domainContext, CurrentUser))
-				{
-					if (user != null)
-					{
-						var visitorContext = new PrincipalContext(ContextType.Domain, null, "OU=_DoDVisitor,OU=Installations,DC=nanw,DC=ds,DC=army,DC=mil");
-						var deUser = user.GetUnderlyingObject() as DirectoryEntry;
-						var deUserContainer = deUser.Parent.Name;
-						// checks if the user in the _DoDVisitor OU.
-						if (deUserContainer == "OU=Carson")
-						{
-							return false;
-						}
-						else
-						{
-							NiprAccountName = user.DisplayName;
-							return true;
-						}
-					}
-				}
-			}
-			catch
-			{
-			}
-			return false;
-		}
-	}
+        public bool queryOurDomain()
+        {
+            var domainContext = new PrincipalContext(ContextType.Domain, null, "DC=nanw,DC=ds,DC=army,DC=mil");
+            UserPrincipal user = null;
+            try
+            {
+                using (user = UserPrincipal.FindByIdentity(domainContext, CurrentUser))
+                {
+                    if (user != null)
+                    {
+                        var visitorContext = new PrincipalContext(ContextType.Domain, null, "OU=_DoDVisitor,OU=Installations,DC=nanw,DC=ds,DC=army,DC=mil");
+                        var deUser = user.GetUnderlyingObject() as DirectoryEntry;
+                        var deUserContainer = deUser.Parent.Name;
+                        // checks if the user in the _DoDVisitor OU.
+                        if (deUserContainer == "OU=Carson")
+                        {
+                            return false;
+                        }
+                        else
+                        {
+                            NiprAccountName = user.DisplayName;
+                            return true;
+                        }
+                    }
+                }
+            }
+            catch
+            {
+            }
+            return false;
+        }
+
+        public static string FindAdUser(string edipi)
+        {
+            var domainContext = new PrincipalContext(ContextType.Domain, null, "DC=nanw,DC=ds,DC=army,DC=mil");
+            UserPrincipal user = null;
+            try
+            {
+                using (user = UserPrincipal.FindByIdentity(domainContext, edipi + "@mil"))
+                {
+                    if (user != null)
+                    {
+                        var visitorContext = new PrincipalContext(ContextType.Domain, null, "OU=_DoDVisitor,OU=Installations,DC=nanw,DC=ds,DC=army,DC=mil");
+                        var deUser = user.GetUnderlyingObject() as DirectoryEntry;
+                        var deUserContainer = deUser.Parent.Name;
+                        // checks if the user in the _DoDVisitor OU.
+                        if (deUserContainer == "OU=Carson")
+                        {
+                            return null;
+                        }
+                        else
+                        {
+                            return user.DisplayName;
+                        }
+                    }
+                }
+            }
+            catch
+            {
+            }
+            return null;
+        }
+    }
 }
