@@ -11,18 +11,20 @@ namespace AccountCreation
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-            if (!Page.User.IsInRole("CARSON NEC SSD SMB SA SG"))
+            if (Page.User.IsInRole("CARSON NEC SSD SMB SA SG") || Page.User.IsInRole("CARSON NEC IA Account Review"))
+            {
+                var seachQueryString = Request.QueryString["search"];
+                if (!IsPostBack && seachQueryString != null)
+                {
+                    _gridview.Visible = true;
+                    _searchBox.Text = seachQueryString;
+                }
+            }
+            else
             {
                 Response.StatusCode = 403;
                 Response.SuppressContent = true;
             }
-
-			var seachQueryString = Request.QueryString["search"];
-			if (!IsPostBack && seachQueryString != null)
-			{
-				_gridview.Visible = true;
-				_searchBox.Text = seachQueryString;
-			}
 		}
 
 		protected void _formview_DataBound(object sender, EventArgs e)
