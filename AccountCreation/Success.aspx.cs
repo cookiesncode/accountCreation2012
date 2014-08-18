@@ -53,28 +53,15 @@ namespace AccountCreation
         {
             if (Page.IsValid)
             {
-                using(var smtp = new SmtpClient("155.214.100.30"))
+                var emailToList = _supervisorEmail.Text;
+                if (_securityPlaceHolder.Visible)
                 {
-                    var lineBreak = Environment.NewLine;
-                    var doubleLineBreak = Environment.NewLine + Environment.NewLine;
-                    var mail = new MailMessage();
-                    var emailFromAddress = new MailAddress("Fort Carson Accounts<donotreply.netcom.carsonwebmaster.webmasterinbox@mail.mil>");
-
-                    mail.From = emailFromAddress;
-                    mail.To.Add(_supervisorEmail.Text);
-                    if (_securityPlaceHolder.Visible)
-                    {
-                        mail.To.Add(_securityEmail.Text);
-                    }
-                    mail.Subject = "Fort Carson Accounts: Account verfication requested; DO NOT REPLY";
-                    mail.Body += "This is an automated message. Please DO NOT REPLY to this email address" + doubleLineBreak + doubleLineBreak;
-                    mail.Body += "This email is to inform you that an account verification request has been submitted by:" + lineBreak + _emailSignature.Text + doubleLineBreak;
-                    mail.Body += "Please visit the link below to verify this request." + lineBreak;
-                    mail.Body += SearchQuery;
-                    mail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
-                    smtp.Send(mail);
-                    _multiviewForm.ActiveViewIndex = 1;
+                    emailToList += "," + _securityEmail.Text;
                 }
+
+                var message = "Please visit the link below to verify this request.";
+                Email.SendEmail(emailToList, message, _emailSignature.Text, SearchQuery);
+                _multiviewForm.ActiveViewIndex = 1;
             }
         }
 	}
