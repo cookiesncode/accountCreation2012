@@ -196,7 +196,7 @@
 									</p>
 								</div>
 							</div>
-
+		
 							<div class="form-group">
 								<label for="_persona" class="col-sm-4 control-label">Persona:</label>
 								<div class="col-sm-8">
@@ -326,6 +326,14 @@
 										</p>
 									</div>
 								</div>
+                                <div class="form-group">
+								<label for="_supervisorName" class="col-sm-4 control-label">Supervisor's Name:</label>
+								<div class="col-sm-8">
+									<p class="form-control-static">
+										<asp:Literal ID="_supervisorName" runat="server"></asp:Literal>
+									</p>
+								</div>
+							</div>
 							</asp:Panel>
 						</div>
 					</div>
@@ -388,6 +396,29 @@
 								</div>
 							</div>
 						</div>
+                        <asp:PlaceHolder Visible="false" ID="_iABox" runat="server">
+                            <div class="panel-heading">
+                                <h3>IA Approval</h3>
+                            </div>
+                            <div class="panel-body">	
+                                <p class="text-danger"><strong>Completed:</strong></p>   						
+							    <div class="form-group">
+								    <label for="_securityCheckBox" class="col-sm-4 control-label">IA signature:</label>
+								    <div class="col-sm-8">
+									    <div class="input-group">
+										    <span class="input-group-addon">
+											    <asp:CheckBox ID="_iACheckBox" Checked='<%# Bind("IaSigned" %>' data-js="remove-disabled" OnCheckedChanged="_iA_CheckBox_CheckedChanged"  runat="server" AutoPostBack="True" />
+										    </span>
+										    <asp:TextBox ID="_iASignature" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("IaEdipi") %>' />
+									    </div>
+                                        <small class="help-block">Check the box to apply your signature.</small>
+									    <asp:CompareValidator ID="_signatureCompareValidator" CssClass="label label-warning" ControlToValidate="_iASignature" ControlToCompare="_saSignature" runat="server" ErrorMessage="IA signature: The IA employee and the SA employee can not be the same person." Type="String" Operator="NotEqual" Text="Requires your attention" Display="Dynamic"></asp:CompareValidator>
+									    <asp:RequiredFieldValidator ID="_iASignRequiredValidator" runat="server" ErrorMessage="IA signature: You must sign the form before applying your changes." Text="Requires your attention" Display="Dynamic" CssClass="label label-warning" ControlToValidate="_iASignature"></asp:RequiredFieldValidator>
+									    <asp:CompareValidator ID="_requestorIaCompareValidator" ControlToCompare="_userEdipi" runat="server" ErrorMessage="IA signature: The Request entry EDIPI and the IA signature can not be the same." CssClass="label label-warning" Display="Dynamic" Text="Requires your attention" ControlToValidate="_iASignature" Operator="NotEqual"></asp:CompareValidator>
+								    </div>
+							    </div>					
+						    </div>
+                        </asp:PlaceHolder>
 
 						<div class="panel-footer">
 							<asp:Button ID="_updateButton" data-loading-text="Validating information..." CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Update Request" />
@@ -398,9 +429,12 @@
 				</div>
 			</div>
 			<div class="hidden">
+                <asp:TextBox ID="_userEdipi" Text='<%# Eval("Edipi") %>' runat="server"></asp:TextBox>
 				<asp:TextBox ID="_accountType" Text='<%# Eval("AccountType") %>' runat="server"></asp:TextBox>
+				<asp:TextBox ID="_supervisorEdipi" Text='<%# Eval("SupEdipi") %>' runat="server"></asp:TextBox>
 				<asp:TextBox ID="_saName" Text='<%# Bind("SaName") %>' runat="server"></asp:TextBox>
 				<asp:TextBox ID="_completedDate" Text='<%# Bind("CompletedDate") %>' runat="server"></asp:TextBox>
+				<asp:TextBox ID="_iADateSigned" Text='<%# Bind("IaDateSigned") %>' runat="server"></asp:TextBox>
 				<asp:TextBox ID="_modifiedDate" Text='<%# Bind("ModifiedDate") %>' runat="server"></asp:TextBox>
 				<asp:TextBox ID="_requestType" Text='<%# Eval("RequestType") %>' runat="server"></asp:TextBox>
 			</div>		
