@@ -52,11 +52,11 @@ namespace AccountCreation
         public string SecEdipi { get; set; }
         public Nullable<bool> SecSigned { get; set; }
         public Nullable<System.DateTime> SecDateSigned { get; set; }
-        public string SaName { get; set; }
         public string SupEdipi { get; set; }
         public Nullable<bool> SupSigned { get; set; }
         public Nullable<System.DateTime> SupDateSigned { get; set; }
         public string SaEdipi { get; set; }
+        public string SaName { get; set; }
         public string Remark { get; set; }
         public string IaEdipi { get; set; }
         public Nullable<bool> IaSigned { get; set; }

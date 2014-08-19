@@ -113,11 +113,11 @@
           <Property Type="String" Name="SecEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SecSigned" Type="Boolean" />
           <Property Type="DateTime" Name="SecDateSigned" Precision="3" />
-          <Property Type="String" Name="SaName" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="SupEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SupSigned" Type="Boolean" />
           <Property Type="DateTime" Name="SupDateSigned" Precision="3" />
           <Property Type="String" Name="SaEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SaName" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Remark" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="IaEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="Boolean" Name="IaSigned" />
