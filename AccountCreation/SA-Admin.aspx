@@ -309,7 +309,8 @@
 							    </div>
                             </asp:Panel>
 							
-							<asp:Panel ID="_epPanel" Visible="false" runat="server">
+							<asp:Panel ID="_epSaPanel" Visible="false" runat="server">
+                                <h4 class="page-header">SA/EP section</h4>
 								<div class="form-group">
 									<label for="_mos" class="col-sm-4 control-label">MOS:</label>
 									<div class="col-sm-8">
@@ -319,7 +320,7 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="_epUnits" class="col-sm-4 control-label">EP Units:</label>
+									<label for="_epUnits" class="col-sm-4 control-label">Units Requested:</label>
 									<div class="col-sm-8">
 										<p class="form-control-static">
 											<asp:Literal ID="_epUnits" Text='<%# Eval("EpUnits") %>' runat="server"></asp:Literal>
