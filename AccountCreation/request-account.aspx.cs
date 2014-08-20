@@ -104,6 +104,9 @@ namespace AccountCreation
                 var secSignedControl = (CheckBox)(_formview).FindControl("_secSigned");
                 secSignedControl.Checked = false;
 
+                var iaSignedControl = (CheckBox)(_formview).FindControl("_iaSigned");
+                iaSignedControl.Checked = false;          
+
                 var dateControl = (TextBox)(_formview).FindControl("_date");          
 				dateControl.Text = DateTime.Now.ToString();
 
