@@ -238,8 +238,8 @@
 								</div>
 							</asp:Panel>
 
-							<asp:Panel ID="_epPanel" Visible="false" runat="server">
-								<h4 class="page-header">EP Section</h4>
+							<asp:Panel ID="_saPanel" Visible="false" runat="server">
+								<h4 class="page-header">SA Section</h4>
 								<div class="form-group">
 									<label for="_mos" class="col-sm-4 col-md-4 control-label"><abbr class="initialism" title="Military Occupational Specialty">MOS</abbr>:</label>
 									<div class="col-sm-7 col-md-6">
@@ -248,20 +248,20 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="_epUnitsList" class="col-sm-4 col-md-4 control-label">EP Unit List:</label>
+									<label for="_unitList" class="col-sm-4 col-md-4 control-label">Unit List:</label>
 									<div class="col-sm-7 col-md-6">
-										<asp:ListBox ID="_epUnitsList" Rows="8" CssClass="form-control" ClientIDMode="Static" SelectionMode="Multiple" runat="server">
+										<asp:ListBox ID="_unitList" Rows="8" CssClass="form-control" ClientIDMode="Static" SelectionMode="Multiple" runat="server">
 											<asp:ListItem Text="-- Select Units --" Value="" />
 										</asp:ListBox>
 										<span class="help-block">Hold the Ctrl button on your keyboard to make multiple selections.</span>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="_epSelectedUnits" class="col-sm-4 col-md-4 control-label">EP Selected Units:</label>
+									<label for="_selectedUnits" class="col-sm-4 col-md-4 control-label">Units Selected:</label>
 									<div class="col-sm-7 col-md-6">
-										<asp:TextBox ID="_epSelectedUnits" Rows="4" TextMode="MultiLine" CssClass="form-control" ClientIDMode="Static" Text='<%# Bind("EpUnits") %>' runat="server" />
-										<span class="help-block">Use the EP Units list above to populate this field.</span>
-										<asp:RequiredFieldValidator CssClass="label label-warning" ID="_epUnitsRequiredValidator" runat="server" ErrorMessage="Selected Units: Please enter the units you want to have elevated privelages over." ControlToValidate="_epSelectedUnits" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+										<asp:TextBox ID="_selectedUnits" Rows="4" TextMode="MultiLine" CssClass="form-control" ClientIDMode="Static" Text='<%# Bind("EpUnits") %>' runat="server" />
+										<span class="help-block">Use the Unit list above to populate this field.</span>
+										<asp:RequiredFieldValidator CssClass="label label-warning" ID="_saUnitsRequiredValidator" runat="server" ErrorMessage="Selected Units: Please enter the units you want to have elevated privelages over." ControlToValidate="_selectedUnits" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
 									</div>
 								</div>
 							</asp:Panel>

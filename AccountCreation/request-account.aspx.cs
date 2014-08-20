@@ -160,7 +160,7 @@ namespace AccountCreation
                         trainingPanelControl.Visible = false;
                     }
 
-                    var epPanelControl = (Panel)(_formview).FindControl("_epPanel");
+                    var saPanelControl = (Panel)(_formview).FindControl("_saPanel");
                     var justificationPanelControl = (Panel)(_formview).FindControl("_justificationPanel");
                     var epControl = (CheckBox)(_formview).FindControl("_epAcct");
                     var saControl = (CheckBox)(_formview).FindControl("_saAcct");
@@ -196,7 +196,6 @@ namespace AccountCreation
 						case "EP":
                             if (requestType == "Create")
                             {
-                                epPanelControl.Visible = true;
                                 justificationPanelControl.Visible = true;
                                 requestTypeControl.Text = "Manual Create";
                             }
@@ -209,6 +208,7 @@ namespace AccountCreation
                         case "SA":
                             if (requestType == "Create")
                             {
+                                saPanelControl.Visible = true;
                                 justificationPanelControl.Visible = true;
                                 requestTypeControl.Text = "Manual Create";
                             }
@@ -232,7 +232,7 @@ namespace AccountCreation
 					}
 				}
 
-                var epUnitsControl = (ListBox)(_formview).FindControl("_epUnitsList");
+                var unitListControl = (ListBox)(_formview).FindControl("_unitList");
                 var branchControl = (DropDownList)(_formview).FindControl("_branch");
                 var orgUnitControl = (DropDownList)(_formview).FindControl("_orgUnit");
                 var installationControl = (DropDownList)(_formview).FindControl("_installation");
@@ -241,7 +241,7 @@ namespace AccountCreation
 
 				foreach (string item in Setting.OrgUnit)
 				{
-					epUnitsControl.Items.Add(new ListItem(item, item));
+					unitListControl.Items.Add(new ListItem(item, item));
 				}
 				foreach (string item in Setting.Persona)
 				{

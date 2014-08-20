@@ -64,15 +64,15 @@
 
 
     ///////////////////////////////////////////////////////////////////
-    // EP unit selected code.
-    var $epUnitsList = $('#_epUnitsList');
-    $epUnitsList.on('change', function(event) {
+    // SA units requested code.
+    var $unitList = $('#_unitList');
+    $unitList.on('change', function(event) {
         var str = "";
-        $epUnitsList.children('option:selected')
+        $unitList.children('option:selected')
         .each(function(index, el) {
             str += $(this).text() + " ";
         });
-        $('#_epSelectedUnits').val(str);
+        $('#_selectedUnits').val(str);
     })   
 
     ///////////////////////////////////////////////////////////////////

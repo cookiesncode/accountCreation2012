@@ -116,22 +116,19 @@ namespace AccountCreation
                     deleteDateRangeValidator.Type = ValidationDataType.Date;
                 }
 
-                if (requestTypeControl.Text.Contains("Create") && accountTypeControl.Text == "EP")
-                {
-                    var epPanelControl = (Panel)(_formview).FindControl("_epPanel");
-                    epPanelControl.Visible = true;
-
-                    var epUnitsControl = (ListBox)(_formview).FindControl("_epUnitsList");
-                    foreach (string item in Setting.OrgUnit)
-                    {
-                        epUnitsControl.Items.Add(new ListItem(item, item));
-                    }
-                }
-
                 if (requestTypeControl.Text.Contains("Create") &&  (accountTypeControl.Text == "SA" || accountTypeControl.Text == "EP"))
                 {
+                    var saPanelControl = (Panel)(_formview).FindControl("_saPanel");
+                    saPanelControl.Visible = true;
+
                     var justificationPanelControl = (Panel)(_formview).FindControl("_justificationPanel");
                     justificationPanelControl.Visible = true;
+
+                    var unitListControl = (ListBox)(_formview).FindControl("_unitList");
+                    foreach (string item in Setting.OrgUnit)
+                    {
+                        unitListControl.Items.Add(new ListItem(item, item));
+                    }
                 }
 
                 var installationControl = (DropDownList)(_formview).FindControl("_installation");

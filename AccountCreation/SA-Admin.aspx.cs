@@ -49,12 +49,6 @@ namespace AccountCreation
                     var adContainerControl = (PlaceHolder)(_formview).FindControl("_adInfo");
                     adContainerControl.Visible = true;
 				}
-
-                if (requestTypeControl.Text.Contains("Create") && accountTypeControl.Text == "EP")
-                {
-                    var epPanelControl = (Panel)(_formview).FindControl("_epSaPanel");
-                    epPanelControl.Visible = true;
-                }
  
                 var saSignatureControl = (TextBox)(_formview).FindControl("_saSignature");
                 // JANK There is no boolean for the SA signature in the DB, so this step is required.
@@ -64,14 +58,14 @@ namespace AccountCreation
                     saCheckBoxControl.Enabled = false;
                     saCheckBoxControl.Checked = true;
                 }
-
+                // I check for "EP" as well since SA and EP used to be combined into one field, which was EP. It will be safe to delete this check once the data is archived for year 2014.
                 if (requestTypeControl.Text.Contains("Create") && (accountTypeControl.Text == "SA" || accountTypeControl.Text == "EP"))
                 {
                     var justificationPanelControl = (Panel)(_formview).FindControl("_justificationPanel");
                     justificationPanelControl.Visible = true;
                     // TODO: UPDATE control panel name to say SA. need to fix aspx file as well.
-                    var epPanelControl = (Panel)(_formview).FindControl("_epSaPanel");
-                    epPanelControl.Visible = true;
+                    var saPanelControl = (Panel)(_formview).FindControl("_saPanel");
+                    saPanelControl.Visible = true;
 
                     if (saSignatureControl.Text.Length > 0)
                     {
