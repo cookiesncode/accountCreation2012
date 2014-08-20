@@ -407,7 +407,7 @@
 								    <div class="col-sm-8">
 									    <div class="input-group">
 										    <span class="input-group-addon">
-											    <asp:CheckBox ID="_iACheckBox" Checked='<%# Bind("IaSigned" %>' data-js="remove-disabled" OnCheckedChanged="_iA_CheckBox_CheckedChanged"  runat="server" AutoPostBack="True" />
+											    <asp:CheckBox ID="_iACheckBox" Checked='<%# Bind("IaSigned") %>' data-js="remove-disabled" OnCheckedChanged="_iA_CheckBox_CheckedChanged"  runat="server" AutoPostBack="True" />
 										    </span>
 										    <asp:TextBox ID="_iASignature" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("IaEdipi") %>' />
 									    </div>
