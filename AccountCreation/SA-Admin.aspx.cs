@@ -52,14 +52,32 @@ namespace AccountCreation
 
                 if (requestTypeControl.Text.Contains("Create") && accountTypeControl.Text == "EP")
                 {
-                    var epPanelControl = (Panel)(_formview).FindControl("_epPanel");
+                    var epPanelControl = (Panel)(_formview).FindControl("_epSaPanel");
                     epPanelControl.Visible = true;
+                }
+ 
+                var saSignatureControl = (TextBox)(_formview).FindControl("_saSignature");
+                // JANK There is no boolean for the SA signature in the DB, so this step is required.
+                if (saSignatureControl.Text.Length > 0)
+                {
+                    var saCheckBoxControl = (CheckBox)(_formview).FindControl("_saCheckBox");
+                    saCheckBoxControl.Enabled = false;
+                    saCheckBoxControl.Checked = true;
                 }
 
                 if (requestTypeControl.Text.Contains("Create") && (accountTypeControl.Text == "SA" || accountTypeControl.Text == "EP"))
                 {
                     var justificationPanelControl = (Panel)(_formview).FindControl("_justificationPanel");
                     justificationPanelControl.Visible = true;
+                    // TODO: UPDATE control panel name to say SA. need to fix aspx file as well.
+                    var epPanelControl = (Panel)(_formview).FindControl("_epSaPanel");
+                    epPanelControl.Visible = true;
+
+                    if (saSignatureControl.Text.Length > 0)
+                    {
+                        var iASection = (PlaceHolder)(_formview).FindControl("_iABox");
+                        iASection.Visible = true;
+                    }
 
                     var supervisorNameControl = (Literal)(_formview).FindControl("_supervisorName");
                     var supervisorEdipiControl = (TextBox)(_formview).FindControl("_supervisorEdipi");
@@ -67,14 +85,6 @@ namespace AccountCreation
                     supervisorNameControl.Text = supervisorInfo;
                 }
 
-                var saSignatureControl = (TextBox)(_formview).FindControl("_saSignature");
-                // TODO: change this to saSignature.checked
-				if (saSignatureControl.Text.Length > 0)
-				{
-                    var saCheckBoxControl = (CheckBox)(_formview).FindControl("_saCheckBox");
-                    saCheckBoxControl.Enabled = false;
-					saCheckBoxControl.Checked = true;
-				}
 			}
 		}
 
@@ -159,6 +169,27 @@ namespace AccountCreation
                 {
                     modifiedDate.Text = DateTime.Now.ToString();
                     completedDate.Text = "";
+                }
+            }
+        }
+
+        protected void _iA_CheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_formview.CurrentMode == FormViewMode.Edit)
+            {
+                var iACheckBoxControl = (CheckBox)(_formview).FindControl("_iACheckBox");
+                var iASignatureControl = (TextBox)(_formview).FindControl("_iASignature");
+                var iADateSignedControl = (TextBox)(_formview).FindControl("_iADateSigned");
+
+                if (iACheckBoxControl.Checked)
+                {
+                    iASignatureControl.Text = CacCard.Edipi;
+                    iADateSignedControl.Text = DateTime.Now.ToString();
+                }
+                else
+                {
+                    iASignatureControl.Text = "";
+                    iADateSignedControl.Text = "";
                 }
             }
         }
