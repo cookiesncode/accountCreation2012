@@ -30,7 +30,7 @@
 								<asp:RadioButtonList CssClass="radio requestRadios" ID="_accountType" runat="server" RepeatLayout="Flow">
                                     <asp:ListItem Value="NIPR">NIPR - Fort Carson User Account</asp:ListItem>
                                     <asp:ListItem Value="SIPR">SIPR - Classified Network</asp:ListItem>
-                                    <asp:ListItem Value="EP">EP - Elevated Privileges</asp:ListItem>
+                                    <asp:ListItem Value="EP">Logon only</asp:ListItem>
                                     <asp:ListItem Value="SA">SA - System Administrator</asp:ListItem>
                                     <asp:ListItem Value="VPN">VPN - Virtual Private Network</asp:ListItem>
 								</asp:RadioButtonList>
