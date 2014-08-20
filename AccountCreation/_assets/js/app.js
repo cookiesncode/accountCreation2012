@@ -127,8 +127,12 @@
     // Popover tooltip code.
     var statusContent = $('<span class="glyphicon glyphicon-info-sign" data-toggle="popover" data-placement="auto top" title="Request Status Stages" data-content="<ul><li>Requested - User submitted request</li><li>Partially Verified - Supervisor signed (Only occurs if two signatures are required)</li><li>Ready - Request is ready to be processed.</li><li>Completed - Request was completed</li><li>Failed - Request failed to be completed</ul>"></span>');
     var requestTypeContent = $('<span class="glyphicon glyphicon-info-sign" data-toggle="popover" data-placement="auto top" title="Request Type Terms" data-content="<p>This field shows whether the user requested a deletion or creation of the <em>Account Type</em>. Do not be confused with the <em>Manual</em> or <em>Auto</em> part. The important piece is whether the request is a <em>Create</em> or <em>Delete</em>."></span>');
+    var epTypeContent = $('<span class="glyphicon glyphicon-info-sign" data-toggle="popover" data-placement="auto top" title="Logon Only" data-content="Choose this option if you need an account for logging on to a computer running some type of wall monitor displaying information of use to personnel/passers-by in your unit or organization. This is a basic user account - NO e-mail access or privileges."></span>');
+    var saTypeContent = $('<span class="glyphicon glyphicon-info-sign" data-toggle="popover" data-placement="auto top" title="SA Account (Previously known as SA/EP)" data-content="<p>Choose this option if you need an account with administrative privileges on a select group of computers you support. This is a privilege - not a right. You are responsible to keep your information in ATCTS current. Intended for Soldiers with MOS 25B or 25U in kill level 10, E1-E4; DA Civilians in series 2210; contractors on a NEC-sponsored contract."></span>');
     $('.js-popover-status').append(statusContent);
     $('.js-popover-request').append(requestTypeContent);
+    $('#_accountType_2 + label').append(epTypeContent);
+    $('#_accountType_3 + label').append(saTypeContent);
     $('[data-toggle="popover"]').popover({
         html: true,
         trigger: 'hover',
