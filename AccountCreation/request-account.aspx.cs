@@ -104,6 +104,9 @@ namespace AccountCreation
                 var secSignedControl = (CheckBox)(_formview).FindControl("_secSigned");
                 secSignedControl.Checked = false;
 
+                var iaSignedControl = (CheckBox)(_formview).FindControl("_iaSigned");
+                iaSignedControl.Checked = false;          
+
                 var dateControl = (TextBox)(_formview).FindControl("_date");          
 				dateControl.Text = DateTime.Now.ToString();
 
@@ -280,18 +283,6 @@ namespace AccountCreation
 			if (!Page.IsValid)
 			{
 				e.Cancel = true;
-			}
-		}
-
-		protected void _middleInitialValidator_ServerValidate(object source, ServerValidateEventArgs args)
-		{
-			if (args.Value.Length > 1)
-			{
-				args.IsValid = false;
-			}
-			else
-			{
-				args.IsValid = true;
 			}
 		}
 	}

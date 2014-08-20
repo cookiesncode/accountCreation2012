@@ -85,7 +85,6 @@
 								<label for="_middleInitial" class="col-sm-4 col-md-4 control-label">MI:</label>
 								<div class="col-sm-3 col-md-2">
 									<asp:TextBox ID="_middleInitial" CssClass="form-control" runat="server" Text='<%# Bind("Mi") %>' />
-									<asp:CustomValidator ID="_middleInitialValidator" CssClass="label label-warning" ControlToValidate="_middleInitial" runat="server" ErrorMessage="MI: Please insert only one letter for your middle initial." Text="Requires your attention" OnServerValidate="_middleInitialValidator_ServerValidate" Display="Dynamic"></asp:CustomValidator>
 								</div>
 							</div>
 
@@ -287,6 +286,7 @@
 				<asp:RadioButton ID="_vpnAcct" Text="&nbsp;VPN" runat="server" GroupName="RequestType" Checked='<%# Bind("Vpn") %>' />
 				<asp:CheckBox ID="_supSigned" Checked='<%# Bind("SupSigned") %>' runat="server" />
 				<asp:CheckBox ID="_secSigned" Checked='<%# Bind("SecSigned") %>' runat="server" />
+				<asp:CheckBox ID="_iaSigned" Checked='<%# Bind("IaSigned") %>' runat="server" />
 				<asp:TextBox ID="_requestType" Text='<%# Bind("RequestType") %>' runat="server" />
 				<asp:TextBox ID="_macom" ClientIDMode="Static" Text='<%# Bind("Macom") %>' runat="server" />
 				<asp:TextBox ID="_accountType" Text='<%# Bind("AccountType") %>' runat="server" />

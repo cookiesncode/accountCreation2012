@@ -107,7 +107,6 @@
 								<label for="_middleInitial" class="col-sm-4 control-label">MI:</label>
 								<div class="col-sm-3">
 									<asp:TextBox ID="_middleInitial" CssClass="form-control" runat="server" Text='<%# Bind("Mi") %>' />
-									<asp:CustomValidator ID="_middleInitialValidator" runat="server" ControlToValidate="_middleInitial" CssClass="label label-warning" ErrorMessage="MI: Please insert only one letter for your middle initial." Text="Requires your attention" OnServerValidate="_middleInitialValidator_ServerValidate" Display="Dynamic"></asp:CustomValidator>
 								</div>
 							</div>
 
