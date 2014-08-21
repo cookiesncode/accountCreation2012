@@ -169,15 +169,14 @@
             case '1-25ATK':
             case '4EN':
             case '4ID':
-            case '4ID 1BCT':
-            case '4ID 1BCT 1-38IN':
-            case '4ID 1BCT 1STB':
-            case '4ID 1BCT 2-23IN':
-            case '4ID 1BCT 4BSB':
-            case '4ID 1BCT HQ':
-            case '4ID 1SBCT 2-1CAV':
+            case '4ID 1SBCT 1-38IN':
             case '4ID 1SBCT 2-12FA':
+            case '4ID 1SBCT 2-1CAV':
+            case '4ID 1SBCT 2-23IN':
+            case '4ID 1SBCT 299EN':
             case '4ID 1SBCT 4-9IN':
+            case '4ID 1SBCT 4BSB':
+            case '4ID 1SBCT HHC':
             case '4ID 2BCT':
             case '4ID 2BCT 1-10CAV':
             case '4ID 2BCT 1-67AR':
