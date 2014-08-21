@@ -58,12 +58,12 @@ namespace AccountCreation
                     saCheckBoxControl.Enabled = false;
                     saCheckBoxControl.Checked = true;
                 }
-                // I check for "EP" as well since SA and EP used to be combined into one field, which was EP. It will be safe to delete this check once the data is archived for year 2014.
+                // I check for "EP" as well since SA and EP used to be combined into one field, which was EP. It will be safe to delete EP from this check once the data is archived for year 2014.
                 if (requestTypeControl.Text.Contains("Create") && (accountTypeControl.Text == "SA" || accountTypeControl.Text == "EP"))
                 {
                     var justificationPanelControl = (Panel)(_formview).FindControl("_justificationPanel");
                     justificationPanelControl.Visible = true;
-                    // TODO: UPDATE control panel name to say SA. need to fix aspx file as well.
+                    
                     var saPanelControl = (Panel)(_formview).FindControl("_saPanel");
                     saPanelControl.Visible = true;
 

@@ -368,9 +368,7 @@
 			</div>
 			<div class="hidden">
 				<asp:TextBox ID="_supSignedDate" Text='<%# Bind("SupDateSigned") %>' runat="server"></asp:TextBox>
-				<asp:CheckBox ID="_supSigned" Checked='<%# Bind("SupSigned") %>' runat="server" />
 				<asp:TextBox ID="_secSignedDate" Text='<%# Bind("SecDateSigned") %>' runat="server"></asp:TextBox>
-				<asp:CheckBox ID="_secSigned" Checked='<%# Bind("SecSigned") %>' runat="server" />
 				<asp:TextBox ID="_requestStatus" Text='<%# Bind("RequestStatus") %>' runat="server"></asp:TextBox>
 				<asp:TextBox ID="_accountType" Text='<%# Bind("AccountType") %>' runat="server"></asp:TextBox>
 				<asp:TextBox ID="_requestType" Text='<%# Bind("RequestType") %>' runat="server"></asp:TextBox>

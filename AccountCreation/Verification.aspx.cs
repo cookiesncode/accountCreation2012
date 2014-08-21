@@ -68,40 +68,46 @@ namespace AccountCreation
                 var accountTypeControl = (TextBox)(_formview).FindControl("_accountType");
                 var requestTypeControl = (TextBox)(_formview).FindControl("_requestType");
 
-                Button updateButtonControl = null;
+                var updateButtonControl = (Button)(_formview).FindControl("_updateButton");
                 var supervisorSignatureControl = (TextBox)(_formview).FindControl("_supervisorSignature");
                 var supervisorCheckBoxControl = (CheckBox)(_formview).FindControl("_supervisorCheckBox");
 
                 if (RequiresTwoSignatures)
                 {
-                    CheckBox securityCheckBoxControl = null;
+                    CheckBox securityCheckBoxControl = (CheckBox)(_formview).FindControl("_securityCheckBox");
                     PlaceHolder securityBoxPlaceholderControl = (PlaceHolder)(_formview).FindControl("_securityBoxPlaceholder");
 
-                    var investigationDateRangeValidator = (RangeValidator)(_formview).FindControl("_investigationDateRangeValidator");
-                    investigationDateRangeValidator.MinimumValue = DateTime.Today.AddYears(-10).ToShortDateString();
-                    investigationDateRangeValidator.MaximumValue = DateTime.Today.ToShortDateString();
-                    investigationDateRangeValidator.Type = ValidationDataType.Date;
-
-                    if (supervisorCheckBoxControl.Checked && !securityBoxPlaceholderControl.Visible)
+                    if (supervisorCheckBoxControl.Checked)
                     {
                         supervisorCheckBoxControl.Enabled = false;
-                        securityBoxPlaceholderControl.Visible = true;
-                        securityCheckBoxControl = (CheckBox)(_formview).FindControl("_securityCheckBox");
                     }
-                    if (securityBoxPlaceholderControl.Visible && securityCheckBoxControl.Checked)
+
+                    if (supervisorCheckBoxControl.Checked && securityBoxPlaceholderControl.Visible == false)
+                    {
+                        securityBoxPlaceholderControl.Visible = true;
+                    }
+
+                    if (securityBoxPlaceholderControl.Visible == true)
+                    {
+                        var investigationDateRangeValidator = (RangeValidator)(_formview).FindControl("_investigationDateRangeValidator");
+                        investigationDateRangeValidator.MinimumValue = DateTime.Today.AddYears(-10).ToShortDateString();
+                        investigationDateRangeValidator.MaximumValue = DateTime.Today.ToShortDateString();
+                        investigationDateRangeValidator.Type = ValidationDataType.Date;
+                    }
+
+                    if (securityCheckBoxControl.Checked)
                     {
                         securityCheckBoxControl.Enabled = false;
                     }
-                    if (supervisorCheckBoxControl.Checked && securityBoxPlaceholderControl.Visible && securityCheckBoxControl.Checked)
+
+                    if (supervisorCheckBoxControl.Checked && securityCheckBoxControl.Checked)
                     {
-                        updateButtonControl = (Button)(_formview).FindControl("_updateButton");
                         updateButtonControl.Visible = false;
                     }
                 }
                 else if (supervisorCheckBoxControl.Checked)
                 {
                     supervisorCheckBoxControl.Enabled = false;
-                    updateButtonControl = (Button)(_formview).FindControl("_updateButton");
                     updateButtonControl.Visible = false;
                 }
 
@@ -202,14 +208,12 @@ namespace AccountCreation
 				var supervisorCheckBoxControl = (CheckBox)(_formview).FindControl("_supervisorCheckBox");
 				var supervisorSignatureControl = (TextBox)(_formview).FindControl("_supervisorSignature");
 				var supSignedDateControl = (TextBox)(_formview).FindControl("_supSignedDate");
-				var supSignedControl = (CheckBox)(_formview).FindControl("_supSigned");
 				var requestStatusControl = (TextBox)(_formview).FindControl("_requestStatus");
 
 				if (supervisorCheckBoxControl.Checked)
 				{
 					supervisorSignatureControl.Text = CacCard.Edipi;
 					supSignedDateControl.Text = DateTime.Now.ToString();
-					supSignedControl.Checked = true;
                     if (RequiresTwoSignatures)
                     {
                         requestStatusControl.Text = "Partially Verified";
@@ -223,8 +227,7 @@ namespace AccountCreation
 				{
 					supervisorSignatureControl.Text = "";
 					supSignedDateControl.Text = "";
-					supSignedControl.Checked = false;
-					requestStatusControl.Text = "";
+					requestStatusControl.Text = "Requested";
 				}
 			}
 		}
@@ -236,22 +239,19 @@ namespace AccountCreation
 				var securityCheckBoxControl = (CheckBox)(_formview).FindControl("_securityCheckBox");
 				var securitySignatureControl = (TextBox)(_formview).FindControl("_securitySignature");
 				var secSignedDateControl = (TextBox)(_formview).FindControl("_secSignedDate");
-				var secSignedControl = (CheckBox)(_formview).FindControl("_secSigned");
                 var requestStatusControl = (TextBox)(_formview).FindControl("_requestStatus");
 
                 if (securityCheckBoxControl.Checked)
 				{
 					securitySignatureControl.Text = CacCard.Edipi;
 					secSignedDateControl.Text = DateTime.Now.ToString();
-					secSignedControl.Checked = true;
                     requestStatusControl.Text = "Ready";
 				}
 				else
 				{
 					securitySignatureControl.Text = "";
 					secSignedDateControl.Text = "";
-					secSignedControl.Checked = false;
-                    requestStatusControl.Text = "";
+                    requestStatusControl.Text = "Partially Verified";
 				}
 			}
 		}
