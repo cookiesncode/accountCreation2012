@@ -269,12 +269,21 @@ namespace AccountCreation
 		protected void _formview_ItemInserted(object sender, FormViewInsertedEventArgs e)
 		{
             Session["FormSubmitted"] = true;
+            var accountType = (TextBox)(_formview).FindControl("_accountType");
             var userEmail = (TextBox)(_formview).FindControl("_email");
-            var message = "To check the status of this request, please visit the link below.";
+            var userMessage = "To check the status of this request, please visit the link below.";
             var userName = CacCard.FirstName + " " + CacCard.LastName;
-            var searchLink = "https://nec.carson.army.mil/accounts/verification.aspx?search=" + CacCard.Edipi;
+            var userLink = "https://nec.carson.army.mil/accounts/verification.aspx?search=" + CacCard.Edipi;
+            Email.SendEmail(userEmail.Text, userMessage, userName, userLink, accountType.Text);
+            
+            if (accountType.Text == "SA")
+            {
+                var desktopEmail = "kevin.w.smith110.civ@mail.mil, michael.j.hahn10.civ@mail.mil";
+                var desktopMessage = "To view this request, please visit the link below.";
+                var desktopLink = "https://nec.carson.army.mil/accounts/sa-admin.aspx?search=" + CacCard.Edipi;
+                Email.SendEmail(desktopEmail, desktopMessage, userName, desktopLink, accountType.Text);
+            }
 
-            Email.SendEmail(userEmail.Text, message, userName, searchLink);
             Server.Transfer("success.aspx");
 		}
 

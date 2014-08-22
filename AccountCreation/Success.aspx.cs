@@ -53,15 +53,16 @@ namespace AccountCreation
         {
             if (Page.IsValid)
             {
+                string accountType = Session["AccountType"] as string;
                 var emailToList = _supervisorEmail.Text;
                 if (_securityPlaceHolder.Visible)
                 {
                     emailToList += "," + _securityEmail.Text;
                 }
-
                 var message = "Please visit the link below to verify this request.";
-                Email.SendEmail(emailToList, message, _emailSignature.Text, SearchQuery);
+                Email.SendEmail(emailToList, message, _emailSignature.Text, SearchQuery, accountType);
                 _multiviewForm.ActiveViewIndex = 1;
+                _instructions.Visible = false;
             }
         }
 	}
