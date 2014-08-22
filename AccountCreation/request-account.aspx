@@ -135,7 +135,7 @@
 									<asp:DropDownList ID="_orgUnit" CssClass="form-control" runat="server" Text='<%# Bind("OrgUnit") %>' AppendDataBoundItems="True">
 										<asp:ListItem Text="-- Select Org/Unit --" Value="" />
 									</asp:DropDownList>
-									<asp:RequiredFieldValidator CssClass="label label-warning" ID="_deptRequiredValidator" runat="server" ErrorMessage="Department: Please select your department." ControlToValidate="_orgUnit" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+									<asp:RequiredFieldValidator CssClass="label label-warning" ID="_deptRequiredValidator" runat="server" ErrorMessage="Org/Unit: Please make a selection." ControlToValidate="_orgUnit" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
 								</div>
 							</div>
 
