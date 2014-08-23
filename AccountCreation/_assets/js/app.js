@@ -33,11 +33,15 @@
         }
     });
 
+    ///////////////////////////////////////////////////////////////////
+    // JANK - Removes the disabled attribute on the date fields during a postback.
     $('[data-js="remove-disabled"]').change(function () {
         $disabledFields.removeAttr('disabled');
     });
 
-    // The code below is to dynamically add the alert dialogue box if they selected an account deletion.
+    //////////////////////////////////////////////////////////////////
+    // The code below is to dynamically add the alert dialogue box 
+    // if they selected an account deletion.
     var $createDeleteRadio = $('#_requestType :radio');
     var $submitBtn = $('[data-js="delete-alert"]');
 

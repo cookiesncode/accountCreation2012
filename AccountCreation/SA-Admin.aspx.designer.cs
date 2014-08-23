@@ -22,6 +22,15 @@ namespace AccountCreation {
         protected global::System.Web.UI.WebControls.Panel _filterPanel;
         
         /// <summary>
+        /// _filterAccountType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList _filterAccountType;
+        
+        /// <summary>
         /// _filterRequestType control.
         /// </summary>
         /// <remarks>

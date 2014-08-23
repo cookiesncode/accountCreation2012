@@ -13,6 +13,23 @@ namespace AccountCreation
 {
 	public partial class SA_Admin : System.Web.UI.Page
 	{
+        private bool RequiresThreeSignatures
+        {
+            get
+            {
+                var accountTypeControl = (TextBox)(_formview).FindControl("_accountType");
+                var requestTypeControl = (TextBox)(_formview).FindControl("_requestType");
+                if (requestTypeControl.Text.Contains("Create") && accountTypeControl.Text == "SA")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
 		protected void Page_Load(object sender, EventArgs e)
 		{
             if (Page.User.IsInRole("CARSON NEC SSD SMB SA SG") || Page.User.IsInRole("CARSON NEC IA Account Review"))
@@ -37,7 +54,17 @@ namespace AccountCreation
 			{
                 var accountTypeControl = (TextBox)(_formview).FindControl("_accountType");
                 var requestTypeControl = (TextBox)(_formview).FindControl("_requestType");
+                var submitBtn = (Button)(_formview).FindControl("_updateButton");
+                submitBtn.Visible = false;
 
+                if (User.IsInRole("CARSON NEC SSD SMB SA SG"))
+                {
+                    submitBtn.Visible = true;
+                }
+                if (User.IsInRole("CARSON NEC IA Account Review") && (accountTypeControl.Text == "SA" || accountTypeControl.Text == "EP"))
+                {
+                    submitBtn.Visible = true;
+                }
                 if (requestTypeControl.Text == "Manual Delete" || requestTypeControl.Text == "Auto Delete")
                 {
                     var deleteDatePanelControl = (Panel)(_formview).FindControl("_deleteRequestPanel");
@@ -49,29 +76,41 @@ namespace AccountCreation
                     var adContainerControl = (PlaceHolder)(_formview).FindControl("_adInfo");
                     adContainerControl.Visible = true;
 				}
- 
-                var saSignatureControl = (TextBox)(_formview).FindControl("_saSignature");
-                // JANK There is no boolean for the SA signature in the DB, so this step is required.
-                if (saSignatureControl.Text.Length > 0)
+
+                if (requestTypeControl.Text.Contains("Create") && accountTypeControl.Text == "SA")
                 {
-                    var saCheckBoxControl = (CheckBox)(_formview).FindControl("_saCheckBox");
-                    saCheckBoxControl.Enabled = false;
-                    saCheckBoxControl.Checked = true;
-                }
-                // I check for "EP" as well since SA and EP used to be combined into one field, which was EP. It will be safe to delete EP from this check once the data is archived for year 2014.
-                if (requestTypeControl.Text.Contains("Create") && (accountTypeControl.Text == "SA" || accountTypeControl.Text == "EP"))
-                {
+                    var saSection = (PlaceHolder)(_formview).FindControl("_saSection");
+                    saSection.Visible = false;
+
+                    var iaSection = (PlaceHolder)(_formview).FindControl("_iaSection");
+                    iaSection.Visible = false;
+
+                    var dsdSection = (PlaceHolder)(_formview).FindControl("_dsdSection");
+                    dsdSection.Visible = true;
+
+                    var saCheckBox = (CheckBox)(_formview).FindControl("_saCheckBox");
+                    var iaCheckBox = (CheckBox)(_formview).FindControl("_iaCheckBox");
+                    var dsdCheckBox = (CheckBox)(_formview).FindControl("_dsdCheckBox");
+                    var requestStatusControl = (TextBox)(_formview).FindControl("_requestStatus");
+                    var dsdApprovalValidator = (RequiredFieldValidator)(_formview).FindControl("_dsdApprovalRequiredValidator");
+                    var iaApprovalValidator = (RequiredFieldValidator)(_formview).FindControl("_iaApprovalRequiredValidator");
+
+                    if ((requestStatusControl.Text.Contains("Pending") == true || requestStatusControl.Text.Contains("Approved") || requestStatusControl.Text.Contains("Completed")) && dsdCheckBox.Checked)
+                    {
+                        iaSection.Visible = true;
+                        dsdApprovalValidator.Visible = false;
+                    }
+                    if ((requestStatusControl.Text.Contains("Approved") || requestStatusControl.Text.Contains("Completed") == true) && iaCheckBox.Checked)
+                    {
+                        saSection.Visible = true;
+                        iaApprovalValidator.Visible = false;
+                    }
+
                     var justificationPanelControl = (Panel)(_formview).FindControl("_justificationPanel");
                     justificationPanelControl.Visible = true;
                     
                     var saPanelControl = (Panel)(_formview).FindControl("_saPanel");
                     saPanelControl.Visible = true;
-
-                    if (saSignatureControl.Text.Length > 0)
-                    {
-                        var iASection = (PlaceHolder)(_formview).FindControl("_iABox");
-                        iASection.Visible = true;
-                    }
 
                     var supervisorNameControl = (Literal)(_formview).FindControl("_supervisorName");
                     var supervisorEdipiControl = (TextBox)(_formview).FindControl("_supervisorEdipi");
@@ -120,27 +159,6 @@ namespace AccountCreation
 			_formview.Visible = false;
 		}
 
-		protected void _sa_CheckBox_CheckedChanged(object sender, EventArgs e)
-		{
-			if (_formview.CurrentMode == FormViewMode.Edit)
-			{
-				var saCheckBox = (CheckBox)(_formview).FindControl("_saCheckBox");
-				var saName = (TextBox)(_formview).FindControl("_saName");
-				var saSignature = (TextBox)(_formview).FindControl("_saSignature");
-
-				if (saCheckBox.Checked)
-				{
-					saName.Text = CacCard.FirstName + " " + CacCard.LastName;
-					saSignature.Text = CacCard.Edipi;
-				}
-				else
-				{
-					saName.Text = "";
-					saSignature.Text = "";
-				}
-			}
-		}
-
 		protected void _cancelButton_Click(object sender, EventArgs e)
 		{
 			_formview.Visible = false;
@@ -151,10 +169,18 @@ namespace AccountCreation
         {
             if (_formview.CurrentMode == FormViewMode.Edit)
             {
-                var requestStatus = (DropDownList)(_formview).FindControl("_editRequestStatus");
+                var editRequestStatus = (DropDownList)(_formview).FindControl("_editRequestStatus");
+                var requestStatusControl = (TextBox)(_formview).FindControl("_requestStatus");
                 var completedDate = (TextBox)(_formview).FindControl("_completedDate");
                 var modifiedDate = (TextBox)(_formview).FindControl("_modifiedDate");
-                if (requestStatus.SelectedValue == "Completed" || requestStatus.SelectedValue == "Denied")
+                var saCheckBoxControl = (CheckBox)(_formview).FindControl("_saCheckBox");
+                var saSignatureControl = (TextBox)(_formview).FindControl("_saSignature");
+
+                saCheckBoxControl.Checked = false;
+                saSignatureControl.Text = "";
+                requestStatusControl.Text = editRequestStatus.SelectedValue;
+
+                if (editRequestStatus.SelectedValue == "Completed" || editRequestStatus.SelectedValue == "Denied")
                 {
                     completedDate.Text = DateTime.Now.ToString();
                     modifiedDate.Text = "";
@@ -167,25 +193,117 @@ namespace AccountCreation
             }
         }
 
+        protected void _sa_CheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_formview.CurrentMode == FormViewMode.Edit)
+            {
+                var saCheckBox = (CheckBox)(_formview).FindControl("_saCheckBox");
+                var saName = (TextBox)(_formview).FindControl("_saName");
+                var saSignature = (TextBox)(_formview).FindControl("_saSignature");
+                var saDateSignedControl = (TextBox)(_formview).FindControl("_saDateSigned");
+
+                if (saCheckBox.Checked)
+                {
+                    saName.Text = CacCard.FirstName + " " + CacCard.LastName;
+                    saSignature.Text = CacCard.Edipi;
+                    saDateSignedControl.Text = DateTime.Now.ToString();
+                }
+                else
+                {
+                    saName.Text = "";
+                    saSignature.Text = "";
+                    saDateSignedControl.Text = "";
+                }
+            }
+        }
+
         protected void _iA_CheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (_formview.CurrentMode == FormViewMode.Edit)
             {
-                var iACheckBoxControl = (CheckBox)(_formview).FindControl("_iACheckBox");
-                var iASignatureControl = (TextBox)(_formview).FindControl("_iASignature");
-                var iADateSignedControl = (TextBox)(_formview).FindControl("_iADateSigned");
+                var iaCheckBoxControl = (CheckBox)(_formview).FindControl("_iaCheckBox");
+                var iaSignatureControl = (TextBox)(_formview).FindControl("_iaSignature");
+                var iaDateSignedControl = (TextBox)(_formview).FindControl("_iaDateSigned");
+                var requestStatusControl = (TextBox)(_formview).FindControl("_requestStatus");
+                var iaApprovalControl = (RadioButtonList)(_formview).FindControl("_iaApproval");
 
-                if (iACheckBoxControl.Checked)
+                if (iaCheckBoxControl.Checked)
                 {
-                    iASignatureControl.Text = CacCard.Edipi;
-                    iADateSignedControl.Text = DateTime.Now.ToString();
+                    if (iaApprovalControl.SelectedValue == "Denied")
+                    {
+                        requestStatusControl.Text = "Denied";
+                    }
+                    else
+                    {
+                        requestStatusControl.Text = "Approved";
+                    }
+                    iaSignatureControl.Text = CacCard.Edipi;
+                    iaDateSignedControl.Text = DateTime.Now.ToString();
                 }
                 else
                 {
-                    iASignatureControl.Text = "";
-                    iADateSignedControl.Text = "";
+                    iaSignatureControl.Text = "";
+                    iaDateSignedControl.Text = "";
+                    requestStatusControl.Text = "Pending";
                 }
             }
         }
-	}
+
+        protected void _dsd_CheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_formview.CurrentMode == FormViewMode.Edit)
+            {
+                var dsdCheckBoxControl = (CheckBox)(_formview).FindControl("_dsdCheckBox");
+                var dsdSignatureControl = (TextBox)(_formview).FindControl("_dsdSignature");
+                var dsdDateSignedControl = (TextBox)(_formview).FindControl("_dsdDateSigned");
+                var requestStatusControl = (TextBox)(_formview).FindControl("_requestStatus");
+                var dsdApprovalControl = (RadioButtonList)(_formview).FindControl("_dsdApproval");
+
+                if (dsdCheckBoxControl.Checked)
+                {
+                    if (dsdApprovalControl.SelectedValue == "Denied")
+                    {
+                        requestStatusControl.Text = "Denied";
+                    }
+                    else
+                    {
+                        requestStatusControl.Text = "Pending";
+                    }
+                    dsdSignatureControl.Text = CacCard.Edipi;
+                    dsdDateSignedControl.Text = DateTime.Now.ToString();
+                }
+                else
+                {
+                    dsdSignatureControl.Text = "";
+                    dsdDateSignedControl.Text = "";
+                    requestStatusControl.Text = "Requested";
+                }
+            }
+        }
+
+        protected void _dsdApproval_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_formview.CurrentMode == FormViewMode.Edit)
+            {
+                var dsdCheckBoxControl = (CheckBox)(_formview).FindControl("_dsdCheckBox");
+                var dsdSignatureControl = (TextBox)(_formview).FindControl("_dsdSignature");
+
+                dsdCheckBoxControl.Checked = false;
+                dsdSignatureControl.Text = "";
+            }
+
+        }
+
+        protected void _iaApproval_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_formview.CurrentMode == FormViewMode.Edit)
+            {
+                var iaCheckBoxControl = (CheckBox)(_formview).FindControl("_iaCheckBox");
+                var iaSignatureControl = (TextBox)(_formview).FindControl("_iaSignature");
+
+                iaCheckBoxControl.Checked = false;
+                iaSignatureControl.Text = "";
+            }
+        }
+    }
 }

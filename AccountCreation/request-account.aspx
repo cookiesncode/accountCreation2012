@@ -287,6 +287,8 @@
 				<asp:CheckBox ID="_supSigned" Checked='<%# Bind("SupSigned") %>' runat="server" />
 				<asp:CheckBox ID="_secSigned" Checked='<%# Bind("SecSigned") %>' runat="server" />
 				<asp:CheckBox ID="_iaSigned" Checked='<%# Bind("IaSigned") %>' runat="server" />
+				<asp:CheckBox ID="_dsdSigned" Checked='<%# Bind("DsdSigned") %>' runat="server" />
+				<asp:CheckBox ID="_saSigned" Checked='<%# Bind("SaSigned") %>' runat="server" />
 				<asp:TextBox ID="_requestType" Text='<%# Bind("RequestType") %>' runat="server" />
 				<asp:TextBox ID="_macom" ClientIDMode="Static" Text='<%# Bind("Macom") %>' runat="server" />
 				<asp:TextBox ID="_accountType" Text='<%# Bind("AccountType") %>' runat="server" />

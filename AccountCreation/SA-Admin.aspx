@@ -10,7 +10,22 @@
 	<asp:Panel ID="_filterPanel" CssClass="hidden-print" Visible="true" runat="server">
 		<p class="lead">Filter Records:</p>
 		<div class="row">
-			<div class="col-sm-6">
+			<div class="col-sm-4">
+				<div class="form-group">
+					<label for="_filterAccountType" class="col-sm-5 col-md-4 control-label">Account Type:</label>
+					<div class="col-sm-7 col-md-8">
+						<asp:DropDownList ID="_filterAccountType" OnSelectedIndexChanged="_filter_SelectedIndexChanged" CssClass="form-control" runat="server" AutoPostBack="true">
+							<asp:ListItem Text="No filter" Value=""></asp:ListItem>
+							<asp:ListItem Text="NIPR" Value="NIPR"></asp:ListItem>
+							<asp:ListItem Text="SA" Value="SA"></asp:ListItem>
+							<asp:ListItem Text="EP" Value="EP"></asp:ListItem>
+							<asp:ListItem Text="VPN" Value="VPN"></asp:ListItem>
+							<asp:ListItem Text="SIPR" Value="SIPR"></asp:ListItem>
+						</asp:DropDownList>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
 				<div class="form-group">
 					<label for="_filterRequestType" class="col-sm-5 col-md-4 control-label">Request Type:</label>
 					<div class="col-sm-7 col-md-8">
@@ -22,7 +37,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-6">
+			<div class="col-sm-4">
 				<div class="form-group">
 					<label for="_filterRequestStatus" class="col-sm-5 col-md-4 control-label">Request Status:</label>
 					<div class="col-sm-7 col-md-8">
@@ -76,6 +91,7 @@
                 PageSize="25"
                 PagerStyle-CssClass="table-pagination">
 				<Columns>
+                    <%-- TODO: Change it back to bound fields since templates arent required anymore --%>
                     <asp:CommandField ShowSelectButton="True"></asp:CommandField>
                     <asp:TemplateField HeaderText="Requested Date" SortExpression="RequestedDate">
                         <ItemTemplate>
@@ -310,7 +326,7 @@
                             </asp:Panel>
 							
 							<asp:Panel ID="_saPanel" Visible="false" runat="server">
-                                <h4 class="page-header">SA Section</h4>
+                                <h4 class="page-header">SA Request Information</h4>
 								<div class="form-group">
 									<label for="_mos" class="col-sm-4 control-label">MOS:</label>
 									<div class="col-sm-8">
@@ -343,84 +359,142 @@
 
 				<%-- Start right column --%>
 				<div class="col-sm-6 hidden-print">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3>SA Box:</h3>
-							<p>Please fill out the information below and then apply your signature (EDIPI).</p>
-						</div>
-						<div class="panel-body">
-							<asp:PlaceHolder ID="_adInfo" Visible="false" runat="server">
-								<div class="form-group">
-									<label for="_samAccount" class="col-sm-4 control-label">SAM Account:</label>
-									<div class="col-sm-8">
-										<asp:TextBox ID="_samAccount" CssClass="form-control" Text='<%# Bind("SamAccountName") %>' runat="server"></asp:TextBox>
-									</div>
-								</div>
-
-								<div class="form-group">
-									<label for="_homeFolder" class="col-sm-4 control-label">Home Folder:</label>
-									<div class="col-sm-8">
-										<asp:TextBox ID="_homeFolder" CssClass="form-control" Text='<%# Bind("HomeFolder") %>' runat="server"></asp:TextBox>
-									</div>
-								</div>
-							</asp:PlaceHolder>
-                            <div class="form-group">
-                                <label for="_remark" class="col-sm-4 control-label">Remark:</label>
-                                <div class="col-sm-8">
-                                    <asp:TextBox runat="server" ID="_remark" TextMode="MultiLine" Rows="6" CssClass="form-control" Text='<%# Bind("Remark") %>'></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="_editRequestStatus" class="col-sm-4 control-label">Request Status:</label>
-                                <div class="col-sm-8">
-                                    <asp:DropDownList runat="server" ID="_editRequestStatus" SelectedValue='<%# Bind("RequestStatus") %>' CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="_editRequestStatus_SelectedIndexChanged">
-							            <asp:ListItem Text="Requested" Value="Requested"></asp:ListItem>
-							            <asp:ListItem Text="Partially Verified" Value="Partially Verified"></asp:ListItem>
-							            <asp:ListItem Text="Ready" Value="Ready"></asp:ListItem>
-							            <asp:ListItem Text="Completed" Value="Completed"></asp:ListItem>
-							            <asp:ListItem Text="Denied" Value="Denied"></asp:ListItem>
-							            <asp:ListItem Text="Failed" Value="Failed"></asp:ListItem>
-							            <asp:ListItem Text="Pending" Value="Pending"></asp:ListItem>
-                                    </asp:DropDownList>
-                                </div>
-                            </div>
-							<div class="form-group">
-								<label for="_saCheckBox" class="col-sm-4 control-label">Completed by:</label>
-								<div class="col-sm-8">
-									<div class="input-group">
-										<span class="input-group-addon">
-											<asp:CheckBox ID="_saCheckBox" runat="server" OnCheckedChanged="_sa_CheckBox_CheckedChanged" AutoPostBack="True" />
-										</span>
-										<asp:TextBox ID="_saSignature" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("SaEdipi") %>' />
-									</div>
-									<asp:RequiredFieldValidator ID="_saSignRequiredValidator" runat="server" ErrorMessage="SA signature: You must sign the form before completing the request." Text="Requires your attention" Display="Dynamic" CssClass="label label-warning" ControlToValidate="_saSignature"></asp:RequiredFieldValidator>
-								</div>
-							</div>
-						</div>
-                        <asp:PlaceHolder Visible="false" ID="_iABox" runat="server">
+                    <div class="panel panel-default">
+                        <asp:PlaceHolder Visible="false" ID="_dsdSection" runat="server">
                             <div class="panel-heading">
-                                <h3>IA Approval</h3>
+                                <h3>DSD Approval</h3>
                             </div>
-                            <div class="panel-body">	
-                                <p class="text-danger"><strong>Completed:</strong></p>   						
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label for="_dsdRemark" class="col-sm-4 control-label">Remark:</label>
+                                    <div class="col-sm-8">
+                                        <asp:TextBox runat="server" ID="_dsdRemark" TextMode="MultiLine" Rows="6" CssClass="form-control" Text='<%# Bind("DsdRemark") %>'></asp:TextBox>
+                                    </div>
+                                </div>
+								<div class="form-group">
+									<label for="_dsdApproval" class="col-sm-4 control-label">Request Approval:</label>
+									<div class="col-sm-8">
+                                        <asp:RadioButtonList ID="_dsdApproval" OnSelectedIndexChanged="_dsdApproval_SelectedIndexChanged" AutoPostBack="true" CssClass="radio requestRadio" RepeatLayout="Flow" runat="server">
+                                            <asp:ListItem Value="Approved">Approved</asp:ListItem>
+                                            <asp:ListItem Value="Denied">Denied</asp:ListItem>
+                                        </asp:RadioButtonList>
+										<asp:RequiredFieldValidator CssClass="label label-warning" ID="_dsdApprovalRequiredValidator" runat="server" ErrorMessage="Request Approval: Please make a selection." ControlToValidate="_dsdApproval" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+									</div>
+								</div>
 							    <div class="form-group">
-								    <label for="_securityCheckBox" class="col-sm-4 control-label">IA signature:</label>
+								    <label for="_dsdCheckBox" class="col-sm-4 control-label">DSD Signature:</label>
 								    <div class="col-sm-8">
 									    <div class="input-group">
 										    <span class="input-group-addon">
-											    <asp:CheckBox ID="_iACheckBox" Checked='<%# Bind("IaSigned") %>' data-js="remove-disabled" OnCheckedChanged="_iA_CheckBox_CheckedChanged"  runat="server" AutoPostBack="True" />
+											    <asp:CheckBox ID="_dsdCheckBox" Checked='<%# Bind("DsdSigned") %>' OnCheckedChanged="_dsd_CheckBox_CheckedChanged" runat="server" AutoPostBack="True" />
 										    </span>
-										    <asp:TextBox ID="_iASignature" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("IaEdipi") %>' />
+										    <asp:TextBox ID="_dsdSignature" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("DsdEdipi") %>' />
 									    </div>
                                         <small class="help-block">Check the box to apply your signature.</small>
-									    <asp:CompareValidator ID="_signatureCompareValidator" CssClass="label label-warning" ControlToValidate="_iASignature" ControlToCompare="_saSignature" runat="server" ErrorMessage="IA signature: The IA employee and the SA employee can not be the same person." Type="String" Operator="NotEqual" Text="Requires your attention" Display="Dynamic"></asp:CompareValidator>
-									    <asp:RequiredFieldValidator ID="_iASignRequiredValidator" runat="server" ErrorMessage="IA signature: You must sign the form before applying your changes." Text="Requires your attention" Display="Dynamic" CssClass="label label-warning" ControlToValidate="_iASignature"></asp:RequiredFieldValidator>
-									    <asp:CompareValidator ID="_requestorIaCompareValidator" ControlToCompare="_userEdipi" runat="server" ErrorMessage="IA signature: The Request entry EDIPI and the IA signature can not be the same." CssClass="label label-warning" Display="Dynamic" Text="Requires your attention" ControlToValidate="_iASignature" Operator="NotEqual"></asp:CompareValidator>
+									    <asp:RequiredFieldValidator ID="_dsdRequiredValidator" runat="server" ErrorMessage="DSD signature: You must sign the form before applying your changes." Text="Requires your attention" Display="Dynamic" CssClass="label label-warning" ControlToValidate="_dsdSignature"></asp:RequiredFieldValidator>
+									    <asp:CompareValidator ID="_dsdUserCompareValidator" ControlToValidate="_dsdSignature" ControlToCompare="_userEdipi" runat="server" ErrorMessage="DSD signature: The Request entry EDIPI and the DSD signature can not be the same." CssClass="label label-warning" Display="Dynamic" Text="Requires your attention" Operator="NotEqual"></asp:CompareValidator>
 								    </div>
 							    </div>					
 						    </div>
                         </asp:PlaceHolder>
+					
+                        <asp:PlaceHolder Visible="false" ID="_iaSection" runat="server">
+                            <div class="panel-heading">
+                                <h3>IA Approval</h3>
+                            </div>
+                            <div class="panel-body">	
+                                <div class="form-group">
+                                    <label for="_iaRemark" class="col-sm-4 control-label">Remark:</label>
+                                    <div class="col-sm-8">
+                                        <asp:TextBox runat="server" ID="_iaRemark" TextMode="MultiLine" Rows="6" CssClass="form-control" Text='<%# Bind("IaRemark") %>'></asp:TextBox>
+                                    </div>
+                                </div>							    
+								<div class="form-group">
+									<label for="_iaApproval" class="col-sm-4 control-label">Request Approval:</label>
+									<div class="col-sm-8">
+                                        <asp:RadioButtonList ID="_iaApproval" OnSelectedIndexChanged="_iaApproval_SelectedIndexChanged" AutoPostBack="true" CssClass="radio requestRadio" RepeatLayout="Flow" runat="server">
+                                            <asp:ListItem Value="Approved">Approved</asp:ListItem>
+                                            <asp:ListItem Value="Denied">Denied</asp:ListItem>
+                                        </asp:RadioButtonList>
+										<asp:RequiredFieldValidator CssClass="label label-warning" ID="_iaApprovalRequiredValidator" runat="server" ErrorMessage="Request Approval: Please make a selection." ControlToValidate="_iaApproval" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+									</div>
+								</div>
+                                <div class="form-group">
+								    <label for="_iaCheckBox" class="col-sm-4 control-label">IA Signature:</label>
+								    <div class="col-sm-8">
+									    <div class="input-group">
+										    <span class="input-group-addon">
+											    <asp:CheckBox ID="_iaCheckBox" Checked='<%# Bind("IaSigned") %>' OnCheckedChanged="_iA_CheckBox_CheckedChanged" runat="server" AutoPostBack="True" />
+										    </span>
+										    <asp:TextBox ID="_iaSignature" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("IaEdipi") %>' />
+									    </div>
+                                        <small class="help-block">Check the box to apply your signature.</small>
+									    <asp:RequiredFieldValidator ID="_iASignRequiredValidator" runat="server" ErrorMessage="IA signature: You must sign the form before applying your changes." Text="Requires your attention" Display="Dynamic" CssClass="label label-warning" ControlToValidate="_iaSignature"></asp:RequiredFieldValidator>
+									    <asp:CompareValidator ID="_iaDsdCompareValidator" CssClass="label label-warning" ControlToValidate="_iaSignature" ControlToCompare="_dsdSignature" runat="server" ErrorMessage="IA signature: The IA signature and the DSD signature can not be the same." Type="String" Operator="NotEqual" Text="Requires your attention" Display="Dynamic"></asp:CompareValidator>
+									    <asp:CompareValidator ID="_iaUserCompareValidator" ControlToValidate="_iaSignature" ControlToCompare="_userEdipi" runat="server" ErrorMessage="IA signature: The Request entry EDIPI and the IA signature can not be the same." CssClass="label label-warning" Display="Dynamic" Text="Requires your attention" Operator="NotEqual"></asp:CompareValidator>
+								    </div>
+							    </div>					
+						    </div>
+                        </asp:PlaceHolder>
+                        <asp:PlaceHolder Visible="true" ID="_saSection" runat="server">
+						    <div class="panel-heading">
+							    <h3>SA Section:</h3>
+							    <p>Please fill out the information below and then apply your signature (EDIPI).</p>
+						    </div>
+						    <div class="panel-body">
+							    <asp:PlaceHolder ID="_adInfo" Visible="false" runat="server">
+								    <div class="form-group">
+									    <label for="_samAccount" class="col-sm-4 control-label">SAM Account:</label>
+									    <div class="col-sm-8">
+										    <asp:TextBox ID="_samAccount" CssClass="form-control" Text='<%# Bind("SamAccountName") %>' runat="server"></asp:TextBox>
+									    </div>
+								    </div>
 
+								    <div class="form-group">
+									    <label for="_homeFolder" class="col-sm-4 control-label">Home Folder:</label>
+									    <div class="col-sm-8">
+										    <asp:TextBox ID="_homeFolder" CssClass="form-control" Text='<%# Bind("HomeFolder") %>' runat="server"></asp:TextBox>
+									    </div>
+								    </div>
+							    </asp:PlaceHolder>
+                                <div class="form-group">
+                                    <label for="_saRemark" class="col-sm-4 control-label">Remark:</label>
+                                    <div class="col-sm-8">
+                                        <asp:TextBox runat="server" ID="_saRemark" TextMode="MultiLine" Rows="6" CssClass="form-control" Text='<%# Bind("SaRemark") %>'></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="_editRequestStatus" class="col-sm-4 control-label">Request Status:</label>
+                                    <div class="col-sm-8">
+                                        <asp:DropDownList runat="server" ID="_editRequestStatus" SelectedValue='<%# Bind("RequestStatus") %>' CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="_editRequestStatus_SelectedIndexChanged">
+							                <asp:ListItem Text="Requested" Value="Requested"></asp:ListItem>
+							                <asp:ListItem Text="Partially Verified" Value="Partially Verified"></asp:ListItem>
+							                <asp:ListItem Text="Ready" Value="Ready"></asp:ListItem>
+							                <asp:ListItem Text="Approved" Value="Approved"></asp:ListItem>
+							                <asp:ListItem Text="Completed" Value="Completed"></asp:ListItem>
+							                <asp:ListItem Text="Denied" Value="Denied"></asp:ListItem>
+							                <asp:ListItem Text="Failed" Value="Failed"></asp:ListItem>
+							                <asp:ListItem Text="Pending" Value="Pending"></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+							    <div class="form-group">
+								    <label for="_saCheckBox" class="col-sm-4 control-label">SA Signature:</label>
+								    <div class="col-sm-8">
+									    <div class="input-group">
+										    <span class="input-group-addon">
+											    <asp:CheckBox ID="_saCheckBox" runat="server" Checked='<%# Bind("SaSigned") %>' OnCheckedChanged="_sa_CheckBox_CheckedChanged" AutoPostBack="True" />
+										    </span>
+										    <asp:TextBox ID="_saSignature" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("SaEdipi") %>' />
+									    </div>
+									    <asp:RequiredFieldValidator ID="_saSignRequiredValidator" runat="server" ErrorMessage="SA signature: You must sign the form before completing the request." Text="Requires your attention" Display="Dynamic" CssClass="label label-warning" ControlToValidate="_saSignature"></asp:RequiredFieldValidator>
+									    <asp:CompareValidator ID="_saUserCompareValidator" ControlToValidate="_saSignature" ControlToCompare="_userEdipi" runat="server" ErrorMessage="SA signature: The Request entry EDIPI and the SA signature can not be the same." CssClass="label label-warning" Display="Dynamic" Text="Requires your attention" Operator="NotEqual"></asp:CompareValidator>
+									    <asp:CompareValidator ID="_saDsdCompareValidator" ControlToValidate="_saSignature" ControlToCompare="_dsdSignature" runat="server" ErrorMessage="SA signature: The SA signature and the DSD signature can not be the same." CssClass="label label-warning" Display="Dynamic" Text="Requires your attention" Operator="NotEqual"></asp:CompareValidator>
+									    <asp:CompareValidator ID="_saIaCompareValidator" ControlToValidate="_saSignature" ControlToCompare="_iaSignature" runat="server" ErrorMessage="SA signature: The SA signature and the IA signature can not be the same." CssClass="label label-warning" Display="Dynamic" Text="Requires your attention" Operator="NotEqual"></asp:CompareValidator>
+								    </div>
+							    </div>
+						    </div>
+                        </asp:PlaceHolder>
 						<div class="panel-footer">
 							<asp:Button ID="_updateButton" data-loading-text="Validating information..." CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Update Request" />
 							<asp:Button ID="_cancelButton" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" OnClick="_cancelButton_Click" />
@@ -431,13 +505,16 @@
 			</div>
 			<div class="hidden">
                 <asp:TextBox ID="_userEdipi" Text='<%# Eval("Edipi") %>' runat="server"></asp:TextBox>
-				<asp:TextBox ID="_accountType" Text='<%# Eval("AccountType") %>' runat="server"></asp:TextBox>
 				<asp:TextBox ID="_supervisorEdipi" Text='<%# Eval("SupEdipi") %>' runat="server"></asp:TextBox>
 				<asp:TextBox ID="_saName" Text='<%# Bind("SaName") %>' runat="server"></asp:TextBox>
 				<asp:TextBox ID="_completedDate" Text='<%# Bind("CompletedDate") %>' runat="server"></asp:TextBox>
-				<asp:TextBox ID="_iADateSigned" Text='<%# Bind("IaDateSigned") %>' runat="server"></asp:TextBox>
+				<asp:TextBox ID="_iaDateSigned" Text='<%# Bind("IaDateSigned") %>' runat="server"></asp:TextBox>
+				<asp:TextBox ID="_dsdDateSigned" Text='<%# Bind("DsdDateSigned") %>' runat="server"></asp:TextBox>
+				<asp:TextBox ID="_saDateSigned" Text='<%# Bind("SaDateSigned") %>' runat="server"></asp:TextBox>
 				<asp:TextBox ID="_modifiedDate" Text='<%# Bind("ModifiedDate") %>' runat="server"></asp:TextBox>
+				<asp:TextBox ID="_accountType" Text='<%# Eval("AccountType") %>' runat="server"></asp:TextBox>
 				<asp:TextBox ID="_requestType" Text='<%# Eval("RequestType") %>' runat="server"></asp:TextBox>
+				<asp:TextBox ID="_requestStatus" Text='<%# Bind("RequestStatus") %>' runat="server"></asp:TextBox>
 			</div>		
 		</EditItemTemplate>
 		<EmptyDataTemplate>
@@ -464,6 +541,9 @@
 		</asp:SearchExpression>
 		<asp:SearchExpression DataFields="RequestType" SearchType="Contains">
             <asp:ControlParameter ControlID="_filterRequestType" />
+		</asp:SearchExpression>
+		<asp:SearchExpression DataFields="AccountType" SearchType="Contains">
+            <asp:ControlParameter ControlID="_filterAccountType" />
 		</asp:SearchExpression>
 	</asp:QueryExtender>
 	
