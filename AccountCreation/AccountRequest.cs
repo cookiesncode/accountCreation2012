@@ -55,12 +55,19 @@ namespace AccountCreation
         public string SupEdipi { get; set; }
         public Nullable<bool> SupSigned { get; set; }
         public Nullable<System.DateTime> SupDateSigned { get; set; }
+        public Nullable<bool> SaSigned { get; set; }
         public string SaEdipi { get; set; }
         public string SaName { get; set; }
-        public string Remark { get; set; }
-        public string IaEdipi { get; set; }
+        public Nullable<System.DateTime> SaDateSigned { get; set; }
+        public string SaRemark { get; set; }
+        public Nullable<bool> DsdSigned { get; set; }
+        public string DsdEdipi { get; set; }
+        public Nullable<System.DateTime> DsdDateSigned { get; set; }
+        public string DsdRemark { get; set; }
         public Nullable<bool> IaSigned { get; set; }
+        public string IaEdipi { get; set; }
         public Nullable<System.DateTime> IaDateSigned { get; set; }
+        public string IaRemark { get; set; }
         public Nullable<System.DateTime> RequestedDate { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public Nullable<System.DateTime> CompletedDate { get; set; }

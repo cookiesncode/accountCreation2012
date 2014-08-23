@@ -57,12 +57,19 @@
           <Property Name="InvestigationDate" Type="datetime" />
           <Property Name="ClearanceLevel" Type="nvarchar" MaxLength="256" />
           <Property Name="LevelDesignation" Type="nvarchar" MaxLength="50" />
-          <Property Name="Remark" Type="nvarchar" MaxLength="256" />
+          <Property Name="SARemark" Type="nvarchar" MaxLength="256" />
           <Property Name="ModifiedDate" Type="datetime" />
           <Property Name="IASigned" Type="bit" />
           <Property Name="IAEDIPI" Type="nvarchar" MaxLength="50" />
           <Property Name="IADateSigned" Type="datetime" />
           <Property Name="Justification" Type="nvarchar" MaxLength="256" />
+          <Property Name="DSDSigned" Type="bit" />
+          <Property Name="DSDEDIPI" Type="nvarchar" MaxLength="50" />
+          <Property Name="SASigned" Type="bit" />
+          <Property Name="IARemark" Type="nvarchar" MaxLength="256" />
+          <Property Name="SADateSigned" Type="datetime" />
+          <Property Name="DSDDateSigned" Type="datetime" />
+          <Property Name="DSDRemark" Type="nvarchar" MaxLength="256" />
         </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -116,12 +123,19 @@
           <Property Type="String" Name="SupEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SupSigned" Type="Boolean" />
           <Property Type="DateTime" Name="SupDateSigned" Precision="3" />
+          <Property Type="Boolean" Name="SaSigned" />
           <Property Type="String" Name="SaEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="SaName" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Remark" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="IaEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="SaDateSigned" Precision="3" />
+          <Property Type="String" Name="SaRemark" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="DsdSigned" />
+          <Property Type="String" Name="DsdEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DsdDateSigned" Precision="3" />
+          <Property Type="String" Name="DsdRemark" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Type="Boolean" Name="IaSigned" />
+          <Property Type="String" Name="IaEdipi" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="IaDateSigned" Precision="3" />
+          <Property Type="String" Name="IaRemark" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="RequestedDate" Precision="3" />
           <Property Type="DateTime" Name="ModifiedDate" Precision="3" />
           <Property Type="DateTime" Name="CompletedDate" Precision="3" />
@@ -136,12 +150,19 @@
           <EntitySetMapping Name="AccountRequests">
             <EntityTypeMapping TypeName="CarsonAccountModel.AccountRequest">
               <MappingFragment StoreEntitySet="tblAcctCreate_Auto">
+                <ScalarProperty Name="DsdRemark" ColumnName="DSDRemark" />
+                <ScalarProperty Name="DsdDateSigned" ColumnName="DSDDateSigned" />
+                <ScalarProperty Name="SaDateSigned" ColumnName="SADateSigned" />
+                <ScalarProperty Name="IaRemark" ColumnName="IARemark" />
+                <ScalarProperty Name="SaRemark" ColumnName="SARemark" />
+                <ScalarProperty Name="SaSigned" ColumnName="SASigned" />
+                <ScalarProperty Name="DsdEdipi" ColumnName="DSDEDIPI" />
+                <ScalarProperty Name="DsdSigned" ColumnName="DSDSigned" />
                 <ScalarProperty Name="Justification" ColumnName="Justification" />
                 <ScalarProperty Name="IaDateSigned" ColumnName="IADateSigned" />
                 <ScalarProperty Name="IaEdipi" ColumnName="IAEDIPI" />
                 <ScalarProperty Name="IaSigned" ColumnName="IASigned" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
                 <ScalarProperty Name="LevelDesignation" ColumnName="LevelDesignation" />
                 <ScalarProperty Name="ClearanceLevel" ColumnName="ClearanceLevel" />
                 <ScalarProperty Name="InvestigationDate" ColumnName="InvestigationDate" />
