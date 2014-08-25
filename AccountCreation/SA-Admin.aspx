@@ -379,7 +379,7 @@
                                             <asp:ListItem Value="Approved">Approved</asp:ListItem>
                                             <asp:ListItem Value="Denied">Denied</asp:ListItem>
                                         </asp:RadioButtonList>
-										<asp:RequiredFieldValidator CssClass="label label-warning" ID="_dsdApprovalRequiredValidator" runat="server" ErrorMessage="Request Approval: Please make a selection." ControlToValidate="_dsdApproval" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+										<asp:RequiredFieldValidator ValidationGroup="dsdValGroup" CssClass="label label-warning" ID="_dsdApprovalRequiredValidator" runat="server" ErrorMessage="Request Approval: Please make a selection." ControlToValidate="_dsdApproval" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
 									</div>
 								</div>
 							    <div class="form-group">
@@ -392,10 +392,14 @@
 										    <asp:TextBox ID="_dsdSignature" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("DsdEdipi") %>' />
 									    </div>
                                         <small class="help-block">Check the box to apply your signature.</small>
-									    <asp:RequiredFieldValidator ID="_dsdRequiredValidator" runat="server" ErrorMessage="DSD signature: You must sign the form before applying your changes." Text="Requires your attention" Display="Dynamic" CssClass="label label-warning" ControlToValidate="_dsdSignature"></asp:RequiredFieldValidator>
-									    <asp:CompareValidator ID="_dsdUserCompareValidator" ControlToValidate="_dsdSignature" ControlToCompare="_userEdipi" runat="server" ErrorMessage="DSD signature: The Request entry EDIPI and the DSD signature can not be the same." CssClass="label label-warning" Display="Dynamic" Text="Requires your attention" Operator="NotEqual"></asp:CompareValidator>
+									    <asp:RequiredFieldValidator ID="_dsdRequiredValidator" ValidationGroup="dsdValGroup" runat="server" ErrorMessage="DSD signature: You must sign the form before applying your changes." Text="Requires your attention" Display="Dynamic" CssClass="label label-warning" ControlToValidate="_dsdSignature"></asp:RequiredFieldValidator>
+									    <asp:CompareValidator ID="_dsdUserCompareValidator" ValidationGroup="dsdValGroup" ControlToValidate="_dsdSignature" ControlToCompare="_userEdipi" runat="server" ErrorMessage="DSD signature: The Request entry EDIPI and the DSD signature can not be the same." CssClass="label label-warning" Display="Dynamic" Text="Requires your attention" Operator="NotEqual"></asp:CompareValidator>
 								    </div>
 							    </div>					
+						    </div>
+						    <div class="panel-footer">
+							    <asp:Button ID="_dsdSubmit" ValidationGroup="dsdValGroup" data-loading-text="Validating information..." CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Update Request" />
+							    <asp:Button ID="_dsdCancel" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" OnClick="_cancelButton_Click" />
 						    </div>
                         </asp:PlaceHolder>
 					
@@ -417,7 +421,7 @@
                                             <asp:ListItem Value="Approved">Approved</asp:ListItem>
                                             <asp:ListItem Value="Denied">Denied</asp:ListItem>
                                         </asp:RadioButtonList>
-										<asp:RequiredFieldValidator CssClass="label label-warning" ID="_iaApprovalRequiredValidator" runat="server" ErrorMessage="Request Approval: Please make a selection." ControlToValidate="_iaApproval" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+										<asp:RequiredFieldValidator CssClass="label label-warning" ID="_iaApprovalRequiredValidator" runat="server" ErrorMessage="Request Approval: Please make a selection." ValidationGroup="iaValGroup" ControlToValidate="_iaApproval" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
 									</div>
 								</div>
                                 <div class="form-group">
@@ -430,13 +434,18 @@
 										    <asp:TextBox ID="_iaSignature" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("IaEdipi") %>' />
 									    </div>
                                         <small class="help-block">Check the box to apply your signature.</small>
-									    <asp:RequiredFieldValidator ID="_iASignRequiredValidator" runat="server" ErrorMessage="IA signature: You must sign the form before applying your changes." Text="Requires your attention" Display="Dynamic" CssClass="label label-warning" ControlToValidate="_iaSignature"></asp:RequiredFieldValidator>
-									    <asp:CompareValidator ID="_iaDsdCompareValidator" CssClass="label label-warning" ControlToValidate="_iaSignature" ControlToCompare="_dsdSignature" runat="server" ErrorMessage="IA signature: The IA signature and the DSD signature can not be the same." Type="String" Operator="NotEqual" Text="Requires your attention" Display="Dynamic"></asp:CompareValidator>
-									    <asp:CompareValidator ID="_iaUserCompareValidator" ControlToValidate="_iaSignature" ControlToCompare="_userEdipi" runat="server" ErrorMessage="IA signature: The Request entry EDIPI and the IA signature can not be the same." CssClass="label label-warning" Display="Dynamic" Text="Requires your attention" Operator="NotEqual"></asp:CompareValidator>
+									    <asp:RequiredFieldValidator ID="_iASignRequiredValidator" ValidationGroup="iaValGroup" runat="server" ErrorMessage="IA signature: You must sign the form before applying your changes." Text="Requires your attention" Display="Dynamic" CssClass="label label-warning" ControlToValidate="_iaSignature"></asp:RequiredFieldValidator>
+									    <asp:CompareValidator ID="_iaDsdCompareValidator" ValidationGroup="iaValGroup" CssClass="label label-warning" ControlToValidate="_iaSignature" ControlToCompare="_dsdSignature" runat="server" ErrorMessage="IA signature: The IA signature and the DSD signature can not be the same." Type="String" Operator="NotEqual" Text="Requires your attention" Display="Dynamic"></asp:CompareValidator>
+									    <asp:CompareValidator ID="_iaUserCompareValidator" ValidationGroup="iaValGroup" ControlToValidate="_iaSignature" ControlToCompare="_userEdipi" runat="server" ErrorMessage="IA signature: The Request entry EDIPI and the IA signature can not be the same." CssClass="label label-warning" Display="Dynamic" Text="Requires your attention" Operator="NotEqual"></asp:CompareValidator>
 								    </div>
 							    </div>					
 						    </div>
-                        </asp:PlaceHolder>
+						    <div class="panel-footer">
+							    <asp:Button ID="_iaSubmit" ValidationGroup="iaValGroup" data-loading-text="Validating information..." CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Update Request" />
+							    <asp:Button ID="_iaCancel" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" OnClick="_cancelButton_Click" />
+						    </div>
+                            </asp:PlaceHolder>
+
                         <asp:PlaceHolder Visible="true" ID="_saSection" runat="server">
 						    <div class="panel-heading">
 							    <h3>SA Section:</h3>
@@ -488,19 +497,20 @@
 										    </span>
 										    <asp:TextBox ID="_saSignature" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("SaEdipi") %>' />
 									    </div>
-									    <asp:RequiredFieldValidator ID="_saSignRequiredValidator" runat="server" ErrorMessage="SA signature: You must sign the form before completing the request." Text="Requires your attention" Display="Dynamic" CssClass="label label-warning" ControlToValidate="_saSignature"></asp:RequiredFieldValidator>
-									    <asp:CompareValidator ID="_saUserCompareValidator" ControlToValidate="_saSignature" ControlToCompare="_userEdipi" runat="server" ErrorMessage="SA signature: The Request entry EDIPI and the SA signature can not be the same." CssClass="label label-warning" Display="Dynamic" Text="Requires your attention" Operator="NotEqual"></asp:CompareValidator>
-									    <asp:CompareValidator ID="_saDsdCompareValidator" ControlToValidate="_saSignature" ControlToCompare="_dsdSignature" runat="server" ErrorMessage="SA signature: The SA signature and the DSD signature can not be the same." CssClass="label label-warning" Display="Dynamic" Text="Requires your attention" Operator="NotEqual"></asp:CompareValidator>
-									    <asp:CompareValidator ID="_saIaCompareValidator" ControlToValidate="_saSignature" ControlToCompare="_iaSignature" runat="server" ErrorMessage="SA signature: The SA signature and the IA signature can not be the same." CssClass="label label-warning" Display="Dynamic" Text="Requires your attention" Operator="NotEqual"></asp:CompareValidator>
+									    <asp:RequiredFieldValidator ID="_saSignRequiredValidator"  ValidationGroup="_saValGroup" runat="server" ErrorMessage="SA signature: You must sign the form before completing the request." Text="Requires your attention" Display="Dynamic" CssClass="label label-warning" ControlToValidate="_saSignature"></asp:RequiredFieldValidator>
+									    <asp:CompareValidator ID="_saUserCompareValidator"  ValidationGroup="_saValGroup" ControlToValidate="_saSignature" ControlToCompare="_userEdipi" runat="server" ErrorMessage="SA signature: The Request entry EDIPI and the SA signature can not be the same." CssClass="label label-warning" Display="Dynamic" Text="Requires your attention" Operator="NotEqual"></asp:CompareValidator>
+									    <asp:CompareValidator ID="_saDsdCompareValidator"  ValidationGroup="_saValGroup" ControlToValidate="_saSignature" ControlToCompare="_dsdSignature" runat="server" ErrorMessage="SA signature: The SA signature and the DSD signature can not be the same." CssClass="label label-warning" Display="Dynamic" Text="Requires your attention" Operator="NotEqual"></asp:CompareValidator>
+									    <asp:CompareValidator ID="_saIaCompareValidator"  ValidationGroup="_saValGroup" ControlToValidate="_saSignature" ControlToCompare="_iaSignature" runat="server" ErrorMessage="SA signature: The SA signature and the IA signature can not be the same." CssClass="label label-warning" Display="Dynamic" Text="Requires your attention" Operator="NotEqual"></asp:CompareValidator>
 								    </div>
 							    </div>
 						    </div>
+						    <div class="panel-footer">
+							    <asp:Button ID="_updateButton" ValidationGroup="_saValGroup" data-loading-text="Validating information..." CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Update Request" />
+							    <asp:Button ID="_cancelButton" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" OnClick="_cancelButton_Click" />
+						    </div>
                         </asp:PlaceHolder>
-						<div class="panel-footer">
-							<asp:Button ID="_updateButton" data-loading-text="Validating information..." CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Update Request" />
-							<asp:Button ID="_cancelButton" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" OnClick="_cancelButton_Click" />
-						</div>
 					</div> <%-- End Signature block --%>
+
 					<asp:ValidationSummary CssClass="alert alert-danger" ID="_validationSummary" runat="server" />	
 				</div>
 			</div>
