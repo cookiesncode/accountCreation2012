@@ -61,10 +61,12 @@ namespace AccountCreation
                 {
                     submitBtn.Visible = true;
                 }
-                if (User.IsInRole("CARSON NEC IA Account Review") && (accountTypeControl.Text == "SA" || accountTypeControl.Text == "EP"))
+               
+                if (User.IsInRole("CARSON NEC IA Account Review") && RequiresThreeSignatures)
                 {
                     submitBtn.Visible = true;
                 }
+                
                 if (requestTypeControl.Text == "Manual Delete" || requestTypeControl.Text == "Auto Delete")
                 {
                     var deleteDatePanelControl = (Panel)(_formview).FindControl("_deleteRequestPanel");
@@ -77,8 +79,19 @@ namespace AccountCreation
                     adContainerControl.Visible = true;
 				}
 
-                if (requestTypeControl.Text.Contains("Create") && accountTypeControl.Text == "SA")
+                if (RequiresThreeSignatures)
                 {
+                    var supervisorNameControl = (Literal)(_formview).FindControl("_supervisorName");
+                    var supervisorEdipiControl = (TextBox)(_formview).FindControl("_supervisorEdipi");
+                    var supervisorInfo = AdAccount.FindAdUser(supervisorEdipiControl.Text);
+                    supervisorNameControl.Text = supervisorInfo;
+
+                    var justificationPanelControl = (Panel)(_formview).FindControl("_justificationPanel");
+                    justificationPanelControl.Visible = true;
+
+                    var saPanelControl = (Panel)(_formview).FindControl("_saPanel");
+                    saPanelControl.Visible = true;
+
                     var saSection = (PlaceHolder)(_formview).FindControl("_saSection");
                     saSection.Visible = false;
 
@@ -89,33 +102,25 @@ namespace AccountCreation
                     dsdSection.Visible = true;
 
                     var saCheckBox = (CheckBox)(_formview).FindControl("_saCheckBox");
-                    var iaCheckBox = (CheckBox)(_formview).FindControl("_iaCheckBox");
-                    var dsdCheckBox = (CheckBox)(_formview).FindControl("_dsdCheckBox");
+                                  
                     var requestStatusControl = (TextBox)(_formview).FindControl("_requestStatus");
-                    var dsdApprovalValidator = (RequiredFieldValidator)(_formview).FindControl("_dsdApprovalRequiredValidator");
-                    var iaApprovalValidator = (RequiredFieldValidator)(_formview).FindControl("_iaApprovalRequiredValidator");
+                    var dsdCheckBox = (CheckBox)(_formview).FindControl("_dsdCheckBox");
 
                     if ((requestStatusControl.Text.Contains("Pending") == true || requestStatusControl.Text.Contains("Approved") || requestStatusControl.Text.Contains("Completed")) && dsdCheckBox.Checked)
                     {
                         iaSection.Visible = true;
+                        var dsdApprovalValidator = (RequiredFieldValidator)(_formview).FindControl("_dsdApprovalRequiredValidator");
                         dsdApprovalValidator.Visible = false;
                     }
+
+                    var iaCheckBox = (CheckBox)(_formview).FindControl("_iaCheckBox");
+
                     if ((requestStatusControl.Text.Contains("Approved") || requestStatusControl.Text.Contains("Completed") == true) && iaCheckBox.Checked)
                     {
                         saSection.Visible = true;
+                        var iaApprovalValidator = (RequiredFieldValidator)(_formview).FindControl("_iaApprovalRequiredValidator");
                         iaApprovalValidator.Visible = false;
                     }
-
-                    var justificationPanelControl = (Panel)(_formview).FindControl("_justificationPanel");
-                    justificationPanelControl.Visible = true;
-                    
-                    var saPanelControl = (Panel)(_formview).FindControl("_saPanel");
-                    saPanelControl.Visible = true;
-
-                    var supervisorNameControl = (Literal)(_formview).FindControl("_supervisorName");
-                    var supervisorEdipiControl = (TextBox)(_formview).FindControl("_supervisorEdipi");
-                    var supervisorInfo = AdAccount.FindAdUser(supervisorEdipiControl.Text);
-                    supervisorNameControl.Text = supervisorInfo;
                 }
 
 			}
@@ -225,10 +230,11 @@ namespace AccountCreation
                 var iaSignatureControl = (TextBox)(_formview).FindControl("_iaSignature");
                 var iaDateSignedControl = (TextBox)(_formview).FindControl("_iaDateSigned");
                 var requestStatusControl = (TextBox)(_formview).FindControl("_requestStatus");
-                var iaApprovalControl = (RadioButtonList)(_formview).FindControl("_iaApproval");
-
+                
                 if (iaCheckBoxControl.Checked)
                 {
+                    var iaApprovalControl = (RadioButtonList)(_formview).FindControl("_iaApproval");
+
                     if (iaApprovalControl.SelectedValue == "Denied")
                     {
                         requestStatusControl.Text = "Denied";
@@ -256,11 +262,12 @@ namespace AccountCreation
                 var dsdCheckBoxControl = (CheckBox)(_formview).FindControl("_dsdCheckBox");
                 var dsdSignatureControl = (TextBox)(_formview).FindControl("_dsdSignature");
                 var dsdDateSignedControl = (TextBox)(_formview).FindControl("_dsdDateSigned");
-                var requestStatusControl = (TextBox)(_formview).FindControl("_requestStatus");
-                var dsdApprovalControl = (RadioButtonList)(_formview).FindControl("_dsdApproval");
+                var requestStatusControl = (TextBox)(_formview).FindControl("_requestStatus");       
 
                 if (dsdCheckBoxControl.Checked)
                 {
+                    var dsdApprovalControl = (RadioButtonList)(_formview).FindControl("_dsdApproval");
+
                     if (dsdApprovalControl.SelectedValue == "Denied")
                     {
                         requestStatusControl.Text = "Denied";
@@ -291,7 +298,6 @@ namespace AccountCreation
                 dsdCheckBoxControl.Checked = false;
                 dsdSignatureControl.Text = "";
             }
-
         }
 
         protected void _iaApproval_SelectedIndexChanged(object sender, EventArgs e)

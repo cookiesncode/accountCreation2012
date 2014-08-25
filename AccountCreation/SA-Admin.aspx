@@ -46,10 +46,11 @@
 							<asp:ListItem Text="Requested" Value="Requested"></asp:ListItem>
 							<asp:ListItem Text="Partially Verified" Value="Partially Verified"></asp:ListItem>
 							<asp:ListItem Text="Ready" Value="Ready"></asp:ListItem>
+							<asp:ListItem Text="Pending" Value="Pending"></asp:ListItem>
+							<asp:ListItem Text="Approved" Value="Approved"></asp:ListItem>
 							<asp:ListItem Text="Completed" Value="Completed"></asp:ListItem>
 							<asp:ListItem Text="Denied" Value="Denied"></asp:ListItem>
 							<asp:ListItem Text="Failed" Value="Failed"></asp:ListItem>
-							<asp:ListItem Text="Pending" Value="Pending"></asp:ListItem>
 						</asp:DropDownList>
 					</div>
 				</div>
