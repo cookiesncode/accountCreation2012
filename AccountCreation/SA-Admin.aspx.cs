@@ -17,9 +17,9 @@ namespace AccountCreation
         {
             get
             {
-                var accountTypeControl = (TextBox)(_formview).FindControl("_accountType");
-                var requestTypeControl = (TextBox)(_formview).FindControl("_requestType");
-                if (requestTypeControl.Text.Contains("Create") && accountTypeControl.Text == "SA")
+                var accountTypeCtrl = (TextBox)(_formview).FindControl("_accountType");
+                var requestTypeCtrl = (TextBox)(_formview).FindControl("_requestType");
+                if (requestTypeCtrl.Text.Contains("Create") && accountTypeCtrl.Text == "SA")
                 {
                     return true;
                 }
@@ -81,41 +81,39 @@ namespace AccountCreation
 
                 if (RequiresThreeSignatures)
                 {
-                    var supervisorNameControl = (Literal)(_formview).FindControl("_supervisorName");
-                    var supervisorEdipiControl = (TextBox)(_formview).FindControl("_supervisorEdipi");
-                    var supervisorInfo = AdAccount.FindAdUser(supervisorEdipiControl.Text);
-                    supervisorNameControl.Text = supervisorInfo;
+                    var supervisorNameCtrl = (Literal)(_formview).FindControl("_supervisorName");
+                    var supervisorEdipiCtrl = (TextBox)(_formview).FindControl("_supervisorEdipi");
+                    var supervisorInfo = AdAccount.FindAdUser(supervisorEdipiCtrl.Text);
+                    supervisorNameCtrl.Text = supervisorInfo;
 
-                    var justificationPanelControl = (Panel)(_formview).FindControl("_justificationPanel");
-                    justificationPanelControl.Visible = true;
+                    var requestEntryJustificationCtrl = (Panel)(_formview).FindControl("_justificationPanel");
+                    requestEntryJustificationCtrl.Visible = true;
 
-                    var saPanelControl = (Panel)(_formview).FindControl("_saPanel");
-                    saPanelControl.Visible = true;
+                    var requestEntrySaCtrl = (Panel)(_formview).FindControl("_saPanel");
+                    requestEntrySaCtrl.Visible = true;
 
-                    var saSection = (PlaceHolder)(_formview).FindControl("_saSection");
-                    saSection.Visible = false;
+                    var saApprovalSection = (PlaceHolder)(_formview).FindControl("_saSection");
+                    saApprovalSection.Visible = false;
 
-                    var iaSection = (PlaceHolder)(_formview).FindControl("_iaSection");
-                    iaSection.Visible = false;
+                    var iaApprovalSection = (PlaceHolder)(_formview).FindControl("_iaSection");
+                    iaApprovalSection.Visible = false;
 
-                    var dsdSection = (PlaceHolder)(_formview).FindControl("_dsdSection");
-                    dsdSection.Visible = true;
-
-                    var saCheckBox = (CheckBox)(_formview).FindControl("_saCheckBox");
+                    var dsdApprovalSection = (PlaceHolder)(_formview).FindControl("_dsdSection");
+                    dsdApprovalSection.Visible = true;
                                   
-                    var requestStatusControl = (TextBox)(_formview).FindControl("_requestStatus");
-                    var dsdCheckBox = (CheckBox)(_formview).FindControl("_dsdCheckBox");
+                    var requestStatusCtrl = (TextBox)(_formview).FindControl("_requestStatus");
+                    var dsdCheckBoxCtrl = (CheckBox)(_formview).FindControl("_dsdCheckBox");
 
-                    if ((requestStatusControl.Text.Contains("Pending") == true || requestStatusControl.Text.Contains("Approved") || requestStatusControl.Text.Contains("Completed")) && dsdCheckBox.Checked)
+                    if ((requestStatusCtrl.Text.Contains("Pending") == true || requestStatusCtrl.Text.Contains("Approved") || requestStatusCtrl.Text.Contains("Completed")) && dsdCheckBoxCtrl.Checked)
                     {
-                        iaSection.Visible = true;
+                        iaApprovalSection.Visible = true;
                     }
 
-                    var iaCheckBox = (CheckBox)(_formview).FindControl("_iaCheckBox");
+                    var iaCheckBoxCtrl = (CheckBox)(_formview).FindControl("_iaCheckBox");
 
-                    if ((requestStatusControl.Text.Contains("Approved") || requestStatusControl.Text.Contains("Completed") == true) && iaCheckBox.Checked)
+                    if ((requestStatusCtrl.Text.Contains("Approved") || requestStatusCtrl.Text.Contains("Completed") == true) && iaCheckBoxCtrl.Checked)
                     {
-                        saSection.Visible = true;
+                        saApprovalSection.Visible = true;
                     }
                 }
 
@@ -170,26 +168,26 @@ namespace AccountCreation
         {
             if (_formview.CurrentMode == FormViewMode.Edit)
             {
-                var editRequestStatus = (DropDownList)(_formview).FindControl("_editRequestStatus");
-                var requestStatusControl = (TextBox)(_formview).FindControl("_requestStatus");
-                var completedDate = (TextBox)(_formview).FindControl("_completedDate");
-                var modifiedDate = (TextBox)(_formview).FindControl("_modifiedDate");
-                var saCheckBoxControl = (CheckBox)(_formview).FindControl("_saCheckBox");
-                var saSignatureControl = (TextBox)(_formview).FindControl("_saSignature");
+                var editRequestStatusCtrl = (DropDownList)(_formview).FindControl("_editRequestStatus");
+                var requestStatusCtrl = (TextBox)(_formview).FindControl("_requestStatus");
+                var completedDateCtrl = (TextBox)(_formview).FindControl("_completedDate");
+                var modifiedDateCtrl = (TextBox)(_formview).FindControl("_modifiedDate");
+                var saCheckBoxCtrl = (CheckBox)(_formview).FindControl("_saCheckBox");
+                var saSignatureCtrl = (TextBox)(_formview).FindControl("_saSignature");
 
-                saCheckBoxControl.Checked = false;
-                saSignatureControl.Text = "";
-                requestStatusControl.Text = editRequestStatus.SelectedValue;
+                saCheckBoxCtrl.Checked = false;
+                saSignatureCtrl.Text = "";
+                requestStatusCtrl.Text = editRequestStatusCtrl.SelectedValue;
 
-                if (editRequestStatus.SelectedValue == "Completed" || editRequestStatus.SelectedValue == "Denied")
+                if (editRequestStatusCtrl.SelectedValue == "Completed" || editRequestStatusCtrl.SelectedValue == "Denied")
                 {
-                    completedDate.Text = DateTime.Now.ToString();
-                    modifiedDate.Text = "";
+                    completedDateCtrl.Text = DateTime.Now.ToString();
+                    modifiedDateCtrl.Text = "";
                 }
                 else
                 {
-                    modifiedDate.Text = DateTime.Now.ToString();
-                    completedDate.Text = "";
+                    modifiedDateCtrl.Text = DateTime.Now.ToString();
+                    completedDateCtrl.Text = "";
                 }
             }
         }
@@ -198,22 +196,22 @@ namespace AccountCreation
         {
             if (_formview.CurrentMode == FormViewMode.Edit)
             {
-                var saCheckBox = (CheckBox)(_formview).FindControl("_saCheckBox");
-                var saName = (TextBox)(_formview).FindControl("_saName");
-                var saSignature = (TextBox)(_formview).FindControl("_saSignature");
-                var saDateSignedControl = (TextBox)(_formview).FindControl("_saDateSigned");
+                var saCheckBoxCtrl = (CheckBox)(_formview).FindControl("_saCheckBox");
+                var saNameCtrl = (TextBox)(_formview).FindControl("_saName");
+                var saSignatureCtrl = (TextBox)(_formview).FindControl("_saSignature");
+                var saDateSignedCtrl = (TextBox)(_formview).FindControl("_saDateSigned");
 
-                if (saCheckBox.Checked)
+                if (saCheckBoxCtrl.Checked)
                 {
-                    saName.Text = CacCard.FirstName + " " + CacCard.LastName;
-                    saSignature.Text = CacCard.Edipi;
-                    saDateSignedControl.Text = DateTime.Now.ToString();
+                    saNameCtrl.Text = CacCard.FirstName + " " + CacCard.LastName;
+                    saSignatureCtrl.Text = CacCard.Edipi;
+                    saDateSignedCtrl.Text = DateTime.Now.ToString();
                 }
                 else
                 {
-                    saName.Text = "";
-                    saSignature.Text = "";
-                    saDateSignedControl.Text = "";
+                    saNameCtrl.Text = "";
+                    saSignatureCtrl.Text = "";
+                    saDateSignedCtrl.Text = "";
                 }
             }
         }
@@ -222,31 +220,31 @@ namespace AccountCreation
         {
             if (_formview.CurrentMode == FormViewMode.Edit)
             {
-                var iaCheckBoxControl = (CheckBox)(_formview).FindControl("_iaCheckBox");
-                var iaSignatureControl = (TextBox)(_formview).FindControl("_iaSignature");
-                var iaDateSignedControl = (TextBox)(_formview).FindControl("_iaDateSigned");
-                var requestStatusControl = (TextBox)(_formview).FindControl("_requestStatus");
+                var iaCheckBoxCtrl = (CheckBox)(_formview).FindControl("_iaCheckBox");
+                var iaSignatureCtrl = (TextBox)(_formview).FindControl("_iaSignature");
+                var iaDateSignedCtrl = (TextBox)(_formview).FindControl("_iaDateSigned");
+                var requestStatusCtrl = (TextBox)(_formview).FindControl("_requestStatus");
                 
-                if (iaCheckBoxControl.Checked)
+                if (iaCheckBoxCtrl.Checked)
                 {
                     var iaApprovalControl = (RadioButtonList)(_formview).FindControl("_iaApproval");
 
                     if (iaApprovalControl.SelectedValue == "Denied")
                     {
-                        requestStatusControl.Text = "Denied";
+                        requestStatusCtrl.Text = "Denied";
                     }
                     else
                     {
-                        requestStatusControl.Text = "Approved";
+                        requestStatusCtrl.Text = "Approved";
                     }
-                    iaSignatureControl.Text = CacCard.Edipi;
-                    iaDateSignedControl.Text = DateTime.Now.ToString();
+                    iaSignatureCtrl.Text = CacCard.Edipi;
+                    iaDateSignedCtrl.Text = DateTime.Now.ToString();
                 }
                 else
                 {
-                    iaSignatureControl.Text = "";
-                    iaDateSignedControl.Text = "";
-                    requestStatusControl.Text = "Pending";
+                    iaSignatureCtrl.Text = "";
+                    iaDateSignedCtrl.Text = "";
+                    requestStatusCtrl.Text = "Pending";
                 }
             }
         }
@@ -255,31 +253,31 @@ namespace AccountCreation
         {
             if (_formview.CurrentMode == FormViewMode.Edit)
             {
-                var dsdCheckBoxControl = (CheckBox)(_formview).FindControl("_dsdCheckBox");
-                var dsdSignatureControl = (TextBox)(_formview).FindControl("_dsdSignature");
-                var dsdDateSignedControl = (TextBox)(_formview).FindControl("_dsdDateSigned");
-                var requestStatusControl = (TextBox)(_formview).FindControl("_requestStatus");       
+                var dsdCheckBoxCtrl = (CheckBox)(_formview).FindControl("_dsdCheckBox");
+                var dsdSignatureCtrl = (TextBox)(_formview).FindControl("_dsdSignature");
+                var dsdDateSignedCtrl = (TextBox)(_formview).FindControl("_dsdDateSigned");
+                var requestStatusCtrl = (TextBox)(_formview).FindControl("_requestStatus");       
 
-                if (dsdCheckBoxControl.Checked)
+                if (dsdCheckBoxCtrl.Checked)
                 {
                     var dsdApprovalControl = (RadioButtonList)(_formview).FindControl("_dsdApproval");
 
                     if (dsdApprovalControl.SelectedValue == "Denied")
                     {
-                        requestStatusControl.Text = "Denied";
+                        requestStatusCtrl.Text = "Denied";
                     }
                     else
                     {
-                        requestStatusControl.Text = "Pending";
+                        requestStatusCtrl.Text = "Pending";
                     }
-                    dsdSignatureControl.Text = CacCard.Edipi;
-                    dsdDateSignedControl.Text = DateTime.Now.ToString();
+                    dsdSignatureCtrl.Text = CacCard.Edipi;
+                    dsdDateSignedCtrl.Text = DateTime.Now.ToString();
                 }
                 else
                 {
-                    dsdSignatureControl.Text = "";
-                    dsdDateSignedControl.Text = "";
-                    requestStatusControl.Text = "Requested";
+                    dsdSignatureCtrl.Text = "";
+                    dsdDateSignedCtrl.Text = "";
+                    requestStatusCtrl.Text = "Requested";
                 }
             }
         }
@@ -288,11 +286,11 @@ namespace AccountCreation
         {
             if (_formview.CurrentMode == FormViewMode.Edit)
             {
-                var dsdCheckBoxControl = (CheckBox)(_formview).FindControl("_dsdCheckBox");
-                var dsdSignatureControl = (TextBox)(_formview).FindControl("_dsdSignature");
+                var dsdCheckBoxCtrl = (CheckBox)(_formview).FindControl("_dsdCheckBox");
+                var dsdSignatureCtrl = (TextBox)(_formview).FindControl("_dsdSignature");
 
-                dsdCheckBoxControl.Checked = false;
-                dsdSignatureControl.Text = "";
+                dsdCheckBoxCtrl.Checked = false;
+                dsdSignatureCtrl.Text = "";
             }
         }
 
@@ -300,11 +298,11 @@ namespace AccountCreation
         {
             if (_formview.CurrentMode == FormViewMode.Edit)
             {
-                var iaCheckBoxControl = (CheckBox)(_formview).FindControl("_iaCheckBox");
-                var iaSignatureControl = (TextBox)(_formview).FindControl("_iaSignature");
+                var iaCheckBoxCtrl = (CheckBox)(_formview).FindControl("_iaCheckBox");
+                var iaSignatureCtrl = (TextBox)(_formview).FindControl("_iaSignature");
 
-                iaCheckBoxControl.Checked = false;
-                iaSignatureControl.Text = "";
+                iaCheckBoxCtrl.Checked = false;
+                iaSignatureCtrl.Text = "";
             }
         }
     }
