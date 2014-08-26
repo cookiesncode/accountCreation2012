@@ -361,7 +361,7 @@
 				<%-- Start right column --%>
 				<div class="col-sm-6 hidden-print">
                     <div class="panel panel-default">
-                        <asp:PlaceHolder Visible="false" ID="_dsdSection" runat="server">
+                        <asp:PlaceHolder ID="_dsdSection" runat="server">
                             <div class="panel-heading">
                                 <h3>DSD Approval</h3>
                             </div>
@@ -403,7 +403,7 @@
 						    </div>
                         </asp:PlaceHolder>
 					
-                        <asp:PlaceHolder Visible="false" ID="_iaSection" runat="server">
+                        <asp:PlaceHolder ID="_iaSection" runat="server">
                             <div class="panel-heading">
                                 <h3>IA Approval</h3>
                             </div>
@@ -446,7 +446,7 @@
 						    </div>
                             </asp:PlaceHolder>
 
-                        <asp:PlaceHolder Visible="true" ID="_saSection" runat="server">
+                        <asp:PlaceHolder ID="_saSection" runat="server">
 						    <div class="panel-heading">
 							    <h3>SA Section:</h3>
 							    <p>Please fill out the information below and then apply your signature (EDIPI).</p>
