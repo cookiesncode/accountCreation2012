@@ -398,7 +398,7 @@
 							    </div>					
 						    </div>
 						    <div class="panel-footer">
-							    <asp:Button ID="_dsdSubmit" ValidationGroup="dsdValGroup" data-loading-text="Validating information..." CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Update Request" />
+							    <asp:Button ID="_dsdSubmit" OnClick="_dsdSubmit_Click" ValidationGroup="dsdValGroup" data-loading-text="Validating information..." CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Update Request" />
 							    <asp:Button ID="_dsdCancel" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" OnClick="_cancelButton_Click" />
 						    </div>
                         </asp:PlaceHolder>
@@ -441,7 +441,7 @@
 							    </div>					
 						    </div>
 						    <div class="panel-footer">
-							    <asp:Button ID="_iaSubmit" ValidationGroup="iaValGroup" data-loading-text="Validating information..." CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Update Request" />
+							    <asp:Button ID="_iaSubmit" OnClick="_iaSubmit_Click" ValidationGroup="iaValGroup" data-loading-text="Validating information..." CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Update Request" />
 							    <asp:Button ID="_iaCancel" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" OnClick="_cancelButton_Click" />
 						    </div>
                             </asp:PlaceHolder>
@@ -505,7 +505,7 @@
 							    </div>
 						    </div>
 						    <div class="panel-footer">
-							    <asp:Button ID="_updateButton" ValidationGroup="_saValGroup" data-loading-text="Validating information..." CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Update Request" />
+							    <asp:Button ID="_saSubmit" OnClick="_saSubmit_Click" ValidationGroup="_saValGroup" data-loading-text="Validating information..." CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Update Request" />
 							    <asp:Button ID="_cancelButton" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" OnClick="_cancelButton_Click" />
 						    </div>
                         </asp:PlaceHolder>
