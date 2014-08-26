@@ -68,7 +68,8 @@ namespace AccountCreation
                 var accountTypeControl = (TextBox)(_formview).FindControl("_accountType");
                 var requestTypeControl = (TextBox)(_formview).FindControl("_requestType");
 
-                var updateButtonControl = (Button)(_formview).FindControl("_updateButton");
+                var supSubmitBtnCtrl = (Button)(_formview).FindControl("_supSubmitBtn");
+                var secSubmitBtnCtrl = (Button)(_formview).FindControl("_secSubmitBtn");
                 var supervisorSignatureControl = (TextBox)(_formview).FindControl("_supervisorSignature");
                 var supervisorCheckBoxControl = (CheckBox)(_formview).FindControl("_supervisorCheckBox");
 
@@ -76,11 +77,6 @@ namespace AccountCreation
                 {
                     CheckBox securityCheckBoxControl = (CheckBox)(_formview).FindControl("_securityCheckBox");
                     PlaceHolder securityBoxPlaceholderControl = (PlaceHolder)(_formview).FindControl("_securityBoxPlaceholder");
-
-                    if (supervisorCheckBoxControl.Checked)
-                    {
-                        supervisorCheckBoxControl.Enabled = false;
-                    }
 
                     if (supervisorCheckBoxControl.Checked && securityBoxPlaceholderControl.Visible == false)
                     {
@@ -95,20 +91,22 @@ namespace AccountCreation
                         investigationDateRangeValidator.Type = ValidationDataType.Date;
                     }
 
+                    if (supervisorCheckBoxControl.Checked)
+                    {
+                        supervisorCheckBoxControl.Enabled = false;
+                        supSubmitBtnCtrl.Visible = false;
+                    }
+
                     if (securityCheckBoxControl.Checked)
                     {
                         securityCheckBoxControl.Enabled = false;
-                    }
-
-                    if (supervisorCheckBoxControl.Checked && securityCheckBoxControl.Checked)
-                    {
-                        updateButtonControl.Visible = false;
+                        secSubmitBtnCtrl.Visible = false;
                     }
                 }
                 else if (supervisorCheckBoxControl.Checked)
                 {
                     supervisorCheckBoxControl.Enabled = false;
-                    updateButtonControl.Visible = false;
+                    supSubmitBtnCtrl.Visible = false;
                 }
 
                 if (requestTypeControl.Text == "Manual Delete" || requestTypeControl.Text == "Auto Delete")
@@ -207,27 +205,14 @@ namespace AccountCreation
 			{
 				var supervisorCheckBoxControl = (CheckBox)(_formview).FindControl("_supervisorCheckBox");
 				var supervisorSignatureControl = (TextBox)(_formview).FindControl("_supervisorSignature");
-				var supSignedDateControl = (TextBox)(_formview).FindControl("_supSignedDate");
-				var requestStatusControl = (TextBox)(_formview).FindControl("_requestStatus");
 
 				if (supervisorCheckBoxControl.Checked)
 				{
 					supervisorSignatureControl.Text = CacCard.Edipi;
-					supSignedDateControl.Text = DateTime.Now.ToString();
-                    if (RequiresTwoSignatures)
-                    {
-                        requestStatusControl.Text = "Partially Verified";
-                    }
-                    else
-                    {
-                        requestStatusControl.Text = "Ready";
-                    }
 				}
 				else
 				{
 					supervisorSignatureControl.Text = "";
-					supSignedDateControl.Text = "";
-					requestStatusControl.Text = "Requested";
 				}
 			}
 		}
@@ -238,20 +223,14 @@ namespace AccountCreation
 			{
 				var securityCheckBoxControl = (CheckBox)(_formview).FindControl("_securityCheckBox");
 				var securitySignatureControl = (TextBox)(_formview).FindControl("_securitySignature");
-				var secSignedDateControl = (TextBox)(_formview).FindControl("_secSignedDate");
-                var requestStatusControl = (TextBox)(_formview).FindControl("_requestStatus");
 
                 if (securityCheckBoxControl.Checked)
 				{
 					securitySignatureControl.Text = CacCard.Edipi;
-					secSignedDateControl.Text = DateTime.Now.ToString();
-                    requestStatusControl.Text = "Ready";
 				}
 				else
 				{
 					securitySignatureControl.Text = "";
-					secSignedDateControl.Text = "";
-                    requestStatusControl.Text = "Partially Verified";
 				}
 			}
 		}
@@ -261,6 +240,52 @@ namespace AccountCreation
 			_formview.Visible = false;
 			_formview.DataBind();
 		}
+
+        protected void _supSubmitBtn_Click(object sender, EventArgs e)
+        {
+            if (Page.IsValid)
+            {
+                var supSignedDateControl = (TextBox)(_formview).FindControl("_supSignedDate");
+                supSignedDateControl.Text = DateTime.Now.ToString();
+
+                var requestStatusControl = (TextBox)(_formview).FindControl("_requestStatus");
+         
+                if (RequiresTwoSignatures)
+                {
+                    requestStatusControl.Text = "Partially Verified";
+                }
+                else
+                {
+                    requestStatusControl.Text = "Ready";
+                }
+            }
+        }
+
+        protected void _secSubmitBtn_Click(object sender, EventArgs e)
+        {
+            if (Page.IsValid)
+            {
+                var secSignedDateControl = (TextBox)(_formview).FindControl("_secSignedDate");
+                secSignedDateControl.Text = DateTime.Now.ToString();
+
+                var requestStatusControl = (TextBox)(_formview).FindControl("_requestStatus");
+                requestStatusControl.Text = "Ready";
+
+                var accountType = (TextBox)(_formview).FindControl("_accountType");
+
+                if (accountType.Text == "SA")
+                {
+                    var fName = (TextBox)(_formview).FindControl("_fName");
+                    var lName = (TextBox)(_formview).FindControl("_lName");
+                    var userName = fName.Text + " " + lName.Text;
+                    var iaEmail = "glen.p.wilson.civ@mail.mil, jeremy.d.cortez.civ@mail.mil, miguel.gomez16.ctr@mail.mil";
+                    // TODO: FIND out how to set defaults if blank
+                    var iaMessage = "Use the link below to review this request.";
+                    var iaLink = "https://nec.carson.army.mil/accounts/sa-admin.aspx?search=" + CacCard.Edipi;
+                    Email.SendEmail(iaEmail, iaMessage, userName, iaLink, accountType.Text);
+                }
+            }
+        }
 
 	}
 }

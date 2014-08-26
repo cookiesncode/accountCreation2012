@@ -96,22 +96,21 @@ namespace AccountCreation
                     saApprovalSection.Visible = false;
 
                     var iaApprovalSection = (PlaceHolder)(_formview).FindControl("_iaSection");
-                    iaApprovalSection.Visible = false;
+                    iaApprovalSection.Visible = true;
 
                     var dsdApprovalSection = (PlaceHolder)(_formview).FindControl("_dsdSection");
-                    dsdApprovalSection.Visible = true;
+                    dsdApprovalSection.Visible = false;
                                   
                     var requestStatusCtrl = (TextBox)(_formview).FindControl("_requestStatus");
                     var dsdCheckBoxCtrl = (CheckBox)(_formview).FindControl("_dsdCheckBox");
-
-                    if ((requestStatusCtrl.Text.Contains("Pending") == true || requestStatusCtrl.Text.Contains("Approved") || requestStatusCtrl.Text.Contains("Completed")) && dsdCheckBoxCtrl.Checked)
-                    {
-                        iaApprovalSection.Visible = true;
-                    }
-
                     var iaCheckBoxCtrl = (CheckBox)(_formview).FindControl("_iaCheckBox");
 
-                    if ((requestStatusCtrl.Text.Contains("Approved") || requestStatusCtrl.Text.Contains("Completed") == true) && iaCheckBoxCtrl.Checked)
+                    if ((requestStatusCtrl.Text.Contains("Approved") || requestStatusCtrl.Text == "Completed") && iaCheckBoxCtrl.Checked)
+                    {
+                        dsdApprovalSection.Visible = true;
+                    }
+
+                    if ((requestStatusCtrl.Text == "DSD Approved" || requestStatusCtrl.Text == "Completed") && dsdCheckBoxCtrl.Checked)
                     {
                         saApprovalSection.Visible = true;
                     }
@@ -269,10 +268,23 @@ namespace AccountCreation
 
                 var requestStatusCtrl = (TextBox)(_formview).FindControl("_requestStatus");
                 var dsdApprovalCtrl = (RadioButtonList)(_formview).FindControl("_dsdApproval");
+                string emailAddress;
 
                 if (dsdApprovalCtrl.SelectedValue == "Approved")
                 {
-                    requestStatusCtrl.Text = "Pending";
+                    requestStatusCtrl.Text = "DSD Approved";
+
+                    var dsdRemarkCtrl = (TextBox)(_formview).FindControl("_dsdRemark");
+                    emailAddress = "usarmy.carson.106-sig-bde.list.nec-ssd-smb-sa@mail.mil, miguel.gomez16.ctr@mail.mil";
+                    var nameOfSender = CacCard.FirstName + " " + CacCard.LastName;
+                    var emailMessage = "This account has been approved by DSD and is ready for SA creation.";
+                    emailMessage += Environment.NewLine + Environment.NewLine + "DSD Remarks:" + Environment.NewLine;
+                    emailMessage += dsdRemarkCtrl.Text;
+                    var requestEdipi = (Literal)(_formview).FindControl("_edipi");
+                    var appLink = "https://nec.carson.army.mil/accounts/sa-admin.aspx?search=" + requestEdipi.Text;
+                    var accountType = (TextBox)(_formview).FindControl("_accountType");
+
+                    Email.SendEmail(emailAddress, emailMessage, nameOfSender, appLink, accountType.Text);
                 }
                 else
                 {
@@ -293,15 +305,36 @@ namespace AccountCreation
 
                 var requestStatusCtrl = (TextBox)(_formview).FindControl("_requestStatus");
                 var iaApprovalCtrl = (RadioButtonList)(_formview).FindControl("_iaApproval");
+                string emailAddress;
+                var nameOfSender = CacCard.FirstName + " " + CacCard.LastName;
+                string emailMessage;
+                var requestEdipi = (Literal)(_formview).FindControl("_edipi");
+                var appLink = "https://nec.carson.army.mil/accounts/sa-admin.aspx?search=" + requestEdipi.Text;
+                var accountType = (TextBox)(_formview).FindControl("_accountType");
+                var iaRemarkCtrl = (TextBox)(_formview).FindControl("_iaRemark");
+                var dsdRemarkCtrl = (TextBox)(_formview).FindControl("_dsdRemark");
 
                 if (iaApprovalCtrl.SelectedValue == "Approved")
                 {
-                    requestStatusCtrl.Text = "Approved";
+                    requestStatusCtrl.Text = "IA Approved";
+                    emailAddress = "kevin.w.smith110.civ@mail.mil, michael.j.hahn10.civ@mail.mil, miguel.gomez16.ctr@mail.mil";
+                    
+                    emailMessage = "This account has been approved by IA and is ready DSD verification.";
+                    emailMessage += Environment.NewLine + Environment.NewLine + "DSD Remarks:" + Environment.NewLine;
+                    emailMessage += dsdRemarkCtrl.Text;
+                    emailMessage += Environment.NewLine + Environment.NewLine + "IA Remarks:" + Environment.NewLine;
+                    emailMessage += iaRemarkCtrl.Text;
+                    Email.SendEmail(emailAddress, emailMessage, nameOfSender, appLink, accountType.Text);
                 }
                 else
                 {
                     requestStatusCtrl.Text = "Denied";
-                }
+                    //emailAddress = "kevin.w.smith110.civ@mail.mil, michael.j.hahn10.civ@mail.mil, miguel.gomez16.ctr@mail.mil";
+                    //emailMessage = "This account has been denied.";
+                    //emailMessage += Environment.NewLine + Environment.NewLine + "IA Remarks:" + Environment.NewLine;
+                    //emailMessage += iaRemarkCtrl.Text;
+                    //Email.SendEmail(emailAddress, emailMessage, nameOfSender, appLink, accountType.Text);
+                }               
             }
         }
 
@@ -317,13 +350,31 @@ namespace AccountCreation
 
                 var requestStatusCtrl = (TextBox)(_formview).FindControl("_requestStatus");
                 var editRequestStatusCtrl = (DropDownList)(_formview).FindControl("_editRequestStatus");
-                requestStatusCtrl.Text = editRequestStatusCtrl.SelectedValue; 
+                requestStatusCtrl.Text = editRequestStatusCtrl.SelectedValue;
+                string emailAddress;
+                var nameOfSender = CacCard.FirstName + " " + CacCard.LastName;
+                string emailMessage;
+                var requestEdipi = (Literal)(_formview).FindControl("_edipi");
+                var appLink = "https://nec.carson.army.mil/accounts/sa-admin.aspx?search=" + requestEdipi.Text;
+                var accountType = (TextBox)(_formview).FindControl("_accountType");
 
                 if (editRequestStatusCtrl.SelectedValue == "Completed")
                 {
                     var completedDateCtrl = (TextBox)(_formview).FindControl("_completedDate");
                     completedDateCtrl.Text = DateTime.Now.ToString();
+                    emailAddress = "kevin.w.smith110.civ@mail.mil, michael.j.hahn10.civ@mail.mil, miguel.gomez16.ctr@mail.mil";
+                    emailMessage = "This account has been created by the SA section.";
+                    Email.SendEmail(emailAddress, emailMessage, nameOfSender, appLink, accountType.Text);
                 }
+                else if (editRequestStatusCtrl.SelectedValue == "Denied")
+                {
+                    var saRemarkCtrl = (TextBox)(_formview).FindControl("_saRemark");
+                    emailAddress = "kevin.w.smith110.civ@mail.mil, michael.j.hahn10.civ@mail.mil, glen.p.wilson.civ@mail.mil, jeremy.d.cortez.civ@mail.mil, miguel.gomez16.ctr@mail.mil";
+                    emailMessage = "This account has been denied by the SA section.";
+                    emailMessage += Environment.NewLine + Environment.NewLine + "SA Remarks:" + Environment.NewLine;
+                    emailMessage += saRemarkCtrl.Text;
+                    Email.SendEmail(emailAddress, emailMessage, nameOfSender, appLink, accountType.Text);
+                }          
             }
         }
     }

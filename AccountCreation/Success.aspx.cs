@@ -59,7 +59,7 @@ namespace AccountCreation
                 {
                     emailToList += "," + _securityEmail.Text;
                 }
-                var message = "Please visit the link below to verify this request.";
+                var message = "Use the link below to review this request. If you approve of this request, then you will need to sign the form in order to move the process along.";
                 Email.SendEmail(emailToList, message, _emailSignature.Text, SearchQuery, accountType);
                 _multiviewForm.ActiveViewIndex = 1;
                 _instructions.Visible = false;

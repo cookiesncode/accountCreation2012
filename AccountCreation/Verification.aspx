@@ -243,7 +243,7 @@
 							<asp:Panel ID="_saPanel" Visible="false" runat="server">
 								<h4 class="page-header">SA Section</h4>
 								<div class="form-group">
-									<label for="_mos" class="col-sm-4 col-md-4 control-label"><abbr class="initialism" title="Military Occupational Specialty">MOS</abbr>:</label>
+									<label for="_mos" class="col-sm-4 col-md-4 control-label"><abbr class="initialism" title="Military Occupational Specialty">MOS</abbr> / Job Title:</label>
 									<div class="col-sm-7 col-md-6">
 										<asp:TextBox ID="_mos" CssClass="form-control" Text='<%# Bind("Mos") %>' runat="server" />
 										<asp:RequiredFieldValidator CssClass="label label-warning" ID="_mosRequiredValidator" runat="server" ErrorMessage="MOS: Please enter you MOS." ControlToValidate="_mos" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
@@ -292,11 +292,15 @@
 										<asp:TextBox ID="_supervisorSignature" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("SupEdipi") %>' />
 									</div>
                                     <small class="help-block">Check the box to apply your signature.</small>
-									<asp:RequiredFieldValidator ID="_supSignRequiredValidator" runat="server" ErrorMessage="Supervisor signature: You must sign the form before applying your changes." Text="Requires your attention" Display="Dynamic" CssClass="label label-warning" ControlToValidate="_supervisorSignature"></asp:RequiredFieldValidator>
-									<asp:CompareValidator ID="_requestorSupervisorCompareValidator" ControlToCompare="_edipi" runat="server" ErrorMessage="Supervisor signature: The Request entry EDIPI and the Supervisor signature can not be the same." CssClass="label label-warning" Display="Dynamic" Text="Requires your attention" ControlToValidate="_supervisorSignature" Operator="NotEqual"></asp:CompareValidator>
+									<asp:RequiredFieldValidator ID="_supSignRequiredValidator" ValidationGroup="supValGroup" runat="server" ErrorMessage="Supervisor signature: You must sign the form before applying your changes." Text="Requires your attention" Display="Dynamic" CssClass="label label-warning" ControlToValidate="_supervisorSignature"></asp:RequiredFieldValidator>
+									<asp:CompareValidator ID="_requestorSupervisorCompareValidator" ValidationGroup="supValGroup" ControlToCompare="_edipi" runat="server" ErrorMessage="Supervisor signature: The Request entry EDIPI and the Supervisor signature can not be the same." CssClass="label label-warning" Display="Dynamic" Text="Requires your attention" ControlToValidate="_supervisorSignature" Operator="NotEqual"></asp:CompareValidator>
 								</div>
 							</div>
                         </div>
+						<div class="panel-footer">
+							<asp:Button ID="_supSubmitBtn" ValidationGroup="supValGroup" OnClick="_supSubmitBtn_Click" data-confirm-modal="WARNING: Your signature is binding and you will be held accountable for this account verification. Are you sure you want to continue?" data-loading-text="Validating information..." CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Verify Request" />
+							<asp:Button ID="_supCancelBtn" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" OnClick="_cancelButton_Click" />
+						</div>
                         <asp:PlaceHolder Visible="false" ID="_securityBoxPlaceholder" runat="server">
                             <div class="panel-heading">
                                 <h3>Security Manager Approval</h3>
@@ -306,7 +310,7 @@
 									<label for="_investigationType" class="col-sm-5 control-label">Investigation Type:</label>
 									<div class="col-sm-7">
 										<asp:TextBox ID="_investigationType" CssClass="form-control" ClientIDMode="Static" Text='<%# Bind("InvestigationType") %>' runat="server" />
-										<asp:RequiredFieldValidator CssClass="label label-warning" ID="_investigationTypeRequiredValidator" runat="server" ErrorMessage="Type of Investigation: Please fill out the investigation type." ControlToValidate="_investigationType" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+										<asp:RequiredFieldValidator CssClass="label label-warning" ValidationGroup="secValGroup" ID="_investigationTypeRequiredValidator" runat="server" ErrorMessage="Type of Investigation: Please fill out the investigation type." ControlToValidate="_investigationType" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
 									</div>
 								</div>
 								<div id="_investigationDatePanel" class="form-group">
@@ -316,15 +320,15 @@
 											<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 											<asp:TextBox ID="_investigationDate" Text='<%# Bind("InvestigationDate", "{0:d}") %>' Enabled="false" CssClass="form-control" runat="server" />
 										</div>
-                                        <asp:RequiredFieldValidator CssClass="label label-warning" ID="_investigationDateRequiredValidator" runat="server" ErrorMessage="Investigation Date: You must fill out the date." ControlToValidate="_investigationDate" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
-                                        <asp:RangeValidator ID="_investigationDateRangeValidator" runat="server" ErrorMessage="Investigation Date: The date you selected is out of the accepted range." Text="Requires your attention." Display="Dynamic" ControlToValidate="_investigationDate" CssClass="label label-warning"></asp:RangeValidator>
+                                        <asp:RequiredFieldValidator CssClass="label label-warning" ValidationGroup="secValGroup" ID="_investigationDateRequiredValidator" runat="server" ErrorMessage="Investigation Date: You must fill out the date." ControlToValidate="_investigationDate" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+                                        <asp:RangeValidator ID="_investigationDateRangeValidator" ValidationGroup="secValGroup" runat="server" ErrorMessage="Investigation Date: The date you selected is out of the accepted range." Text="Requires your attention." Display="Dynamic" ControlToValidate="_investigationDate" CssClass="label label-warning"></asp:RangeValidator>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="_clearanceLevel" class="col-sm-5 control-label">Clearance Level:</label>
 									<div class="col-sm-7">
 										<asp:TextBox ID="_clearanceLevel" CssClass="form-control" ClientIDMode="Static" Text='<%# Bind("ClearanceLevel") %>' runat="server" />
-										<asp:RequiredFieldValidator CssClass="label label-warning" ID="_clearanceLevelRequiredValidator" runat="server" ErrorMessage="Clearance Level: Please fill out the clearance level." ControlToValidate="_clearanceLevel" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+										<asp:RequiredFieldValidator CssClass="label label-warning" ValidationGroup="secValGroup" ID="_clearanceLevelRequiredValidator" runat="server" ErrorMessage="Clearance Level: Please fill out the clearance level." ControlToValidate="_clearanceLevel" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
 									</div>
 								</div>
 								<div class="form-group">
@@ -337,7 +341,7 @@
                                             <asp:ListItem Value="Level II">Level II</asp:ListItem>
                                             <asp:ListItem Value="Level III">Level III</asp:ListItem>
                                         </asp:RadioButtonList>
-										<asp:RequiredFieldValidator CssClass="label label-warning" ID="RequiredFieldValidator2" runat="server" ErrorMessage="Investigation Level: Please select an investigation level." ControlToValidate="_investigationLevel" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+										<asp:RequiredFieldValidator CssClass="label label-warning" ID="_investigationLevelRequiredValidator" ValidationGroup="secValGroup" runat="server" ErrorMessage="Investigation Level: Please select an investigation level." ControlToValidate="_investigationLevel" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
 									</div>
 								</div>
                                 <p class="text-danger"><strong>I verify this user has the proper training, security clearance, and understands the security guideline as an authorized user:</strong></p>   						
@@ -351,19 +355,20 @@
 										    <asp:TextBox ID="_securitySignature" Enabled="false" CssClass="form-control" runat="server" Text='<%# Bind("SecEdipi") %>' />
 									    </div>
                                         <small class="help-block">Check the box to apply your signature.</small>
-									    <asp:CompareValidator ID="_signatureCompareValidator" CssClass="label label-warning" ControlToValidate="_securitySignature" ControlToCompare="_supervisorSignature" runat="server" ErrorMessage="Security Manager signature: The Supervisor and Security Manager can not be the same person." Type="String" Operator="NotEqual" Text="Requires your attention" Display="Dynamic"></asp:CompareValidator>
-									    <asp:RequiredFieldValidator ID="_secSignRequiredValidator" runat="server" ErrorMessage="Security Manager signature: You must sign the form before applying your changes." Text="Requires your attention" Display="Dynamic" CssClass="label label-warning" ControlToValidate="_securitySignature"></asp:RequiredFieldValidator>
-									    <asp:CompareValidator ID="_requestorSecurityCompareValidator" ControlToCompare="_edipi" runat="server" ErrorMessage="Security Manager signature: The Request entry EDIPI and the Security Manager signature can not be the same." CssClass="label label-warning" Display="Dynamic" Text="Requires your attention" ControlToValidate="_securitySignature" Operator="NotEqual"></asp:CompareValidator>
+									    <asp:CompareValidator ID="_signatureCompareValidator" ValidationGroup="secValGroup" CssClass="label label-warning" ControlToValidate="_securitySignature" ControlToCompare="_supervisorSignature" runat="server" ErrorMessage="Security Manager signature: The Supervisor and Security Manager can not be the same person." Type="String" Operator="NotEqual" Text="Requires your attention" Display="Dynamic"></asp:CompareValidator>
+									    <asp:RequiredFieldValidator ID="_secSignRequiredValidator" ValidationGroup="secValGroup" runat="server" ErrorMessage="Security Manager signature: You must sign the form before applying your changes." Text="Requires your attention" Display="Dynamic" CssClass="label label-warning" ControlToValidate="_securitySignature"></asp:RequiredFieldValidator>
+									    <asp:CompareValidator ID="_requestorSecurityCompareValidator" ValidationGroup="secValGroup" ControlToCompare="_edipi" runat="server" ErrorMessage="Security Manager signature: The Request entry EDIPI and the Security Manager signature can not be the same." CssClass="label label-warning" Display="Dynamic" Text="Requires your attention" ControlToValidate="_securitySignature" Operator="NotEqual"></asp:CompareValidator>
 								    </div>
 							    </div>					
 						    </div>
+						    <div class="panel-footer">
+							    <asp:Button ID="_secSubmitBtn" ValidationGroup="secValGroup" OnClick="_secSubmitBtn_Click" data-confirm-modal="WARNING: Your signature is binding and you will be held accountable for this account verification. Are you sure you want to continue?" data-loading-text="Validating information..." CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Verify Request" />
+							    <asp:Button ID="_cancelButton" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" OnClick="_cancelButton_Click" />
+						    </div>
                         </asp:PlaceHolder>
-						<div class="panel-footer">
-							<asp:Button ID="_updateButton" data-confirm-modal="WARNING: Your signature is binding and you will be held accountable for this account verification. Are you sure you want to continue?" data-loading-text="Validating information..." CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Verify Request" />
-							<asp:Button ID="_cancelButton" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" OnClick="_cancelButton_Click" />
-						</div>
 					</div> <%-- End Signature block --%>
-					<asp:ValidationSummary CssClass="alert alert-danger" ID="_validationSummary" runat="server" />	
+					<asp:ValidationSummary ValidationGroup="supValGroup" CssClass="alert alert-danger" ID="_validationSummary" runat="server" />	
+					<asp:ValidationSummary ValidationGroup="secValGroup" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />	
 				</div>
 			</div>
 			<div class="hidden">

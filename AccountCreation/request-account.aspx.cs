@@ -277,19 +277,11 @@ namespace AccountCreation
             Session["FormSubmitted"] = true;
             var accountType = (TextBox)(_formview).FindControl("_accountType");
             var userEmail = (TextBox)(_formview).FindControl("_email");
-            var userMessage = "To check the status of this request, please visit the link below.";
+            var userMessage = "Please hold on to this email until your request has been completed. You may click on the link below to check on the status of your request. Please remember that your request will not be reviewed until you have all of the signatures required from your approval staff.";
             var userName = CacCard.FirstName + " " + CacCard.LastName;
             var userLink = "https://nec.carson.army.mil/accounts/verification.aspx?search=" + CacCard.Edipi;
             Email.SendEmail(userEmail.Text, userMessage, userName, userLink, accountType.Text);
             
-            if (accountType.Text == "SA")
-            {
-                var desktopEmail = "kevin.w.smith110.civ@mail.mil, michael.j.hahn10.civ@mail.mil";
-                var desktopMessage = "To view this request, please visit the link below.";
-                var desktopLink = "https://nec.carson.army.mil/accounts/sa-admin.aspx?search=" + CacCard.Edipi;
-                Email.SendEmail(desktopEmail, desktopMessage, userName, desktopLink, accountType.Text);
-            }
-
             Server.Transfer("success.aspx");
 		}
 
