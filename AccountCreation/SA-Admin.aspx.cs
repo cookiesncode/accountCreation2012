@@ -109,8 +109,6 @@ namespace AccountCreation
                     if ((requestStatusControl.Text.Contains("Pending") == true || requestStatusControl.Text.Contains("Approved") || requestStatusControl.Text.Contains("Completed")) && dsdCheckBox.Checked)
                     {
                         iaSection.Visible = true;
-                        var dsdApprovalValidator = (RequiredFieldValidator)(_formview).FindControl("_dsdApprovalRequiredValidator");
-                        dsdApprovalValidator.Visible = false;
                     }
 
                     var iaCheckBox = (CheckBox)(_formview).FindControl("_iaCheckBox");
@@ -118,8 +116,6 @@ namespace AccountCreation
                     if ((requestStatusControl.Text.Contains("Approved") || requestStatusControl.Text.Contains("Completed") == true) && iaCheckBox.Checked)
                     {
                         saSection.Visible = true;
-                        var iaApprovalValidator = (RequiredFieldValidator)(_formview).FindControl("_iaApprovalRequiredValidator");
-                        iaApprovalValidator.Visible = false;
                     }
                 }
 
