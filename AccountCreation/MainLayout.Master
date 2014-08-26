@@ -31,7 +31,7 @@
 				<li><a href="request-type.aspx">New Request</a></li>
 				<li><a href="verification.aspx">Existing Request</a></li>
 				<li><a href="_assets/docs/howto-guide.pdf" target="_blank">How-to Guide</a></li>
-				<li id="_saLink" visible="false" runat="server"><a href="sa-admin.aspx">SA Admin Panel</a></li>
+				<li id="_saLink" visible="false" runat="server"><a href="sa-admin.aspx">Admin Panel</a></li>
 			</ul>
 		</div>
 	</nav>
