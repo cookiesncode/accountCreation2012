@@ -32,7 +32,7 @@ namespace AccountCreation
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-            if (Page.User.IsInRole("CARSON NEC SSD SMB SA SG") || Page.User.IsInRole("CARSON NEC IA Account Review"))
+            if (Page.User.IsInRole("CARSON NEC SSD SMB SA SG") || Page.User.IsInRole("CARSON NEC IA Account Review") || Page.User.IsInRole("CARSON NEC DSD Account Review"))
             {
                 var seachQueryString = Request.QueryString["search"];
                 if (!IsPostBack && seachQueryString != null)
