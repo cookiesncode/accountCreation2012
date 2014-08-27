@@ -73,6 +73,11 @@ table {
     padding: 30px;
 }
 
+.panel-footer {
+  > input:first-of-type {
+    margin-right: 10px;
+  }
+}
 ///////////////////////////////// NAVBAR
 /////////////////////////////////////////
 .navbar {

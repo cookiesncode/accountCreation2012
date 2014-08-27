@@ -361,8 +361,8 @@
 
 				<%-- Start right column --%>
 				<div class="col-sm-6 hidden-print">
-                    <div class="panel panel-default">
-                        <asp:PlaceHolder ID="_iaSection" runat="server">
+                    <asp:PlaceHolder ID="_iaSection" runat="server">
+                        <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3>IA Approval</h3>
                             </div>
@@ -402,9 +402,13 @@
 							    <asp:Button ID="_iaSubmit" OnClick="_iaSubmit_Click" ValidationGroup="iaValGroup" data-loading-text="Validating information..." CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Update Request" />
 							    <asp:Button ID="_iaCancelBtn" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" OnClick="_cancelButton_Click" />
 						    </div>
-                        </asp:PlaceHolder>
+                        </div>
+                    </asp:PlaceHolder>
 
-                        <asp:PlaceHolder ID="_dsdSection" runat="server">
+					<asp:ValidationSummary ValidationGroup="iaValGroup" CssClass="alert alert-danger" ID="_iaValidationSummary" runat="server" />	
+
+                    <asp:PlaceHolder ID="_dsdSection" runat="server">
+                        <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3>DSD Approval</h3>
                             </div>
@@ -445,9 +449,13 @@
 							    <asp:Button ID="_dsdSubmit" OnClick="_dsdSubmit_Click" ValidationGroup="dsdValGroup" data-loading-text="Validating information..." CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Update Request" />
 							    <asp:Button ID="_dsdCancelBtn" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" OnClick="_cancelButton_Click" />
 						    </div>
-                        </asp:PlaceHolder>
+                        </div>
+                    </asp:PlaceHolder>
+
+					<asp:ValidationSummary ValidationGroup="dsdValGroup" CssClass="alert alert-danger" ID="_dsdValidationSummary" runat="server" />	
 					
-                        <asp:PlaceHolder ID="_saSection" runat="server">
+                    <asp:PlaceHolder ID="_saSection" runat="server">
+                        <div class="panel panel-default">
 						    <div class="panel-heading">
 							    <h3>SA Section:</h3>
 							    <p>Please fill out the information below and then apply your signature (EDIPI).</p>
@@ -510,13 +518,12 @@
 							    <asp:Button ID="_saSubmit" OnClick="_saSubmit_Click" ValidationGroup="saValGroup" data-loading-text="Validating information..." CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Update Request" />
 							    <asp:Button ID="_saCancelBtn" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" OnClick="_cancelButton_Click" />
 						    </div>
-                        </asp:PlaceHolder>
-					</div> <%-- End Signature block --%>
+                        </div>
+                    </asp:PlaceHolder>
 
-					<asp:ValidationSummary ValidationGroup="dsdValGroup" CssClass="alert alert-danger" ID="_dsdValidationSummary" runat="server" />	
-					<asp:ValidationSummary ValidationGroup="iaValGroup" CssClass="alert alert-danger" ID="_iaValidationSummary" runat="server" />	
 					<asp:ValidationSummary ValidationGroup="saValGroup" CssClass="alert alert-danger" ID="_saValidationSummary" runat="server" />	
 				</div>
+                <%-- End right column --%>
 			</div>
 			<div class="hidden">
                 <asp:TextBox ID="_userEdipi" Text='<%# Eval("Edipi") %>' runat="server"></asp:TextBox>
