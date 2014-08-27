@@ -55,14 +55,18 @@ namespace AccountCreation
                 var accountTypeControl = (TextBox)(_formview).FindControl("_accountType");
                 var requestTypeControl = (TextBox)(_formview).FindControl("_requestType");
                 var saSubmitBtn = (Button)(_formview).FindControl("_saSubmit");
+                var dsdSubmitBtn = (Button)(_formview).FindControl("_dsdSubmit");
+                var iaSubmitBtn = (Button)(_formview).FindControl("_iaSubmit");
 
                 if (User.IsInRole("CARSON NEC SSD SMB SA SG"))
                 {
                     saSubmitBtn.Visible = true;
+                    iaSubmitBtn.Visible = false;
+                    dsdSubmitBtn.Visible = false;
                 }
                 else
                 {
-                    saSubmitBtn.Visible = false;                    
+                    saSubmitBtn.Visible = false;
                 }
                                
                 if (requestTypeControl.Text == "Manual Delete" || requestTypeControl.Text == "Auto Delete")
@@ -363,7 +367,7 @@ namespace AccountCreation
                 var appLink = "https://nec.carson.army.mil/accounts/sa-admin.aspx?search=" + requestEdipi.Text;
                 var accountType = (TextBox)(_formview).FindControl("_accountType");
 
-                if (editRequestStatusCtrl.SelectedValue == "Completed")
+                if (editRequestStatusCtrl.SelectedValue == "Completed" && RequiresThreeSignatures)
                 {
                     var completedDateCtrl = (TextBox)(_formview).FindControl("_completedDate");
                     completedDateCtrl.Text = DateTime.Now.ToString();
@@ -371,7 +375,7 @@ namespace AccountCreation
                     emailMessage = "This account has been created by the SA section.";
                     Email.SendEmail(emailAddress, emailMessage, nameOfSender, appLink, accountType.Text);
                 }
-                else if (editRequestStatusCtrl.SelectedValue == "Denied")
+                else if (editRequestStatusCtrl.SelectedValue == "Denied" && RequiresThreeSignatures)
                 {
                     var saRemarkCtrl = (TextBox)(_formview).FindControl("_saRemark");
                     emailAddress = "kevin.w.smith110.civ@mail.mil, michael.j.hahn10.civ@mail.mil, glen.p.wilson.civ@mail.mil, jeremy.d.cortez.civ@mail.mil, miguel.gomez16.ctr@mail.mil";
