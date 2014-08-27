@@ -327,7 +327,7 @@
 							    </div>
                             </asp:Panel>
 							
-							<asp:Panel ID="_saPanel" Visible="false" runat="server">
+							<asp:Panel ID="_saPanel" CssClass="hidden-print" Visible="false" runat="server">
                                 <h4 class="page-header">SA Request Information</h4>
 								<div class="form-group">
 									<label for="_mos" class="col-sm-4 control-label">MOS / Job Title:</label>
