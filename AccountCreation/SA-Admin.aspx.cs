@@ -55,18 +55,16 @@ namespace AccountCreation
                 var accountTypeControl = (TextBox)(_formview).FindControl("_accountType");
                 var requestTypeControl = (TextBox)(_formview).FindControl("_requestType");
                 var saSubmitBtn = (Button)(_formview).FindControl("_saSubmit");
-                saSubmitBtn.Visible = false;
 
                 if (User.IsInRole("CARSON NEC SSD SMB SA SG"))
                 {
                     saSubmitBtn.Visible = true;
                 }
-               
-                if (User.IsInRole("CARSON NEC IA Account Review") && RequiresThreeSignatures)
+                else
                 {
-                    saSubmitBtn.Visible = true;
+                    saSubmitBtn.Visible = false;                    
                 }
-                
+                               
                 if (requestTypeControl.Text == "Manual Delete" || requestTypeControl.Text == "Auto Delete")
                 {
                     var deleteDatePanelControl = (Panel)(_formview).FindControl("_deleteRequestPanel");
@@ -100,7 +98,7 @@ namespace AccountCreation
 
                     var dsdApprovalSection = (PlaceHolder)(_formview).FindControl("_dsdSection");
                     dsdApprovalSection.Visible = false;
-                                  
+
                     var requestStatusCtrl = (TextBox)(_formview).FindControl("_requestStatus");
                     var dsdCheckBoxCtrl = (CheckBox)(_formview).FindControl("_dsdCheckBox");
                     var iaCheckBoxCtrl = (CheckBox)(_formview).FindControl("_iaCheckBox");
@@ -115,7 +113,14 @@ namespace AccountCreation
                         saApprovalSection.Visible = true;
                     }
                 }
-
+                else
+                {
+                    var iaSection = (PlaceHolder)(_formview).FindControl("_iaSection");
+                    iaSection.Visible = false;
+                    var dsdSection = (PlaceHolder)(_formview).FindControl("_dsdSection");
+                    dsdSection.Visible = false;
+                    var saSection = (PlaceHolder)(_formview).FindControl("_saSection");
+                }
 			}
 		}
 
