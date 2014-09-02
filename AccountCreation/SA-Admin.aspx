@@ -305,7 +305,7 @@
 								</div>
 							</div>
 
-                            <asp:Panel ID="_deleteRequestPanel" Visible="false" runat="server">
+                            <asp:Panel ID="_deleteRequestPanel" runat="server">
 								<div class="form-group">
 									<label for="_deleteDate" class="col-sm-4 control-label">Requested Delete Date:</label>
 									<div class="col-sm-8">
@@ -316,7 +316,7 @@
 								</div>
                             </asp:Panel>
 
-                            <asp:Panel ID="_justificationPanel" runat="server" Visible="false">
+                            <asp:Panel ID="_justificationPanel" runat="server">
                                 <div class="form-group">
 								    <label for="_justification" class="col-sm-4 control-label">Justification:</label>
 								    <div class="col-sm-8">
@@ -327,7 +327,7 @@
 							    </div>
                             </asp:Panel>
 							
-							<asp:Panel ID="_saPanel" CssClass="hidden-print" Visible="false" runat="server">
+							<asp:Panel ID="_saPanel" CssClass="hidden-print" runat="server">
                                 <h4 class="page-header">SA Request Information</h4>
 								<div class="form-group">
 									<label for="_mos" class="col-sm-4 control-label">MOS / Job Title:</label>
@@ -364,7 +364,7 @@
                     <asp:PlaceHolder ID="_iaSection" runat="server">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3>IA Approval</h3>
+                                <h3>IA Section</h3>
                             </div>
                             <div class="panel-body">	
                                 <div class="form-group">
@@ -410,7 +410,7 @@
                     <asp:PlaceHolder ID="_dsdSection" runat="server">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3>DSD Approval</h3>
+                                <h3>DSD Section</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="form-group">
@@ -457,7 +457,7 @@
                     <asp:PlaceHolder ID="_saSection" runat="server">
                         <div class="panel panel-default">
 						    <div class="panel-heading">
-							    <h3>SA Section:</h3>
+							    <h3>SA Section</h3>
 							    <p>Please fill out the information below and then apply your signature (EDIPI).</p>
 						    </div>
 						    <div class="panel-body">
