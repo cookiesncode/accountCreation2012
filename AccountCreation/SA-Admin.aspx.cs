@@ -52,33 +52,23 @@ namespace AccountCreation
 		{
 			if (_formview.CurrentMode == FormViewMode.Edit)
 			{
-                var accountTypeControl = (TextBox)(_formview).FindControl("_accountType");
-                var requestTypeControl = (TextBox)(_formview).FindControl("_requestType");
-                var saSubmitBtn = (Button)(_formview).FindControl("_saSubmit");
-                var dsdSubmitBtn = (Button)(_formview).FindControl("_dsdSubmit");
-                var iaSubmitBtn = (Button)(_formview).FindControl("_iaSubmit");
+                var accountTypeCtrl = (TextBox)(_formview).FindControl("_accountType");
+                var requestTypeCtrl = (TextBox)(_formview).FindControl("_requestType");
+                var deleteRequestDateSection = (Panel)(_formview).FindControl("_deleteRequestPanel");
 
-                if (User.IsInRole("CARSON NEC SSD SMB SA SG"))
+                if (requestTypeCtrl.Text == "Manual Delete" || requestTypeCtrl.Text == "Auto Delete")
                 {
-                    saSubmitBtn.Visible = true;
-                    iaSubmitBtn.Visible = false;
-                    dsdSubmitBtn.Visible = false;
+                    deleteRequestDateSection.Visible = true;
                 }
                 else
                 {
-                    saSubmitBtn.Visible = false;
-                }
-                               
-                if (requestTypeControl.Text == "Manual Delete" || requestTypeControl.Text == "Auto Delete")
-                {
-                    var deleteDatePanelControl = (Panel)(_formview).FindControl("_deleteRequestPanel");
-                    deleteDatePanelControl.Visible = true;
+                    deleteRequestDateSection.Visible = false;
                 }
 
-                if (accountTypeControl.Text != "NIPR")
+                if (accountTypeCtrl.Text != "NIPR")
 				{
-                    var adContainerControl = (PlaceHolder)(_formview).FindControl("_adInfo");
-                    adContainerControl.Visible = true;
+                    var saAdInfoSection = (PlaceHolder)(_formview).FindControl("_adInfo");
+                    saAdInfoSection.Visible = true;
 				}
 
                 if (RequiresThreeSignatures)
@@ -88,12 +78,7 @@ namespace AccountCreation
                     var supervisorInfo = AdAccount.FindAdUser(supervisorEdipiCtrl.Text);
                     supervisorNameCtrl.Text = supervisorInfo;
 
-                    var requestEntryJustificationCtrl = (Panel)(_formview).FindControl("_justificationPanel");
-                    requestEntryJustificationCtrl.Visible = true;
-
-                    var requestEntrySaCtrl = (Panel)(_formview).FindControl("_saPanel");
-                    requestEntrySaCtrl.Visible = true;
-
+                    // Set visibility defaults for the NEC sections.
                     var saApprovalSection = (PlaceHolder)(_formview).FindControl("_saSection");
                     saApprovalSection.Visible = false;
 
@@ -106,7 +91,8 @@ namespace AccountCreation
                     var requestStatusCtrl = (TextBox)(_formview).FindControl("_requestStatus");
                     var dsdCheckBoxCtrl = (CheckBox)(_formview).FindControl("_dsdCheckBox");
                     var iaCheckBoxCtrl = (CheckBox)(_formview).FindControl("_iaCheckBox");
-
+                    
+                    // Update visible properties of each section depending on the value of the request status.
                     if ((requestStatusCtrl.Text.Contains("Approved") || requestStatusCtrl.Text == "Completed") && iaCheckBoxCtrl.Checked)
                     {
                         dsdApprovalSection.Visible = true;
@@ -116,14 +102,83 @@ namespace AccountCreation
                     {
                         saApprovalSection.Visible = true;
                     }
+                    
+                    // Set defaults for the individual controls inside the NEC approval sections
+                    var dsdSubmitBtn = (Button)(_formview).FindControl("_dsdSubmit");
+                    dsdSubmitBtn.Visible = false;
+                    var dsdRemarkCtrl = (TextBox)(_formview).FindControl("_dsdRemark");
+                    dsdRemarkCtrl.Enabled = false;
+                    var dsdCheckboxCtrl = (CheckBox)(_formview).FindControl("_dsdCheckBox");
+                    dsdCheckboxCtrl.Enabled = false;
+                    var dsdApprovalCtrl = (RadioButtonList)(_formview).FindControl("_dsdApproval");
+                    dsdApprovalCtrl.Enabled = false;
+
+                    var iaSubmitBtn = (Button)(_formview).FindControl("_iaSubmit");
+                    iaSubmitBtn.Visible = false;
+                    var iaRemarkCtrl = (TextBox)(_formview).FindControl("_iaRemark");
+                    iaRemarkCtrl.Enabled = false;
+                    var iaCheckboxCtrl = (CheckBox)(_formview).FindControl("_iaCheckBox");
+                    iaCheckboxCtrl.Enabled = false;
+                    var iaApprovalCtrl = (RadioButtonList)(_formview).FindControl("_iaApproval");
+                    iaApprovalCtrl.Enabled = false;
+
+                    var saSubmitBtn = (Button)(_formview).FindControl("_saSubmit");
+                    saSubmitBtn.Visible = false;
+                    var saSamAccountCtrl = (TextBox)(_formview).FindControl("_samAccount");
+                    saSamAccountCtrl.Enabled = false;
+                    var saHomeFolderCtrl = (TextBox)(_formview).FindControl("_homeFolder");
+                    saHomeFolderCtrl.Enabled = false;
+                    var saRemarkCtrl = (TextBox)(_formview).FindControl("_saRemark");
+                    saRemarkCtrl.Enabled = false;
+                    var saCheckboxCtrl = (CheckBox)(_formview).FindControl("_saCheckBox");
+                    saCheckboxCtrl.Enabled = false;
+                    var saRequestStatusCtrl = (DropDownList)(_formview).FindControl("_editRequestStatus");
+                    saRequestStatusCtrl.Enabled = false;
+
+                    // Update defaults depending on the security group the current NEC employee is a member of.
+                    if (User.IsInRole("CARSON NEC SSD SMB SA SG"))
+                    {
+                        saSubmitBtn.Visible = true;
+                        saSamAccountCtrl.Enabled = true;
+                        saHomeFolderCtrl.Enabled = true;
+                        saRemarkCtrl.Enabled = true;
+                        saCheckboxCtrl.Enabled = true;
+                        saRequestStatusCtrl.Enabled = true;
+                    }
+                    else if (Page.User.IsInRole("CARSON NEC DSD Account Review"))
+                    {
+                        dsdSubmitBtn.Visible = true;
+                        dsdRemarkCtrl.Enabled = true;
+                        dsdCheckboxCtrl.Enabled = true;
+                        dsdApprovalCtrl.Enabled = true;
+                    }
+                    else
+                    {
+                        iaSubmitBtn.Visible = true;
+                        iaRemarkCtrl.Enabled = true;
+                        iaCheckboxCtrl.Enabled = true;
+                        iaApprovalCtrl.Enabled = true;
+                    }
                 }
                 else
                 {
+                    var saApprovalSection = (PlaceHolder)(_formview).FindControl("_saSection");
+                    if (User.IsInRole("CARSON NEC SSD SMB SA SG"))
+                    {
+                        saApprovalSection.Visible = true;
+                    }
+                    else
+                    {
+                        saApprovalSection.Visible = false;
+                    }
                     var iaSection = (PlaceHolder)(_formview).FindControl("_iaSection");
                     iaSection.Visible = false;
                     var dsdSection = (PlaceHolder)(_formview).FindControl("_dsdSection");
                     dsdSection.Visible = false;
-                    var saSection = (PlaceHolder)(_formview).FindControl("_saSection");
+                    var justificationSectionCtrl = (Panel)(_formview).FindControl("_justificationPanel");
+                    justificationSectionCtrl.Visible = false;
+                    var saRequestInfoSection = (Panel)(_formview).FindControl("_saPanel");
+                    saRequestInfoSection.Visible = false;
                 }
 			}
 		}
