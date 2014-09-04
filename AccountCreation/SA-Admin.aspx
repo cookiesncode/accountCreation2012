@@ -330,6 +330,14 @@
 							<asp:Panel ID="_saPanel" CssClass="hidden-print" runat="server">
                                 <h4 class="page-header">SA Request Information</h4>
 								<div class="form-group">
+									<label for="_commanderName" class="col-sm-4 control-label">Commander's Name:</label>
+									<div class="col-sm-8">
+										<p class="form-control-static">
+											<asp:Literal ID="_commanderName" Text='<%# Eval("CommanderName") %>' runat="server"></asp:Literal>
+										</p>
+									</div>
+								</div>
+								<div class="form-group">
 									<label for="_mos" class="col-sm-4 control-label">MOS / Job Title:</label>
 									<div class="col-sm-8">
 										<p class="form-control-static">

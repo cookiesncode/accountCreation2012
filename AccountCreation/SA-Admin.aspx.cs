@@ -145,14 +145,14 @@ namespace AccountCreation
                         saCheckboxCtrl.Enabled = true;
                         saRequestStatusCtrl.Enabled = true;
                     }
-                    else if (Page.User.IsInRole("CARSON NEC DSD Account Review"))
+                    if (User.IsInRole("CARSON NEC DSD Account Review"))
                     {
                         dsdSubmitBtn.Visible = true;
                         dsdRemarkCtrl.Enabled = true;
                         dsdCheckboxCtrl.Enabled = true;
                         dsdApprovalCtrl.Enabled = true;
                     }
-                    else
+                    if (User.IsInRole("CARSON NEC IA Account Review"))
                     {
                         iaSubmitBtn.Visible = true;
                         iaRemarkCtrl.Enabled = true;

@@ -241,6 +241,13 @@
 							<asp:Panel ID="_saPanel" Visible="false" runat="server">
 								<h4 class="page-header">SA Section</h4>
 								<div class="form-group">
+									<label for="_commanderName" class="col-sm-4 col-md-4 control-label">Commander's Name:</label>
+									<div class="col-sm-7 col-md-6">
+										<asp:TextBox ID="_commanderName" CssClass="form-control" Text='<%# Bind("CommanderName") %>' runat="server" />
+										<asp:RequiredFieldValidator CssClass="label label-warning" ID="_commanderRequiredValidator" runat="server" ErrorMessage="Commander's Name: Please enter your commander's name." ControlToValidate="_commanderName" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
+									</div>
+								</div>
+								<div class="form-group">
 									<label for="_mos" class="col-sm-4 col-md-4 control-label"><abbr class="initialism" title="Military Occupational Specialty">MOS</abbr> / Job Title:</label>
 									<div class="col-sm-7 col-md-6">
 										<asp:TextBox ID="_mos" CssClass="form-control" Text='<%# Bind("Mos") %>' runat="server" />
@@ -260,7 +267,7 @@
 									<label for="_selectedUnits" class="col-sm-4 col-md-4 control-label">Units Selected:</label>
 									<div class="col-sm-7 col-md-6">
 										<asp:TextBox ID="_selectedUnits" Rows="4" TextMode="MultiLine" CssClass="form-control" ClientIDMode="Static" Text='<%# Bind("EpUnits") %>' runat="server" />
-										<span class="help-block">Use the Unit list above to populate this field.</span>
+										<span class="help-block">Use the Unit list above to populate this field. These are the units your are requesting to have admin. rights.</span>
 										<asp:RequiredFieldValidator CssClass="label label-warning" ID="_saUnitsRequiredValidator" runat="server" ErrorMessage="Selected Units: Please enter the units you want to have elevated privelages over." ControlToValidate="_selectedUnits" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
 									</div>
 								</div>

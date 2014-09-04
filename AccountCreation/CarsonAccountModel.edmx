@@ -70,6 +70,7 @@
           <Property Name="SADateSigned" Type="datetime" />
           <Property Name="DSDDateSigned" Type="datetime" />
           <Property Name="DSDRemark" Type="nvarchar" MaxLength="256" />
+          <Property Name="CommanderName" Type="nvarchar" MaxLength="256" />
         </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -101,6 +102,7 @@
           <Property Type="String" Name="EpUnits" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Mos" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Justification" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CommanderName" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="SamAccountName" Type="String" MaxLength="256" Unicode="false" FixedLength="false" />
           <Property Name="HomeFolder" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
           <Property Type="Boolean" Name="Training" />
@@ -150,6 +152,7 @@
           <EntitySetMapping Name="AccountRequests">
             <EntityTypeMapping TypeName="CarsonAccountModel.AccountRequest">
               <MappingFragment StoreEntitySet="tblAcctCreate_Auto">
+                <ScalarProperty Name="CommanderName" ColumnName="CommanderName" />
                 <ScalarProperty Name="DsdRemark" ColumnName="DSDRemark" />
                 <ScalarProperty Name="DsdDateSigned" ColumnName="DSDDateSigned" />
                 <ScalarProperty Name="SaDateSigned" ColumnName="SADateSigned" />
