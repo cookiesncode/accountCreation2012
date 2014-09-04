@@ -33,6 +33,7 @@ namespace AccountCreation
         public string EpUnits { get; set; }
         public string Mos { get; set; }
         public string Justification { get; set; }
+        public string CommanderName { get; set; }
         public string SamAccountName { get; set; }
         public string HomeFolder { get; set; }
         public Nullable<bool> Training { get; set; }
