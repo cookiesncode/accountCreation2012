@@ -95,56 +95,16 @@
 				<Columns>
                     <%-- TODO: Change it back to bound fields since templates arent required anymore --%>
                     <asp:CommandField ShowSelectButton="True"></asp:CommandField>
-                    <asp:TemplateField HeaderText="Requested Date" SortExpression="RequestedDate">
-                        <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Eval("RequestedDate", "{0:d}") %>' ID="_requestedDate"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="EDIPI" SortExpression="Edipi">
-                        <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Eval("Edipi") %>' ID="_edipi"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Last Name" SortExpression="LName">
-                        <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Eval("LName") %>' ID="_lastName"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="First Name" SortExpression="FName">
-                        <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Eval("FName") %>' ID="_firstName"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Mi" SortExpression="Mi">
-                        <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Eval("Mi") %>' ID="_middleInitial"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Rank" SortExpression="Rank">
-                        <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Eval("Rank") %>' ID="_rank"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Account Type" SortExpression="AccountType">
-                        <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Eval("AccountType") %>' ID="_accountType"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Request Type" SortExpression="RequestType">
-                        <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Eval("RequestType") %>' ID="_requestType"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Request Status" SortExpression="RequestStatus">
-                        <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Eval("RequestStatus") %>' ID="_requestStatus"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="SA Employee" SortExpression="SaName">
-                        <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Eval("SaName") %>' ID="_saName"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
+                    <asp:BoundField HeaderText="Requested Date" DataField="RequestedDate" DataFormatString="{0:d}" SortExpression="RequestedDate"></asp:BoundField>
+                    <asp:BoundField HeaderText="EDIPI" DataField="Edipi" SortExpression="Edipi"></asp:BoundField>
+                    <asp:BoundField HeaderText="Last Name" DataField="LName" SortExpression="LName"></asp:BoundField>
+                    <asp:BoundField HeaderText="First Name" DataField="FName" SortExpression="FName"></asp:BoundField>
+                    <asp:BoundField HeaderText="MI" DataField="Mi" SortExpression="Mi"></asp:BoundField>
+                    <asp:BoundField HeaderText="Rank" DataField="Rank" SortExpression="Rank"></asp:BoundField>
+                    <asp:BoundField HeaderText="Account Type" DataField="AccountType" SortExpression="AccountType"></asp:BoundField>
+                    <asp:BoundField HeaderText="Request Type" DataField="RequestType" SortExpression="RequestType"></asp:BoundField>
+                    <asp:BoundField HeaderText="Request Status" DataField="RequestStatus" SortExpression="RequestStatus"></asp:BoundField>
+                    <asp:BoundField HeaderText="SA Employee" DataField="SaName" SortExpression="SaName"></asp:BoundField>
                 </Columns>
 				<SelectedRowStyle CssClass="active"></SelectedRowStyle>
 			</asp:GridView>
