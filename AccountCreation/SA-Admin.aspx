@@ -314,13 +314,21 @@
 									</div>
 								</div>
                                 <div class="form-group">
-								<label for="_supervisorName" class="col-sm-4 control-label">Supervisor's Name:</label>
-								<div class="col-sm-8">
-									<p class="form-control-static">
-										<asp:Literal ID="_supervisorName" runat="server"></asp:Literal>
-									</p>
-								</div>
-							</div>
+								    <label for="_supervisorName" class="col-sm-4 control-label">Supervisor's Name:</label>
+								    <div class="col-sm-8">
+									    <p class="form-control-static">
+										    <asp:Literal ID="_supervisorName" runat="server"></asp:Literal>
+									    </p>
+								    </div>
+							    </div>
+                                <div class="form-group">
+								    <label for="_securityName" class="col-sm-4 control-label">Security's Name:</label>
+								    <div class="col-sm-8">
+									    <p class="form-control-static">
+										    <asp:Literal ID="_securityName" runat="server"></asp:Literal>
+									    </p>
+								    </div>
+							    </div>
 							</asp:Panel>
 						</div>
 					</div>
@@ -496,6 +504,7 @@
 			<div class="hidden">
                 <asp:TextBox ID="_userEdipi" Text='<%# Eval("Edipi") %>' runat="server"></asp:TextBox>
 				<asp:TextBox ID="_supervisorEdipi" Text='<%# Eval("SupEdipi") %>' runat="server"></asp:TextBox>
+				<asp:TextBox ID="_securityEdipi" Text='<%# Eval("SecEdipi") %>' runat="server"></asp:TextBox>
 				<asp:TextBox ID="_saName" Text='<%# Bind("SaName") %>' runat="server"></asp:TextBox>
 				<asp:TextBox ID="_completedDate" Text='<%# Bind("CompletedDate") %>' runat="server"></asp:TextBox>
 				<asp:TextBox ID="_iaDateSigned" Text='<%# Bind("IaDateSigned") %>' runat="server"></asp:TextBox>
