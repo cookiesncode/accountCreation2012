@@ -78,6 +78,11 @@ namespace AccountCreation
                     var supervisorInfo = AdAccount.FindAdUser(supervisorEdipiCtrl.Text);
                     supervisorNameCtrl.Text = supervisorInfo;
 
+                    var securityNameCtrl = (Literal)(_formview).FindControl("_securityName");
+                    var securityEdipiCtrl = (TextBox)(_formview).FindControl("_securityEdipi");
+                    var securityInfo = AdAccount.FindAdUser(securityEdipiCtrl.Text);
+                    securityNameCtrl.Text = securityInfo;
+
                     // Set visibility defaults for the NEC sections.
                     var saApprovalSection = (PlaceHolder)(_formview).FindControl("_saSection");
                     saApprovalSection.Visible = false;
@@ -320,45 +325,6 @@ namespace AccountCreation
             }
         }
 
-        protected void _dsdSubmit_Click(object sender, EventArgs e)
-        {
-            if (Page.IsValid)
-            {
-                var modifiedDateCtrl = (TextBox)(_formview).FindControl("_modifiedDate");
-                modifiedDateCtrl.Text = DateTime.Now.ToString();
-
-                var dsdDateSignedCtrl = (TextBox)(_formview).FindControl("_dsdDateSigned");
-                dsdDateSignedCtrl.Text = DateTime.Now.ToString();
-
-                var requestStatusCtrl = (TextBox)(_formview).FindControl("_requestStatus");
-                var dsdApprovalCtrl = (RadioButtonList)(_formview).FindControl("_dsdApproval");
-                var iaRemarkCtrl = (TextBox)(_formview).FindControl("_iaRemark");
-                var dsdRemarkCtrl = (TextBox)(_formview).FindControl("_dsdRemark");
-                string emailAddress;
-                var lineBreak = Environment.NewLine;
-                var doubleLineBreak = Environment.NewLine + Environment.NewLine;
-
-                if (dsdApprovalCtrl.SelectedValue == "Approved")
-                {
-                    requestStatusCtrl.Text = "DSD Approved";
-                    emailAddress = "usarmy.carson.106-sig-bde.list.nec-ssd-smb-sa@mail.mil, miguel.gomez16.ctr@mail.mil";
-                    var nameOfSender = CacCard.FirstName + " " + CacCard.LastName;
-                    var emailMessage = "This account has been approved by DSD and is ready for SA creation." + doubleLineBreak;
-                    emailMessage += "DSD Remarks:" + lineBreak + dsdRemarkCtrl.Text + doubleLineBreak;
-                    emailMessage += "IA Remarks:" + lineBreak + iaRemarkCtrl.Text;
-                    var requestEdipi = (Literal)(_formview).FindControl("_edipi");
-                    var appLink = "https://nec.carson.army.mil/accounts/sa-admin.aspx?search=" + requestEdipi.Text;
-                    var accountType = (TextBox)(_formview).FindControl("_accountType");
-
-                    Email.SendEmail(emailAddress, emailMessage, nameOfSender, appLink, accountType.Text, false);
-                }
-                else
-                {
-                    requestStatusCtrl.Text = "Denied";
-                }
-            }
-        }
-
         protected void _iaSubmit_Click(object sender, EventArgs e)
         {
             if (Page.IsValid)
@@ -371,11 +337,12 @@ namespace AccountCreation
 
                 var requestStatusCtrl = (TextBox)(_formview).FindControl("_requestStatus");
                 var iaApprovalCtrl = (RadioButtonList)(_formview).FindControl("_iaApproval");
-                string emailAddress;
                 var nameOfSender = CacCard.FirstName + " " + CacCard.LastName;
-                string emailMessage;
+                string necEmailAddress = "kevin.w.smith110.civ@mail.mil, michael.j.hahn10.civ@mail.mil, miguel.gomez16.ctr@mail.mil"; ;
+                string necEmailMessage;
                 var requestEdipi = (Literal)(_formview).FindControl("_edipi");
-                var appLink = "https://nec.carson.army.mil/accounts/sa-admin.aspx?search=" + requestEdipi.Text;
+                var adminAppLink = "https://nec.carson.army.mil/accounts/sa-admin.aspx?search=" + requestEdipi.Text;
+                var customerAppLink = "https://nec.carson.army.mil/accounts/verification.aspx?search=" + requestEdipi.Text;
                 var accountType = (TextBox)(_formview).FindControl("_accountType");
                 var iaRemarkCtrl = (TextBox)(_formview).FindControl("_iaRemark");
                 var lineBreak = Environment.NewLine;
@@ -384,17 +351,69 @@ namespace AccountCreation
                 if (iaApprovalCtrl.SelectedValue == "Approved")
                 {
                     requestStatusCtrl.Text = "IA Approved";
-                    emailAddress = "kevin.w.smith110.civ@mail.mil, michael.j.hahn10.civ@mail.mil, miguel.gomez16.ctr@mail.mil";
-                    emailMessage = "This account has been approved by IA and is ready for DSD verification." + doubleLineBreak;
-                    emailMessage += "IA Remarks:" + lineBreak + iaRemarkCtrl.Text;
-
-                    Email.SendEmail(emailAddress, emailMessage, nameOfSender, appLink, accountType.Text, false);
+                    necEmailMessage = "This account has been approved by IA and is ready for DSD verification." + doubleLineBreak;
+                    necEmailMessage += "IA Remarks:" + lineBreak + iaRemarkCtrl.Text;
+                    Email.SendEmail(necEmailAddress, necEmailMessage, nameOfSender, adminAppLink, accountType.Text, false);
                 }
                 else
                 {
                     requestStatusCtrl.Text = "Denied";
-                    // Send email to user here?
+                    necEmailMessage = "This account has been denied by IA." + doubleLineBreak;
+                    necEmailMessage += "IA Remarks:" + lineBreak + iaRemarkCtrl.Text;
+                    Email.SendEmail(necEmailAddress, necEmailMessage, nameOfSender, adminAppLink, accountType.Text, false);
+
+                    var customerEmailAddress = (Literal)(_formview).FindControl("_email");
+                    var customerEmailMessage = "This account has been denied by IA. For more information, please contact Glen Wilson at glen.p.wilson.civ@mail.mil or Jeremy Cortez at jeremy.d.cortez.civ@mail.mil";
+                    Email.SendEmail(customerEmailAddress.Text, customerEmailMessage, nameOfSender, customerAppLink, accountType.Text, false);
                 }               
+            }
+        }
+
+        protected void _dsdSubmit_Click(object sender, EventArgs e)
+        {
+            if (Page.IsValid)
+            {
+                var modifiedDateCtrl = (TextBox)(_formview).FindControl("_modifiedDate");
+                modifiedDateCtrl.Text = DateTime.Now.ToString();
+
+                var dsdDateSignedCtrl = (TextBox)(_formview).FindControl("_dsdDateSigned");
+                dsdDateSignedCtrl.Text = DateTime.Now.ToString();
+
+                var requestStatusCtrl = (TextBox)(_formview).FindControl("_requestStatus");
+                var dsdApprovalCtrl = (RadioButtonList)(_formview).FindControl("_dsdApproval");
+                var requestEdipi = (Literal)(_formview).FindControl("_edipi");
+                var iaRemarkCtrl = (TextBox)(_formview).FindControl("_iaRemark");
+                var dsdRemarkCtrl = (TextBox)(_formview).FindControl("_dsdRemark");
+                string necEmailMessage;
+                var nameOfSender = CacCard.FirstName + " " + CacCard.LastName;
+                var adminAppLink = "https://nec.carson.army.mil/accounts/sa-admin.aspx?search=" + requestEdipi.Text;
+                var customerAppLink = "https://nec.carson.army.mil/accounts/verification.aspx?search=" + requestEdipi.Text;
+                var accountType = (TextBox)(_formview).FindControl("_accountType");
+                var lineBreak = Environment.NewLine;
+                var doubleLineBreak = Environment.NewLine + Environment.NewLine;
+
+                if (dsdApprovalCtrl.SelectedValue == "Approved")
+                {
+                    requestStatusCtrl.Text = "DSD Approved";
+                    var necEmailAddress = "usarmy.carson.106-sig-bde.list.nec-ssd-smb-sa@mail.mil, glen.p.wilson.civ@mail.mil, jeremy.d.cortez.civ@mail.mil, miguel.gomez16.ctr@mail.mil";
+                    necEmailMessage = "This account has been approved by DSD and is ready for SA creation." + doubleLineBreak;
+                    necEmailMessage += "DSD Remarks:" + lineBreak + dsdRemarkCtrl.Text + doubleLineBreak;
+                    necEmailMessage += "IA Remarks:" + lineBreak + iaRemarkCtrl.Text;
+
+                    Email.SendEmail(necEmailAddress, necEmailMessage, nameOfSender, adminAppLink, accountType.Text, false);
+                }
+                else
+                {
+                    requestStatusCtrl.Text = "Denied";
+                    var necEmailAddress = "glen.p.wilson.civ@mail.mil, jeremy.d.cortez.civ@mail.mil, miguel.gomez16.ctr@mail.mil";
+                    necEmailMessage = "This account has been denied by DSD." + doubleLineBreak;
+                    necEmailMessage += "DSD Remarks:" + lineBreak + dsdRemarkCtrl.Text;
+                    Email.SendEmail(necEmailAddress, necEmailMessage, nameOfSender, adminAppLink, accountType.Text, false);
+
+                    var customerEmailAddress = (Literal)(_formview).FindControl("_email");
+                    var customerEmailMessage = "This account has been denied by DSD. For more information, please contact Kevin Smith at kevin.w.smith110.civ@mail.mil";
+                    Email.SendEmail(customerEmailAddress.Text, customerEmailMessage, nameOfSender, customerAppLink, accountType.Text, false);
+                }
             }
         }
 
@@ -411,7 +430,6 @@ namespace AccountCreation
                 var requestStatusCtrl = (TextBox)(_formview).FindControl("_requestStatus");
                 var editRequestStatusCtrl = (DropDownList)(_formview).FindControl("_editRequestStatus");
                 requestStatusCtrl.Text = editRequestStatusCtrl.SelectedValue;
-                string emailAddress;
                 var nameOfSender = CacCard.FirstName + " " + CacCard.LastName;
                 string emailMessage;
                 var requestEdipi = (Literal)(_formview).FindControl("_edipi");
@@ -422,22 +440,21 @@ namespace AccountCreation
                 var saRemarkCtrl = (TextBox)(_formview).FindControl("_saRemark");
                 var iaRemarkCtrl = (TextBox)(_formview).FindControl("_iaRemark");
                 var dsdRemarkCtrl = (TextBox)(_formview).FindControl("_dsdRemark");
+                var necEmailAddress = "kevin.w.smith110.civ@mail.mil, michael.j.hahn10.civ@mail.mil, glen.p.wilson.civ@mail.mil, jeremy.d.cortez.civ@mail.mil, miguel.gomez16.ctr@mail.mil";
 
                 if (editRequestStatusCtrl.SelectedValue == "Completed" && RequiresThreeSignatures)
                 {
                     var completedDateCtrl = (TextBox)(_formview).FindControl("_completedDate");
                     completedDateCtrl.Text = DateTime.Now.ToString();
-                    emailAddress = "kevin.w.smith110.civ@mail.mil, michael.j.hahn10.civ@mail.mil, miguel.gomez16.ctr@mail.mil";
                     emailMessage = "This account has been created by the SA section." + doubleLineBreak;
                     emailMessage += "SA Remarks:" + lineBreak + saRemarkCtrl.Text + doubleLineBreak;
-                    Email.SendEmail(emailAddress, emailMessage, nameOfSender, appLink, accountType.Text, false);
+                    Email.SendEmail(necEmailAddress, emailMessage, nameOfSender, appLink, accountType.Text, false);
                 }
                 else if (editRequestStatusCtrl.SelectedValue == "Denied" && RequiresThreeSignatures)
                 {
-                    emailAddress = "kevin.w.smith110.civ@mail.mil, michael.j.hahn10.civ@mail.mil, glen.p.wilson.civ@mail.mil, jeremy.d.cortez.civ@mail.mil, miguel.gomez16.ctr@mail.mil";
                     emailMessage = "This account has been denied by the SA section." + doubleLineBreak;
                     emailMessage += "SA Remarks:" + lineBreak + saRemarkCtrl.Text + doubleLineBreak;
-                    Email.SendEmail(emailAddress, emailMessage, nameOfSender, appLink, accountType.Text, false);
+                    Email.SendEmail(necEmailAddress, emailMessage, nameOfSender, appLink, accountType.Text, false);
                 }          
             }
         }
