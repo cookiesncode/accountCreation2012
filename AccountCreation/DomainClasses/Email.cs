@@ -8,7 +8,7 @@ namespace AccountCreation
 {
     public class Email
     {
-        public static void SendEmail(string toAddress, string messageAddon, string signature, string appLink, string accountType, bool isCustomerRecipient)
+        public static void SendEmail(string toAddress, string messageAddon, string signature, string appLink, string accountType, bool isInitialCustomerMessage)
         {
             using (var smtp = new SmtpClient("155.214.100.30"))
             {
@@ -17,7 +17,7 @@ namespace AccountCreation
                 var mail = new MailMessage();
                 string defaultMessage;
 
-                if (isCustomerRecipient)
+                if (isInitialCustomerMessage)
                 {
                     defaultMessage = "This email is to inform you that a " + accountType + " account request has been submitted by:";
                 }
