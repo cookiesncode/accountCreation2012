@@ -71,6 +71,7 @@
           <Property Name="DSDDateSigned" Type="datetime" />
           <Property Name="DSDRemark" Type="nvarchar" MaxLength="256" />
           <Property Name="CommanderName" Type="nvarchar" MaxLength="256" />
+          <Property Name="SIPR_Token" Type="nvarchar" MaxLength="50" />
         </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -113,6 +114,7 @@
           <Property Name="NiprEp" Type="Boolean" />
           <Property Name="Vpn" Type="Boolean" />
           <Property Name="Sipr" Type="Boolean" />
+          <Property Type="String" Name="SiprToken" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="AccountType" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="RequestType" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="InvestigationType" MaxLength="256" FixedLength="false" Unicode="true" />
@@ -152,6 +154,7 @@
           <EntitySetMapping Name="AccountRequests">
             <EntityTypeMapping TypeName="CarsonAccountModel.AccountRequest">
               <MappingFragment StoreEntitySet="tblAcctCreate_Auto">
+                <ScalarProperty Name="SiprToken" ColumnName="SIPR_Token" />
                 <ScalarProperty Name="CommanderName" ColumnName="CommanderName" />
                 <ScalarProperty Name="DsdRemark" ColumnName="DSDRemark" />
                 <ScalarProperty Name="DsdDateSigned" ColumnName="DSDDateSigned" />

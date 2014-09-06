@@ -44,6 +44,7 @@ namespace AccountCreation
         public Nullable<bool> NiprEp { get; set; }
         public Nullable<bool> Vpn { get; set; }
         public Nullable<bool> Sipr { get; set; }
+        public string SiprToken { get; set; }
         public string AccountType { get; set; }
         public string RequestType { get; set; }
         public string InvestigationType { get; set; }
