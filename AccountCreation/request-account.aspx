@@ -177,11 +177,25 @@
 								<label for="_phone" class="col-sm-4 col-md-4 control-label">Work Phone Number:</label>
 								<div class="col-sm-7 col-md-6">
 									<asp:TextBox ID="_phone" CssClass="form-control" runat="server" Text='<%# Bind("Phone") %>' />
-                                    <span class="help-block">Format: 000.000.0000</span>
+                                    <span class="help-block">Format: XXX.XXX.XXXX</span>
 									<asp:RequiredFieldValidator CssClass="label label-warning" ID="_phoneRequiredValidator" runat="server" ErrorMessage="Office Phone Number: Please enter your office number." ControlToValidate="_phone" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
 									<asp:RegularExpressionValidator ID="_phoneExpressionValidator" CssClass="label label-warning" ControlToValidate="_phone" runat="server" ErrorMessage="Phone: Please enter a valid Fort Carson number, i.e., 719.526/524/503.XXXX" Display="Dynamic" ValidationExpression="719\.(526|524|503)\.\d{4}">Requires your attention.</asp:RegularExpressionValidator>
 								</div>
 							</div>
+
+                            <asp:Panel ID="_siprSection" Visible="false" runat="server">
+							    <div class="form-group">
+								    <label for="_siprToken" class="col-sm-4 col-md-4 control-label">SIPR Token Number:</label>
+								    <div class="col-sm-7 col-md-6">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">534E-</span>
+									        <asp:TextBox ID="_siprToken" CssClass="form-control" runat="server" Text='<%# Bind("SiprToken") %>' />
+                                        </div>
+                                        <span class="help-block">Format: XXXX-XXXX-XXXX <br />(Leave blank if none)</span>
+									<asp:RegularExpressionValidator ID="_siprExpressionValidator" CssClass="label label-warning" ControlToValidate="_siprToken" runat="server" ErrorMessage="SIPR Token: Please enter a valid SIPR token, i.e., 719.526/524/503.XXXX" Display="Dynamic" ValidationExpression="\d{4}\-\d{4}\-\d{4}">Requires your attention.</asp:RegularExpressionValidator>
+								    </div>
+							    </div>
+                            </asp:Panel>
 
                             <asp:Panel ID="_deleteRequestPanel" Visible="false" runat="server">
 								<div class="form-group">

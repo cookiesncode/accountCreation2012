@@ -167,6 +167,7 @@ namespace AccountCreation
                     }
 
                     var saPanelControl = (Panel)(_formview).FindControl("_saPanel");
+                    var siprSection = (Panel)(_formview).FindControl("_siprSection");
                     var justificationPanelControl = (Panel)(_formview).FindControl("_justificationPanel");
                     var epControl = (CheckBox)(_formview).FindControl("_epAcct");
                     var saControl = (CheckBox)(_formview).FindControl("_saAcct");
@@ -192,6 +193,7 @@ namespace AccountCreation
                             if (requestType == "Create")
                             {
                                 requestTypeControl.Text = "Manual Create";
+                                siprSection.Visible = true;
                             }
                             else
                             {

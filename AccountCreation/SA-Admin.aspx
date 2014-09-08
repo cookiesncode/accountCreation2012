@@ -265,12 +265,26 @@
 								</div>
 							</div>
 
+                            <asp:Panel ID="_siprSection" runat="server">
+								<div class="form-group">
+									<label for="_siprToken" class="col-sm-4 control-label">SIPR Token:</label>
+									<div class="col-sm-8">
+                                        <div class="input-group">     
+                                            <p class="form-control-static">
+                                                <span>534E-</span>
+										        <asp:Literal  ID="_siprToken" Text='<%# Eval("SiprToken") %>' runat="server"></asp:Literal>
+									        </p>
+                                        </div>									
+									</div>
+								</div>
+                            </asp:Panel>
+
                             <asp:Panel ID="_deleteRequestPanel" runat="server">
 								<div class="form-group">
 									<label for="_deleteDate" class="col-sm-4 control-label">Requested Delete Date:</label>
 									<div class="col-sm-8">
                                         <p class="form-control-static">
-										    <asp:Literal ID="_deleteDate" Text='<%# Eval("DeleteDate") %>' runat="server"></asp:Literal>
+										    <asp:Literal ID="_deleteDate" Text='<%# Eval("DeleteDate", "{0:d}") %>' runat="server"></asp:Literal>
 									    </p>									
 									</div>
 								</div>

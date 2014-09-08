@@ -214,6 +214,20 @@
 								</div>
 							</div>
 
+                            <asp:Panel ID="_siprSection" Visible="false" runat="server">
+							    <div class="form-group">
+								    <label for="_siprToken" class="col-sm-4 col-md-4 control-label">SIPR Token Number:</label>
+								    <div class="col-sm-7 col-md-6">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">534E-</span>
+									        <asp:TextBox ID="_siprToken" CssClass="form-control" runat="server" Text='<%# Bind("SiprToken") %>' />
+                                        </div>
+                                        <span class="help-block">Format: XXXX-XXXX-XXXX <br />(Leave blank if none)</span>
+									    <asp:RegularExpressionValidator ID="_siprExpressionValidator" CssClass="label label-warning" ControlToValidate="_siprToken" runat="server" ErrorMessage="SIPR Token: Please enter a valid SIPR token, i.e., 719.526/524/503.XXXX" Display="Dynamic" ValidationExpression="\d{4}\-\d{4}\-\d{4}">Requires your attention.</asp:RegularExpressionValidator>
+								    </div>
+							    </div>
+                            </asp:Panel>
+
                             <asp:Panel ID="_deleteRequestPanel" Visible="false" runat="server">
 								<div class="form-group">
 									<label for="_deleteDate" class="col-sm-4 col-md-4 control-label">Requested Delete Date:</label>

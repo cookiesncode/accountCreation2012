@@ -54,9 +54,10 @@ namespace AccountCreation
 			{
                 var accountTypeCtrl = (TextBox)(_formview).FindControl("_accountType");
                 var requestTypeCtrl = (TextBox)(_formview).FindControl("_requestType");
+
                 var deleteRequestDateSection = (Panel)(_formview).FindControl("_deleteRequestPanel");
 
-                if (requestTypeCtrl.Text == "Manual Delete" || requestTypeCtrl.Text == "Auto Delete")
+                if (requestTypeCtrl.Text.Contains("Delete"))
                 {
                     deleteRequestDateSection.Visible = true;
                 }
@@ -64,6 +65,18 @@ namespace AccountCreation
                 {
                     deleteRequestDateSection.Visible = false;
                 }
+
+                var siprSection = (Panel)(_formview).FindControl("_siprSection");
+
+                if (accountTypeCtrl.Text == "SIPR" && requestTypeCtrl.Text.Contains("Create"))
+                {
+                    siprSection.Visible = true;
+                }
+                else
+                {
+                    siprSection.Visible = false;
+                }
+
 
                 if (accountTypeCtrl.Text != "NIPR")
 				{

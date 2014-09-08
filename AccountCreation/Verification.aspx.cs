@@ -135,6 +135,16 @@ namespace AccountCreation
                     }
                 }
 
+                var siprSection = (Panel)(_formview).FindControl("_siprSection");
+                if (accountTypeControl.Text == "SIPR" && requestTypeControl.Text.Contains("Create"))
+                {
+                    siprSection.Visible = true;
+                }
+                else
+                {
+                    siprSection.Visible = false;
+                }
+
                 var installationControl = (DropDownList)(_formview).FindControl("_installation");
                 var personaControl = (DropDownList)(_formview).FindControl("_persona");
                 var macomControl = (DropDownList)(_formview).FindControl("_macom");
