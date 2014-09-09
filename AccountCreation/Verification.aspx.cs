@@ -120,7 +120,7 @@ namespace AccountCreation
                     deleteDateRangeValidator.Type = ValidationDataType.Date;
                 }
 
-                if (requestTypeControl.Text.Contains("Create") &&  (accountTypeControl.Text == "SA" || accountTypeControl.Text == "EP"))
+                if (requestTypeControl.Text.Contains("Create") && accountTypeControl.Text == "SA")
                 {
                     var saPanelControl = (Panel)(_formview).FindControl("_saPanel");
                     saPanelControl.Visible = true;
@@ -283,7 +283,7 @@ namespace AccountCreation
 
                 var accountType = (TextBox)(_formview).FindControl("_accountType");
 
-                if (accountType.Text == "SA")
+                if (accountType.Text == "SA" || accountType.Text == "EP")
                 {
                     var fName = (TextBox)(_formview).FindControl("_fName");
                     var lName = (TextBox)(_formview).FindControl("_lName");
