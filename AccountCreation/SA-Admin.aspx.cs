@@ -13,7 +13,7 @@ namespace AccountCreation
 {
 	public partial class SA_Admin : System.Web.UI.Page
 	{
-        private bool RequiresThreeSignatures
+        private bool IsSaCreateRequest
         {
             get
             {
@@ -30,7 +30,24 @@ namespace AccountCreation
             }
         }
 
-		protected void Page_Load(object sender, EventArgs e)
+        private bool IsEpCreateRequest
+        {
+            get
+            {
+                var accountTypeCtrl = (TextBox)(_formview).FindControl("_accountType");
+                var requestTypeCtrl = (TextBox)(_formview).FindControl("_requestType");
+                if (requestTypeCtrl.Text.Contains("Create") && accountTypeCtrl.Text == "EP")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
 		{
             if (Page.User.IsInRole("CARSON NEC SSD SMB SA SG") || Page.User.IsInRole("CARSON NEC IA Account Review") || Page.User.IsInRole("CARSON NEC DSD Account Review"))
             {
@@ -84,41 +101,54 @@ namespace AccountCreation
                     saAdInfoSection.Visible = true;
 				}
 
-                if (RequiresThreeSignatures)
+                if (IsSaCreateRequest || IsEpCreateRequest)
                 {
-                    var supervisorNameCtrl = (Literal)(_formview).FindControl("_supervisorName");
-                    var supervisorEdipiCtrl = (TextBox)(_formview).FindControl("_supervisorEdipi");
-                    var supervisorInfo = AdAccount.FindAdUser(supervisorEdipiCtrl.Text);
-                    supervisorNameCtrl.Text = supervisorInfo;
-
-                    var securityNameCtrl = (Literal)(_formview).FindControl("_securityName");
-                    var securityEdipiCtrl = (TextBox)(_formview).FindControl("_securityEdipi");
-                    var securityInfo = AdAccount.FindAdUser(securityEdipiCtrl.Text);
-                    securityNameCtrl.Text = securityInfo;
-
                     // Set visibility defaults for the NEC sections.
-                    var saApprovalSection = (PlaceHolder)(_formview).FindControl("_saSection");
-                    saApprovalSection.Visible = false;
-
                     var iaApprovalSection = (PlaceHolder)(_formview).FindControl("_iaSection");
                     iaApprovalSection.Visible = true;
 
                     var dsdApprovalSection = (PlaceHolder)(_formview).FindControl("_dsdSection");
                     dsdApprovalSection.Visible = false;
 
+                    var saApprovalSection = (PlaceHolder)(_formview).FindControl("_saSection");
+                    saApprovalSection.Visible = false;
+
                     var requestStatusCtrl = (TextBox)(_formview).FindControl("_requestStatus");
                     var dsdCheckBoxCtrl = (CheckBox)(_formview).FindControl("_dsdCheckBox");
                     var iaCheckBoxCtrl = (CheckBox)(_formview).FindControl("_iaCheckBox");
-                    
-                    // Update visible properties of each section depending on the value of the request status.
-                    if ((requestStatusCtrl.Text.Contains("Approved") || requestStatusCtrl.Text == "Completed") && iaCheckBoxCtrl.Checked)
-                    {
-                        dsdApprovalSection.Visible = true;
-                    }
 
-                    if ((requestStatusCtrl.Text == "DSD Approved" || requestStatusCtrl.Text == "Completed") && dsdCheckBoxCtrl.Checked)
+                    if (IsSaCreateRequest)
                     {
-                        saApprovalSection.Visible = true;
+                        var supervisorNameCtrl = (Literal)(_formview).FindControl("_supervisorName");
+                        var supervisorEdipiCtrl = (TextBox)(_formview).FindControl("_supervisorEdipi");
+                        var supervisorInfo = AdAccount.FindAdUser(supervisorEdipiCtrl.Text);
+                        supervisorNameCtrl.Text = supervisorInfo;
+
+                        var securityNameCtrl = (Literal)(_formview).FindControl("_securityName");
+                        var securityEdipiCtrl = (TextBox)(_formview).FindControl("_securityEdipi");
+                        var securityInfo = AdAccount.FindAdUser(securityEdipiCtrl.Text);
+                        securityNameCtrl.Text = securityInfo;
+
+                        // Update visible properties of each section depending on the value of the request status.
+                        if ((requestStatusCtrl.Text == "IA Approved" || requestStatusCtrl.Text == "Completed") && iaCheckBoxCtrl.Checked)
+                        {
+                            dsdApprovalSection.Visible = true;
+                        }
+
+                        if ((requestStatusCtrl.Text == "DSD Approved" || requestStatusCtrl.Text == "Completed") && dsdCheckBoxCtrl.Checked)
+                        {
+                            saApprovalSection.Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        var saRequestInfoSection = (Panel)(_formview).FindControl("_saPanel");
+                        saRequestInfoSection.Visible = false;
+
+                        if ((requestStatusCtrl.Text == "IA Approved" || requestStatusCtrl.Text == "Completed") && iaCheckBoxCtrl.Checked)
+                        {
+                            saApprovalSection.Visible = true;
+                        }
                     }
                     
                     // Set defaults for the individual controls inside the NEC approval sections
@@ -351,7 +381,7 @@ namespace AccountCreation
                 var requestStatusCtrl = (TextBox)(_formview).FindControl("_requestStatus");
                 var iaApprovalCtrl = (RadioButtonList)(_formview).FindControl("_iaApproval");
                 var nameOfSender = CacCard.FirstName + " " + CacCard.LastName;
-                string necEmailAddress = "kevin.w.smith110.civ@mail.mil, michael.j.hahn10.civ@mail.mil, miguel.gomez16.ctr@mail.mil"; ;
+                string necEmailAddress;
                 string necEmailMessage;
                 var requestEdipi = (Literal)(_formview).FindControl("_edipi");
                 var adminAppLink = "https://nec.carson.army.mil/accounts/sa-admin.aspx?search=" + requestEdipi.Text;
@@ -361,10 +391,19 @@ namespace AccountCreation
                 var lineBreak = Environment.NewLine;
                 var doubleLineBreak = Environment.NewLine + Environment.NewLine;
 
+                if (IsSaCreateRequest)
+                {
+                    necEmailAddress = "kevin.w.smith110.civ@mail.mil, michael.j.hahn10.civ@mail.mil, miguel.gomez16.ctr@mail.mil";
+                }
+                else
+                {
+                    necEmailAddress = "usarmy.carson.106-sig-bde.list.nec-ssd-smb-sa@mail.mil, miguel.gomez16.ctr@mail.mil";
+                }
+
                 if (iaApprovalCtrl.SelectedValue == "Approved")
                 {
                     requestStatusCtrl.Text = "IA Approved";
-                    necEmailMessage = "This account has been approved by IA and is ready for DSD verification." + doubleLineBreak;
+                    necEmailMessage = "This account has been approved by IA." + doubleLineBreak;
                     necEmailMessage += "IA Remarks:" + lineBreak + iaRemarkCtrl.Text;
                     Email.SendEmail(necEmailAddress, necEmailMessage, nameOfSender, adminAppLink, accountType.Text, false);
                 }
@@ -409,7 +448,7 @@ namespace AccountCreation
                 {
                     requestStatusCtrl.Text = "DSD Approved";
                     var necEmailAddress = "usarmy.carson.106-sig-bde.list.nec-ssd-smb-sa@mail.mil, glen.p.wilson.civ@mail.mil, jeremy.d.cortez.civ@mail.mil, miguel.gomez16.ctr@mail.mil";
-                    necEmailMessage = "This account has been approved by DSD and is ready for SA creation." + doubleLineBreak;
+                    necEmailMessage = "This account has been approved by DSD." + doubleLineBreak;
                     necEmailMessage += "DSD Remarks:" + lineBreak + dsdRemarkCtrl.Text + doubleLineBreak;
                     necEmailMessage += "IA Remarks:" + lineBreak + iaRemarkCtrl.Text;
 
@@ -453,9 +492,18 @@ namespace AccountCreation
                 var saRemarkCtrl = (TextBox)(_formview).FindControl("_saRemark");
                 var iaRemarkCtrl = (TextBox)(_formview).FindControl("_iaRemark");
                 var dsdRemarkCtrl = (TextBox)(_formview).FindControl("_dsdRemark");
-                var necEmailAddress = "kevin.w.smith110.civ@mail.mil, michael.j.hahn10.civ@mail.mil, glen.p.wilson.civ@mail.mil, jeremy.d.cortez.civ@mail.mil, miguel.gomez16.ctr@mail.mil";
+                
+                string necEmailAddress;
+                if (IsSaCreateRequest)
+                {
+                    necEmailAddress = "kevin.w.smith110.civ@mail.mil, michael.j.hahn10.civ@mail.mil, glen.p.wilson.civ@mail.mil, jeremy.d.cortez.civ@mail.mil, miguel.gomez16.ctr@mail.mil";
+                }
+                else
+                {
+                    necEmailAddress = "glen.p.wilson.civ@mail.mil, jeremy.d.cortez.civ@mail.mil, miguel.gomez16.ctr@mail.mil";
+                }
 
-                if (editRequestStatusCtrl.SelectedValue == "Completed" && RequiresThreeSignatures)
+                if (editRequestStatusCtrl.SelectedValue == "Completed" && (IsSaCreateRequest || IsEpCreateRequest))
                 {
                     var completedDateCtrl = (TextBox)(_formview).FindControl("_completedDate");
                     completedDateCtrl.Text = DateTime.Now.ToString();
@@ -463,7 +511,7 @@ namespace AccountCreation
                     emailMessage += "SA Remarks:" + lineBreak + saRemarkCtrl.Text + doubleLineBreak;
                     Email.SendEmail(necEmailAddress, emailMessage, nameOfSender, appLink, accountType.Text, false);
                 }
-                else if (editRequestStatusCtrl.SelectedValue == "Denied" && RequiresThreeSignatures)
+                else if (editRequestStatusCtrl.SelectedValue == "Denied" && (IsSaCreateRequest || IsEpCreateRequest))
                 {
                     emailMessage = "This account has been denied by the SA section." + doubleLineBreak;
                     emailMessage += "SA Remarks:" + lineBreak + saRemarkCtrl.Text + doubleLineBreak;
