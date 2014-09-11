@@ -281,6 +281,7 @@ namespace AccountCreation
                 var requestStatusControl = (TextBox)(_formview).FindControl("_requestStatus");
                 requestStatusControl.Text = "Ready";
 
+                var customerEdipiCtrl = (TextBox)(_formview).FindControl("_edipi");
                 var accountType = (TextBox)(_formview).FindControl("_accountType");
 
                 if (accountType.Text == "SA" || accountType.Text == "EP")
@@ -291,7 +292,7 @@ namespace AccountCreation
                     var iaEmail = "glen.p.wilson.civ@mail.mil, jeremy.d.cortez.civ@mail.mil, miguel.gomez16.ctr@mail.mil";
                     // TODO: FIND out how to set defaults if blank
                     var iaMessage = "Use the link below to review this request.";
-                    var iaLink = "https://nec.carson.army.mil/accounts/sa-admin.aspx?search=" + CacCard.Edipi;
+                    var iaLink = "https://nec.carson.army.mil/accounts/sa-admin.aspx?search=" + customerEdipiCtrl.Text;
                     Email.SendEmail(iaEmail, iaMessage, userName, iaLink, accountType.Text, false);
                 }
             }
