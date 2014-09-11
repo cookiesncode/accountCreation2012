@@ -68,7 +68,7 @@
 
 
     ///////////////////////////////////////////////////////////////////
-    // SA units requested code.
+    // SA units requested code (request-account page) and IMO group list (sa-admin page).
     var $unitList = $('#_unitList');
     $unitList.on('change', function(event) {
         var str = "";
@@ -77,7 +77,17 @@
             str += $(this).text() + " ";
         });
         $('#_selectedUnits').val(str);
-    })   
+    })
+
+    var $imoList = $('[data-js="imo-group-list"]');
+    $imoList.on('change', function (event) {
+        var str = "";
+        $imoList.children('option:selected')
+        .each(function (index, el) {
+            str += $(this).text() + "\n";
+        });
+        $('[data-js="imo-group"]').val(str);
+    });
 
     ///////////////////////////////////////////////////////////////////
     // Datepicker code: Note: The submit button code above affects the datepicker as well (JANK)
