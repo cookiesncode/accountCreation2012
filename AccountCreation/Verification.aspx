@@ -315,7 +315,12 @@
 							<asp:Button ID="_supSubmitBtn" ValidationGroup="supValGroup" OnClick="_supSubmitBtn_Click" data-confirm-modal="WARNING: Your signature is binding and you will be held accountable for this account verification. Are you sure you want to continue?" data-loading-text="Validating information..." CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Verify Request" />
 							<asp:Button ID="_supCancelBtn" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" OnClick="_cancelButton_Click" />
 						</div>
-                        <asp:PlaceHolder Visible="false" ID="_securityBoxPlaceholder" runat="server">
+                    </div>
+
+                    <asp:ValidationSummary ValidationGroup="supValGroup" CssClass="alert alert-danger" ID="_supValidationSummary" runat="server" />	
+
+                    <asp:PlaceHolder Visible="false" ID="_securityBoxPlaceholder" runat="server">
+                        <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3>Security Manager Approval</h3>
                             </div>
@@ -379,11 +384,11 @@
 							    <asp:Button ID="_secSubmitBtn" ValidationGroup="secValGroup" OnClick="_secSubmitBtn_Click" data-confirm-modal="WARNING: Your signature is binding and you will be held accountable for this account verification. Are you sure you want to continue?" data-loading-text="Validating information..." CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Update" Text="Verify Request" />
 							    <asp:Button ID="_cancelButton" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" OnClick="_cancelButton_Click" />
 						    </div>
-                        </asp:PlaceHolder>
-					</div> <%-- End Signature block --%>
-					<asp:ValidationSummary ValidationGroup="supValGroup" CssClass="alert alert-danger" ID="_validationSummary" runat="server" />	
-					<asp:ValidationSummary ValidationGroup="secValGroup" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />	
-				</div>
+                        </div>
+                    </asp:PlaceHolder>
+
+                    <asp:ValidationSummary ValidationGroup="secValGroup" CssClass="alert alert-danger" ID="_secValidationSummary" runat="server" />	
+				</div> <%-- End Signature block --%>
 			</div>
 			<div class="hidden">
 				<asp:TextBox ID="_supSignedDate" Text='<%# Bind("SupDateSigned") %>' runat="server"></asp:TextBox>
