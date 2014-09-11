@@ -148,7 +148,7 @@ namespace AccountCreation
             return false;
         }
 
-        public static string FindAdUser(string edipi)
+        public static string ReturnActiveDirectoryDisplayName(string edipi)
         {
             var domainContext = new PrincipalContext(ContextType.Domain, null, "DC=nanw,DC=ds,DC=army,DC=mil");
             UserPrincipal user = null;
