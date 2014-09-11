@@ -178,5 +178,30 @@ namespace AccountCreation
             }
             return null;
         }
+
+        public static List<string> ListImoGroups ()
+        {
+            var domainContext = new PrincipalContext(ContextType.Domain, null, "OU=Restricted Access Groups,OU=NETCOM,OU=Fort Carson,OU=Carson,OU=Installations,DC=nanw,DC=ds,DC=army,DC=mil");
+            GroupPrincipal imoGroup = null;
+            try
+            {
+                using (imoGroup = GroupPrincipal.FindByIdentity(domainContext, "CARSON IMO Managers"))
+                {
+                    var directoryEntryObject = imoGroup.GetUnderlyingObject() as DirectoryEntry;
+                    var parentContainer = directoryEntryObject.Parent;
+                    var imoGroups = parentContainer.Children;
+                    var imoGroupList = new List<string>();
+                    foreach (DirectoryEntry group in imoGroups)
+                    {
+                        imoGroupList.Add(group.Name);   
+                    }
+                    return imoGroupList;
+                }
+            }
+            catch
+            {
+            }
+            return null;
+        }
     }
 }
