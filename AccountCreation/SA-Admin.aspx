@@ -403,10 +403,19 @@
                                 <h3>DSD Section</h3>
                             </div>
                             <div class="panel-body">
+								<div class="form-group">
+									<label for="_imoGroupList" class="col-sm-4 control-label">IMO Groups:</label>
+									<div class="col-sm-8">
+										<asp:ListBox ID="_imoGroupList" Rows="8" CssClass="form-control" data-js="imo-group-list" ClientIDMode="Static" SelectionMode="Multiple" runat="server">
+											<asp:ListItem Text="-- Select Units --" Value="" />
+										</asp:ListBox>
+										<span class="help-block">Hold the Ctrl button on your keyboard to make multiple selections.</span>
+									</div>
+								</div>
                                 <div class="form-group">
                                     <label for="_dsdRemark" class="col-sm-4 control-label">Remark:</label>
                                     <div class="col-sm-8">
-                                        <asp:TextBox runat="server" ID="_dsdRemark" TextMode="MultiLine" Rows="6" CssClass="form-control" Text='<%# Bind("DsdRemark") %>'></asp:TextBox>
+                                        <asp:TextBox runat="server" ID="_dsdRemark" data-js="imo-group" TextMode="MultiLine" Rows="6" CssClass="form-control" Text='<%# Bind("DsdRemark") %>'></asp:TextBox>
                                     </div>
                                 </div>
 								<div class="form-group">

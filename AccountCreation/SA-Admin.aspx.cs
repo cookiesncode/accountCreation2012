@@ -133,6 +133,12 @@ namespace AccountCreation
                         if ((requestStatusCtrl.Text == "IA Approved" || requestStatusCtrl.Text == "Completed") && iaCheckBoxCtrl.Checked)
                         {
                             dsdApprovalSection.Visible = true;
+                            var imoGroupListCtrl = (ListBox)(_formview).FindControl("_imoGroupList");
+                            var imoGroupList = AdAccount.ListImoGroups();
+                            foreach (string group in imoGroupList)
+                            {
+                                imoGroupListCtrl.Items.Add(new ListItem(group, group));
+                            }
                         }
 
                         if ((requestStatusCtrl.Text == "DSD Approved" || requestStatusCtrl.Text == "Completed") && dsdCheckBoxCtrl.Checked)
@@ -160,6 +166,8 @@ namespace AccountCreation
                     dsdCheckboxCtrl.Enabled = false;
                     var dsdApprovalCtrl = (RadioButtonList)(_formview).FindControl("_dsdApproval");
                     dsdApprovalCtrl.Enabled = false;
+                    var dsdImoList = (ListBox)(_formview).FindControl("_imoGroupList");
+                    dsdImoList.Enabled = false;
 
                     var iaSubmitBtn = (Button)(_formview).FindControl("_iaSubmit");
                     iaSubmitBtn.Visible = false;
@@ -199,6 +207,7 @@ namespace AccountCreation
                         dsdRemarkCtrl.Enabled = true;
                         dsdCheckboxCtrl.Enabled = true;
                         dsdApprovalCtrl.Enabled = true;
+                        dsdImoList.Enabled = true;
                     }
                     if (User.IsInRole("CARSON NEC IA Account Review"))
                     {
