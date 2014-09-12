@@ -23,7 +23,7 @@ namespace AccountCreation
             }
             else
             {
-                CurrentUser = HttpContext.Current.User.Identity.Name;
+                CurrentUser = null;
             }
 			
 		}
