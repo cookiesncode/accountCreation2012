@@ -16,13 +16,13 @@ namespace AccountCreation
             var userAccount = new AdAccount();
              //Un-comment next line for testing a specific user
             //var userAccount = new AdAccount("123");
-
-			if (!IsPostBack && accountType != null && requestType != null)
+            var currentUser = userAccount.CurrentUser;
+			if (!IsPostBack && accountType != null && requestType != null && currentUser != null)
 			{
                 if (requestType == "Create")
                 {
                     bool accountExist = false;
-                    switch (accountType)
+                    switch (accountType)                   
                     {
                         case "NIPR":
                             accountExist = userAccount.queryForest();
