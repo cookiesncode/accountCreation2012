@@ -90,7 +90,7 @@
                 EmptyDataText="No results found"
                 EnablePersistedSelection="True" 
                 AllowPaging="True" 
-                PageSize="25"
+                PageSize="10"
                 PagerStyle-CssClass="table-pagination">
 				<Columns>
                     <%-- TODO: Change it back to bound fields since templates arent required anymore --%>
