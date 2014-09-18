@@ -13,15 +13,6 @@ namespace AccountCreation {
     public partial class Test {
         
         /// <summary>
-        /// _entity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label _entity;
-        
-        /// <summary>
         /// _cacTest control.
         /// </summary>
         /// <remarks>
@@ -29,15 +20,6 @@ namespace AccountCreation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label _cacTest;
-        
-        /// <summary>
-        /// _cacCert control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label _cacCert;
         
         /// <summary>
         /// _cacMiddleInitial control.
