@@ -121,12 +121,12 @@ namespace AccountCreation
                     {
                         var supervisorNameCtrl = (Literal)(_formview).FindControl("_supervisorName");
                         var supervisorEdipiCtrl = (TextBox)(_formview).FindControl("_supervisorEdipi");
-                        var supervisorInfo = AdAccount.FindAdUser(supervisorEdipiCtrl.Text);
+                        var supervisorInfo = AdAccount.ReturnActiveDirectoryDisplayName(supervisorEdipiCtrl.Text);
                         supervisorNameCtrl.Text = supervisorInfo;
 
                         var securityNameCtrl = (Literal)(_formview).FindControl("_securityName");
                         var securityEdipiCtrl = (TextBox)(_formview).FindControl("_securityEdipi");
-                        var securityInfo = AdAccount.FindAdUser(securityEdipiCtrl.Text);
+                        var securityInfo = AdAccount.ReturnActiveDirectoryDisplayName(securityEdipiCtrl.Text);
                         securityNameCtrl.Text = securityInfo;
 
                         // Update visible properties of each section depending on the value of the request status.

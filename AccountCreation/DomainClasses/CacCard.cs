@@ -24,20 +24,12 @@ namespace AccountCreation
 					const int edipiLength = 10;
 					int cacIdentifierPosition = subjectLineLength - edipiLength;
 					string cacIdentifier = subjectLine.Substring(cacIdentifierPosition, edipiLength);
-					string[] arr = subjectArray[5].Split(' ');
-					string[] user = arr[1].Split('=');
+                    string distinguisedName = subjectArray[5].TrimStart();
+                    string[] userArray = distinguisedName.Split('=');
+					string fullName = userArray[1].ToString();
+					string[] fullNameMinusPeriods = fullName.Split('.');
 
-					StringBuilder sb = new StringBuilder();
-					foreach (string field in user)
-					{
-						sb.Append(field);
-					}
-					sb.Remove(0, 2);
-
-					string str1 = sb.ToString();
-					string[] fullName = str1.Split('.');
-
-					return fullName[0].ToString();
+					return fullNameMinusPeriods[0].ToString();
 				}
 				else
 				{
@@ -53,26 +45,18 @@ namespace AccountCreation
 				HttpClientCertificate cacCard = HttpContext.Current.Request.ClientCertificate;
 				if (cacCard.IsPresent)
 				{
-					string[] subjectArray = cacCard.Subject.Split(',');
-					string subjectLine = cacCard.Subject.ToString();
+                    string[] subjectArray = cacCard.Subject.Split(',');
+                    string subjectLine = cacCard.Subject.ToString();
 					int subjectLineLength = subjectLine.Length;
 					const int edipiLength = 10;
 					int cacIdentifierPosition = subjectLineLength - edipiLength;
-					string cacIdentifier = subjectLine.Substring(cacIdentifierPosition, edipiLength);
-					string[] arr = subjectArray[5].Split(' ');
-					string[] user = arr[1].Split('=');
+                    string cacIdentifier = subjectLine.Substring(cacIdentifierPosition, edipiLength);
+                    string distinguisedName = subjectArray[5].TrimStart();
+                    string[] userArray = distinguisedName.Split('=');
+                    string fullName = userArray[1].ToString();
+                    string[] fullNameMinusPeriods = fullName.Split('.');
 
-					StringBuilder sb = new StringBuilder();
-					foreach (string field in user)
-					{
-						sb.Append(field);
-					}
-					sb.Remove(0, 2);
-
-					string str1 = sb.ToString();
-					string[] fullName = str1.Split('.');
-
-					return fullName[1].ToString();
+                    return fullNameMinusPeriods[1].ToString();
 				}
 				else
 				{
@@ -88,24 +72,12 @@ namespace AccountCreation
 				HttpClientCertificate cacCard = HttpContext.Current.Request.ClientCertificate;
 				if (cacCard.IsPresent)
 				{
-					string[] subjectArray = cacCard.Subject.Split(',');
-					string subjectLine = cacCard.Subject.ToString();
+                    string[] subjectArray = cacCard.Subject.Split(',');
+                    string subjectLine = cacCard.Subject.ToString();
 					int subjectLineLength = subjectLine.Length;
 					const int edipiLength = 10;
 					int cacIdentifierPosition = subjectLineLength - edipiLength;
 					string cacIdentifier = subjectLine.Substring(cacIdentifierPosition, edipiLength);
-					string[] arr = subjectArray[5].Split(' ');
-					string[] user = arr[1].Split('=');
-
-					StringBuilder sb = new StringBuilder();
-					foreach (string field in user)
-					{
-						sb.Append(field);
-					}
-					sb.Remove(0, 2);
-
-					string str1 = sb.ToString();
-					string[] fullName = str1.Split('.');
 
 					return cacIdentifier;
 				}
@@ -129,19 +101,11 @@ namespace AccountCreation
                     const int edipiLength = 10;
                     int cacIdentifierPosition = subjectLineLength - edipiLength;
                     string cacIdentifier = subjectLine.Substring(cacIdentifierPosition, edipiLength);
-                    string[] arr = subjectArray[5].Split(' ');
-                    string[] user = arr[1].Split('=');
-
-                    StringBuilder sb = new StringBuilder();
-                    foreach (string field in user)
-                    {
-                        sb.Append(field);
-                    }
-                    sb.Remove(0, 2);
-
-                    string str1 = sb.ToString();
-                    string[] fullName = str1.Split('.');
-                    string middleName = fullName[2].ToString();
+                    string distinguisedName = subjectArray[5].TrimStart();
+                    string[] userArray = distinguisedName.Split('=');
+                    string fullName = userArray[1].ToString();
+                    string[] fullNameMinusPeriods = fullName.Split('.');
+                    string middleName = fullNameMinusPeriods[2].ToString();
                     string middleInitial = middleName[0].ToString();
                     // The following statements checks whether the value found in the middleInitial variable is a integer or a letter.
                     // If it is an integer then an empty string is returned.
