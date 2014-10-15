@@ -1,4 +1,4 @@
-﻿<%@ Page Title="App Settings" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="settings.aspx.cs" Inherits="AccountCreation.settings" MaintainScrollPositionOnPostback="true" %>
+﻿<%@ Page Title="Settings" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="settings.aspx.cs" Inherits="AccountCreation.settings" MaintainScrollPositionOnPostback="true" %>
 
 <asp:Content ID="_settingsHead" ContentPlaceHolderID="_masterHead" runat="server">
 </asp:Content>
