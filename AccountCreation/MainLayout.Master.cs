@@ -14,6 +14,7 @@ namespace AccountCreation
             if (Page.User.IsInRole("CARSON NEC SSD SMB SA SG") || Page.User.IsInRole("CARSON NEC IA Account Review"))
 			{
 				_saLink.Visible = true;
+                _settingsLink.Visible = true;
 			}
 		}
 	}

@@ -32,6 +32,7 @@
 				<li><a href="verification.aspx">Existing Request</a></li>
 				<li><a href="_assets/docs/howto-guide.pdf" target="_blank">How-to Guide</a></li>
 				<li id="_saLink" visible="false" runat="server"><a href="sa-admin.aspx">Admin Panel</a></li>
+				<li id="_settingsLink" visible="false" runat="server"><a href="settings.aspx">Settings</a></li>
 			</ul>
 		</div>
 	</nav>
