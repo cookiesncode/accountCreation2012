@@ -38,7 +38,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
+    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
@@ -97,6 +98,9 @@
     <Compile Include="AccountRequest.cs">
       <DependentUpon>CarsonAccountModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Branch.cs">
+      <DependentUpon>SettingsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="CarsonAccountModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -124,12 +128,33 @@
     <Compile Include="DomainClasses\Email.cs" />
     <Compile Include="DomainClasses\Record.cs" />
     <Compile Include="DomainClasses\Setting.cs" />
+    <Compile Include="Persona.cs">
+      <DependentUpon>SettingsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Rank.cs">
+      <DependentUpon>SettingsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="settings.aspx.cs">
       <DependentUpon>settings.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="settings.aspx.designer.cs">
       <DependentUpon>settings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SettingsModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SettingsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SettingsModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>
@@ -174,6 +199,9 @@
     <Compile Include="success.aspx.designer.cs">
       <DependentUpon>success.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UnitOrg.cs">
+      <DependentUpon>SettingsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="verification.aspx.cs">
       <DependentUpon>verification.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -201,10 +229,28 @@
       <LastGenOutput>CarsonAccountModel.cs</LastGenOutput>
     </Content>
     <Content Include="MainLayout.Master" />
+    <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\Production Server.pubxml" />
     <None Include="Properties\PublishProfiles\Production.pubxml" />
     <None Include="Properties\PublishProfiles\Testing Server.pubxml" />
     <None Include="Properties\PublishProfiles\TestServer.pubxml" />
+    <EntityDeploy Include="SettingsModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SettingsModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="SettingsModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SettingsModel.edmx</DependentUpon>
+      <LastGenOutput>SettingsModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SettingsModel.edmx.diagram">
+      <DependentUpon>SettingsModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="SettingsModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SettingsModel.edmx</DependentUpon>
+      <LastGenOutput>SettingsModel.cs</LastGenOutput>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
