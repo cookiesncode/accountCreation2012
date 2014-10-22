@@ -13,11 +13,13 @@ namespace AccountCreation
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+# if RELEASE || STAGING
             if (!Page.User.IsInRole("CARSON NEC SSD SMB SA SG"))
             {
                 Response.StatusCode = 403;
                 Response.SuppressContent = true;
-            }
+            }            
+# endif
         }
 
         protected void _listView_ItemCommand(object sender, ListViewCommandEventArgs e)
