@@ -9,6 +9,8 @@
         <EntityTypeShape EntityType="SettingsModel.Persona" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SettingsModel.Rank" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SettingsModel.UnitOrg" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SettingsModel.Installation" Width="1.5" PointX="5.25" PointY="0.625" />
+        <EntityTypeShape EntityType="SettingsModel.Macom" Width="1.5" PointX="5" PointY="3.625" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

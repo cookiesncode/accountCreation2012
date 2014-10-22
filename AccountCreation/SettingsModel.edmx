@@ -4,9 +4,11 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SettingsModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="SettingsModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="SettingsModelStoreContainer">
           <EntitySet Name="Branch" EntityType="SettingsModel.Store.Branch" store:Type="Tables" />
+          <EntitySet Name="Installation" EntityType="SettingsModel.Store.Installation" store:Type="Tables" />
+          <EntitySet Name="Macom" EntityType="SettingsModel.Store.Macom" store:Type="Tables" />
           <EntitySet Name="Persona" EntityType="SettingsModel.Store.Persona" store:Type="Tables" />
           <EntitySet Name="Rank" EntityType="SettingsModel.Store.Rank" store:Type="Tables" />
           <EntitySet Name="UnitOrg" EntityType="SettingsModel.Store.UnitOrg" store:Type="Tables" />
@@ -16,31 +18,44 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="BranchName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="BranchName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Installation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="InstallationName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Macom">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MacomName" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Persona">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="PersonaName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="PersonaName" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Rank">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="RankName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="RankName" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="UnitOrg">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="UnitName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="UnitName" Type="nvarchar" MaxLength="100" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SettingsModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -49,34 +64,50 @@
           <EntitySet Name="Personas" EntityType="SettingsModel.Persona" />
           <EntitySet Name="Ranks" EntityType="SettingsModel.Rank" />
           <EntitySet Name="UnitOrgs" EntityType="SettingsModel.UnitOrg" />
+          <EntitySet Name="Installations" EntityType="SettingsModel.Installation" />
+          <EntitySet Name="Macoms" EntityType="SettingsModel.Macom" />
         </EntityContainer>
         <EntityType Name="Branch">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BranchName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="BranchName" Type="String" Nullable="true" MaxLength="100" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="Persona">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PersonaName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="PersonaName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="Rank">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RankName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="RankName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="UnitOrg">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UnitName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="UnitName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Installation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="InstallationName" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Macom">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="MacomName" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -113,6 +144,22 @@
               <MappingFragment StoreEntitySet="UnitOrg">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Installations">
+            <EntityTypeMapping TypeName="SettingsModel.Installation">
+              <MappingFragment StoreEntitySet="Installation">
+                <ScalarProperty Name="InstallationName" ColumnName="InstallationName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Macoms">
+            <EntityTypeMapping TypeName="SettingsModel.Macom">
+              <MappingFragment StoreEntitySet="Macom">
+                <ScalarProperty Name="MacomName" ColumnName="MacomName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

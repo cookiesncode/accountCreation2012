@@ -29,5 +29,7 @@ namespace AccountCreation
         public DbSet<Persona> Personas { get; set; }
         public DbSet<Rank> Ranks { get; set; }
         public DbSet<UnitOrg> UnitOrgs { get; set; }
+        public DbSet<Installation> Installations { get; set; }
+        public DbSet<Macom> Macoms { get; set; }
     }
 }

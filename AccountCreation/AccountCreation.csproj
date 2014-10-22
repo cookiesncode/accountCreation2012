@@ -128,6 +128,12 @@
     <Compile Include="DomainClasses\Email.cs" />
     <Compile Include="DomainClasses\Record.cs" />
     <Compile Include="DomainClasses\Setting.cs" />
+    <Compile Include="Installation.cs">
+      <DependentUpon>SettingsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Macom.cs">
+      <DependentUpon>SettingsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Persona.cs">
       <DependentUpon>SettingsModel.tt</DependentUpon>
     </Compile>
