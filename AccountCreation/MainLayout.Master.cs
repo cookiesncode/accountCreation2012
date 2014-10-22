@@ -11,11 +11,14 @@ namespace AccountCreation
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-            if (Page.User.IsInRole("CARSON NEC SSD SMB SA SG") || Page.User.IsInRole("CARSON NEC IA Account Review"))
+            if (Page.User.IsInRole("CARSON NEC SSD SMB SA SG") || Page.User.IsInRole("CARSON NEC IA Account Review") || Page.User.IsInRole("CARSON NEC DSD Account Review"))
 			{
 				_saLink.Visible = true;
-                _settingsLink.Visible = true;
 			}
+            if (Page.User.IsInRole("CARSON NEC SSD SMB SA SG"))
+            {
+                _settingsLink.Visible = true;
+            }
 		}
 	}
 }
