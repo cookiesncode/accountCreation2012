@@ -245,32 +245,34 @@ namespace AccountCreation
                 var orgUnitControl = (DropDownList)(_formview).FindControl("_orgUnit");
                 var installationControl = (DropDownList)(_formview).FindControl("_installation");
                 var personaControl = (DropDownList)(_formview).FindControl("_persona");
-                var rankControl = (DropDownList)(_formview).FindControl("_rank");
+                var rankControl = (DropDownList)(_formview).FindControl("_rank");                
 
-				foreach (string item in Setting.OrgUnit)
+				foreach (string item in Setting.UnitList)
 				{
 					unitListControl.Items.Add(new ListItem(item, item));
-				}
-				foreach (string item in Setting.Persona)
+                    orgUnitControl.Items.Add(new ListItem(item, item));
+                }
+
+				foreach (string item in Setting.PersonaList)
 				{
 					personaControl.Items.Add(new ListItem(item, item));
 				}
-				foreach (string item in Setting.Installation)
-				{
-					installationControl.Items.Add(new ListItem(item, item));
-				}
-				foreach (string item in Setting.Rank)
+
+				foreach (string item in Setting.RankList)
 				{
 					rankControl.Items.Add(new ListItem(item, item));
 				}
-				foreach (string item in Setting.OrgUnit)
-				{
-					orgUnitControl.Items.Add(new ListItem(item, item));
-				}
-				foreach (string item in Setting.Branch)
+
+				foreach (string item in Setting.BranchList)
 				{
 					branchControl.Items.Add(new ListItem(item, item));
 				}
+
+                foreach (string item in Setting.InstallationList)
+                {
+                    installationControl.Items.Add(new ListItem(item, item));
+                }
+
 			}
 		}
 

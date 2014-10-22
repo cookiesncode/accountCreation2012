@@ -129,7 +129,7 @@ namespace AccountCreation
                     justificationPanelControl.Visible = true;
 
                     var unitListControl = (ListBox)(_formview).FindControl("_unitList");
-                    foreach (string item in Setting.OrgUnit)
+                    foreach (string item in Setting.UnitList)
                     {
                         unitListControl.Items.Add(new ListItem(item, item));
                     }
@@ -160,7 +160,7 @@ namespace AccountCreation
 					}
 					macomControl.Items.Add(new ListItem(item, item));
 				}
-				foreach (string item in Setting.Installation)
+				foreach (string item in Setting.InstallationList)
 				{
 					if (installationControl.SelectedValue == item)
 					{
@@ -168,7 +168,7 @@ namespace AccountCreation
 					}
 					installationControl.Items.Add(new ListItem(item, item));
 				}
-				foreach (string item in Setting.Persona)
+				foreach (string item in Setting.PersonaList)
 				{
 					if (personaControl.SelectedValue == item)
 					{
@@ -176,7 +176,7 @@ namespace AccountCreation
 					}
 					personaControl.Items.Add(new ListItem(item, item));
 				}
-				foreach (string item in Setting.Rank)
+				foreach (string item in Setting.RankList)
 				{
 					if (rankControl.SelectedValue == item)
 					{
@@ -184,7 +184,7 @@ namespace AccountCreation
 					}
 					rankControl.Items.Add(new ListItem(item, item));
 				}
-				foreach (string item in Setting.OrgUnit)
+				foreach (string item in Setting.UnitList)
 				{
 					if (orgUnitControl.SelectedValue == item)
 					{
@@ -192,7 +192,7 @@ namespace AccountCreation
 					}
 					orgUnitControl.Items.Add(new ListItem(item, item));
 				}
-				foreach (string item in Setting.Branch)
+				foreach (string item in Setting.BranchList)
 				{
 					if (branchControl.SelectedValue == item)
 					{
