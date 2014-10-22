@@ -13,6 +13,60 @@ namespace AccountCreation {
     public partial class settings {
         
         /// <summary>
+        /// _unitListItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl _unitListItem;
+        
+        /// <summary>
+        /// _rankListItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl _rankListItem;
+        
+        /// <summary>
+        /// _personaListItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl _personaListItem;
+        
+        /// <summary>
+        /// _branchListItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl _branchListItem;
+        
+        /// <summary>
+        /// _installationListItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl _installationListItem;
+        
+        /// <summary>
+        /// _unitTab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel _unitTab;
+        
+        /// <summary>
         /// _unitListView control.
         /// </summary>
         /// <remarks>
@@ -20,6 +74,15 @@ namespace AccountCreation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView _unitListView;
+        
+        /// <summary>
+        /// _rankTab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel _rankTab;
         
         /// <summary>
         /// _rankListView control.
@@ -31,6 +94,15 @@ namespace AccountCreation {
         protected global::System.Web.UI.WebControls.ListView _rankListView;
         
         /// <summary>
+        /// _personaTab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel _personaTab;
+        
+        /// <summary>
         /// _personaListView control.
         /// </summary>
         /// <remarks>
@@ -38,6 +110,15 @@ namespace AccountCreation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView _personaListView;
+        
+        /// <summary>
+        /// _branchTab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel _branchTab;
         
         /// <summary>
         /// _branchListView control.
@@ -49,39 +130,66 @@ namespace AccountCreation {
         protected global::System.Web.UI.WebControls.ListView _branchListView;
         
         /// <summary>
-        /// _unitSqlDataSource control.
+        /// _installationTab control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource _unitSqlDataSource;
+        protected global::System.Web.UI.WebControls.Panel _installationTab;
         
         /// <summary>
-        /// _personaSqlDataSource control.
+        /// _installationListView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource _personaSqlDataSource;
+        protected global::System.Web.UI.WebControls.ListView _installationListView;
         
         /// <summary>
-        /// _rankSqlDataSource control.
+        /// _branchEntityDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource _rankSqlDataSource;
+        protected global::System.Web.UI.WebControls.EntityDataSource _branchEntityDataSource;
         
         /// <summary>
-        /// _branchSqlDataSource control.
+        /// _unitEntityDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource _branchSqlDataSource;
+        protected global::System.Web.UI.WebControls.EntityDataSource _unitEntityDataSource;
+        
+        /// <summary>
+        /// _personaEntityDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.EntityDataSource _personaEntityDataSource;
+        
+        /// <summary>
+        /// _rankEntityDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.EntityDataSource _rankEntityDataSource;
+        
+        /// <summary>
+        /// _installationEntityDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.EntityDataSource _installationEntityDataSource;
     }
 }
