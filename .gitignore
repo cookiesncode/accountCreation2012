@@ -181,3 +181,4 @@ UpgradeLog*.htm
 FakesAssemblies/
 AccountCreation/_assets/css/app.css
 *.css
+AccountCreation/Test.aspx.cs
