@@ -13,13 +13,14 @@ namespace AccountCreation
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-# if RELEASE || STAGING
+        // This if statement is a conditional compilation statement. The next piece of code will only compile for the release or staging version.
+        # if RELEASE || STAGING
             if (!Page.User.IsInRole("CARSON NEC SSD SMB SA SG"))
             {
                 Response.StatusCode = 403;
                 Response.SuppressContent = true;
             }            
-# endif
+        # endif
         }
 
         protected void _listView_ItemCommand(object sender, ListViewCommandEventArgs e)
