@@ -24,10 +24,10 @@ namespace AccountCreation
 
         protected void _listView_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
-            var control = sender as Control;
+            var activeControl = (Control)sender;
             Panel activeTab = null;
             HtmlGenericControl activeLink = null;
-            switch (control.ID)
+            switch (activeControl.ID)
             {
                 case "_unitListView":
                     activeTab = _unitTab;
