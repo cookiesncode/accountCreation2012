@@ -228,7 +228,7 @@
     </Content>
     <Content Include="MainLayout.Master" />
     <Content Include="packages.config" />
-    <None Include="Properties\PublishProfiles\Production Server.pubxml" />
+    <None Include="Properties\PublishProfiles\Release.pubxml" />
     <None Include="Properties\PublishProfiles\Production.pubxml" />
     <None Include="Properties\PublishProfiles\Staging.pubxml" />
     <None Include="Properties\PublishProfiles\TestServer.pubxml" />
