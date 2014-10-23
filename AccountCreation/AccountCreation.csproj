@@ -71,7 +71,6 @@
     <Content Include="App_Data\setting.sdf" />
     <Content Include="default.aspx" />
     <Content Include="settings.aspx" />
-    <Content Include="Test.aspx" />
     <Content Include="request-account.aspx" />
     <Content Include="request-type.aspx" />
     <Content Include="sa-admin.aspx" />
@@ -161,13 +160,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SettingsModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Test.aspx.cs">
-      <DependentUpon>Test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Test.aspx.designer.cs">
-      <DependentUpon>Test.aspx</DependentUpon>
     </Compile>
     <Compile Include="MainLayout.Master.cs">
       <DependentUpon>MainLayout.Master</DependentUpon>
