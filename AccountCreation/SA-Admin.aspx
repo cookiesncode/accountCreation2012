@@ -95,6 +95,7 @@
 				<Columns>
                     <%-- TODO: Change it back to bound fields since templates arent required anymore --%>
                     <asp:CommandField ShowSelectButton="True"></asp:CommandField>
+                    <asp:BoundField HeaderText="Id" DataField="Id" SortExpression="Id"></asp:BoundField>
                     <asp:BoundField HeaderText="Requested Date" DataField="RequestedDate" DataFormatString="{0:d}" SortExpression="RequestedDate"></asp:BoundField>
                     <asp:BoundField HeaderText="EDIPI" DataField="Edipi" SortExpression="Edipi"></asp:BoundField>
                     <asp:BoundField HeaderText="Last Name" DataField="LName" SortExpression="LName"></asp:BoundField>
