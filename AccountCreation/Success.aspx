@@ -8,7 +8,7 @@
 	
     <div id="_instructions" class="well" runat="server">
         <h3>But you're not done yet!</h3>
-        <p>Please use the form below to notify your approval staff that your request needs to be verified. Your request <strong>will not</strong> be processed until you have obtained the approval signatures. </p>
+        <p>Please notify your supervisor and security manager that you have completed a new request and their signatures are required. You can email them your verification link through your own email client or for your convenience an email form is available to you below. Your request <strong>will not</strong> be processed until you have obtained the approval signatures. </p>
         <p><strong class="text-info">Note:</strong> If you requested to <em>create</em> a VPN account or if you requested an any type of <em>deletion</em>, then only your supervisor needs to sign your request.</p>
 	</div>
 
