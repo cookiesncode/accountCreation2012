@@ -406,7 +406,7 @@ namespace AccountCreation
                 }
                 else
                 {
-                    necEmailAddress = "usarmy.carson.106-sig-bde.list.nec-ssd-smb-sa@mail.mil, miguel.gomez16.ctr@mail.mil";
+                    necEmailAddress = "usarmy.carson.106-sig-bde.list.nec-ssd-smb-sa@mail.mil";
                 }
 
                 if (iaApprovalCtrl.SelectedValue == "Approved")
