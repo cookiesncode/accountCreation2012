@@ -77,6 +77,7 @@ namespace AccountCreation
                 {
                     CheckBox securityCheckBoxControl = (CheckBox)(_formview).FindControl("_securityCheckBox");
                     PlaceHolder securityBoxPlaceholderControl = (PlaceHolder)(_formview).FindControl("_securityBoxPlaceholder");
+                    securityBoxPlaceholderControl.Visible = false;
 
                     if (supervisorCheckBoxControl.Checked && securityBoxPlaceholderControl.Visible == false)
                     {
