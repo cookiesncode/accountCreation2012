@@ -72,13 +72,11 @@ namespace AccountCreation
                 var secSubmitBtnCtrl = (Button)(_formview).FindControl("_secSubmitBtn");
                 var supervisorSignatureControl = (TextBox)(_formview).FindControl("_supervisorSignature");
                 var supervisorCheckBoxControl = (CheckBox)(_formview).FindControl("_supervisorCheckBox");
+                PlaceHolder securityBoxPlaceholderControl = (PlaceHolder)(_formview).FindControl("_securityBoxPlaceholder");
+                securityBoxPlaceholderControl.Visible = false;
 
                 if (RequiresTwoSignatures)
                 {
-                    CheckBox securityCheckBoxControl = (CheckBox)(_formview).FindControl("_securityCheckBox");
-                    PlaceHolder securityBoxPlaceholderControl = (PlaceHolder)(_formview).FindControl("_securityBoxPlaceholder");
-                    securityBoxPlaceholderControl.Visible = false;
-
                     if (supervisorCheckBoxControl.Checked && securityBoxPlaceholderControl.Visible == false)
                     {
                         securityBoxPlaceholderControl.Visible = true;
@@ -98,6 +96,7 @@ namespace AccountCreation
                         supSubmitBtnCtrl.Visible = false;
                     }
 
+                    CheckBox securityCheckBoxControl = (CheckBox)(_formview).FindControl("_securityCheckBox");
                     if (securityCheckBoxControl.Checked)
                     {
                         securityCheckBoxControl.Enabled = false;
