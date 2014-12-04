@@ -323,7 +323,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3>Security Manager Approval</h3>
-                                <small>Note: Supervisor must sign off form first.</small>
+                                <small><b>Note:</b> The Supervisor must sign the form first. If this is a <em>VPN</em> request or a deletion request then only the Supervisor's signature is required.</small>
                             </div>
                             <asp:PlaceHolder ID="_securityBoxPlaceholder" runat="server">
                                 <div class="panel-body">	
