@@ -14,6 +14,7 @@ namespace AccountCreation
                         where request.Edipi == edipi
                             && request.AccountType == accountType
                             && request.RequestType == requestType
+                            && request.RequestStatus != "Completed"
                         select request;
             return query.FirstOrDefault();
         }
