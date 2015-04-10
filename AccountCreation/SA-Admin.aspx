@@ -104,8 +104,9 @@
                     <asp:BoundField HeaderText="Rank" DataField="Rank" SortExpression="Rank"></asp:BoundField>
                     <asp:BoundField HeaderText="Account Type" DataField="AccountType" SortExpression="AccountType"></asp:BoundField>
                     <asp:BoundField HeaderText="Request Type" DataField="RequestType" SortExpression="RequestType"></asp:BoundField>
-                    <asp:BoundField HeaderText="Request Status" DataField="RequestStatus" SortExpression="RequestStatus"></asp:BoundField>
                     <asp:BoundField HeaderText="SA Employee" DataField="SaName" SortExpression="SaName"></asp:BoundField>
+                    <asp:BoundField HeaderText="Request Status" DataField="RequestStatus" SortExpression="RequestStatus"></asp:BoundField>
+                    <asp:BoundField HeaderText="Completed Date" DataField="CompletedDate" SortExpression="CompletedDate" DataFormatString="{0:d}"></asp:BoundField>
                 </Columns>
 				<SelectedRowStyle CssClass="active"></SelectedRowStyle>
 			</asp:GridView>
