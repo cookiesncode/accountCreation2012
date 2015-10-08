@@ -292,7 +292,7 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h3>Supervisor Approval</h3>
-							<small>Please fix any incorrect information in the <em>Request Entry</em> before signing the form.</small>
+							<small>Please fix any incorrect information in the <em>Request Entry</em> before signing the form. <br /><b>Do not</b> sign the form if you want to deny the request.</small>
 						</div>
 						<div class="panel-body">
                             <p class="text-danger"><strong>I verify this user's request as provided:</strong></p>
@@ -323,7 +323,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3>Security Manager Approval</h3>
-                                <small><b>Note:</b> The Supervisor must sign the form first. If this is a <em>VPN</em> request or a deletion request then only the Supervisor's signature is required.</small>
+                                <small><b>Note:</b> The Supervisor must sign the form first. If this is a <em>VPN</em> request or a deletion request then only the Supervisor's signature is required. <br /><b>Do not</b> sign the form if you want to deny the request.</small>
                             </div>
                             <asp:PlaceHolder ID="_securityBoxPlaceholder" runat="server">
                                 <div class="panel-body">	
