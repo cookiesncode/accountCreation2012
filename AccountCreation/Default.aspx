@@ -8,6 +8,7 @@
 	<div class="start-links">
 		<a class="btn btn-primary" href="request-type.aspx">Account creation or deletion</a>
 		<a class="btn btn-primary" href="verification.aspx">Review an existing request</a>
+		<a class="btn btn-primary" href="_assets/docs/removing-info-ATHOC.pdf" title="PDF document">Instructions for removing ATHOC information</a>
 	</div>
 </asp:Content>
 
