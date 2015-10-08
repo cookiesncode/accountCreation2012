@@ -340,6 +340,7 @@
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
     </None>
+    <Content Include="_assets\docs\removing-info-ATHOC.pdf" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
