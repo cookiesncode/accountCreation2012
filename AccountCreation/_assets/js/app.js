@@ -1,4 +1,15 @@
 ﻿(function ($) {
+
+    ///////////////////////////////////////////////////////////////////
+    // Disclaimer notice modal.
+    if ($.cookie('disclaimer') !== 'checked') {
+        $('.modal').modal({
+            backdrop: 'static'
+        });
+        $.cookie('disclaimer', 'checked', { path: '/' });
+    }
+
+
     var $disabledFields = $('[data-js-datepicker] input:text');
 
     ///////////////////////////////////////////////////////////////////
