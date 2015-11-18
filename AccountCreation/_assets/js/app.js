@@ -164,6 +164,13 @@
         container: 'body'
     });
 
+    $('#_accountType_1').attr({
+        'data-toggle': 'popover',
+        'data-placement': 'auto top',
+        'title': 'SIPR Shortage Warning',
+        'data-content': '<p>Due to a DoD wide shortage on SIPR tokens, only personnel who currently have a SIPR token can request a SIPR account through this application.</p><p>If you feel you must have a SIPR account, then please contact Glen Wilson from the IA Policy Branch at the email below</p><p><a href="mailto:glen.p.wilson.civ@mail.mil">glen.p.wilson.civ@mail.mil</a></p>'
+    }).popover({html: true});
+
 
     ///////////////////////////////////////////////////////////////////
     // Autopopulate MACOM code.
