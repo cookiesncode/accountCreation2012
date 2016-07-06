@@ -54,6 +54,8 @@
 					<asp:BoundField DataField="AccountType" HeaderText="Account Type" SortExpression="AccountType" />
 					<asp:BoundField DataField="RequestType" HeaderStyle-CssClass="js-popover-request" HeaderText="Request Type" SortExpression="RequestType" />
 					<asp:BoundField DataField="RequestStatus" HeaderStyle-CssClass="js-popover-status" HeaderText="Request Status" SortExpression="RequestStatus" />
+                    <asp:BoundField HeaderText="Requested Date" DataField="RequestedDate" SortExpression="RequestedDate" DataFormatString="{0:d}"></asp:BoundField>
+                    <asp:BoundField HeaderText="Completed Date" DataField="CompletedDate" SortExpression="CompletedDate" DataFormatString="{0:d}"></asp:BoundField>
 				</Columns>
 				<SelectedRowStyle CssClass="active"></SelectedRowStyle>
 			</asp:GridView>

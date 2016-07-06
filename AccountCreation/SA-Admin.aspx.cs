@@ -424,7 +424,7 @@ namespace AccountCreation
                     Email.SendEmail(necEmailAddress, necEmailMessage, nameOfSender, adminAppLink, accountType.Text, false);
 
                     var customerEmailAddress = (Literal)(_formview).FindControl("_email");
-                    var customerEmailMessage = "This account has been denied by IA. For more information, please contact Glen Wilson at glen.p.wilson.civ@mail.mil or Jeremy Cortez at jeremy.d.cortez.civ@mail.mil";
+                    var customerEmailMessage = "This account has been denied by IA. For more information, please contact Glen Wilson at glen.p.wilson.civ@mail.mil or Jeremy Cortez at jeremy.d.cortez.civ@mail.mil or Clifton Myers at Clifton.f.myers2.ctr@mail.mil";
                     Email.SendEmail(customerEmailAddress.Text, customerEmailMessage, nameOfSender, customerAppLink, accountType.Text, false);
                 }               
             }
@@ -456,7 +456,7 @@ namespace AccountCreation
                 if (dsdApprovalCtrl.SelectedValue == "Approved")
                 {
                     requestStatusCtrl.Text = "DSD Approved";
-                    var necEmailAddress = "usarmy.carson.106-sig-bde.list.nec-ssd-smb-sa@mail.mil, glen.p.wilson.civ@mail.mil, jeremy.d.cortez.civ@mail.mil";
+                    var necEmailAddress = "usarmy.carson.106-sig-bde.list.nec-ssd-smb-sa@mail.mil, glen.p.wilson.civ@mail.mil, jeremy.d.cortez.civ@mail.mil, Clifton.f.myers2.ctr@mail.mil ";
                     necEmailMessage = "This account has been approved by DSD." + doubleLineBreak;
                     necEmailMessage += "DSD Remarks:" + lineBreak + dsdRemarkCtrl.Text + doubleLineBreak;
                     necEmailMessage += "IA Remarks:" + lineBreak + iaRemarkCtrl.Text;
@@ -466,7 +466,7 @@ namespace AccountCreation
                 else
                 {
                     requestStatusCtrl.Text = "Denied";
-                    var necEmailAddress = "glen.p.wilson.civ@mail.mil, jeremy.d.cortez.civ@mail.mil";
+                    var necEmailAddress = "glen.p.wilson.civ@mail.mil, jeremy.d.cortez.civ@mail.mil, Clifton.f.myers2.ctr@mail.mil ";
                     necEmailMessage = "This account has been denied by DSD." + doubleLineBreak;
                     necEmailMessage += "DSD Remarks:" + lineBreak + dsdRemarkCtrl.Text;
                     Email.SendEmail(necEmailAddress, necEmailMessage, nameOfSender, adminAppLink, accountType.Text, false);
@@ -505,11 +505,11 @@ namespace AccountCreation
                 string necEmailAddress;
                 if (IsSaCreateRequest)
                 {
-                    necEmailAddress = "kevin.w.smith110.civ@mail.mil, michael.j.hahn10.civ@mail.mil, glen.p.wilson.civ@mail.mil, jeremy.d.cortez.civ@mail.mil";
+                    necEmailAddress = "kevin.w.smith110.civ@mail.mil, michael.j.hahn10.civ@mail.mil, glen.p.wilson.civ@mail.mil, jeremy.d.cortez.civ@mail.mil, Clifton.f.myers2.ctr@mail.mil ";
                 }
                 else
                 {
-                    necEmailAddress = "glen.p.wilson.civ@mail.mil, jeremy.d.cortez.civ@mail.mil";
+                    necEmailAddress = "glen.p.wilson.civ@mail.mil, jeremy.d.cortez.civ@mail.mil, Clifton.f.myers2.ctr@mail.mil ";
                 }
 
                 if (editRequestStatusCtrl.SelectedValue == "Completed" && (IsSaCreateRequest || IsEpCreateRequest))

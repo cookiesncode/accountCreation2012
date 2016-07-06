@@ -76,7 +76,6 @@
 			</div>
 		</div>
 		<div class="table-responsive">
-			<%-- TODO: Style paging generated controls --%>
             <asp:GridView ID="_gridview" runat="server"
                 CssClass="table table-condensed table-hover"
                 SelectedRowStyle-CssClass="active"
@@ -93,7 +92,6 @@
                 PageSize="10"
                 PagerStyle-CssClass="table-pagination">
 				<Columns>
-                    <%-- TODO: Change it back to bound fields since templates arent required anymore --%>
                     <asp:CommandField ShowSelectButton="True"></asp:CommandField>
                     <asp:BoundField HeaderText="Id" DataField="Id" SortExpression="Id"></asp:BoundField>
                     <asp:BoundField HeaderText="Requested Date" DataField="RequestedDate" DataFormatString="{0:d}" SortExpression="RequestedDate"></asp:BoundField>
