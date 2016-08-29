@@ -31,7 +31,7 @@
                                     <asp:ListItem Value="NIPR">NIPR - Fort Carson User Account</asp:ListItem>
                                     <asp:ListItem Value="SIPR">SIPR - Classified Network</asp:ListItem>
                                     <asp:ListItem Value="EP">Logon only</asp:ListItem>
-                                    <asp:ListItem Value="SA" Enabled="false">SA - (Not available at this time).</asp:ListItem>
+                                    <asp:ListItem Value="SA">SA - System Administrator</asp:ListItem>
                                     <asp:ListItem Value="VPN">VPN - Virtual Private Network</asp:ListItem>
 								</asp:RadioButtonList>
 								<asp:RequiredFieldValidator ID="_requestRequiredValidator" ControlToValidate="_accountType" runat="server" ErrorMessage="You must select an option." CssClass="label label-warning" Display="Dynamic"></asp:RequiredFieldValidator>
