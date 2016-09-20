@@ -289,7 +289,7 @@ namespace AccountCreation
                     var fName = (TextBox)(_formview).FindControl("_fName");
                     var lName = (TextBox)(_formview).FindControl("_lName");
                     var userName = fName.Text + " " + lName.Text;
-                    var iaEmail = "glen.p.wilson.civ@mail.mil, jeremy.d.cortez.civ@mail.mil, Clifton.f.myers2.ctr@mail.mil ";
+                    var iaEmail = "jeremy.d.cortez.civ@mail.mil, Clifton.f.myers2.ctr@mail.mil ";
                     // TODO: FIND out how to set defaults if blank
                     var iaMessage = "Use the link below to review this request.";
                     var iaLink = "https://nec.carson.army.mil/accounts/sa-admin.aspx?search=" + customerEdipiCtrl.Text;

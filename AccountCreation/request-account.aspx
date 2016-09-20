@@ -191,7 +191,7 @@
                                             <span class="input-group-addon">534E-</span>
 									        <asp:TextBox ID="_siprToken" CssClass="form-control" runat="server" Text='<%# Bind("SiprToken") %>' />
                                         </div>
-                                        <span class="help-block">Format: XXXX-XXXX-XXXX-XXXX<br /><small>Note: Due to a DoD wide shortage on SIPR tokens, only personnel who currently have a SIPR token can request a SIPR account through this application. Please contact Glen Wilson for more information:<br /> glen.p.wilson.civ@mail.mil</small></span>
+                                        <span class="help-block">Format: XXXX-XXXX-XXXX-XXXX<br /><small>Note: Due to a DoD wide shortage on SIPR tokens, only personnel who currently have a SIPR token can request a SIPR account through this application. Please contact Clifton Meyers for more information:<br /> clifton.f.myers2.ctr@mail.mil</small></span>
                                     <asp:RequiredFieldValidator CssClass="label label-warning" ID="_siprRequiredValidator" runat="server" ErrorMessage="SIPR Token Number: Please enter your SIPR token number." ControlToValidate="_siprToken" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
 									<asp:RegularExpressionValidator ID="_siprExpressionValidator" CssClass="label label-warning" ControlToValidate="_siprToken" runat="server" ErrorMessage="SIPR Token: Please enter a valid SIPR token." Display="Dynamic" ValidationExpression="\d{4}\-\d{4}\-\d{4}-\d{4}">Requires your attention.</asp:RegularExpressionValidator>
 								    </div>
