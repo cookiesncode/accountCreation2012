@@ -402,7 +402,7 @@ namespace AccountCreation
 
                 if (IsSaCreateRequest)
                 {
-                    necEmailAddress = "kevin.w.smith110.civ@mail.mil, michael.j.hahn10.civ@mail.mil";
+                    necEmailAddress = "michael.j.hahn10.civ@mail.mil";
                 }
                 else
                 {
@@ -472,7 +472,7 @@ namespace AccountCreation
                     Email.SendEmail(necEmailAddress, necEmailMessage, nameOfSender, adminAppLink, accountType.Text, false);
 
                     var customerEmailAddress = (Literal)(_formview).FindControl("_email");
-                    var customerEmailMessage = "This account has been denied by DSD. For more information, please contact Kevin Smith at kevin.w.smith110.civ@mail.mil";
+                    var customerEmailMessage = "This account has been denied by DSD. For more information, please contact Michael Hahn at michael.j.hahn10.civ@mail.mil";
                     Email.SendEmail(customerEmailAddress.Text, customerEmailMessage, nameOfSender, customerAppLink, accountType.Text, false);
                 }
             }
@@ -505,7 +505,7 @@ namespace AccountCreation
                 string necEmailAddress;
                 if (IsSaCreateRequest)
                 {
-                    necEmailAddress = "kevin.w.smith110.civ@mail.mil, michael.j.hahn10.civ@mail.mil, jeremy.d.cortez.civ@mail.mil, Clifton.f.myers2.ctr@mail.mil ";
+                    necEmailAddress = "michael.j.hahn10.civ@mail.mil, jeremy.d.cortez.civ@mail.mil, Clifton.f.myers2.ctr@mail.mil ";
                 }
                 else
                 {
