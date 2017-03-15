@@ -32,8 +32,7 @@
 						<asp:DropDownList ID="_filterRequestType" OnSelectedIndexChanged="_filter_SelectedIndexChanged" CssClass="form-control" runat="server" AutoPostBack="true">
 							<asp:ListItem Text="No filter" Value=""></asp:ListItem>
 							<asp:ListItem Text="Automated Request" Value="Auto Create"></asp:ListItem>
-							<asp:ListItem Text="Manual Create" Value="Manual Create"></asp:ListItem>
-							<asp:ListItem Text="Delete" Value="Manual Delete"></asp:ListItem>
+							<asp:ListItem Text="Manual Request (SA)" Value="Manual"></asp:ListItem>
 						</asp:DropDownList>
 					</div>
 				</div>
@@ -90,11 +89,12 @@
                 EmptyDataText="No results found"
                 EnablePersistedSelection="True" 
                 AllowPaging="True" 
-                PageSize="25"
+                PageSize="10"
                 PagerStyle-CssClass="table-pagination">
 				<Columns>
-                    <asp:CommandField ShowSelectButton="True" ShowDeleteButton="true" ShowEditButton="true" ShowHeader="true"></asp:CommandField>
-<%--                    <asp:BoundField HeaderText="Id" DataField="Id" SortExpression="Id"></asp:BoundField>--%>
+                    <asp:CommandField ShowSelectButton="True"></asp:CommandField>
+                    <asp:BoundField HeaderText="Id" DataField="Id" SortExpression="Id"></asp:BoundField>
+                    <asp:BoundField HeaderText="Requested Date" DataField="RequestedDate" DataFormatString="{0:d}" SortExpression="RequestedDate"></asp:BoundField>
                     <asp:BoundField HeaderText="EDIPI" DataField="Edipi" SortExpression="Edipi"></asp:BoundField>
                     <asp:BoundField HeaderText="Last Name" DataField="LName" SortExpression="LName"></asp:BoundField>
                     <asp:BoundField HeaderText="First Name" DataField="FName" SortExpression="FName"></asp:BoundField>
@@ -102,9 +102,7 @@
                     <asp:BoundField HeaderText="Rank" DataField="Rank" SortExpression="Rank"></asp:BoundField>
                     <asp:BoundField HeaderText="Account Type" DataField="AccountType" SortExpression="AccountType"></asp:BoundField>
                     <asp:BoundField HeaderText="Request Type" DataField="RequestType" SortExpression="RequestType"></asp:BoundField>
-<%--                    <asp:BoundField HeaderText="SA Employee" DataField="SaName" SortExpression="SaName"></asp:BoundField>--%>
-                    <asp:BoundField HeaderText="Requested Date" DataField="RequestedDate" DataFormatString="{0:d}" SortExpression="RequestedDate"></asp:BoundField>
-                    <asp:BoundField HeaderText="Action Date" DataField="DeleteDate" SortExpression="DeleteDate" DataFormatString="{0:d}"></asp:BoundField>
+                    <asp:BoundField HeaderText="SA Employee" DataField="SaName" SortExpression="SaName"></asp:BoundField>
                     <asp:BoundField HeaderText="Request Status" DataField="RequestStatus" SortExpression="RequestStatus"></asp:BoundField>
                     <asp:BoundField HeaderText="Completed Date" DataField="CompletedDate" SortExpression="CompletedDate" DataFormatString="{0:d}"></asp:BoundField>
                 </Columns>
