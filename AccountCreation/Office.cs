@@ -12,9 +12,9 @@ namespace AccountCreation
     using System;
     using System.Collections.Generic;
     
-    public partial class Macom
+    public partial class Office
     {
         public int Id { get; set; }
-        public string MacomName { get; set; }
+        public string OfficeName { get; set; }
     }
 }

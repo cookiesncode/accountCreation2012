@@ -165,11 +165,13 @@
 									<asp:RegularExpressionValidator ID="_roomExpressionValidator" CssClass="label label-warning" runat="server" ErrorMessage="Room number: Please enter numbers only." Text="Requires your attention." ControlToValidate="_roomNum" Display="Dynamic" ValidationExpression="^[0-9]+$"></asp:RegularExpressionValidator>
 								</div>
 							</div>
-				
 							<div class="form-group">
 								<label for="_office" class="col-sm-4 col-md-4 control-label">Office/Company:</label>
 								<div class="col-sm-7 col-md-6">
-									<asp:TextBox ID="_office" CssClass="form-control" runat="server" Text='<%# Bind("Office") %>' />
+									<asp:DropDownList ID="_office" CssClass="form-control" runat="server" Text='<%# Bind("Office") %>' AppendDataBoundItems="True">
+										<asp:ListItem Text="-- Select Office --" Value="" />
+									</asp:DropDownList>
+                                    <span class="help-block">Skip this field if your office is not listed or you're unsure.</span>
 								</div>
 							</div>
 
@@ -254,7 +256,7 @@
 							</asp:Panel>
 
 							<asp:Panel ID="_saPanel" Visible="false" runat="server">
-								<h4 class="page-header">SA Section</h4>
+								<h4 class="page-header">SA Related Information</h4>
 								<div class="form-group">
 									<label for="_commanderName" class="col-sm-4 col-md-4 control-label">Commander's Name:</label>
 									<div class="col-sm-7 col-md-6">

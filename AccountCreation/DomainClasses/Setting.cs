@@ -56,6 +56,7 @@ namespace AccountCreation
             {
                 var context = new SettingEntities();
                 var query = from record in context.Installations
+                            orderby record.InstallationName ascending
                             select record.InstallationName;
                 return query.ToList();
             }
@@ -67,6 +68,7 @@ namespace AccountCreation
             {
                 var context = new SettingEntities();
                 var query = from record in context.UnitOrgs
+                            orderby record.UnitName ascending
                             select record.UnitName;
                 return query.ToList();
             }
@@ -78,6 +80,7 @@ namespace AccountCreation
             {
                 var context = new SettingEntities();
                 var query = from record in context.Branches
+                            orderby record.BranchName ascending
                             select record.BranchName;
                 return query.ToList();
             }
@@ -89,6 +92,7 @@ namespace AccountCreation
             {
                 var context = new SettingEntities();
                 var query = from record in context.Personas
+                            orderby record.PersonaName ascending
                             select record.PersonaName;
                 return query.ToList();
             }
@@ -100,9 +104,23 @@ namespace AccountCreation
             {
                 var context = new SettingEntities();
                 var query = from record in context.Ranks
+                            orderby record.RankName ascending
                             select record.RankName;
                 return query.ToList();
             }
         }
-	}
+        
+        public static List<string> OfficeList
+        {
+            get
+            {
+                var context = new SettingEntities();
+                var query = from record in context.Offices
+                            orderby record.OfficeName ascending
+                            select record.OfficeName;
+                return query.ToList();
+                
+            }
+        }
+    }
 }

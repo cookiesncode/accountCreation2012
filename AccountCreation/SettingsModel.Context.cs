@@ -30,6 +30,6 @@ namespace AccountCreation
         public DbSet<Rank> Ranks { get; set; }
         public DbSet<UnitOrg> UnitOrgs { get; set; }
         public DbSet<Installation> Installations { get; set; }
-        public DbSet<Macom> Macoms { get; set; }
+        public DbSet<Office> Offices { get; set; }
     }
 }

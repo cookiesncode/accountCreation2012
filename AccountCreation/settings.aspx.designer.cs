@@ -58,6 +58,15 @@ namespace AccountCreation {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl _installationListItem;
         
         /// <summary>
+        /// _officeListItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl _officeListItem;
+        
+        /// <summary>
         /// _unitTab control.
         /// </summary>
         /// <remarks>
@@ -74,6 +83,24 @@ namespace AccountCreation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView _unitListView;
+        
+        /// <summary>
+        /// _officeTab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel _officeTab;
+        
+        /// <summary>
+        /// _officeListView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView _officeListView;
         
         /// <summary>
         /// _rankTab control.
@@ -191,5 +218,14 @@ namespace AccountCreation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.EntityDataSource _installationEntityDataSource;
+        
+        /// <summary>
+        /// _officeEntityDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.EntityDataSource _officeEntityDataSource;
     }
 }

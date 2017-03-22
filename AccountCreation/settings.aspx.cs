@@ -50,6 +50,10 @@ namespace AccountCreation
                     activeTab = _installationTab;
                     activeLink = _installationListItem;
                     break;
+                case "_officeListView":
+                    activeTab = _officeTab;
+                    activeLink = _officeListItem;
+                    break;
             }
             var normalState = "tab-pane fade";
             var activeState = "tab-pane fade in active";
@@ -59,12 +63,14 @@ namespace AccountCreation
             _personaTab.CssClass = normalState;
             _branchTab.CssClass = normalState;
             _installationTab.CssClass = normalState;
+            _officeTab.CssClass = normalState;
 
             _unitListItem.Attributes.Remove("class");
             _rankListItem.Attributes.Remove("class");
             _personaListItem.Attributes.Remove("class");
             _branchListItem.Attributes.Remove("class");
             _installationListItem.Attributes.Remove("class");
+            _officeListItem.Attributes.Remove("class");
 
             activeTab.CssClass = activeState;
             activeLink.Attributes.Add("class", "active");

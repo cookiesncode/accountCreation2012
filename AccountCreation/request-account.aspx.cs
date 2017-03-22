@@ -245,7 +245,8 @@ namespace AccountCreation
                 var orgUnitControl = (DropDownList)(_formview).FindControl("_orgUnit");
                 var installationControl = (DropDownList)(_formview).FindControl("_installation");
                 var personaControl = (DropDownList)(_formview).FindControl("_persona");
-                var rankControl = (DropDownList)(_formview).FindControl("_rank");                
+                var rankControl = (DropDownList)(_formview).FindControl("_rank");
+                var officeControl = (DropDownList)(_formview).FindControl("_office");                
 
 				foreach (string item in Setting.UnitList)
 				{
@@ -273,7 +274,12 @@ namespace AccountCreation
                     installationControl.Items.Add(new ListItem(item, item));
                 }
 
-			}
+                foreach (string item in Setting.OfficeList)
+                {
+                    officeControl.Items.Add(new ListItem(item, item));
+                }
+
+            }
 		}
 
 		protected void _formview_ItemInserted(object sender, FormViewInsertedEventArgs e)

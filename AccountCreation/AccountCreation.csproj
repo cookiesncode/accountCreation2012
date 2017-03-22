@@ -131,7 +131,7 @@
     <Compile Include="Installation.cs">
       <DependentUpon>SettingsModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Macom.cs">
+    <Compile Include="Office.cs">
       <DependentUpon>SettingsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Persona.cs">

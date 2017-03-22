@@ -14,6 +14,7 @@
             <li id="_personaListItem" runat="server"><a href="#_personaTab" role="tab" data-toggle="tab">Persona List</a></li>
             <li id="_branchListItem" runat="server"><a href="#_branchTab" role="tab" data-toggle="tab">Branch List</a></li>
             <li id="_installationListItem" runat="server"><a href="#_installationTab" role="tab" data-toggle="tab">Installation List</a></li>
+            <li id="_officeListItem" runat="server"><a href="#_officeTab" role="tab" data-toggle="tab">Office List</a></li>
         </ul>
 
         <div class="row">
@@ -78,6 +79,78 @@
                                         </td>
                                         <td>
                                             <asp:TextBox CssClass="form-control" ID="_unitNameInsert" runat="server" Text='<%# Bind("UnitName") %>' />
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </InsertItemTemplate>
+
+                            <EmptyDataTemplate>
+                                <tr>
+                                    <td><strong>No data was returned.</strong></td>
+                                </tr>
+                            </EmptyDataTemplate>
+                        </asp:ListView>
+                    </asp:Panel>
+
+                    <asp:Panel ID="_officeTab" runat="server" CssClass="tab-pane fade in active" ClientIDMode="Static">     
+                        <asp:ListView ID="_officeListView"
+                            runat="server"
+                            DataSourceID="_officeEntityDataSource"
+                            DataKeyNames="Id"
+                            ItemPlaceholderID="_itemPlaceholder" 
+                            InsertItemPosition="LastItem" 
+                            OnItemCommand="_listView_ItemCommand">
+                            <LayoutTemplate>
+                                <div class="panel panel-default">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col"></th>
+                                                    <th scope="col"><asp:LinkButton ID="_sortButton" runat="server" CommandArgument="OfficeName" CommandName="Sort">Unit/Organization</asp:LinkButton></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <asp:PlaceHolder ID="_itemPlaceholder" runat="server"></asp:PlaceHolder>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </LayoutTemplate>
+        
+                            <ItemTemplate>
+                                <tr>
+                                    <td>
+                                        <strong><asp:LinkButton ID="_deleteButton" runat="server" CommandName="Delete" Text="Delete" /></strong>
+                                        <asp:LinkButton ID="_editButton" runat="server" CommandName="Edit" Text="Edit" />
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="_officeName" runat="server" Text='<%# Eval("OfficeName") %>' />
+                                    </td>
+                                </tr>
+                            </ItemTemplate>
+
+                            <EditItemTemplate>
+                                <tr>
+                                    <td>
+                                        <asp:LinkButton ID="_updateButton" runat="server" CommandName="Update" Text="Update" />
+                                        <asp:LinkButton ID="_cancelUpdateButton" runat="server" CommandName="Cancel" Text="Cancel" />
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="_officeNameEdit" CssClass="form-control" runat="server" Text='<%# Bind("OfficeName") %>' />
+                                    </td>
+                                </tr>
+                            </EditItemTemplate>
+
+                            <InsertItemTemplate>
+                                <tfoot>
+                                    <tr>
+                                        <td>
+                                            <strong><asp:LinkButton ID="_insertButton" runat="server" CommandName="Insert" Text="Insert" /></strong>
+                                            <asp:LinkButton ID="_cancelInsertButton" runat="server" CommandName="Cancel" Text="Clear" />
+                                        </td>
+                                        <td>
+                                            <asp:TextBox CssClass="form-control" ID="_officeNameInsert" runat="server" Text='<%# Bind("OfficeName") %>' />
                                         </td>
                                     </tr>
                                 </tfoot>
@@ -437,6 +510,17 @@
         EnableInsert="True" 
         EnableUpdate="True" 
         EntitySetName="Installations">
+    </asp:EntityDataSource>
+
+    <asp:EntityDataSource ID="_officeEntityDataSource" 
+        runat="server" 
+        ConnectionString="name=SettingEntities" 
+        DefaultContainerName="SettingEntities" 
+        EnableDelete="True" 
+        EnableFlattening="False" 
+        EnableInsert="True" 
+        EnableUpdate="True" 
+        EntitySetName="Offices">
     </asp:EntityDataSource>
 
 </asp:Content>

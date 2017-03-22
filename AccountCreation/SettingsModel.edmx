@@ -8,7 +8,7 @@
         <EntityContainer Name="SettingsModelStoreContainer">
           <EntitySet Name="Branch" EntityType="SettingsModel.Store.Branch" store:Type="Tables" />
           <EntitySet Name="Installation" EntityType="SettingsModel.Store.Installation" store:Type="Tables" />
-          <EntitySet Name="Macom" EntityType="SettingsModel.Store.Macom" store:Type="Tables" />
+          <EntitySet Name="Office" EntityType="SettingsModel.Store.Office" store:Type="Tables" />
           <EntitySet Name="Persona" EntityType="SettingsModel.Store.Persona" store:Type="Tables" />
           <EntitySet Name="Rank" EntityType="SettingsModel.Store.Rank" store:Type="Tables" />
           <EntitySet Name="UnitOrg" EntityType="SettingsModel.Store.UnitOrg" store:Type="Tables" />
@@ -27,12 +27,12 @@
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="InstallationName" Type="nvarchar" MaxLength="100" />
         </EntityType>
-        <EntityType Name="Macom">
+        <EntityType Name="Office">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
+          <Property Name="OfficeName" Type="nvarchar" Nullable="false" MaxLength="250" />
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="MacomName" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Persona">
           <Key>
@@ -65,7 +65,7 @@
           <EntitySet Name="Ranks" EntityType="SettingsModel.Rank" />
           <EntitySet Name="UnitOrgs" EntityType="SettingsModel.UnitOrg" />
           <EntitySet Name="Installations" EntityType="SettingsModel.Installation" />
-          <EntitySet Name="Macoms" EntityType="SettingsModel.Macom" />
+          <EntitySet Name="Offices" EntityType="SettingsModel.Office" />
         </EntityContainer>
         <EntityType Name="Branch">
           <Key>
@@ -102,12 +102,12 @@
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="String" Name="InstallationName" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Macom">
+        <EntityType Name="Office">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="MacomName" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OfficeName" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -155,11 +155,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Macoms">
-            <EntityTypeMapping TypeName="SettingsModel.Macom">
-              <MappingFragment StoreEntitySet="Macom">
-                <ScalarProperty Name="MacomName" ColumnName="MacomName" />
+          <EntitySetMapping Name="Offices">
+            <EntityTypeMapping TypeName="SettingsModel.Office">
+              <MappingFragment StoreEntitySet="Office">
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
