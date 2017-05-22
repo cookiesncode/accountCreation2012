@@ -189,13 +189,10 @@
 							    <div class="form-group">
 								    <label for="_siprToken" class="col-sm-4 col-md-4 control-label">SIPR Token Number:</label>
 								    <div class="col-sm-7 col-md-6">
-                                        <div class="input-group">
-                                            <span class="input-group-addon">534E-</span>
-									        <asp:TextBox ID="_siprToken" CssClass="form-control" runat="server" Text='<%# Bind("SiprToken") %>' />
-                                        </div>
-                                        <span class="help-block">Format: XXXX-XXXX-XXXX-XXXX<br /><small>Note: Due to a DoD wide shortage on SIPR tokens, only personnel who currently have a SIPR token can request a SIPR account through this application. Please contact Clifton Meyers for more information:<br /> clifton.f.myers2.ctr@mail.mil</small></span>
+									    <asp:TextBox ID="_siprToken" CssClass="form-control" runat="server" Text='<%# Bind("SiprToken") %>' />
+                                        <span class="help-block">20 characters long. No spaces or dashes<br /><small>Note: Due to a DoD wide shortage on SIPR tokens, only personnel who currently have a SIPR token can request a SIPR account through this application.</small></span>
                                     <asp:RequiredFieldValidator CssClass="label label-warning" ID="_siprRequiredValidator" runat="server" ErrorMessage="SIPR Token Number: Please enter your SIPR token number." ControlToValidate="_siprToken" Text="Requires your attention" Display="Dynamic"></asp:RequiredFieldValidator>
-									<asp:RegularExpressionValidator ID="_siprExpressionValidator" CssClass="label label-warning" ControlToValidate="_siprToken" runat="server" ErrorMessage="SIPR Token: Please enter a valid SIPR token." Display="Dynamic" ValidationExpression="\d{4}\-\d{4}\-\d{4}-\d{4}">Requires your attention.</asp:RegularExpressionValidator>
+									<asp:RegularExpressionValidator ID="_siprExpressionValidator" CssClass="label label-warning" ControlToValidate="_siprToken" runat="server" ErrorMessage="SIPR Token: Please enter a valid SIPR token." Display="Dynamic" ValidationExpression="\w{20}">Requires your attention.</asp:RegularExpressionValidator>
 								    </div>
 							    </div>
                             </asp:Panel>
